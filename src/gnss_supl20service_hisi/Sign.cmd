@@ -1,0 +1,1 @@
+java.exe -jar "ApkSigner.jar" sign  --key platform.pk8 --cert platform.x509.pem  --v4-signing-enabled false --out "gnss_supl20service_hisi_signed.apk" "gnss_supl20service_hisi-altair.apk"
