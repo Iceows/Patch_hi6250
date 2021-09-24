@@ -8817,7 +8817,7 @@
 (allow hi110x_daemon system_app_26_0 (binder (call)))
 (allow hi110x_daemon mnt_user_file_26_0 (dir (search)))
 (allow hi110x_daemon system_data_root_file (dir (read)))
-(allow hi110x_daemon device (chr_file (read)))
+(allow hi110x_daemon device (chr_file (ioctl read getattr lock open)))
 (allow init_26_0 hiaiserver_exec (file (read getattr execute open)))
 (allow init_26_0 hiaiserver (process (transition)))
 (allow hiaiserver hiaiserver_exec (file (read getattr execute entrypoint open)))

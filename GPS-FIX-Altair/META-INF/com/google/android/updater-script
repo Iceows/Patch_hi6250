@@ -6,7 +6,7 @@ ui_print("#   for Lineage 18.1 (Huawei P8 lite)   #");
 ui_print("#                                       #");
 ui_print("#    by AltairFR, Hamido                #");
 ui_print("#                                       #");
-ui_print("#    V1.7                               #");
+ui_print("#    V1.7.1                             #");
 ui_print("#                                       #");
 ui_print("#########################################");
 ui_print("");
