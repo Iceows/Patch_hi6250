@@ -3,7 +3,7 @@ java -jar baksmali-2.5.2.jar list dex C:\Applis\supl20\gnss_supl20service_hisi.o
 
 REM Genere les fichier smali 
 REM java -jar baksmali-2.5.2.jar disassemble -a 26 -o C:\Applis\supl20\src-out C:\Applis\supl20\gnss_supl20service_hisi.odex
-java -jar baksmali-2.5.2.jar deodex -a 26 -o C:\Applis\supl20\src-out -c boot.oat -d C:\Applis\supl20\Android8\framework\arm64 C:\Applis\supl20\gnss_supl20service_hisi.odex
+java -jar baksmali-2.5.2.jar deodex -a 26 -o C:\Applis\supl20\src-out -c boot.oat -d C:\Applis\supl20\android8\framework\arm64 C:\Applis\supl20\gnss_supl20service_hisi.odex
 
 REM Fabrique le ficher classes.dex  a partir des fichier smali
 java -jar smali-2.5.2.jar a -a 26 C:\Applis\supl20\src-out -o C:\Applis\supl20\classes.dex
