@@ -1,0 +1,21 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: 'gnss_supl20service_hisi.apk'
+compressionType: false
+doNotCompress: null
+isFrameworkApk: false
+packageInfo: 
+sdkInfo:
+  minSdkVersion: '18'
+  targetSdkVersion: '31'
+  maxSdkVersion: '31'
+sharedLibrary: false
+sparseResources: false
+unknownFiles: {}
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.6.0
+versionInfo:
+  versionCode: '6'
+  versionName: 2.13.2.0
