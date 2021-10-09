@@ -11,11 +11,15 @@ java -jar apktool_2.6.0.jar decode -f -o .\supl20\apk-out .\supl20\gnss_supl20se
 
 REM ---------------------------------------------------------------------------------------
 
-REM Genere les fichiers smali
+
+REM Fait un peu de menage
+del .\supl20-new\apk-out
+
+REM Genere les fichiers smali du patch
 java -jar apktool_2.6.0.jar decode -f -o .\supl20-new\apk-out .\supl20-new\app-debug.apk
 
 REM Recopie le nouveau fichier IO.smali
-xcopy .\supl20-new\apk-out\smali_classes2\com\android\bytewriter\IO.smali .\supl20\src-out\com\android\bytewriter\
+xcopy .\supl20-new\apk-out\smali\com\android\bytewriter\IO.smali .\supl20\src-out\com\android\bytewriter\
 
 
 REM ---------------------------------------------------------------------------------------

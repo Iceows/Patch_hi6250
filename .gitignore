@@ -224,3 +224,10 @@ src/gnss_supl20service_hisi/supl20-new/apk-out/apktool.yml
 src/gnss_supl20service_hisi/supl20-new/apk-out/AndroidManifest.xml
 src/gnss_supl20service_hisi/gnss_supl20service_hisi.zip-CFR.zip
 src/gnss_supl20service_hisi/gnss_supl20service_hisi.zip-fernflower.zip
+src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/bytewriter/IO.smali
+src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/BuildConfig.smali
+src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/GpsOnOffListener.smali
+src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/Log.smali
+src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/nc/SendToServer.smali
+src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/SuplApplication$1.smali
+src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/SuplApplication.smali
