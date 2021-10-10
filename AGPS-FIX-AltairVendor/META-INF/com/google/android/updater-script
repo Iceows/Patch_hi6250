@@ -6,7 +6,7 @@ ui_print("#   for a11 gsi (Hi6250)                #");
 ui_print("#                                       #");
 ui_print("#    by AltairFR, Hamido, Roger         #");
 ui_print("#                                       #");
-ui_print("#    V3.0 (vendor patch)                #");
+ui_print("#    V3.1 (vendor patch)                #");
 ui_print("#                                       #");
 ui_print("#########################################");
 ui_print("");
