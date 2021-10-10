@@ -231,3 +231,5 @@ src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/Log.smali
 src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/nc/SendToServer.smali
 src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/SuplApplication$1.smali
 src/gnss_supl20service_hisi/supl20-new/apk-out/smali/com/android/supl/SuplApplication.smali
+src/gnss_supl20service_hisi/supl20/gnss_supl20service_hisi_signed.apk
+src/gnss_supl20service_hisi/supl20/recompiled.apk

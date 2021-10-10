@@ -27,8 +27,8 @@ REM ----------------------------------------------------------------------------
 REM Sous Notepad, remplacer  Ljava/lang/System;->arraycopy([BI[BII)V par Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
 REM Eventuellement modifier le XML
 
-REM Fabrique le ficher classes.dex  a partir des fichier smali, android  31
-java -jar smali-2.5.2.jar a --api 31 .\supl20\src-out -o .\supl20\apk-out\classes.dex
+REM Fabrique le ficher classes.dex  a partir des fichier smali, android  26
+java -jar smali-2.5.2.jar a --api 26 .\supl20\src-out -o .\supl20\apk-out\classes.dex
 
 REM Recompile APK  dans le repertoire cible
 java -jar apktool_2.6.0.jar build -o .\supl20\recompiled.apk  .\supl20\apk-out

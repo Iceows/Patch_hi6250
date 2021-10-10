@@ -6,8 +6,8 @@ isFrameworkApk: false
 packageInfo: 
 sdkInfo:
   minSdkVersion: '18'
-  targetSdkVersion: '31'
-  maxSdkVersion: '31'
+  targetSdkVersion: '26'
+  maxSdkVersion: '26'
 sharedLibrary: false
 sparseResources: false
 unknownFiles: {}
