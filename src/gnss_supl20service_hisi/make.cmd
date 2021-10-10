@@ -16,10 +16,10 @@ REM Fait un peu de menage
 del .\supl20-new\apk-out
 
 REM Genere les fichiers smali du patch
-java -jar apktool_2.6.0.jar decode -f -o .\supl20-new\apk-out .\supl20-new\app-debug.apk
+java -jar apktool_2.6.0.jar decode -f -o .\supl20-new\apk-out .\supl20\app-debug.apk
 
 REM Recopie le nouveau fichier IO.smali
-xcopy .\supl20-new\apk-out\smali\com\android\bytewriter\IO.smali .\supl20\src-out\com\android\bytewriter\
+xcopy /Y .\supl20-new\apk-out\smali\com\android\bytewriter\IO.smali .\supl20\src-out\com\android\bytewriter\
 
 
 REM ---------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ REM Sign this plateform signature
 java -jar "ApkSigner.jar" sign  --key platform.pk8 --cert platform.x509.pem  --v4-signing-enabled false --out ".\supl20\gnss_supl20service_hisi_signed.apk" ".\supl20\recompiled.apk"
 
 REM Recopie
-xcopy .\supl20\gnss_supl20service_hisi_signed.apk .\apk\gnss_supl20service_hisi.apk
+xcopy /Y .\supl20\gnss_supl20service_hisi_signed.apk .\apk\gnss_supl20service_hisi.apk
 
 REM envoie le fichier sur le telephone
 adb root
