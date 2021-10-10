@@ -64,8 +64,11 @@ on property:setup_hi110x_modules=success
     write /dev/kmsg "agnsscontrol has started"
     start supl20clientd
     write /dev/kmsg "sup120clientd has started"
-    start watchlssd
-    write /dev/kmsg "watchlssd has started"
+	start xwatchlssd
+	write /dev/kmsg "xwatchlssd has started (altair patch)"
+    #start watchlssd
+    #write /dev/kmsg "watchlssd has started"
+	write /dev/kmsg "End of gnss start service"
 
 service wpa_supplicant /vendor/bin/wpa_supplicant_hisi \
     -d \
@@ -114,6 +117,12 @@ service supl20clientd /vendor/bin/gnss_supl20clientd_hisi
     disabled
 
 service watchlssd /vendor/bin/gnss_watchlssd_thirdparty
+    class main
+    user gps
+    group system inet net_raw wakelock
+    disabled
+	
+service xwatchlssd /vendor/xbin/gnss_watchlssd_thirdparty
     class main
     user gps
     group system inet net_raw wakelock
