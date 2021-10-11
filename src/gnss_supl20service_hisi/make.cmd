@@ -13,10 +13,10 @@ REM ----------------------------------------------------------------------------
 
 
 REM Fait un peu de menage
-del .\supl20-new\apk-out
+rd /s /q .\supl20-new\apk-out
 
 REM Genere les fichiers smali du patch
-java -jar apktool_2.6.0.jar decode -f -o .\supl20-new\apk-out .\supl20\app-debug.apk
+java -jar apktool_2.6.0.jar decode -f -o .\supl20-new\apk-out .\supl20\app-release-unsigned.apk
 
 REM Recopie le nouveau fichier IO.smali
 xcopy /Y .\supl20-new\apk-out\smali\com\android\bytewriter\IO.smali .\supl20\src-out\com\android\bytewriter\
@@ -24,8 +24,7 @@ xcopy /Y .\supl20-new\apk-out\smali\com\android\bytewriter\IO.smali .\supl20\src
 
 REM ---------------------------------------------------------------------------------------
 
-REM Sous Notepad, remplacer  Ljava/lang/System;->arraycopy([BI[BII)V par Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
-REM Eventuellement modifier le XML
+REM Sous Notepad, remplacer dans tous les fichiers smali, la chaine  Ljava/lang/System;->arraycopy([BI[BII)V par Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
 
 REM Fabrique le ficher classes.dex  a partir des fichier smali, android  26
 java -jar smali-2.5.2.jar a --api 26 .\supl20\src-out -o .\supl20\apk-out\classes.dex
