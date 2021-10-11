@@ -1,0 +1,68 @@
+ui_print("");
+ui_print("#########################################");
+ui_print("#                                       #");
+ui_print("# DisplayEngine Fix                     #");
+ui_print("#   for Lineage 18.1 (Huawei P8 lite)   #");
+ui_print("#                                       #");
+ui_print("#    by AltairFR			              #");
+ui_print("#                                       #");
+ui_print("#    V1.0                               #");
+ui_print("#                                       #");
+ui_print("#########################################");
+ui_print("");
+ui_print("");
+
+
+set_progress(0.100000);
+ui_print(" Extract install script...");
+ifelse(is_mounted("/system"), unmount("/system"));
+ifelse(is_mounted("/vendor"), unmount("/vendor"));
+
+package_extract_file("mount-system.sh", "/tmp/mount-system.sh");
+set_perm(0, 0, 0755, "/tmp/mount-system.sh");
+
+package_extract_file("mount-vendor.sh", "/tmp/mount-vendor.sh");
+set_perm(0, 0, 0755, "/tmp/mount-vendor.sh");
+
+package_extract_file("set-selinux.sh", "/tmp/set-selinux.sh");
+set_perm(0, 0, 0755, "/tmp/set-selinux.sh");
+
+
+set_progress(0.200000);
+ui_print(" Mounting filesystems system ...");
+run_program("/tmp/mount-system.sh") == 0 || abort("Could not mount /system");
+ui_print(" system mount ok !! ...");
+
+
+set_progress(0.200000);
+ui_print(" Mounting filesystems vendor ...");
+run_program("/tmp/mount-vendor.sh") == 0 || abort("Could not mount /vendor");
+ui_print(" vendor mount ok !! ...");
+
+
+set_progress(0.300000);
+ui_print(" Extracting displayengine fix.");
+package_extract_dir("system", "/system");
+package_extract_dir("vendor", "/vendor");
+
+
+ui_print(" Setting displayengine");
+set_progress(0.500000);
+run_program("/tmp/set-selinux.sh") == 0 || abort("Could not set policy for displayengine");
+delete("/tmp/set-selinux.sh");
+
+ui_print("");
+set_progress(0.600000);
+ui_print("Unmounting...");
+delete("/tmp/mount-system.sh");
+unmount("/system");
+
+delete("/tmp/mount-vendor.sh");
+unmount("/vendor");
+
+
+set_progress(1.000000);
+ui_print("****************************************");
+ui_print("*          Install Complete!           *");
+ui_print("****************************************");
+
