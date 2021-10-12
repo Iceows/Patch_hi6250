@@ -1,12 +1,12 @@
 ui_print("");
 ui_print("#########################################");
 ui_print("#                                       #");
-ui_print("# DisplayEngine Fix                     #");
+ui_print("# DisplayEngine and LiveDisplay Fix     #");
 ui_print("#   for Lineage 18.1 (Huawei P8 lite)   #");
 ui_print("#                                       #");
-ui_print("#    by AltairFR			              #");
+ui_print("#    by AltairFR                        #");
 ui_print("#                                       #");
-ui_print("#    V1.0                               #");
+ui_print("#    V0.1                               #");
 ui_print("#                                       #");
 ui_print("#########################################");
 ui_print("");
