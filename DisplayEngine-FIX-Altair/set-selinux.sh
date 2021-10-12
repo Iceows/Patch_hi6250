@@ -16,7 +16,6 @@ echo "(typeattributeset displayengine_hwservice_26_0 (displayengine_hwservice))"
 echo "(allow system_server default_android_hwservice (hwservice_manager (find)))" >> /system/etc/selinux/plat_sepolicy.cil
 echo "(allow system_server default_android_service (service_manager (add)))" >> /system/etc/selinux/plat_sepolicy.cil
 echo "(allow system_server vendor_file (file (execute getattr map open read)))" >> /system/etc/selinux/plat_sepolicy.cil
-
-
+echo "(allow system_app default_android_hwservice (hwservice_manager (find)))" >> /system/etc/selinux/plat_sepolicy.cil
 
 exit 0
