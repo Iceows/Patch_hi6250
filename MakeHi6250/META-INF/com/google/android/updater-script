@@ -1,0 +1,72 @@
+ui_print("");
+ui_print("#########################################");
+ui_print("#                                       #");
+ui_print("# Transform cDroid 11 arm64-avZ         #"); 
+ui_print("#    ROM to Hi6250 ROM                  #");
+ui_print("#                                       #");
+ui_print("#                                       #");
+ui_print("#    by AltairFR                        #");
+ui_print("#                                       #");
+ui_print("#    V0.1                               #");
+ui_print("#                                       #");
+ui_print("#########################################");
+ui_print("");
+ui_print("");
+
+
+set_progress(0.100000);
+ui_print(" Extract install script...");
+ifelse(is_mounted("/system"), unmount("/system"));
+ifelse(is_mounted("/vendor"), unmount("/vendor"));
+
+package_extract_file("mount-system.sh", "/tmp/mount-system.sh");
+set_perm(0, 0, 0755, "/tmp/mount-system.sh");
+
+package_extract_file("mount-vendor.sh", "/tmp/mount-vendor.sh");
+set_perm(0, 0, 0755, "/tmp/mount-vendor.sh");
+
+package_extract_file("fixes.sh", "/tmp/fixes.sh");
+set_perm(0, 0, 0755, "/tmp/fixes.sh");
+
+
+set_progress(0.200000);
+ui_print(" Mounting filesystems system ...");
+run_program("/tmp/mount-system.sh") == 0 || abort("Could not mount /system");
+ui_print(" system mount ok !! ...");
+
+
+set_progress(0.200000);
+ui_print(" Mounting filesystems vendor ...");
+run_program("/tmp/mount-vendor.sh") == 0 || abort("Could not mount /vendor");
+ui_print(" vendor mount ok !! ...");
+
+
+set_progress(0.300000);
+ui_print(" Extracting fix.");
+package_extract_dir("system", "/system");
+package_extract_dir("vendor", "/vendor");
+
+
+ui_print(" Setting fix");
+set_progress(0.500000);
+run_program("/tmp/fixes.sh") == 0 || abort("Could not fix");
+delete("/tmp/fixes.sh");
+
+ui_print("");
+set_progress(0.600000);
+ui_print("Unmounting...");
+delete("/tmp/mount-system.sh");
+unmount("/system");
+
+delete("/tmp/mount-vendor.sh");
+unmount("/vendor");
+
+
+set_progress(1.000000);
+ui_print("*****************************************************");
+ui_print("*          Install Complete!                        *");
+ui_print("* For NFC install NFC Fix by Altair                 *");
+ui_print("* For AGPS install AGPS Fix by Altair               *");
+ui_print("* For LiveDisplay install LiveDisplay Fix by Altair *");
+ui_print("*****************************************************");
+
