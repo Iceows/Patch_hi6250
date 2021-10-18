@@ -7,9 +7,13 @@
     MODEL=$( cat /sys/firmware/devicetree/base/boardinfo/normal_product_name | tr -d '\n')
     PROP="ro.product.model"
 
-    cat /system/build.prop | grep -i "." >> /system/etc/prop.default;
+	echo "#" >> /system/etc/prop.default;
+    echo "## Adding build props" >> /system/etc/prop.default;
     echo "#" >> /system/etc/prop.default;
-    echo "## Adding hi6250 props" >> /system/etc/prop.default;
+    cat /system/build.prop | grep "." >> /system/etc/prop.default;
+    
+	echo "#" >> /system/etc/prop.default;
+	echo "## Adding hi6250 props" >> /system/etc/prop.default;
     echo "#" >> /system/etc/prop.default;
     sed -i "/ro.product.model/d" /system/etc/prop.default;
     sed -i "/ro.product.system.model/d" /system/etc/prop.default;
