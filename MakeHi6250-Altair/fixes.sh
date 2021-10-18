@@ -34,4 +34,14 @@
     echo "persist.sys.sf.color_mode=1.0" >> /system/etc/prop.default;
     echo "persist.sys.sf.color_saturation=1.1" >> /system/etc/prop.default;
 
+#Enable CAST/Miracast
+	echo "persist.debug.wfd.enable=1" >> /system/etc/prop.default;
+	
+# Uncomment to Debug GPS
+#	echo "log.tag.GnssConfiguration=DEBUG" >> /system/etc/prop.default;
+#	echo "log.tag.GnssLocationProvider=DEBUG" >> /system/etc/prop.default;
+#	echo "log.tag.GnssManagerService=DEBUG" >> /system/etc/prop.default;
+#	echo "log.tag.NtpTimeHelper=DEBUG" >> /system/etc/prop.default;
+
+	
     exit 0;
