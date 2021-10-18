@@ -1,5 +1,7 @@
 #!/sbin/sh
 
+# Enable wireless display (Cast/Miracast)
+echo "persist.debug.wfd.enable=1" >> /system/etc/prop.default;
 
 # -rw-r--r-- 1 root root u:object_r:system_file:s0  173376 2018-11-28 02:42 vendor.huawei.hardware.hwdisplay.displayengine@1.0.so
 
