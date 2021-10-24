@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: 1.8.0_72-internal (Oracle Corporation)
+
+Name: AndroidManifest.xml
+SHA-256-Digest: aiDYgsTMz72JzO9FS13HAOlRBarJKzqkzkI+yqWgoyc=
+
+Name: classes.dex
+SHA-256-Digest: ZX9bLXlzb3fsUMohITbs4pcMSAOaLRj+raINFMjoZ1k=
+
