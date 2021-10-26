@@ -34,8 +34,11 @@
     echo "persist.sys.sf.color_mode=1.0" >> /system/etc/prop.default;
     echo "persist.sys.sf.color_saturation=1.1" >> /system/etc/prop.default;
 
-#Enable CAST/Miracast
-	echo "persist.debug.wfd.enable=1" >> /system/etc/prop.default;
+	
+# To SUPL20 apk
+#	set by init.connectivity.hisi.rc
+#	echo "is_hisi_connectivity_chip=1" >> /system/etc/prop.default;
+#	echo "ro.connectivity.sub_chiptype=hi1102" >> /system/etc/prop.default;
 	
 # Uncomment to Debug GPS
 #	echo "log.tag.GnssConfiguration=DEBUG" >> /system/etc/prop.default;
