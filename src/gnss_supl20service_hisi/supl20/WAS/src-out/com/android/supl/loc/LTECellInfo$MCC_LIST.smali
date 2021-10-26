@@ -24,13 +24,13 @@
     .param p1, "usRefMCC"    # [C
 
     .prologue
-    .line 211
+    .line 195
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 212
+    .line 196
     if-nez p1, :cond_e
 
-    .line 213
+    .line 197
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string/jumbo v1, "MCC_LIST should not null"
@@ -39,7 +39,7 @@
 
     throw v0
 
-    .line 215
+    .line 199
     :cond_e
     array-length v0, p1
 
@@ -47,18 +47,20 @@
 
     if-ge v0, v1, :cond_1b
 
-    .line 217
-    const-string/jumbo v0, "SUPL20_LTECellInfo"
+    .line 200
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v1, "MCC_LIST should not be less than 3"
 
-    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    .line 219
+    throw v0
+
+    .line 202
     :cond_1b
     iput-object p1, p0, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;->usRefMCC:[C
 
-    .line 220
+    .line 195
     return-void
 .end method
 
@@ -68,7 +70,7 @@
     .registers 2
 
     .prologue
-    .line 223
+    .line 206
     iget-object v0, p0, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;->usRefMCC:[C
 
     return-object v0

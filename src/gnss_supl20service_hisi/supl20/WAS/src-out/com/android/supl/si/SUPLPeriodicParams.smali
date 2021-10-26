@@ -70,7 +70,7 @@
     .line 86
     iput-wide p5, p0, Lcom/android/supl/si/SUPLPeriodicParams;->dwIntervalBetweenFixes:J
 
-    .line 88
+    .line 83
     return-void
 .end method
 
@@ -85,7 +85,7 @@
     .line 136
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLPeriodicParams;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 137
+    .line 135
     return-void
 .end method
 
@@ -249,7 +249,7 @@
 
     iput-wide v0, p0, Lcom/android/supl/si/SUPLPeriodicParams;->dwIntervalBetweenFixes:J
 
-    .line 148
+    .line 143
     return-void
 .end method
 
@@ -320,6 +320,6 @@
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 160
+    .line 155
     return-void
 .end method

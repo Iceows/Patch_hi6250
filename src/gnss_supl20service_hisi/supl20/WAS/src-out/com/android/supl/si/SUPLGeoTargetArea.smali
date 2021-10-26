@@ -71,7 +71,7 @@
     .line 170
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLGeoTargetArea;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 171
+    .line 169
     return-void
 .end method
 
@@ -178,7 +178,7 @@
     :cond_4d
     iput-object p1, p0, Lcom/android/supl/si/SUPLGeoTargetArea;->objGeographicArea:Ljava/lang/Object;
 
-    .line 105
+    .line 75
     return-void
 
     .line 79
@@ -253,7 +253,7 @@
 
     const/4 v5, 0x0
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 133
     array-length v4, v1
@@ -346,7 +346,7 @@
 
     packed-switch v0, :pswitch_data_34
 
-    .line 191
+    .line 177
     :goto_b
     return-void
 
@@ -572,7 +572,7 @@
 
     packed-switch v0, :pswitch_data_24
 
-    .line 213
+    .line 198
     :goto_a
     return-void
 

@@ -24,13 +24,11 @@
     .param p1, "this$0"    # Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     .prologue
-    .line 1
+    .line 492
     iput-object p1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$1;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
-    .line 496
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -40,7 +38,7 @@
     .registers 7
 
     .prologue
-    .line 500
+    .line 496
     iget-object v1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$1;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     invoke-static {v1}, Lcom/android/supl/commprocessor/ServerCommProcessor;->-get5(Lcom/android/supl/commprocessor/ServerCommProcessor;)Ljava/lang/Object;
@@ -49,7 +47,7 @@
 
     monitor-enter v2
 
-    .line 501
+    .line 497
     :try_start_7
     iget-object v1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$1;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
@@ -59,14 +57,14 @@
 
     if-nez v1, :cond_58
 
-    .line 502
+    .line 498
     const-string/jumbo v1, "SUPL20_SCM"
 
     const-string/jumbo v3, "SCM pause invoked"
 
     invoke-static {v1, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 503
+    .line 499
     iget-object v1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$1;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     invoke-static {v1}, Lcom/android/supl/commprocessor/ServerCommProcessor;->-get3(Lcom/android/supl/commprocessor/ServerCommProcessor;)Lcom/android/supl/nc/NetworkController;
@@ -87,7 +85,7 @@
     :try_end_29
     .catchall {:try_start_7 .. :try_end_29} :catchall_5f
 
-    .line 505
+    .line 501
     :try_start_29
     iget-object v1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$1;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
@@ -100,7 +98,7 @@
     .catch Ljava/lang/InterruptedException; {:try_start_29 .. :try_end_32} :catch_5a
     .catchall {:try_start_29 .. :try_end_32} :catchall_5f
 
-    .line 509
+    .line 505
     :goto_32
     :try_start_32
     const-string/jumbo v1, "SUPL20_SCM"
@@ -109,7 +107,7 @@
 
     invoke-static {v1, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 511
+    .line 507
     iget-object v1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$1;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     invoke-static {v1}, Lcom/android/supl/commprocessor/ServerCommProcessor;->-get4(Lcom/android/supl/commprocessor/ServerCommProcessor;)Lcom/android/supl/commprocessor/ServerCommProcessor$ReadPacket;
@@ -118,12 +116,12 @@
 
     invoke-virtual {v1}, Lcom/android/supl/commprocessor/ServerCommProcessor$ReadPacket;->stopRead()V
 
-    .line 512
+    .line 508
     iget-object v1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$1;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     invoke-virtual {v1}, Lcom/android/supl/commprocessor/ServerCommProcessor;->stopListening()V
 
-    .line 513
+    .line 509
     iget-object v1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$1;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     invoke-static {v1}, Lcom/android/supl/commprocessor/ServerCommProcessor;->-get2(Lcom/android/supl/commprocessor/ServerCommProcessor;)Lcom/android/supl/commprocessor/NetworkCommandProcessor;
@@ -132,7 +130,7 @@
 
     invoke-virtual {v1}, Lcom/android/supl/commprocessor/NetworkCommandProcessor;->disConnectAllNetWork()V
 
-    .line 514
+    .line 510
     iget-object v1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$1;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     const/4 v3, 0x1
@@ -144,23 +142,23 @@
     :cond_58
     monitor-exit v2
 
-    .line 517
+    .line 495
     return-void
 
-    .line 506
+    .line 502
     :catch_5a
     move-exception v0
 
-    .line 507
+    .line 503
     .local v0, "e":Ljava/lang/InterruptedException;
     :try_start_5b
-    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
+    invoke-virtual {v0}, Ljava/lang/InterruptedException;->printStackTrace()V
     :try_end_5e
     .catchall {:try_start_5b .. :try_end_5e} :catchall_5f
 
     goto :goto_32
 
-    .line 500
+    .line 496
     .end local v0    # "e":Ljava/lang/InterruptedException;
     :catchall_5f
     move-exception v1

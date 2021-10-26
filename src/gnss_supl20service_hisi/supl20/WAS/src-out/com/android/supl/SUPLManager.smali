@@ -49,7 +49,6 @@
 # direct methods
 .method static synthetic -wrap0(Lcom/android/supl/SUPLManager;Ljava/lang/String;)V
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/SUPLManager;
     .param p1, "stProvider"    # Ljava/lang/String;
 
     .prologue
@@ -106,7 +105,7 @@
     .line 73
     iput-object v1, p0, Lcom/android/supl/SUPLManager;->vecGpsListeners:Ljava/util/Vector;
 
-    .line 91
+    .line 89
     return-void
 .end method
 
@@ -174,7 +173,7 @@
 
     iput-object v0, p0, Lcom/android/supl/SUPLManager;->mSuplscmService:Lcom/android/supl/commprocessor/SUPLSCMService;
 
-    .line 88
+    .line 77
     return-void
 
     .line 82
@@ -296,14 +295,14 @@
 
     iget-object v1, p0, Lcom/android/supl/SUPLManager;->settingsObserver:Lcom/android/supl/SUPLManager$SettingsObserver;
 
-    invoke-virtual {v0, v1}, Ljava/util/Observable;->deleteObserver(Ljava/util/Observer;)V
+    invoke-virtual {v0, v1}, Landroid/content/ContentQueryMap;->deleteObserver(Ljava/util/Observer;)V
 
     .line 166
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/supl/SUPLManager;->isGpsEnableReceReg:Z
 
-    .line 168
+    .line 163
     :cond_e
     return-void
 .end method
@@ -396,7 +395,7 @@
     .line 105
     invoke-direct {p0}, Lcom/android/supl/SUPLManager;->registerSettingObserver()V
 
-    .line 107
+    .line 100
     :cond_1d
     return-void
 .end method
@@ -492,7 +491,7 @@
 
     goto :goto_a
 
-    .line 137
+    .line 129
     .end local v0    # "gpsOnOffListener":Lcom/android/supl/GpsOnOffListener;
     .end local v1    # "gpsOnOffListener$iterator":Ljava/util/Iterator;
     :cond_1c
@@ -539,7 +538,7 @@
 
     goto :goto_a
 
-    .line 128
+    .line 120
     .end local v0    # "gpsOnOffListener":Lcom/android/supl/GpsOnOffListener;
     .end local v1    # "gpsOnOffListener$iterator":Ljava/util/Iterator;
     :cond_1c
@@ -613,12 +612,12 @@
 
     iget-object v2, p0, Lcom/android/supl/SUPLManager;->settingsObserver:Lcom/android/supl/SUPLManager$SettingsObserver;
 
-    invoke-virtual {v1, v2}, Ljava/util/Observable;->addObserver(Ljava/util/Observer;)V
+    invoke-virtual {v1, v2}, Landroid/content/ContentQueryMap;->addObserver(Ljava/util/Observer;)V
 
     .line 150
     iput-boolean v8, p0, Lcom/android/supl/SUPLManager;->isGpsEnableReceReg:Z
 
-    .line 152
+    .line 139
     .end local v0    # "resolver":Landroid/content/ContentResolver;
     .end local v6    # "settingsCursor":Landroid/database/Cursor;
     :cond_3a
@@ -655,7 +654,7 @@
     .line 182
     invoke-direct {p0}, Lcom/android/supl/SUPLManager;->notifytoALLGpsEnableChanges()V
 
-    .line 187
+    .line 177
     :goto_18
     return-void
 

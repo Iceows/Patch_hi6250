@@ -24,13 +24,11 @@
     .param p1, "this$0"    # Lcom/android/supl/loc/SETLocationManager;
 
     .prologue
-    .line 1
+    .line 180
     iput-object p1, p0, Lcom/android/supl/loc/SETLocationManager$1;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
-    .line 187
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -44,15 +42,15 @@
     .prologue
     const/4 v5, 0x1
 
-    .line 192
+    .line 185
     const-string/jumbo v4, "android.intent.extra.PHONE_NUMBER"
 
-    .line 191
+    .line 184
     invoke-virtual {p2, v4}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
-    .line 195
+    .line 188
     .local v2, "outgoingno":Ljava/lang/String;
     iget-object v6, p0, Lcom/android/supl/loc/SETLocationManager$1;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
@@ -62,16 +60,16 @@
 
     if-nez v4, :cond_6d
 
-    .line 197
+    .line 190
     invoke-static {v2}, Landroid/telephony/PhoneNumberUtils;->isEmergencyNumber(Ljava/lang/String;)Z
 
     move-result v4
 
-    .line 195
+    .line 188
     :goto_14
     invoke-static {v6, v4}, Lcom/android/supl/loc/SETLocationManager;->-set0(Lcom/android/supl/loc/SETLocationManager;Z)Z
 
-    .line 199
+    .line 192
     iget-object v4, p0, Lcom/android/supl/loc/SETLocationManager$1;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-static {v4}, Lcom/android/supl/loc/SETLocationManager;->-get0(Lcom/android/supl/loc/SETLocationManager;)Z
@@ -80,7 +78,7 @@
 
     if-eqz v4, :cond_6c
 
-    .line 200
+    .line 193
     const-string/jumbo v4, "SUPL20_LocMan"
 
     new-instance v6, Ljava/lang/StringBuilder;
@@ -103,51 +101,51 @@
 
     invoke-static {v4, v6}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 201
+    .line 194
     new-instance v3, Lcom/android/supl/nc/SendToServer;
 
     invoke-direct {v3}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 202
+    .line 195
     .local v3, "sendToServer":Lcom/android/supl/nc/SendToServer;
     const/16 v1, 0xc
 
-    .line 204
+    .line 197
     .local v1, "iSize":I
     new-array v4, v1, [B
 
     iput-object v4, v3, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 205
+    .line 198
     const/4 v0, 0x0
 
-    .line 206
+    .line 199
     .local v0, "iOffset":I
     iget-object v4, v3, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 207
+    .line 200
     const/16 v6, 0x8
 
-    .line 206
+    .line 199
     invoke-static {v4, v0, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v0
 
-    .line 208
+    .line 201
     iget-object v4, v3, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 209
+    .line 202
     const/16 v6, 0x116
 
-    .line 208
+    .line 201
     invoke-static {v4, v0, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v0
 
-    .line 210
+    .line 203
     iget-object v4, v3, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 211
+    .line 204
     iget-object v6, p0, Lcom/android/supl/loc/SETLocationManager$1;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-static {v6}, Lcom/android/supl/loc/SETLocationManager;->-get0(Lcom/android/supl/loc/SETLocationManager;)Z
@@ -156,22 +154,22 @@
 
     if-eqz v6, :cond_6f
 
-    .line 210
+    .line 203
     :goto_5f
     invoke-static {v4, v0, v5}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v0
 
-    .line 212
+    .line 205
     iget-object v4, p0, Lcom/android/supl/loc/SETLocationManager$1;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
-    invoke-static {v4}, Lcom/android/supl/loc/SETLocationManager;->-get2(Lcom/android/supl/loc/SETLocationManager;)Lcom/android/supl/commprocessor/NDKCommProcessor;
+    invoke-static {v4}, Lcom/android/supl/loc/SETLocationManager;->-get1(Lcom/android/supl/loc/SETLocationManager;)Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     move-result-object v4
 
     invoke-virtual {v4, v3}, Lcom/android/supl/commprocessor/NDKCommProcessor;->sendServer(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 214
+    .line 182
     .end local v0    # "iOffset":I
     .end local v1    # "iSize":I
     .end local v3    # "sendToServer":Lcom/android/supl/nc/SendToServer;
@@ -181,10 +179,10 @@
     :cond_6d
     move v4, v5
 
-    .line 195
+    .line 188
     goto :goto_14
 
-    .line 211
+    .line 204
     .restart local v0    # "iOffset":I
     .restart local v1    # "iSize":I
     .restart local v3    # "sendToServer":Lcom/android/supl/nc/SendToServer;

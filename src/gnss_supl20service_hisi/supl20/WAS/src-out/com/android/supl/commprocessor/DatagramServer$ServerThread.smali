@@ -27,9 +27,7 @@
 # direct methods
 .method static synthetic -wrap0(Lcom/android/supl/commprocessor/DatagramServer$ServerThread;)V
     .registers 1
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/DatagramServer$ServerThread;
 
-    .prologue
     invoke-direct {p0}, Lcom/android/supl/commprocessor/DatagramServer$ServerThread;->stopThread()V
 
     return-void
@@ -67,7 +65,7 @@
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/DatagramServer$ServerThread;->receiveData:[B
 
-    .line 110
+    .line 107
     return-void
 .end method
 
@@ -76,7 +74,7 @@
 
     .prologue
     .line 182
-    invoke-virtual {p0}, Ljava/lang/Thread;->interrupt()V
+    invoke-virtual {p0}, Lcom/android/supl/commprocessor/DatagramServer$ServerThread;->interrupt()V
 
     .line 183
     const/4 v0, 0x1
@@ -93,7 +91,7 @@
 
     invoke-virtual {v0}, Ljava/net/DatagramSocket;->close()V
 
-    .line 187
+    .line 181
     :cond_f
     return-void
 .end method
@@ -330,7 +328,7 @@
     move-result v9
 
     .line 153
-    invoke-static {v13, v7, v2, v9, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v13, v7, v2, v9, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 155
     iput-object v2, v12, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
@@ -398,7 +396,7 @@
 
     invoke-static {v14, v15, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 179
+    .line 113
     .end local v5    # "e2":Ljava/net/SocketException;
     :cond_fb
     return-void

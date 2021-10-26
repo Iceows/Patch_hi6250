@@ -9,8 +9,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/supl/commprocessor/SUPLSCMService$MyBinder;,
-        Lcom/android/supl/commprocessor/SUPLSCMService$SCMConnectionThread;
+        Lcom/android/supl/commprocessor/SUPLSCMService$SCMConnectionThread;,
+        Lcom/android/supl/commprocessor/SUPLSCMService$MyBinder;
     }
 .end annotation
 
@@ -40,9 +40,7 @@
 # direct methods
 .method static synthetic -get0(Lcom/android/supl/commprocessor/SUPLSCMService;)Lcom/android/supl/commprocessor/ServerCommProcessor;
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/SUPLSCMService;
 
-    .prologue
     iget-object v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mServerCommProcessor:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     return-object v0
@@ -50,7 +48,6 @@
 
 .method static synthetic -wrap0(Lcom/android/supl/commprocessor/SUPLSCMService;Landroid/content/Context;)V
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/SUPLSCMService;
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
@@ -117,7 +114,7 @@
     .line 44
     iput-object p0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mContext:Landroid/content/Context;
 
-    .line 45
+    .line 43
     return-void
 .end method
 
@@ -166,7 +163,7 @@
     .line 49
     invoke-virtual {p0}, Lcom/android/supl/commprocessor/SUPLSCMService;->onCreate()V
 
-    .line 50
+    .line 47
     return-void
 .end method
 
@@ -174,12 +171,12 @@
     .registers 6
 
     .prologue
-    .line 214
+    .line 229
     invoke-static {}, Lcom/android/supl/config/ConfigManager;->getInstance()Lcom/android/supl/config/ConfigManager;
 
     move-result-object v0
 
-    .line 215
+    .line 230
     .local v0, "configManager":Lcom/android/supl/config/ConfigManager;
     invoke-virtual {v0}, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport()Z
 
@@ -187,33 +184,33 @@
 
     if-eqz v3, :cond_15
 
-    .line 216
+    .line 231
     iget-object v1, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mContext:Landroid/content/Context;
 
-    .line 217
+    .line 232
     .local v1, "context":Landroid/content/Context;
     new-instance v2, Lcom/android/supl/commprocessor/SUPLSCMService$1;
 
     invoke-direct {v2, p0, v1}, Lcom/android/supl/commprocessor/SUPLSCMService$1;-><init>(Lcom/android/supl/commprocessor/SUPLSCMService;Landroid/content/Context;)V
 
-    .line 227
+    .line 242
     .local v2, "thread":Ljava/lang/Thread;
     invoke-virtual {v2}, Ljava/lang/Thread;->start()V
 
-    .line 232
+    .line 227
     .end local v1    # "context":Landroid/content/Context;
     .end local v2    # "thread":Ljava/lang/Thread;
     :goto_14
     return-void
 
-    .line 229
+    .line 244
     :cond_15
     const-string/jumbo v3, "SUPL20_SCMService"
 
-    .line 230
+    .line 245
     const-string/jumbo v4, "No Support for MultiBearer"
 
-    .line 229
+    .line 244
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_14
@@ -227,18 +224,18 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 313
+    .line 328
     const/4 v0, 0x0
 
-    .line 314
+    .line 329
     .local v0, "isNetworkSupported":Z
     const/4 v1, 0x0
 
-    .line 315
+    .line 330
     .local v1, "typeString":Ljava/lang/String;
     packed-switch p1, :pswitch_data_64
 
-    .line 357
+    .line 372
     .end local v1    # "typeString":Ljava/lang/String;
     :goto_6
     :pswitch_6
@@ -274,104 +271,60 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 358
+    .line 373
     if-eqz p2, :cond_32
 
     array-length v2, p2
 
     if-eqz v2, :cond_32
 
-    .line 359
+    .line 374
     aput-object v1, p2, v5
 
-    .line 361
+    .line 376
     :cond_32
     return v0
 
-    .line 317
+    .line 332
     .restart local v1    # "typeString":Ljava/lang/String;
     :pswitch_33
     const-string/jumbo v1, "gsm"
 
-    .line 318
+    .line 333
     .local v1, "typeString":Ljava/lang/String;
     const/4 v0, 0x1
 
-    .line 319
+    .line 334
     goto :goto_6
 
-    .line 321
+    .line 336
     .local v1, "typeString":Ljava/lang/String;
     :pswitch_38
     const-string/jumbo v1, "gsm"
 
-    .line 322
+    .line 337
     .local v1, "typeString":Ljava/lang/String;
     const/4 v0, 0x1
 
-    .line 323
+    .line 338
     goto :goto_6
 
-    .line 325
+    .line 340
     .local v1, "typeString":Ljava/lang/String;
     :pswitch_3d
     const-string/jumbo v1, "umb"
 
-    .line 326
-    .local v1, "typeString":Ljava/lang/String;
-    const/4 v0, 0x1
-
-    .line 327
-    goto :goto_6
-
-    .line 329
-    .local v1, "typeString":Ljava/lang/String;
-    :pswitch_42
-    const-string/jumbo v1, "cdma"
-
-    .line 330
-    .local v1, "typeString":Ljava/lang/String;
-    const/4 v0, 0x1
-
-    .line 331
-    goto :goto_6
-
-    .line 333
-    .local v1, "typeString":Ljava/lang/String;
-    :pswitch_47
-    const-string/jumbo v1, "lte"
-
-    .line 334
-    .local v1, "typeString":Ljava/lang/String;
-    const/4 v0, 0x1
-
-    .line 335
-    goto :goto_6
-
-    .line 337
-    .local v1, "typeString":Ljava/lang/String;
-    :pswitch_4c
-    const-string/jumbo v1, "hrpd"
-
-    .line 338
-    .local v1, "typeString":Ljava/lang/String;
-    const/4 v0, 0x1
-
-    .line 339
-    goto :goto_6
-
     .line 341
     .local v1, "typeString":Ljava/lang/String;
-    :pswitch_51
-    const-string/jumbo v1, "UNKNOWN"
+    const/4 v0, 0x1
 
-    .local v1, "typeString":Ljava/lang/String;
+    .line 342
     goto :goto_6
 
     .line 344
     .local v1, "typeString":Ljava/lang/String;
-    :pswitch_55
-    const-string/jumbo v1, "wcdma"
+    :pswitch_42
+    const-string/jumbo v1, "cdma"
 
     .line 345
     .local v1, "typeString":Ljava/lang/String;
@@ -382,8 +335,8 @@
 
     .line 348
     .local v1, "typeString":Ljava/lang/String;
-    :pswitch_5a
-    const-string/jumbo v1, "wcdma"
+    :pswitch_47
+    const-string/jumbo v1, "lte"
 
     .line 349
     .local v1, "typeString":Ljava/lang/String;
@@ -394,8 +347,8 @@
 
     .line 352
     .local v1, "typeString":Ljava/lang/String;
-    :pswitch_5f
-    const-string/jumbo v1, "wcdma"
+    :pswitch_4c
+    const-string/jumbo v1, "hrpd"
 
     .line 353
     .local v1, "typeString":Ljava/lang/String;
@@ -404,7 +357,51 @@
     .line 354
     goto :goto_6
 
-    .line 315
+    .line 356
+    .local v1, "typeString":Ljava/lang/String;
+    :pswitch_51
+    const-string/jumbo v1, "UNKNOWN"
+
+    .local v1, "typeString":Ljava/lang/String;
+    goto :goto_6
+
+    .line 359
+    .local v1, "typeString":Ljava/lang/String;
+    :pswitch_55
+    const-string/jumbo v1, "wcdma"
+
+    .line 360
+    .local v1, "typeString":Ljava/lang/String;
+    const/4 v0, 0x1
+
+    .line 361
+    goto :goto_6
+
+    .line 363
+    .local v1, "typeString":Ljava/lang/String;
+    :pswitch_5a
+    const-string/jumbo v1, "wcdma"
+
+    .line 364
+    .local v1, "typeString":Ljava/lang/String;
+    const/4 v0, 0x1
+
+    .line 365
+    goto :goto_6
+
+    .line 367
+    .local v1, "typeString":Ljava/lang/String;
+    :pswitch_5f
+    const-string/jumbo v1, "wcdma"
+
+    .line 368
+    .local v1, "typeString":Ljava/lang/String;
+    const/4 v0, 0x1
+
+    .line 369
+    goto :goto_6
+
+    .line 330
     :pswitch_data_64
     .packed-switch 0x0
         :pswitch_51
@@ -430,10 +427,10 @@
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 196
+    .line 211
     const/4 v4, 0x0
 
-    .line 197
+    .line 212
     .local v4, "mobileDataEnabled":Z
     const-string/jumbo v5, "connectivity"
 
@@ -443,10 +440,10 @@
 
     check-cast v0, Landroid/net/ConnectivityManager;
 
-    .line 199
+    .line 214
     .local v0, "cm":Landroid/net/ConnectivityManager;
     :try_start_a
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {v0}, Landroid/net/ConnectivityManager;->getClass()Ljava/lang/Class;
 
     move-result-object v5
 
@@ -458,7 +455,7 @@
 
     move-result-object v1
 
-    .line 200
+    .line 215
     .local v1, "cmClass":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
     const-string/jumbo v5, "getMobileDataEnabled"
 
@@ -470,13 +467,13 @@
 
     move-result-object v3
 
-    .line 201
+    .line 216
     .local v3, "method":Ljava/lang/reflect/Method;
     const/4 v5, 0x1
 
-    invoke-virtual {v3, v5}, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+    invoke-virtual {v3, v5}, Ljava/lang/reflect/Method;->setAccessible(Z)V
 
-    .line 203
+    .line 218
     const/4 v5, 0x0
 
     new-array v5, v5, [Ljava/lang/Object;
@@ -493,14 +490,14 @@
 
     move-result v4
 
-    .line 208
+    .line 223
     .end local v1    # "cmClass":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
     .end local v3    # "method":Ljava/lang/reflect/Method;
     .end local v4    # "mobileDataEnabled":Z
     :goto_31
     return v4
 
-    .line 204
+    .line 219
     .restart local v4    # "mobileDataEnabled":Z
     :catch_32
     move-exception v2
@@ -514,7 +511,7 @@
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 191
+    .line 206
     const-string/jumbo v1, "phone"
 
     invoke-virtual {p1, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -523,7 +520,7 @@
 
     check-cast v0, Landroid/telephony/TelephonyManager;
 
-    .line 192
+    .line 207
     .local v0, "telephonyManager":Landroid/telephony/TelephonyManager;
     invoke-virtual {v0}, Landroid/telephony/TelephonyManager;->isNetworkRoaming()Z
 
@@ -540,41 +537,41 @@
     .registers 10
 
     .prologue
-    .line 84
+    .line 99
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->isInit:Z
 
-    .line 85
+    .line 100
     invoke-static {}, Lcom/android/supl/config/ConfigManager;->getInstance()Lcom/android/supl/config/ConfigManager;
 
     move-result-object v6
 
-    .line 86
+    .line 101
     .local v6, "configManager":Lcom/android/supl/config/ConfigManager;
     invoke-virtual {v6}, Lcom/android/supl/config/ConfigManager;->getSCMPort()I
 
     move-result v3
 
-    .line 87
+    .line 102
     .local v3, "iSCMport":I
     invoke-virtual {v6}, Lcom/android/supl/config/ConfigManager;->getSCMIpAdress()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 88
+    .line 103
     .local v2, "stSCMIPAddress":Ljava/lang/String;
     invoke-virtual {v6}, Lcom/android/supl/config/ConfigManager;->getNwTimeout()I
 
     move-result v4
 
-    .line 89
+    .line 104
     .local v4, "iTimeOut":I
     invoke-virtual {v6}, Lcom/android/supl/config/ConfigManager;->getNwRetries()I
 
     move-result v5
 
-    .line 91
+    .line 106
     .local v5, "iRetries":I
     new-instance v0, Lcom/android/supl/commprocessor/ServerCommProcessor;
 
@@ -584,14 +581,14 @@
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mServerCommProcessor:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
-    .line 93
+    .line 108
     invoke-virtual {v6}, Lcom/android/supl/config/ConfigManager;->isNiUdpEnabled()Z
 
     move-result v0
 
     if-eqz v0, :cond_3c
 
-    .line 94
+    .line 109
     new-instance v0, Lcom/android/supl/commprocessor/DatagramServer;
 
     const-string/jumbo v1, "UDP SUPL server"
@@ -604,14 +601,14 @@
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->datagramServer:Lcom/android/supl/commprocessor/DatagramServer;
 
-    .line 95
+    .line 110
     const-string/jumbo v0, "SUPL20_SCMService"
 
     const-string/jumbo v1, "DataGramServer Created"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 97
+    .line 112
     :cond_3c
     iget-object v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mServerCommProcessor:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
@@ -619,7 +616,7 @@
 
     invoke-virtual {v0, v1}, Lcom/android/supl/commprocessor/ServerCommProcessor;->setContext(Landroid/content/Context;)V
 
-    .line 98
+    .line 113
     new-instance v0, Ljava/lang/Thread;
 
     new-instance v1, Lcom/android/supl/commprocessor/SUPLSCMService$SCMConnectionThread;
@@ -630,26 +627,26 @@
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->scmThread:Ljava/lang/Thread;
 
-    .line 99
+    .line 114
     iget-object v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->scmThread:Ljava/lang/Thread;
 
     const-string/jumbo v1, "SCM handsake thread"
 
     invoke-virtual {v0, v1}, Ljava/lang/Thread;->setName(Ljava/lang/String;)V
 
-    .line 100
+    .line 115
     iget-object v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->scmThread:Ljava/lang/Thread;
 
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
-    .line 101
+    .line 116
     const-string/jumbo v0, "SUPL20_SCMService"
 
     const-string/jumbo v1, "SCM Service Created"
 
     invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 103
+    .line 98
     return-void
 .end method
 
@@ -674,7 +671,7 @@
 
     invoke-virtual {v0}, Lcom/android/supl/commprocessor/ServerCommProcessor;->reInit()V
 
-    .line 76
+    .line 67
     :goto_12
     return-void
 
@@ -690,16 +687,16 @@
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 234
+    .line 249
     invoke-static {}, Lcom/android/supl/config/ConfigManager;->getInstance()Lcom/android/supl/config/ConfigManager;
 
     move-result-object v7
 
-    .line 236
+    .line 251
     .local v7, "configManager":Lcom/android/supl/config/ConfigManager;
     const-string/jumbo v18, "phone"
 
-    .line 235
+    .line 250
     move-object/from16 v0, p1
 
     move-object/from16 v1, v18
@@ -710,11 +707,11 @@
 
     check-cast v17, Landroid/telephony/TelephonyManager;
 
-    .line 238
+    .line 253
     .local v17, "telephonyManager":Landroid/telephony/TelephonyManager;
     const-string/jumbo v18, "connectivity"
 
-    .line 237
+    .line 252
     move-object/from16 v0, p1
 
     move-object/from16 v1, v18
@@ -725,7 +722,7 @@
 
     check-cast v6, Landroid/net/ConnectivityManager;
 
-    .line 239
+    .line 254
     .local v6, "cm":Landroid/net/ConnectivityManager;
     invoke-direct/range {p0 .. p1}, Lcom/android/supl/commprocessor/SUPLSCMService;->isMobileDataEnabled(Landroid/content/Context;)Z
 
@@ -733,16 +730,16 @@
 
     if-eqz v18, :cond_133
 
-    .line 240
+    .line 255
     invoke-virtual {v7}, Lcom/android/supl/config/ConfigManager;->getRoamingBearerNetwork()Ljava/util/HashMap;
 
     move-result-object v10
 
-    .line 242
+    .line 257
     .local v10, "hm":Ljava/util/HashMap;, "Ljava/util/HashMap<Ljava/lang/Boolean;Ljava/util/PriorityQueue<Lcom/android/supl/bearer/BearerNetwork;>;>;"
     if-eqz v10, :cond_133
 
-    .line 243
+    .line 258
     invoke-direct/range {p0 .. p1}, Lcom/android/supl/commprocessor/SUPLSCMService;->isRoaming(Landroid/content/Context;)Ljava/lang/Boolean;
 
     move-result-object v18
@@ -751,11 +748,11 @@
 
     move-result v13
 
-    .line 244
+    .line 259
     .local v13, "isRoaming":Z
     const/4 v12, 0x0
 
-    .line 245
+    .line 260
     .local v12, "isConnected":Z
     invoke-static {v13}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
@@ -769,11 +766,11 @@
 
     check-cast v4, Ljava/util/PriorityQueue;
 
-    .line 246
+    .line 261
     .local v4, "bearerNetworks":Ljava/util/PriorityQueue;, "Ljava/util/PriorityQueue<Lcom/android/supl/bearer/BearerNetwork;>;"
     if-eqz v4, :cond_133
 
-    .line 247
+    .line 262
     invoke-interface {v4}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
     move-result-object v3
@@ -792,16 +789,16 @@
 
     check-cast v2, Lcom/android/supl/bearer/BearerNetwork;
 
-    .line 249
+    .line 264
     .local v2, "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     if-eqz v2, :cond_45
 
-    .line 252
+    .line 267
     invoke-virtual/range {v17 .. v17}, Landroid/telephony/TelephonyManager;->getNetworkType()I
 
     move-result v11
 
-    .line 253
+    .line 268
     .local v11, "iNetworkType":I
     const/16 v18, 0x1
 
@@ -811,7 +808,7 @@
 
     move-object/from16 v16, v0
 
-    .line 255
+    .line 270
     .local v16, "stData":[Ljava/lang/String;
     move-object/from16 v0, p0
 
@@ -823,7 +820,7 @@
 
     if-eqz v18, :cond_45
 
-    .line 256
+    .line 271
     invoke-virtual {v2}, Lcom/android/supl/bearer/BearerNetwork;->getBearerNetWorkName()Ljava/lang/String;
 
     move-result-object v18
@@ -838,12 +835,12 @@
 
     if-eqz v18, :cond_45
 
-    .line 259
+    .line 274
     const-string/jumbo v18, "enableHIPRI"
 
     const/16 v19, 0x0
 
-    .line 258
+    .line 273
     move/from16 v0, v19
 
     move-object/from16 v1, v18
@@ -852,7 +849,7 @@
 
     move-result v14
 
-    .line 265
+    .line 280
     .local v14, "result":I
     const/16 v18, -0x1
 
@@ -860,39 +857,39 @@
 
     if-ne v0, v14, :cond_94
 
-    .line 266
+    .line 281
     const-string/jumbo v18, "SUPL20_SCMService"
 
-    .line 267
+    .line 282
     const-string/jumbo v19, "Wrong result of startUsingNetworkFeature, maybe problems"
 
-    .line 266
+    .line 281
     invoke-static/range {v18 .. v19}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 268
+    .line 283
     return-void
 
-    .line 270
+    .line 285
     :cond_94
     if-nez v14, :cond_a0
 
-    .line 271
+    .line 286
     const-string/jumbo v18, "SUPL20_SCMService"
 
-    .line 272
+    .line 287
     const-string/jumbo v19, "No need to perform additional network settings"
 
-    .line 271
+    .line 286
     invoke-static/range {v18 .. v19}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 273
+    .line 288
     return-void
 
-    .line 275
+    .line 290
     :cond_a0
     const/4 v5, 0x0
 
-    .line 278
+    .line 293
     .local v5, "checkState":Landroid/net/NetworkInfo$State;
     const/4 v8, 0x0
 
@@ -905,7 +902,7 @@
 
     if-ge v8, v0, :cond_be
 
-    .line 279
+    .line 294
     const/16 v18, 0x5
 
     :try_start_aa
@@ -919,13 +916,13 @@
 
     move-result-object v5
 
-    .line 280
+    .line 295
     .local v5, "checkState":Landroid/net/NetworkInfo$State;
     sget-object v18, Landroid/net/NetworkInfo$State;->CONNECTED:Landroid/net/NetworkInfo$State;
 
     move-object/from16 v0, v18
 
-    invoke-virtual {v5, v0}, Ljava/lang/Enum;->compareTo(Ljava/lang/Enum;)I
+    invoke-virtual {v5, v0}, Landroid/net/NetworkInfo$State;->compareTo(Ljava/lang/Enum;)I
     :try_end_bb
     .catch Ljava/lang/InterruptedException; {:try_start_aa .. :try_end_bb} :catch_134
 
@@ -933,7 +930,7 @@
 
     if-nez v18, :cond_128
 
-    .line 287
+    .line 302
     .end local v5    # "checkState":Landroid/net/NetworkInfo$State;
     :cond_be
     :goto_be
@@ -949,13 +946,13 @@
 
     move-result-object v5
 
-    .line 288
+    .line 303
     .restart local v5    # "checkState":Landroid/net/NetworkInfo$State;
     sget-object v18, Landroid/net/NetworkInfo$State;->CONNECTED:Landroid/net/NetworkInfo$State;
 
     move-object/from16 v0, v18
 
-    invoke-virtual {v5, v0}, Ljava/lang/Enum;->compareTo(Ljava/lang/Enum;)I
+    invoke-virtual {v5, v0}, Landroid/net/NetworkInfo$State;->compareTo(Ljava/lang/Enum;)I
 
     move-result v18
 
@@ -963,11 +960,11 @@
 
     const/4 v12, 0x1
 
-    .line 290
+    .line 305
     :goto_d5
     const-string/jumbo v18, "SUPL20_SCMService"
 
-    .line 291
+    .line 306
     new-instance v19, Ljava/lang/StringBuilder;
 
     invoke-direct/range {v19 .. v19}, Ljava/lang/StringBuilder;-><init>()V
@@ -988,10 +985,10 @@
 
     move-result-object v19
 
-    .line 290
+    .line 305
     invoke-static/range {v18 .. v19}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 292
+    .line 307
     const/16 v18, 0x5
 
     const v19, 0x7f000001
@@ -1004,7 +1001,7 @@
 
     move-result v15
 
-    .line 293
+    .line 308
     .local v15, "resultBool":Z
     const-string/jumbo v18, "SUPL20_SCMService"
 
@@ -1030,24 +1027,24 @@
 
     invoke-static/range {v18 .. v19}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 294
+    .line 309
     if-nez v15, :cond_125
 
-    .line 295
+    .line 310
     const-string/jumbo v18, "SUPL20_SCMService"
 
     const-string/jumbo v19, "Wrong requestRouteToHost result: expected true, but was false"
 
     invoke-static/range {v18 .. v19}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 297
+    .line 312
     :cond_125
     if-eqz v12, :cond_45
 
-    .line 298
+    .line 313
     return-void
 
-    .line 282
+    .line 297
     .end local v15    # "resultBool":Z
     :cond_128
     const-wide/16 v18, 0x3e8
@@ -1057,18 +1054,18 @@
     :try_end_12d
     .catch Ljava/lang/InterruptedException; {:try_start_12a .. :try_end_12d} :catch_134
 
-    .line 278
+    .line 293
     add-int/lit8 v8, v8, 0x1
 
     goto/16 :goto_a2
 
-    .line 288
+    .line 303
     :cond_131
     const/4 v12, 0x0
 
     goto :goto_d5
 
-    .line 311
+    .line 248
     .end local v2    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     .end local v3    # "bearerNetwork$iterator":Ljava/util/Iterator;
     .end local v4    # "bearerNetworks":Ljava/util/PriorityQueue;, "Ljava/util/PriorityQueue<Lcom/android/supl/bearer/BearerNetwork;>;"
@@ -1083,7 +1080,7 @@
     :cond_133
     return-void
 
-    .line 284
+    .line 299
     .restart local v2    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     .restart local v3    # "bearerNetwork$iterator":Ljava/util/Iterator;
     .restart local v4    # "bearerNetworks":Ljava/util/PriorityQueue;, "Ljava/util/PriorityQueue<Lcom/android/supl/bearer/BearerNetwork;>;"
@@ -1108,14 +1105,14 @@
     .param p1, "arg0"    # Landroid/content/Intent;
 
     .prologue
-    .line 179
+    .line 194
     iget-object v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mBinder:Landroid/os/IBinder;
 
     return-object v0
 .end method
 
 .method public onCreate()V
-    .registers 4
+    .registers 6
 
     .prologue
     .line 79
@@ -1125,63 +1122,128 @@
 
     .line 80
     .local v0, "configManager":Lcom/android/supl/config/ConfigManager;
-    const-string/jumbo v1, "SUPL20_SCMService"
+    invoke-virtual {v0}, Lcom/android/supl/config/ConfigManager;->getSUPLVersion()I
 
-    const-string/jumbo v2, "SUPL20 service version :2.13.2.0"
+    move-result v3
 
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const/4 v4, 0x1
+
+    if-ne v3, v4, :cond_3a
 
     .line 81
+    iget-object v3, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mContext:Landroid/content/Context;
+
+    invoke-static {v3}, Lcom/android/supl/SUPLManager;->getInstance(Landroid/content/Context;)Lcom/android/supl/SUPLManager;
+
+    move-result-object v2
+
+    .line 83
+    .local v2, "suplManager":Lcom/android/supl/SUPLManager;
+    invoke-virtual {v0}, Lcom/android/supl/config/ConfigManager;->checkGPSEnabled()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_36
+
+    .line 84
+    invoke-virtual {v2, p0}, Lcom/android/supl/SUPLManager;->addGpsListener(Lcom/android/supl/GpsOnOffListener;)Z
+
+    .line 85
+    iget-object v3, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v3}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v3
+
+    .line 86
+    const-string/jumbo v4, "location_providers_allowed"
+
+    .line 85
+    invoke-static {v3, v4}, Landroid/provider/Settings$Secure;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 87
+    .local v1, "provider":Ljava/lang/String;
+    if-eqz v1, :cond_35
+
+    const-string/jumbo v3, "gps"
+
+    invoke-virtual {v1, v3}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_35
+
+    .line 88
     invoke-direct {p0}, Lcom/android/supl/commprocessor/SUPLSCMService;->start()V
 
-    .line 82
+    .line 77
+    .end local v1    # "provider":Ljava/lang/String;
+    .end local v2    # "suplManager":Lcom/android/supl/SUPLManager;
+    :cond_35
+    :goto_35
     return-void
+
+    .line 91
+    .restart local v2    # "suplManager":Lcom/android/supl/SUPLManager;
+    :cond_36
+    invoke-direct {p0}, Lcom/android/supl/commprocessor/SUPLSCMService;->start()V
+
+    goto :goto_35
+
+    .line 94
+    .end local v2    # "suplManager":Lcom/android/supl/SUPLManager;
+    :cond_3a
+    invoke-direct {p0}, Lcom/android/supl/commprocessor/SUPLSCMService;->start()V
+
+    goto :goto_35
 .end method
 
 .method public onDestroy()V
     .registers 3
 
     .prologue
-    .line 366
+    .line 381
     iget-object v1, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mServerCommProcessor:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     if-eqz v1, :cond_17
 
-    .line 367
+    .line 382
     iget-object v1, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->datagramServer:Lcom/android/supl/commprocessor/DatagramServer;
 
     if-eqz v1, :cond_d
 
-    .line 368
+    .line 383
     iget-object v1, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->datagramServer:Lcom/android/supl/commprocessor/DatagramServer;
 
     invoke-virtual {v1}, Lcom/android/supl/commprocessor/DatagramServer;->stop()V
 
-    .line 371
+    .line 386
     :cond_d
     iget-object v1, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mServerCommProcessor:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     invoke-virtual {v1}, Lcom/android/supl/commprocessor/ServerCommProcessor;->stopListening()V
 
-    .line 372
+    .line 387
     iget-object v1, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mServerCommProcessor:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     invoke-virtual {v1}, Lcom/android/supl/commprocessor/ServerCommProcessor;->stopNetWork()V
 
-    .line 375
+    .line 390
     :cond_17
     iget-object v1, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->scmThread:Ljava/lang/Thread;
 
     invoke-virtual {v1}, Ljava/lang/Thread;->interrupt()V
 
-    .line 376
+    .line 391
     iget-object v1, p0, Lcom/android/supl/commprocessor/SUPLSCMService;->mContext:Landroid/content/Context;
 
     invoke-static {v1}, Lcom/android/supl/SUPLManager;->getInstance(Landroid/content/Context;)Lcom/android/supl/SUPLManager;
 
     move-result-object v0
 
-    .line 377
+    .line 392
     .local v0, "suplManager":Lcom/android/supl/SUPLManager;
     invoke-virtual {v0, p0}, Lcom/android/supl/SUPLManager;->removeGpsListener(Lcom/android/supl/GpsOnOffListener;)Z
 
@@ -1217,7 +1279,7 @@
 
     invoke-virtual {v0}, Lcom/android/supl/commprocessor/ServerCommProcessor;->pause()V
 
-    .line 65
+    .line 57
     :goto_1b
     return-void
 
@@ -1246,7 +1308,7 @@
     .line 54
     invoke-direct {p0}, Lcom/android/supl/commprocessor/SUPLSCMService;->startSCM()V
 
-    .line 55
+    .line 52
     return-void
 .end method
 
@@ -1256,7 +1318,7 @@
     .param p2, "startId"    # I
 
     .prologue
-    .line 174
+    .line 184
     return-void
 .end method
 
@@ -1267,7 +1329,7 @@
     .param p3, "startId"    # I
 
     .prologue
-    .line 109
+    .line 124
     const/4 v0, 0x1
 
     return v0

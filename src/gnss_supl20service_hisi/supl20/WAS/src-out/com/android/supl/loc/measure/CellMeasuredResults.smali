@@ -55,7 +55,7 @@
     :goto_19
     iput-boolean v0, p0, Lcom/android/supl/loc/measure/CellMeasuredResults;->bIsCellIdentityPresent:Z
 
-    .line 54
+    .line 47
     return-void
 
     .line 53
@@ -130,7 +130,7 @@
     :goto_22
     array-length v4, v1
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 72
     array-length v4, v1

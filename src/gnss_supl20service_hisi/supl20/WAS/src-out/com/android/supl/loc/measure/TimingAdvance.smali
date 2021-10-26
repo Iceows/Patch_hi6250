@@ -81,7 +81,7 @@
     :goto_1b
     iput-boolean v1, p0, Lcom/android/supl/loc/measure/TimingAdvance;->isChipRatePresent:Z
 
-    .line 71
+    .line 63
     return-void
 
     :cond_1e

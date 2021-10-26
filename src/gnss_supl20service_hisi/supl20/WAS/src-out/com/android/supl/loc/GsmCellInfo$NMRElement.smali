@@ -51,7 +51,7 @@
     .line 137
     iput-short p4, p0, Lcom/android/supl/loc/GsmCellInfo$NMRElement;->m_sRxLev:S
 
-    .line 139
+    .line 134
     return-void
 .end method
 

@@ -50,9 +50,7 @@
 # direct methods
 .method static synthetic -get0(Lcom/android/supl/trigger/PeriodicTriggerHandler;)Ljava/util/HashMap;
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/trigger/PeriodicTriggerHandler;
 
-    .prologue
     iget-object v0, p0, Lcom/android/supl/trigger/PeriodicTriggerHandler;->hsTrigger:Ljava/util/HashMap;
 
     return-object v0
@@ -60,7 +58,6 @@
 
 .method static synthetic -wrap0(Lcom/android/supl/trigger/PeriodicTriggerHandler;IS)Ljava/lang/String;
     .registers 4
-    .param p0, "-this"    # Lcom/android/supl/trigger/PeriodicTriggerHandler;
     .param p1, "sSessionID"    # I
     .param p2, "m_ucTriggerId"    # S
 
@@ -107,7 +104,7 @@
 
     iput-object v0, p0, Lcom/android/supl/trigger/PeriodicTriggerHandler;->hsTrigger:Ljava/util/HashMap;
 
-    .line 79
+    .line 77
     return-void
 .end method
 
@@ -289,7 +286,7 @@
 
     invoke-virtual {v4, v3}, Lcom/android/supl/commprocessor/NDKCommProcessor;->sendServer(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 189
+    .line 172
     return-void
 .end method
 
@@ -353,7 +350,7 @@
 
     sput-object v4, Lcom/android/supl/trigger/PeriodicTriggerHandler;->sPeriodicTriggerHandler:Lcom/android/supl/trigger/PeriodicTriggerHandler;
 
-    .line 258
+    .line 249
     return-void
 .end method
 
@@ -412,7 +409,7 @@
 
     invoke-virtual {v4}, Ljava/util/HashMap;->clear()V
 
-    .line 268
+    .line 259
     return-void
 .end method
 
@@ -495,7 +492,7 @@
 
     invoke-virtual {v4, v3}, Lcom/android/supl/commprocessor/NDKCommProcessor;->sendServer(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 170
+    .line 153
     return-void
 .end method
 
@@ -507,7 +504,7 @@
     .line 96
     iput-object p1, p0, Lcom/android/supl/trigger/PeriodicTriggerHandler;->mNdkCommProcessor:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
-    .line 97
+    .line 95
     return-void
 .end method
 
@@ -660,7 +657,7 @@
     .line 141
     const-string/jumbo v5, "SUPL20_Trigger"
 
-    const-string/jumbo v6, "stopTriggerPeriodic invalid id or trigger id"
+    const-string/jumbo v6, "stopTriggerPeriodic invalid session id or trigger id"
 
     invoke-static {v5, v6}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 

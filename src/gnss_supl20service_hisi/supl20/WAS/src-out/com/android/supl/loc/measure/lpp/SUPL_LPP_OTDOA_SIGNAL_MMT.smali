@@ -94,7 +94,7 @@
 
     iput-object v0, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_SIGNAL_MMT;->stLPPOTDOANeighbourLst:Lcom/android/supl/loc/measure/lpp/SUPL_LPP_NEIGHBOUR_OTDOA_MMT;
 
-    .line 110
+    .line 99
     return-void
 .end method
 
@@ -258,7 +258,7 @@
     .line 148
     array-length v6, v1
 
-    invoke-static {v1, v8, v0, v4, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v8, v0, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 149
     array-length v6, v1
@@ -313,7 +313,7 @@
     .line 157
     array-length v6, v2
 
-    invoke-static {v2, v8, v0, v4, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v2, v8, v0, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 158
     array-length v6, v2
@@ -341,7 +341,7 @@
     .line 162
     array-length v6, v3
 
-    invoke-static {v3, v8, v0, v4, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v8, v0, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 163
     array-length v6, v3

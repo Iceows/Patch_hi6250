@@ -143,7 +143,7 @@
 
     iput-short v0, p0, Lcom/android/supl/si/SUPLThirdPartyID;->ubBitsUsed:S
 
-    .line 124
+    .line 113
     return-void
 .end method
 
@@ -163,7 +163,7 @@
     .line 175
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLThirdPartyID;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 176
+    .line 174
     return-void
 .end method
 
@@ -226,7 +226,7 @@
 
     const/4 v5, 0x0
 
-    invoke-static {v3, v5, v0, v1, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v5, v0, v1, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 140
     iget-short v3, p0, Lcom/android/supl/si/SUPLThirdPartyID;->ucSize:S
@@ -290,7 +290,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->readByteArray([B)V
 
-    .line 188
+    .line 181
     return-void
 .end method
 
@@ -358,6 +358,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByteArray([B)V
 
-    .line 200
+    .line 195
     return-void
 .end method

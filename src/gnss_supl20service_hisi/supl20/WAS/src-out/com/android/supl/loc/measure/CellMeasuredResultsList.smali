@@ -46,7 +46,7 @@
 
     iput-short v0, p0, Lcom/android/supl/loc/measure/CellMeasuredResultsList;->ucCellMeasuredResultsCnt:S
 
-    .line 53
+    .line 47
     return-void
 .end method
 
@@ -150,7 +150,7 @@
     .local v2, "bs":[B
     array-length v8, v2
 
-    invoke-static {v2, v9, v1, v5, v8}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v2, v9, v1, v5, v8}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 72
     array-length v8, v2

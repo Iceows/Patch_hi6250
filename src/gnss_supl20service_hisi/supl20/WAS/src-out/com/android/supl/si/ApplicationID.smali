@@ -90,7 +90,7 @@
     .line 159
     invoke-virtual {p0, p1}, Lcom/android/supl/si/ApplicationID;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 160
+    .line 158
     return-void
 .end method
 
@@ -187,7 +187,7 @@
 
     iput-short v0, p0, Lcom/android/supl/si/ApplicationID;->ucAppVersionLen:S
 
-    .line 85
+    .line 75
     return-void
 .end method
 
@@ -209,18 +209,14 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 92
-    const/4 v5, 0x3
-
     .line 93
-    .local v5, "iSize":I
     const/4 v4, 0x0
 
     .line 94
     .local v4, "iOffset":I
     iget-object v6, p0, Lcom/android/supl/si/ApplicationID;->m_pcAppVersion:Ljava/lang/String;
 
-    if-nez v6, :cond_c
+    if-nez v6, :cond_b
 
     .line 95
     const-string/jumbo v6, ""
@@ -228,10 +224,10 @@
     iput-object v6, p0, Lcom/android/supl/si/ApplicationID;->m_pcAppVersion:Ljava/lang/String;
 
     .line 97
-    :cond_c
+    :cond_b
     iget-object v6, p0, Lcom/android/supl/si/ApplicationID;->m_pcAppProvider:Ljava/lang/String;
 
-    if-nez v6, :cond_15
+    if-nez v6, :cond_14
 
     .line 98
     const-string/jumbo v6, ""
@@ -239,10 +235,10 @@
     iput-object v6, p0, Lcom/android/supl/si/ApplicationID;->m_pcAppProvider:Ljava/lang/String;
 
     .line 100
-    :cond_15
+    :cond_14
     iget-object v6, p0, Lcom/android/supl/si/ApplicationID;->m_pcAppName:Ljava/lang/String;
 
-    if-nez v6, :cond_1e
+    if-nez v6, :cond_1d
 
     .line 101
     const-string/jumbo v6, ""
@@ -250,7 +246,7 @@
     iput-object v6, p0, Lcom/android/supl/si/ApplicationID;->m_pcAppName:Ljava/lang/String;
 
     .line 103
-    :cond_1e
+    :cond_1d
     iget-object v6, p0, Lcom/android/supl/si/ApplicationID;->m_pcAppVersion:Ljava/lang/String;
 
     invoke-virtual {v6}, Ljava/lang/String;->getBytes()[B
@@ -280,6 +276,7 @@
     add-int/lit8 v5, v6, 0x3
 
     .line 108
+    .local v5, "iSize":I
     array-length v6, v0
 
     add-int/2addr v5, v6
@@ -317,7 +314,7 @@
     .line 116
     array-length v6, v1
 
-    invoke-static {v1, v7, v3, v4, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v7, v3, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 117
     array-length v6, v1
@@ -327,7 +324,7 @@
     .line 119
     array-length v6, v0
 
-    invoke-static {v0, v7, v3, v4, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v7, v3, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 120
     array-length v6, v0
@@ -337,7 +334,7 @@
     .line 122
     array-length v6, v2
 
-    invoke-static {v2, v7, v3, v4, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v2, v7, v3, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 123
     array-length v6, v2
@@ -345,7 +342,7 @@
     add-int/2addr v4, v6
 
     .line 125
-    if-eq v4, v5, :cond_67
+    if-eq v4, v5, :cond_66
 
     .line 126
     sget-object v6, Ljava/lang/System;->err:Ljava/io/PrintStream;
@@ -355,7 +352,7 @@
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 128
-    :cond_67
+    :cond_66
     return-object v3
 .end method
 
@@ -412,7 +409,7 @@
 
     iput-object v0, p0, Lcom/android/supl/si/ApplicationID;->m_pcAppVersion:Ljava/lang/String;
 
-    .line 174
+    .line 167
     return-void
 .end method
 
@@ -498,6 +495,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 189
+    .line 181
     return-void
 .end method

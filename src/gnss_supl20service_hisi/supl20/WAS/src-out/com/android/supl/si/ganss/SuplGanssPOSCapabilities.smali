@@ -67,7 +67,7 @@
     .line 126
     invoke-virtual {p0, p1}, Lcom/android/supl/si/ganss/SuplGanssPOSCapabilities;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 127
+    .line 125
     return-void
 .end method
 
@@ -122,7 +122,7 @@
     :cond_23
     iput-object p1, p0, Lcom/android/supl/si/ganss/SuplGanssPOSCapabilities;->elem:[Lcom/android/supl/si/ganss/SuplGanssPOSElem;
 
-    .line 74
+    .line 64
     return-void
 .end method
 
@@ -194,7 +194,7 @@
     .local v1, "eleData":[B
     array-length v9, v1
 
-    invoke-static {v1, v6, v0, v4, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v6, v0, v4, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 86
     array-length v9, v1
@@ -300,7 +300,7 @@
     .restart local v1    # "i":I
     goto :goto_1d
 
-    .line 147
+    .line 133
     .end local v1    # "i":I
     .end local v3    # "parcels":[Landroid/os/Parcelable;
     :cond_2d
@@ -398,7 +398,7 @@
 
     invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelableArray([Landroid/os/Parcelable;I)V
 
-    .line 162
+    .line 156
     :cond_e
     return-void
 .end method

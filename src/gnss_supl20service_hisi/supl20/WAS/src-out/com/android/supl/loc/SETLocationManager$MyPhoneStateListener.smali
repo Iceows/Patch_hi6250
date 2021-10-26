@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Lcom/android/supl/loc/SETLocationManager;
 
     .prologue
-    .line 446
+    .line 422
     iput-object p1, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-direct {p0}, Landroid/telephony/PhoneStateListener;-><init>()V
@@ -35,7 +35,6 @@
 .method synthetic constructor <init>(Lcom/android/supl/loc/SETLocationManager;Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;)V
     .registers 3
     .param p1, "this$0"    # Lcom/android/supl/loc/SETLocationManager;
-    .param p2, "-this1"    # Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;
 
     .prologue
     invoke-direct {p0, p1}, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;-><init>(Lcom/android/supl/loc/SETLocationManager;)V
@@ -61,10 +60,10 @@
     .local p1, "cellInfoList":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/CellInfo;>;"
     const/4 v1, 0x0
 
-    .line 461
+    .line 437
     iget-object v0, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
-    invoke-static {v0}, Lcom/android/supl/loc/SETLocationManager;->-get4(Lcom/android/supl/loc/SETLocationManager;)Landroid/telephony/TelephonyManager;
+    invoke-static {v0}, Lcom/android/supl/loc/SETLocationManager;->-get3(Lcom/android/supl/loc/SETLocationManager;)Landroid/telephony/TelephonyManager;
 
     move-result-object v0
 
@@ -72,7 +71,7 @@
 
     move-result v3
 
-    .line 462
+    .line 438
     .local v3, "iNetWorkType":I
     const-string/jumbo v0, "SUPL20_LocMan"
 
@@ -96,12 +95,12 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 463
+    .line 439
     const/16 v0, 0xd
 
     if-ne v3, v0, :cond_31
 
-    .line 464
+    .line 440
     iget-object v0, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     const/4 v2, 0x0
@@ -110,13 +109,13 @@
 
     move-object v5, p1
 
-    invoke-static/range {v0 .. v5}, Lcom/android/supl/loc/SETLocationManager;->-wrap2(Lcom/android/supl/loc/SETLocationManager;Landroid/telephony/CellLocation;ZI[BLjava/util/List;)V
+    invoke-static/range {v0 .. v5}, Lcom/android/supl/loc/SETLocationManager;->-wrap0(Lcom/android/supl/loc/SETLocationManager;Landroid/telephony/CellLocation;ZI[BLjava/util/List;)V
 
-    .line 466
+    .line 442
     :cond_31
     invoke-super {p0, p1}, Landroid/telephony/PhoneStateListener;->onCellInfoChanged(Ljava/util/List;)V
 
-    .line 467
+    .line 435
     return-void
 .end method
 
@@ -127,10 +126,10 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 453
+    .line 429
     iget-object v0, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
-    invoke-static {v0}, Lcom/android/supl/loc/SETLocationManager;->-get4(Lcom/android/supl/loc/SETLocationManager;)Landroid/telephony/TelephonyManager;
+    invoke-static {v0}, Lcom/android/supl/loc/SETLocationManager;->-get3(Lcom/android/supl/loc/SETLocationManager;)Landroid/telephony/TelephonyManager;
 
     move-result-object v0
 
@@ -138,7 +137,7 @@
 
     move-result v3
 
-    .line 454
+    .line 430
     .local v3, "iNetWorkType":I
     const-string/jumbo v0, "SUPL20_LocMan"
 
@@ -162,7 +161,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 455
+    .line 431
     iget-object v0, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     const/4 v2, 0x0
@@ -171,12 +170,12 @@
 
     move-object v5, v4
 
-    invoke-static/range {v0 .. v5}, Lcom/android/supl/loc/SETLocationManager;->-wrap2(Lcom/android/supl/loc/SETLocationManager;Landroid/telephony/CellLocation;ZI[BLjava/util/List;)V
+    invoke-static/range {v0 .. v5}, Lcom/android/supl/loc/SETLocationManager;->-wrap0(Lcom/android/supl/loc/SETLocationManager;Landroid/telephony/CellLocation;ZI[BLjava/util/List;)V
 
-    .line 456
+    .line 432
     invoke-super {p0, p1}, Landroid/telephony/PhoneStateListener;->onCellLocationChanged(Landroid/telephony/CellLocation;)V
 
-    .line 457
+    .line 428
     return-void
 .end method
 
@@ -185,14 +184,14 @@
     .param p1, "state"    # I
 
     .prologue
-    .line 547
+    .line 523
     const-string/jumbo v0, "Unknown"
 
-    .line 549
+    .line 525
     .local v0, "connectionState":Ljava/lang/String;
     packed-switch p1, :pswitch_data_4e
 
-    .line 563
+    .line 539
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -211,7 +210,7 @@
 
     move-result-object v0
 
-    .line 567
+    .line 543
     :goto_1a
     const-string/jumbo v1, "SUPL20_LocMan"
 
@@ -235,42 +234,42 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 568
+    .line 544
     iget-object v1, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-virtual {v1}, Lcom/android/supl/loc/SETLocationManager;->forceCellLocationUpdate()V
 
-    .line 570
+    .line 546
     invoke-super {p0, p1}, Landroid/telephony/PhoneStateListener;->onDataConnectionStateChanged(I)V
 
-    .line 571
+    .line 522
     return-void
 
-    .line 551
+    .line 527
     :pswitch_3d
     const-string/jumbo v0, "Connected"
 
     goto :goto_1a
 
-    .line 554
+    .line 530
     :pswitch_41
     const-string/jumbo v0, "Connecting"
 
     goto :goto_1a
 
-    .line 557
+    .line 533
     :pswitch_45
     const-string/jumbo v0, "Disconnected"
 
     goto :goto_1a
 
-    .line 560
+    .line 536
     :pswitch_49
     const-string/jumbo v0, "Suspended"
 
     goto :goto_1a
 
-    .line 549
+    .line 525
     nop
 
     :pswitch_data_4e
@@ -288,10 +287,10 @@
     .param p2, "networkType"    # I
 
     .prologue
-    .line 512
+    .line 488
     const-string/jumbo v0, "Unknown"
 
-    .line 514
+    .line 490
     .local v0, "connectionState":Ljava/lang/String;
     const-string/jumbo v1, "SUPL20_LocMan"
 
@@ -315,10 +314,10 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 515
+    .line 491
     packed-switch p1, :pswitch_data_8c
 
-    .line 533
+    .line 509
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -337,7 +336,7 @@
 
     move-result-object v0
 
-    .line 534
+    .line 510
     const-string/jumbo v1, "SUPL20_LocMan"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -360,23 +359,23 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 537
+    .line 513
     :goto_4e
     iget-object v1, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-virtual {v1}, Lcom/android/supl/loc/SETLocationManager;->forceCellLocationUpdate()V
 
-    .line 539
+    .line 515
     invoke-super {p0, p1}, Landroid/telephony/PhoneStateListener;->onDataConnectionStateChanged(I)V
 
-    .line 540
+    .line 487
     return-void
 
-    .line 517
+    .line 493
     :pswitch_57
     const-string/jumbo v0, "Connected"
 
-    .line 518
+    .line 494
     const-string/jumbo v1, "SUPL20_LocMan"
 
     const-string/jumbo v2, "onDataConnectionStateChanged TelephonyManager.DATA_CONNECTED"
@@ -385,11 +384,11 @@
 
     goto :goto_4e
 
-    .line 521
+    .line 497
     :pswitch_64
     const-string/jumbo v0, "Connecting"
 
-    .line 522
+    .line 498
     const-string/jumbo v1, "SUPL20_LocMan"
 
     const-string/jumbo v2, "onDataConnectionStateChanged TelephonyManager.DATA_CONNECTING"
@@ -398,11 +397,11 @@
 
     goto :goto_4e
 
-    .line 525
+    .line 501
     :pswitch_71
     const-string/jumbo v0, "Disconnected"
 
-    .line 526
+    .line 502
     const-string/jumbo v1, "SUPL20_LocMan"
 
     const-string/jumbo v2, "onDataConnectionStateChanged TelephonyManager.DATA_DISCONNECTED"
@@ -411,11 +410,11 @@
 
     goto :goto_4e
 
-    .line 529
+    .line 505
     :pswitch_7e
     const-string/jumbo v0, "Suspended"
 
-    .line 530
+    .line 506
     const-string/jumbo v1, "SUPL20_LocMan"
 
     const-string/jumbo v2, "onDataConnectionStateChanged TelephonyManager.DATA_SUSPENDED"
@@ -424,7 +423,7 @@
 
     goto :goto_4e
 
-    .line 515
+    .line 491
     nop
 
     :pswitch_data_8c
@@ -441,10 +440,10 @@
     .param p1, "serviceState"    # Landroid/telephony/ServiceState;
 
     .prologue
-    .line 475
+    .line 451
     const/4 v0, 0x0
 
-    .line 476
+    .line 452
     .local v0, "iNotInService":I
     invoke-virtual {p1}, Landroid/telephony/ServiceState;->getState()I
 
@@ -452,10 +451,10 @@
 
     packed-switch v1, :pswitch_data_74
 
-    .line 493
+    .line 469
     const/4 v0, 0x1
 
-    .line 494
+    .line 470
     const-string/jumbo v1, "SUPL20_LocMan"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -482,40 +481,40 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 498
+    .line 474
     :goto_27
     const/4 v1, 0x1
 
     if-ne v0, v1, :cond_6d
 
-    .line 499
+    .line 475
     iget-object v1, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-virtual {v1}, Lcom/android/supl/loc/SETLocationManager;->sendCellStaleLocation()V
 
-    .line 500
+    .line 476
     iget-object v1, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
-    invoke-static {v1}, Lcom/android/supl/loc/SETLocationManager;->-get3(Lcom/android/supl/loc/SETLocationManager;)Lcom/android/supl/loc/NetInfo;
+    invoke-static {v1}, Lcom/android/supl/loc/SETLocationManager;->-get2(Lcom/android/supl/loc/SETLocationManager;)Lcom/android/supl/loc/NetInfo;
 
     move-result-object v1
 
     iget-object v2, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
-    invoke-static {v2}, Lcom/android/supl/loc/SETLocationManager;->-get2(Lcom/android/supl/loc/SETLocationManager;)Lcom/android/supl/commprocessor/NDKCommProcessor;
+    invoke-static {v2}, Lcom/android/supl/loc/SETLocationManager;->-get1(Lcom/android/supl/loc/SETLocationManager;)Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     move-result-object v2
 
     invoke-virtual {v1, v2}, Lcom/android/supl/loc/NetInfo;->sendStaleLocationInfo(Lcom/android/supl/commprocessor/NDKCommProcessor;)V
 
-    .line 505
+    .line 481
     :goto_3e
     invoke-super {p0, p1}, Landroid/telephony/PhoneStateListener;->onServiceStateChanged(Landroid/telephony/ServiceState;)V
 
-    .line 506
+    .line 449
     return-void
 
-    .line 478
+    .line 454
     :pswitch_42
     const-string/jumbo v1, "SUPL20_LocMan"
 
@@ -525,11 +524,11 @@
 
     goto :goto_27
 
-    .line 481
+    .line 457
     :pswitch_4c
     const/4 v0, 0x1
 
-    .line 482
+    .line 458
     const-string/jumbo v1, "SUPL20_LocMan"
 
     const-string/jumbo v2, "onServiceStateChanged ServiceState.STATE_EMERGENCY_ONLY"
@@ -538,11 +537,11 @@
 
     goto :goto_27
 
-    .line 485
+    .line 461
     :pswitch_57
     const/4 v0, 0x1
 
-    .line 486
+    .line 462
     const-string/jumbo v1, "SUPL20_LocMan"
 
     const-string/jumbo v2, "onServiceStateChanged ServiceState.STATE_OUT_OF_SERVICE"
@@ -551,11 +550,11 @@
 
     goto :goto_27
 
-    .line 489
+    .line 465
     :pswitch_62
     const/4 v0, 0x1
 
-    .line 490
+    .line 466
     const-string/jumbo v1, "SUPL20_LocMan"
 
     const-string/jumbo v2, "onServiceStateChanged ServiceState.STATE_POWER_OFF"
@@ -564,7 +563,7 @@
 
     goto :goto_27
 
-    .line 502
+    .line 478
     :cond_6d
     iget-object v1, p0, Lcom/android/supl/loc/SETLocationManager$MyPhoneStateListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
@@ -572,7 +571,7 @@
 
     goto :goto_3e
 
-    .line 476
+    .line 452
     nop
 
     :pswitch_data_74

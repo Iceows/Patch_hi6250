@@ -74,7 +74,6 @@
     .line 90
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 92
     return-void
 .end method
 
@@ -113,7 +112,7 @@
     .line 132
     iput-object p2, p0, Lcom/android/supl/si/SUPLSETID;->stData:Ljava/lang/String;
 
-    .line 133
+    .line 100
     return-void
 
     .line 106
@@ -197,7 +196,7 @@
     .line 245
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLSETID;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 246
+    .line 244
     return-void
 .end method
 
@@ -439,7 +438,7 @@
 
     move/from16 v1, v19
 
-    invoke-static {v9, v0, v4, v14, v1}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v9, v0, v4, v14, v1}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 157
     move-object/from16 v0, p0
@@ -610,7 +609,7 @@
 
     move/from16 v1, v19
 
-    invoke-static {v12, v0, v4, v14, v1}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v12, v0, v4, v14, v1}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 175
     add-int/lit8 v14, v14, 0xc
@@ -834,7 +833,7 @@
 
     move/from16 v1, v19
 
-    invoke-static {v13, v0, v4, v14, v1}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v13, v0, v4, v14, v1}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 196
     move-object/from16 v0, p0
@@ -889,7 +888,7 @@
 
     iput-object v0, p0, Lcom/android/supl/si/SUPLSETID;->stData:Ljava/lang/String;
 
-    .line 256
+    .line 251
     return-void
 .end method
 
@@ -960,6 +959,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 279
+    .line 274
     return-void
 .end method

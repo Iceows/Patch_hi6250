@@ -65,7 +65,7 @@
     .line 117
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLPolygonArea;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 118
+    .line 116
     return-void
 .end method
 
@@ -102,7 +102,7 @@
     .line 65
     iput p2, p0, Lcom/android/supl/si/SUPLPolygonArea;->PolygonHysteresis:I
 
-    .line 67
+    .line 60
     return-void
 .end method
 
@@ -124,11 +124,7 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 74
-    const/4 v3, 0x4
-
     .line 75
-    .local v3, "iSize":I
     const/4 v2, 0x0
 
     .line 76
@@ -146,13 +142,14 @@
     add-int/lit8 v3, v4, 0x4
 
     .line 78
+    .local v3, "iSize":I
     new-array v0, v3, [B
 
     .line 79
     .local v0, "bData":[B
     array-length v4, v1
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 80
     array-length v4, v1
@@ -167,7 +164,7 @@
     move-result v2
 
     .line 82
-    if-eq v2, v3, :cond_25
+    if-eq v2, v3, :cond_24
 
     .line 83
     sget-object v4, Ljava/lang/System;->err:Ljava/io/PrintStream;
@@ -177,7 +174,7 @@
     invoke-virtual {v4, v5}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 85
-    :cond_25
+    :cond_24
     return-object v0
 .end method
 
@@ -208,7 +205,7 @@
 
     iput-object v0, p0, Lcom/android/supl/si/SUPLPolygonArea;->PolyDescription:Lcom/android/supl/si/SUPLPolygonDescription;
 
-    .line 128
+    .line 124
     return-void
 .end method
 
@@ -266,6 +263,6 @@
 
     invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 139
+    .line 135
     return-void
 .end method

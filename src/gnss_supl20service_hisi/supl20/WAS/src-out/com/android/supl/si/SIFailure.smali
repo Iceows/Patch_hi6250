@@ -56,7 +56,6 @@
     .line 61
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 62
     return-void
 .end method
 
@@ -71,7 +70,7 @@
     .line 94
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SIFailure;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 95
+    .line 93
     return-void
 .end method
 
@@ -106,7 +105,7 @@
 
     iput v0, p0, Lcom/android/supl/si/SIFailure;->m_enErrorCode:I
 
-    .line 101
+    .line 97
     return-void
 .end method
 
@@ -161,6 +160,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 108
+    .line 104
     return-void
 .end method

@@ -132,7 +132,7 @@
 
     long-to-int p3, v2
 
-    .line 80
+    .line 67
     :cond_2f
     return-void
 .end method
@@ -153,7 +153,7 @@
     .line 123
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLCoordinate;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 124
+    .line 122
     return-void
 .end method
 
@@ -236,7 +236,7 @@
 
     iput v0, p0, Lcom/android/supl/si/SUPLCoordinate;->Longitude:I
 
-    .line 134
+    .line 129
     return-void
 .end method
 
@@ -313,6 +313,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 145
+    .line 140
     return-void
 .end method

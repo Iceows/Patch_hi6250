@@ -55,7 +55,7 @@
 
     iput-object v0, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->phaseRecord:Ljava/util/ArrayList;
 
-    .line 103
+    .line 101
     return-void
 .end method
 
@@ -73,15 +73,12 @@
     .line 107
     const/4 v4, 0x0
 
-    .line 108
-    .local v4, "iOffset":I
-    const/4 v5, 0x4
-
     .line 109
-    .local v5, "iSize":I
+    .local v4, "iOffset":I
     const/16 v5, 0xc
 
     .line 110
+    .local v5, "iSize":I
     add-int/lit8 v5, v5, 0x4
 
     .line 111
@@ -91,7 +88,7 @@
     .local v8, "vecPhaseRecord":Ljava/util/Vector;, "Ljava/util/Vector<[B>;"
     iget-boolean v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->bMeasurementValid:Z
 
-    if-eqz v9, :cond_48
+    if-eqz v9, :cond_47
 
     .line 113
     add-int/lit8 v5, v5, 0x2c
@@ -99,20 +96,20 @@
     .line 114
     iget-boolean v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->IsOffsetIncluded:Z
 
-    if-eqz v9, :cond_15
+    if-eqz v9, :cond_14
 
     .line 115
     add-int/lit8 v5, v5, 0x4
 
     .line 118
-    :cond_15
+    :cond_14
     iget v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->TotalNumberOfPilots:I
 
-    if-lez v9, :cond_48
+    if-lez v9, :cond_47
 
     iget-object v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->phaseRecord:Ljava/util/ArrayList;
 
-    if-eqz v9, :cond_48
+    if-eqz v9, :cond_47
 
     .line 119
     new-instance v8, Ljava/util/Vector;
@@ -135,13 +132,13 @@
     move-result-object v7
 
     .local v7, "record$iterator":Ljava/util/Iterator;
-    :cond_2e
-    :goto_2e
+    :cond_2d
+    :goto_2d
     invoke-interface {v7}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v9
 
-    if-eqz v9, :cond_48
+    if-eqz v9, :cond_47
 
     invoke-interface {v7}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -151,7 +148,7 @@
 
     .line 121
     .local v6, "record":Lcom/android/supl/loc/measure/aflt/SUPL_AFLT_PilotPhaseRecord;
-    if-eqz v6, :cond_2e
+    if-eqz v6, :cond_2d
 
     .line 122
     invoke-virtual {v6}, Lcom/android/supl/loc/measure/aflt/SUPL_AFLT_PilotPhaseRecord;->getAfltPilotPhaseRecord()[B
@@ -160,7 +157,7 @@
 
     .line 123
     .local v3, "bRecord":[B
-    if-eqz v3, :cond_2e
+    if-eqz v3, :cond_2d
 
     .line 124
     invoke-virtual {v8, v3}, Ljava/util/Vector;->add(Ljava/lang/Object;)Z
@@ -170,14 +167,14 @@
 
     add-int/2addr v5, v9
 
-    goto :goto_2e
+    goto :goto_2d
 
     .line 131
     .end local v3    # "bRecord":[B
     .end local v6    # "record":Lcom/android/supl/loc/measure/aflt/SUPL_AFLT_PilotPhaseRecord;
     .end local v7    # "record$iterator":Ljava/util/Iterator;
     .end local v8    # "vecPhaseRecord":Ljava/util/Vector;, "Ljava/util/Vector<[B>;"
-    :cond_48
+    :cond_47
     new-array v2, v5, [B
 
     .line 132
@@ -203,11 +200,11 @@
     .line 135
     iget-boolean v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->bMeasurementValid:Z
 
-    if-eqz v9, :cond_d4
+    if-eqz v9, :cond_d3
 
     move v9, v10
 
-    :goto_5f
+    :goto_5e
     invoke-static {v2, v4, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v4
@@ -215,7 +212,7 @@
     .line 136
     iget-boolean v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->bMeasurementValid:Z
 
-    if-eqz v9, :cond_d8
+    if-eqz v9, :cond_d7
 
     .line 137
     iget v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->TimeReference:I
@@ -227,9 +224,9 @@
     .line 138
     iget-boolean v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->IsOffsetIncluded:Z
 
-    if-eqz v9, :cond_d6
+    if-eqz v9, :cond_d5
 
-    :goto_71
+    :goto_70
     invoke-static {v2, v4, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v4
@@ -237,7 +234,7 @@
     .line 139
     iget-boolean v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->IsOffsetIncluded:Z
 
-    if-eqz v9, :cond_7f
+    if-eqz v9, :cond_7e
 
     .line 140
     iget v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->MSTimeOffset:I
@@ -247,7 +244,7 @@
     move-result v4
 
     .line 142
-    :cond_7f
+    :cond_7e
     iget v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->ReferencePN:I
 
     invoke-static {v2, v4, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -313,9 +310,9 @@
     .line 151
     iget v9, p0, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->TotalNumberOfPilots:I
 
-    if-lez v9, :cond_d8
+    if-lez v9, :cond_d7
 
-    if-eqz v8, :cond_d8
+    if-eqz v8, :cond_d7
 
     .line 152
     invoke-interface {v8}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
@@ -323,13 +320,13 @@
     move-result-object v1
 
     .local v1, "b$iterator":Ljava/util/Iterator;
-    :cond_bf
-    :goto_bf
+    :cond_be
+    :goto_be
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v9
 
-    if-eqz v9, :cond_d8
+    if-eqz v9, :cond_d7
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -339,35 +336,35 @@
 
     .line 153
     .local v0, "b":[B
-    if-eqz v0, :cond_bf
+    if-eqz v0, :cond_be
 
     .line 154
     array-length v9, v0
 
-    invoke-static {v0, v11, v2, v4, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v11, v2, v4, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 155
     array-length v9, v0
 
     add-int/2addr v4, v9
 
-    goto :goto_bf
+    goto :goto_be
 
     .end local v0    # "b":[B
     .end local v1    # "b$iterator":Ljava/util/Iterator;
-    :cond_d4
+    :cond_d3
     move v9, v11
 
     .line 135
-    goto :goto_5f
+    goto :goto_5e
 
-    :cond_d6
+    :cond_d5
     move v10, v11
 
     .line 138
-    goto :goto_71
+    goto :goto_70
 
     .line 162
-    :cond_d8
+    :cond_d7
     return-object v2
 .end method

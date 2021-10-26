@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     .prologue
-    .line 597
+    .line 593
     iput-object p1, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$ConnectivityBroadcastReceiver;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -35,7 +35,6 @@
 .method synthetic constructor <init>(Lcom/android/supl/commprocessor/ServerCommProcessor;Lcom/android/supl/commprocessor/ServerCommProcessor$ConnectivityBroadcastReceiver;)V
     .registers 3
     .param p1, "this$0"    # Lcom/android/supl/commprocessor/ServerCommProcessor;
-    .param p2, "-this1"    # Lcom/android/supl/commprocessor/ServerCommProcessor$ConnectivityBroadcastReceiver;
 
     .prologue
     invoke-direct {p0, p1}, Lcom/android/supl/commprocessor/ServerCommProcessor$ConnectivityBroadcastReceiver;-><init>(Lcom/android/supl/commprocessor/ServerCommProcessor;)V
@@ -46,113 +45,114 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .registers 11
+    .registers 12
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 600
+    const/4 v5, 0x0
+
+    .line 596
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 602
+    .line 598
     .local v0, "action":Ljava/lang/String;
-    const-string/jumbo v5, "android.net.conn.CONNECTIVITY_CHANGE"
+    const-string/jumbo v6, "android.net.conn.CONNECTIVITY_CHANGE"
 
-    invoke-virtual {v0, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v5
+    move-result v6
 
-    if-eqz v5, :cond_15
+    if-eqz v6, :cond_16
 
-    iget-object v5, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$ConnectivityBroadcastReceiver;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
+    iget-object v6, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$ConnectivityBroadcastReceiver;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
-    invoke-static {v5}, Lcom/android/supl/commprocessor/ServerCommProcessor;->-get1(Lcom/android/supl/commprocessor/ServerCommProcessor;)Z
+    invoke-static {v6}, Lcom/android/supl/commprocessor/ServerCommProcessor;->-get1(Lcom/android/supl/commprocessor/ServerCommProcessor;)Z
 
-    move-result v5
+    move-result v6
 
-    if-nez v5, :cond_16
+    if-nez v6, :cond_17
 
-    .line 603
-    :cond_15
+    .line 599
+    :cond_16
     return-void
 
-    .line 607
-    :cond_16
-    const-string/jumbo v5, "noConnectivity"
+    .line 603
+    :cond_17
+    const-string/jumbo v6, "noConnectivity"
 
-    const/4 v6, 0x0
-
-    .line 606
-    invoke-virtual {p2, v5, v6}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+    .line 602
+    invoke-virtual {p2, v6, v5}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
 
     move-result v2
 
-    .line 608
+    .line 604
     .local v2, "noConnectivity":Z
     new-instance v4, Lcom/android/supl/nc/SendToServer;
 
     invoke-direct {v4}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 610
+    .line 606
     .local v4, "sendToServer":Lcom/android/supl/nc/SendToServer;
-    const/16 v5, 0x8
+    const/16 v6, 0x8
 
-    new-array v1, v5, [B
+    new-array v1, v6, [B
 
-    .line 611
+    .line 607
     .local v1, "bData":[B
     const/4 v3, 0x0
 
-    .line 612
+    .line 608
     .local v3, "offset":I
-    const/4 v5, 0x4
+    const/4 v6, 0x4
 
-    invoke-static {v1, v3, v5}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v3, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v3
 
-    .line 613
+    .line 609
     if-eqz v2, :cond_5d
 
-    .line 614
-    const/16 v5, 0x20b
+    .line 610
+    const/16 v6, 0x20b
 
-    invoke-static {v1, v3, v5}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v3, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v3
 
-    .line 618
+    .line 614
     :goto_35
-    const-string/jumbo v5, "SUPL20_SCM"
+    const-string/jumbo v6, "SUPL20_SCM"
 
-    new-instance v6, Ljava/lang/StringBuilder;
+    new-instance v7, Ljava/lang/StringBuilder;
 
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v7, "Network connection "
+    const-string/jumbo v8, "Network connection "
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v7
 
-    xor-int/lit8 v7, v2, 0x1
+    if-eqz v2, :cond_64
 
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    :goto_46
+    invoke-virtual {v7, v5}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-static {v5, v6}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v6, v5}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 619
+    .line 615
     iput-object v1, v4, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 620
+    .line 616
     iget-object v5, p0, Lcom/android/supl/commprocessor/ServerCommProcessor$ConnectivityBroadcastReceiver;->this$0:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     invoke-static {v5}, Lcom/android/supl/commprocessor/ServerCommProcessor;->-get3(Lcom/android/supl/commprocessor/ServerCommProcessor;)Lcom/android/supl/nc/NetworkController;
@@ -161,16 +161,22 @@
 
     invoke-virtual {v5, v4}, Lcom/android/supl/nc/NetworkController;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 623
+    .line 595
     return-void
 
-    .line 616
+    .line 612
     :cond_5d
-    const/16 v5, 0x20a
+    const/16 v6, 0x20a
 
-    invoke-static {v1, v3, v5}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v3, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v3
 
     goto :goto_35
+
+    .line 614
+    :cond_64
+    const/4 v5, 0x1
+
+    goto :goto_46
 .end method

@@ -28,7 +28,7 @@
     .line 56
     iput p1, p0, Lcom/android/supl/si/StopSITrigSessParams;->iSessionID:I
 
-    .line 57
+    .line 55
     return-void
 .end method
 

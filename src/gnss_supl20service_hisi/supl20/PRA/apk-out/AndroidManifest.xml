@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest android:sharedUserId="android.uid.system" android:versionCode="6" android:versionName="3.0.0.0" package="com.android.supl" platformBuildVersionCode="30" platformBuildVersionName="8.0.0"
+<manifest android:sharedUserId="android.uid.system" android:versionCode="6" android:versionName="2.13.2.0" package="com.android.supl" platformBuildVersionCode="26" platformBuildVersionName="8.0.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:label="SUPL20ServicesIceows" android:name="com.android.supl.SuplApplication" android:persistent="true" android:debuggable="false" android:allowBackup="false">
+    <application android:label="SUPL20Services26" android:name="com.android.supl.SuplApplication" android:persistent="true" android:debuggable="false" android:allowBackup="false">
         <service android:name="com.android.supl.loc.SUPLPlatformService" android:enabled="true" android:exported="false" />
         <service android:name="com.android.supl.commprocessor.SUPLSCMService" android:enabled="true" android:exported="false" />
         <receiver android:name="com.android.supl.receiver.ShutdownReceiver" android:exported="false">

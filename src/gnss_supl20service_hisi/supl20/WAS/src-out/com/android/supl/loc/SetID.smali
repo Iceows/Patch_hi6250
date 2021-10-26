@@ -37,6 +37,8 @@
     .param p1, "iSetIDType"    # I
 
     .prologue
+    const/16 v1, 0x10
+
     const/4 v0, 0x0
 
     .line 81
@@ -46,7 +48,7 @@
     iput v0, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
 
     .line 82
-    packed-switch p1, :pswitch_data_38
+    packed-switch p1, :pswitch_data_36
 
     .line 108
     new-instance v0, Ljava/lang/IllegalArgumentException;
@@ -58,41 +60,39 @@
     throw v0
 
     .line 84
-    :pswitch_12
+    :pswitch_14
     const/16 v0, 0xc
 
     iput v0, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
 
     .line 111
-    :goto_16
+    :goto_18
     iput p1, p0, Lcom/android/supl/loc/SetID;->m_iSetIDType:I
 
-    .line 113
+    .line 81
     return-void
 
     .line 87
-    :pswitch_19
+    :pswitch_1b
     const/16 v0, 0x8
 
     iput v0, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
 
-    goto :goto_16
+    goto :goto_18
 
     .line 90
-    :pswitch_1e
+    :pswitch_20
     const/4 v0, 0x5
 
     iput v0, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
 
-    goto :goto_16
+    goto :goto_18
 
     .line 93
-    :pswitch_22
-    const/16 v0, 0xf
+    :pswitch_24
+    iput v1, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
 
-    iput v0, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
-
-    goto :goto_16
+    goto :goto_18
 
     .line 96
     :pswitch_27
@@ -100,7 +100,7 @@
 
     iput v0, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
 
-    goto :goto_16
+    goto :goto_18
 
     .line 99
     :pswitch_2c
@@ -108,33 +108,31 @@
 
     iput v0, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
 
-    goto :goto_16
+    goto :goto_18
 
     .line 102
     :pswitch_30
-    const/16 v0, 0x10
+    iput v1, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
 
-    iput v0, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
-
-    goto :goto_16
+    goto :goto_18
 
     .line 105
-    :pswitch_35
+    :pswitch_33
     iput v0, p0, Lcom/android/supl/loc/SetID;->iNumBytes:I
 
-    goto :goto_16
+    goto :goto_18
 
     .line 82
-    :pswitch_data_38
+    :pswitch_data_36
     .packed-switch 0x1
-        :pswitch_12
-        :pswitch_19
-        :pswitch_1e
-        :pswitch_22
+        :pswitch_14
+        :pswitch_1b
+        :pswitch_20
+        :pswitch_24
         :pswitch_27
         :pswitch_2c
         :pswitch_30
-        :pswitch_35
+        :pswitch_33
     .end packed-switch
 .end method
 
@@ -403,7 +401,7 @@
 
     move/from16 v19, v0
 
-    packed-switch v19, :pswitch_data_220
+    packed-switch v19, :pswitch_data_23e
 
     .line 216
     :cond_7c
@@ -482,7 +480,7 @@
 
     move-result-object v20
 
-    const-string/jumbo v21, " send for id:"
+    const-string/jumbo v21, " send for session id:"
 
     invoke-virtual/range {v20 .. v21}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -530,7 +528,7 @@
     :pswitch_f0
     const-string/jumbo v19, "0"
 
-    const/16 v20, 0xf
+    const/16 v20, 0x10
 
     move-object/from16 v0, p0
 
@@ -563,7 +561,7 @@
 
     move/from16 v1, v19
 
-    invoke-static {v9, v0, v4, v14, v1}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v9, v0, v4, v14, v1}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 167
     move-object/from16 v0, p0
@@ -668,6 +666,33 @@
 
     move-result-object p2
 
+    .line 186
+    const-string/jumbo v19, "SUPL20_SETID"
+
+    new-instance v20, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v20 .. v20}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v21, "MSISDN "
+
+    invoke-virtual/range {v20 .. v21}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v20
+
+    move-object/from16 v0, v20
+
+    move-object/from16 v1, p2
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v20
+
+    invoke-virtual/range {v20 .. v20}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v20
+
+    invoke-static/range {v19 .. v20}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
     .line 187
     array-length v0, v12
 
@@ -679,7 +704,7 @@
 
     move/from16 v1, v19
 
-    invoke-static {v12, v0, v4, v14, v1}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v12, v0, v4, v14, v1}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 188
     add-int/lit8 v14, v14, 0xc
@@ -689,7 +714,7 @@
 
     .line 192
     .end local v12    # "msisdn":[B
-    :pswitch_172
+    :pswitch_190
     const-string/jumbo v19, ":"
 
     move-object/from16 v0, p2
@@ -708,7 +733,7 @@
 
     move/from16 v20, v0
 
-    :goto_182
+    :goto_1a0
     move/from16 v0, v19
 
     move/from16 v1, v20
@@ -789,7 +814,7 @@
     .line 193
     add-int/lit8 v19, v19, 0x1
 
-    goto :goto_182
+    goto :goto_1a0
 
     .line 202
     .end local v6    # "iLsb":I
@@ -797,7 +822,7 @@
     .end local v15    # "stHex":[Ljava/lang/String;
     .end local v17    # "stIp":Ljava/lang/String;
     .end local v18    # "string":Ljava/lang/String;
-    :pswitch_1ca
+    :pswitch_1e8
     invoke-static/range {p2 .. p2}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
 
     move-result-wide v10
@@ -812,7 +837,7 @@
 
     .line 206
     .end local v10    # "lData":J
-    :pswitch_1d4
+    :pswitch_1f2
     const-string/jumbo v19, "0"
 
     const/16 v20, 0x3e8
@@ -875,7 +900,7 @@
 
     move/from16 v1, v19
 
-    invoke-static {v13, v0, v4, v14, v1}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v13, v0, v4, v14, v1}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 210
     move-object/from16 v0, p0
@@ -890,14 +915,14 @@
     goto/16 :goto_7c
 
     .line 160
-    :pswitch_data_220
+    :pswitch_data_23e
     .packed-switch 0x1
         :pswitch_14d
-        :pswitch_1ca
+        :pswitch_1e8
         :pswitch_143
         :pswitch_f0
-        :pswitch_1d4
+        :pswitch_1f2
         :pswitch_11e
-        :pswitch_172
+        :pswitch_190
     .end packed-switch
 .end method

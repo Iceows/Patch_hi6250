@@ -136,7 +136,7 @@
     :cond_3d
     iput-object p2, p0, Lcom/android/supl/si/SUPLTriggerParams;->objTriggerParam:Ljava/lang/Object;
 
-    .line 87
+    .line 63
     return-void
 
     .line 68
@@ -163,7 +163,7 @@
     .line 156
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLTriggerParams;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 157
+    .line 155
     return-void
 .end method
 
@@ -230,7 +230,7 @@
 
     const/4 v5, 0x0
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 119
     array-length v4, v1
@@ -316,7 +316,7 @@
 
     packed-switch v0, :pswitch_data_26
 
-    .line 174
+    .line 163
     :goto_b
     return-void
 
@@ -456,7 +456,7 @@
 
     packed-switch v0, :pswitch_data_1c
 
-    .line 192
+    .line 181
     :goto_a
     return-void
 

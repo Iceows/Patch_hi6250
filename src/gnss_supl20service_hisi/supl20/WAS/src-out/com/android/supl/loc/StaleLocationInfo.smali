@@ -35,7 +35,7 @@
     .line 55
     iput p2, p0, Lcom/android/supl/loc/StaleLocationInfo;->iStaleBitlocat:I
 
-    .line 56
+    .line 53
     return-void
 .end method
 
@@ -100,6 +100,6 @@
     .line 70
     iput p2, p0, Lcom/android/supl/loc/StaleLocationInfo;->iStaleBitlocat:I
 
-    .line 71
+    .line 68
     return-void
 .end method

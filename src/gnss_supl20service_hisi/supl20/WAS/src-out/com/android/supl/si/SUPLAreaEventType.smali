@@ -89,7 +89,7 @@
     :cond_14
     iput p1, p0, Lcom/android/supl/si/SUPLAreaEventType;->iAreaEventType:I
 
-    .line 68
+    .line 63
     return-void
 .end method
 
@@ -109,7 +109,7 @@
     .line 111
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLAreaEventType;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 112
+    .line 110
     return-void
 .end method
 
@@ -164,7 +164,7 @@
 
     iput v0, p0, Lcom/android/supl/si/SUPLAreaEventType;->iAreaEventType:I
 
-    .line 121
+    .line 118
     return-void
 .end method
 
@@ -207,6 +207,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 131
+    .line 128
     return-void
 .end method

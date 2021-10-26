@@ -58,7 +58,7 @@
     .line 70
     invoke-virtual {p0}, Lcom/android/supl/loc/NetInfo;->initWIFIManager()V
 
-    .line 71
+    .line 67
     return-void
 .end method
 
@@ -189,7 +189,7 @@
 
     .line 228
     .local v0, "e":Ljava/net/SocketException;
-    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
+    invoke-virtual {v0}, Ljava/net/SocketException;->printStackTrace()V
 
     .line 231
     .end local v0    # "e":Ljava/net/SocketException;
@@ -264,7 +264,7 @@
 
     .line 187
     .local v0, "detailedState":Landroid/net/NetworkInfo$DetailedState;
-    invoke-virtual {v0}, Ljava/lang/Enum;->name()Ljava/lang/String;
+    invoke-virtual {v0}, Landroid/net/NetworkInfo$DetailedState;->name()Ljava/lang/String;
 
     move-result-object v2
 
@@ -507,7 +507,7 @@
 
     iput-object v0, p0, Lcom/android/supl/loc/NetInfo;->wifiInfo:Landroid/net/wifi/WifiInfo;
 
-    .line 78
+    .line 75
     return-void
 .end method
 
@@ -678,7 +678,7 @@
     .line 193
     invoke-virtual {p1, v0}, Lcom/android/supl/commprocessor/NDKCommProcessor;->sendServer(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 195
+    .line 189
     .end local v0    # "sendToServer":Lcom/android/supl/nc/SendToServer;
     :cond_14
     return-void
@@ -702,7 +702,7 @@
 
     iput-object v0, p0, Lcom/android/supl/loc/NetInfo;->mStaleLocationInfo:Lcom/android/supl/loc/StaleLocationInfo;
 
-    .line 204
+    .line 197
     :goto_b
     return-void
 

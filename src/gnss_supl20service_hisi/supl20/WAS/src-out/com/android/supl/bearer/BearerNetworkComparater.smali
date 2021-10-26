@@ -79,13 +79,17 @@
 
 .method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .registers 4
+    .param p1, "lhs"    # Ljava/lang/Object;
+    .param p2, "rhs"    # Ljava/lang/Object;
 
     .prologue
-    .line 50
+    .line 51
     check-cast p1, Lcom/android/supl/bearer/BearerNetwork;
 
+    .end local p1    # "lhs":Ljava/lang/Object;
     check-cast p2, Lcom/android/supl/bearer/BearerNetwork;
 
+    .end local p2    # "rhs":Ljava/lang/Object;
     invoke-virtual {p0, p1, p2}, Lcom/android/supl/bearer/BearerNetworkComparater;->compare(Lcom/android/supl/bearer/BearerNetwork;Lcom/android/supl/bearer/BearerNetwork;)I
 
     move-result v0

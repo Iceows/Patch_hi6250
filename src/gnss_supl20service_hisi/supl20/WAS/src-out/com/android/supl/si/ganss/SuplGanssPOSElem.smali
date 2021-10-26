@@ -76,7 +76,6 @@
     .line 81
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 83
     return-void
 .end method
 
@@ -103,7 +102,7 @@
     .line 78
     iput p4, p0, Lcom/android/supl/si/ganss/SuplGanssPOSElem;->ucSBASBitmap:I
 
-    .line 80
+    .line 74
     return-void
 .end method
 
@@ -118,7 +117,7 @@
     .line 124
     invoke-virtual {p0, p1}, Lcom/android/supl/si/ganss/SuplGanssPOSElem;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 125
+    .line 123
     return-void
 .end method
 
@@ -229,7 +228,7 @@
 
     iput v0, p0, Lcom/android/supl/si/ganss/SuplGanssPOSElem;->ucSBASBitmap:I
 
-    .line 136
+    .line 131
     return-void
 .end method
 
@@ -317,6 +316,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 150
+    .line 144
     return-void
 .end method

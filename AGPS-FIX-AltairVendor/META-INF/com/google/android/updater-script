@@ -6,7 +6,7 @@ ui_print("#   for a11 gsi (Hi6250)                #");
 ui_print("#                                       #");
 ui_print("#    by AltairFR, Hamido, Roger         #");
 ui_print("#                                       #");
-ui_print("#    V3.1 (vendor patch)                #");
+ui_print("#    V3.3 (vendor patch)                #");
 ui_print("#                                       #");
 ui_print("#########################################");
 ui_print("");
@@ -23,8 +23,8 @@ set_perm(0, 0, 0755, "/tmp/mount-system.sh");
 package_extract_file("mount-vendor.sh", "/tmp/mount-vendor.sh");
 set_perm(0, 0, 0755, "/tmp/mount-vendor.sh");
 
-package_extract_file("set-selinux.sh", "/tmp/set-selinux.sh");
-set_perm(0, 0, 0755, "/tmp/set-selinux.sh");
+package_extract_file("fixes.sh", "/tmp/fixes.sh");
+set_perm(0, 0, 0755, "/tmp/fixes.sh");
 
 set_progress(0.200000);
 ui_print(" Mounting filesystems system ...");
@@ -35,14 +35,14 @@ run_program("/tmp/mount-vendor.sh") == 0 || abort("Could not mount /vendor");
 ui_print(" vendor mount ok !! ...");
 
 set_progress(0.300000);
-ui_print(" Installing GPS Fix.");
+ui_print(" Extracting GPS Fix.");
 package_extract_dir("system", "/system");
 package_extract_dir("vendor", "/vendor");
 
-ui_print(" Set SEDomain policy and NTP time");
+ui_print(" Installing GPS Fix.");
 set_progress(0.500000);
-run_program("/tmp/set-selinux.sh") == 0 || abort("Could not set policy for the new service xwatchlssd");
-delete("/tmp/set-selinux.sh");
+run_program("/tmp/fixes.sh") == 0 || abort("Could not fixes");
+delete("/tmp/fixes.sh");
 
 ui_print("");
 set_progress(0.600000);

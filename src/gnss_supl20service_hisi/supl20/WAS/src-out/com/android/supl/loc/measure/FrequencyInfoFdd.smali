@@ -37,7 +37,7 @@
     :goto_b
     iput-boolean v0, p0, Lcom/android/supl/loc/measure/FrequencyInfoFdd;->bIsUarfcn_UL_Present:Z
 
-    .line 50
+    .line 46
     return-void
 
     .line 49

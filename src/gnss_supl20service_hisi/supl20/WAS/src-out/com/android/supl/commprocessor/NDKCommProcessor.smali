@@ -9,8 +9,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/supl/commprocessor/NDKCommProcessor$1;,
-        Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
+        Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;,
+        Lcom/android/supl/commprocessor/NDKCommProcessor$1;
     }
 .end annotation
 
@@ -100,9 +100,7 @@
 # direct methods
 .method static synthetic -get0(Lcom/android/supl/commprocessor/NDKCommProcessor;)Z
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/NDKCommProcessor;
 
-    .prologue
     iget-boolean v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->isPause:Z
 
     return v0
@@ -110,9 +108,7 @@
 
 .method static synthetic -get1(Lcom/android/supl/commprocessor/NDKCommProcessor;)Lcom/android/supl/loc/SETLocationManager;
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/NDKCommProcessor;
 
-    .prologue
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
 
     return-object v0
@@ -120,9 +116,7 @@
 
 .method static synthetic -get2(Lcom/android/supl/commprocessor/NDKCommProcessor;)Lcom/android/supl/nc/NetworkController;
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/NDKCommProcessor;
 
-    .prologue
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
     return-object v0
@@ -130,9 +124,7 @@
 
 .method static synthetic -get3(Lcom/android/supl/commprocessor/NDKCommProcessor;)Ljava/lang/Object;
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/NDKCommProcessor;
 
-    .prologue
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->pauseLock:Ljava/lang/Object;
 
     return-object v0
@@ -140,9 +132,7 @@
 
 .method static synthetic -get4(Lcom/android/supl/commprocessor/NDKCommProcessor;)Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/NDKCommProcessor;
 
-    .prologue
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->readPacket:Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
     return-object v0
@@ -150,10 +140,7 @@
 
 .method static synthetic -set0(Lcom/android/supl/commprocessor/NDKCommProcessor;Z)Z
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/NDKCommProcessor;
-    .param p1, "-value"    # Z
 
-    .prologue
     iput-boolean p1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->isPause:Z
 
     return p1
@@ -173,59 +160,59 @@
 
     const/4 v0, 0x0
 
-    .line 161
+    .line 158
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 93
+    .line 90
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
-    .line 95
+    .line 92
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    .line 141
+    .line 138
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->readPacket:Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
-    .line 145
+    .line 142
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
 
-    .line 147
+    .line 144
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mPeriodicTriggerHandler:Lcom/android/supl/trigger/PeriodicTriggerHandler;
 
-    .line 157
+    .line 154
     iput-boolean v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->isPause:Z
 
-    .line 159
+    .line 156
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->final_key:Ljavax/crypto/SecretKey;
 
-    .line 213
+    .line 209
     new-instance v0, Lcom/android/supl/commprocessor/NDKCommProcessor$1;
 
     invoke-direct {v0, p0}, Lcom/android/supl/commprocessor/NDKCommProcessor$1;-><init>(Lcom/android/supl/commprocessor/NDKCommProcessor;)V
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
 
-    .line 733
+    .line 692
     new-instance v0, Ljava/lang/Object;
 
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->pauseLock:Ljava/lang/Object;
 
-    .line 785
+    .line 744
     iput v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    .line 787
+    .line 746
     iput v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    .line 163
+    .line 160
     invoke-direct {p0}, Lcom/android/supl/commprocessor/NDKCommProcessor;->msgBufferReset()V
 
-    .line 164
+    .line 161
     new-instance v0, Lcom/android/supl/nc/NetworkController;
 
     const-string/jumbo v5, "PCM read thread"
 
-    .line 165
+    .line 162
     const-string/jumbo v6, "PCM write thread"
 
     move-object v2, p2
@@ -236,17 +223,17 @@
 
     move v7, v1
 
-    .line 164
+    .line 161
     invoke-direct/range {v0 .. v7}, Lcom/android/supl/nc/NetworkController;-><init>(ILjava/lang/String;ILcom/android/supl/commprocessor/CommandProcessor;Ljava/lang/String;Ljava/lang/String;Z)V
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
-    .line 166
+    .line 163
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
     invoke-virtual {v0, p5, p6}, Lcom/android/supl/nc/NetworkController;->setServer_conn_Timeout_Retries(II)V
 
-    .line 167
+    .line 164
     new-instance v0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
     const-string/jumbo v1, "PCM command process thread"
@@ -255,34 +242,27 @@
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->readPacket:Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
-    .line 168
+    .line 165
     iput-object p4, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
 
-    .line 169
+    .line 166
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-virtual {v0, p0}, Lcom/android/supl/loc/SETLocationManager;->setCommProcessor(Lcom/android/supl/commprocessor/NDKCommProcessor;)V
 
-    .line 170
-    invoke-static {}, Lcom/android/supl/nc/SuplServiceMgr;->getInstance()Lcom/android/supl/nc/SuplServiceMgr;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p0}, Lcom/android/supl/nc/SuplServiceMgr;->setPcmCommandProcessor(Lcom/android/supl/commprocessor/CommandProcessor;)V
-
-    .line 171
+    .line 167
     invoke-static {}, Lcom/android/supl/trigger/PeriodicTriggerHandler;->getInstance()Lcom/android/supl/trigger/PeriodicTriggerHandler;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mPeriodicTriggerHandler:Lcom/android/supl/trigger/PeriodicTriggerHandler;
 
-    .line 172
+    .line 168
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mPeriodicTriggerHandler:Lcom/android/supl/trigger/PeriodicTriggerHandler;
 
     invoke-virtual {v0, p0}, Lcom/android/supl/trigger/PeriodicTriggerHandler;->setNdkCommProcessor(Lcom/android/supl/commprocessor/NDKCommProcessor;)V
 
-    .line 174
+    .line 159
     return-void
 .end method
 
@@ -290,21 +270,21 @@
     .registers 3
 
     .prologue
-    .line 176
+    .line 172
     const/16 v0, 0x1388
 
     new-array v0, v0, [B
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    .line 177
+    .line 173
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
     const/4 v1, 0x0
 
     invoke-static {v0, v1}, Ljava/util/Arrays;->fill([BB)V
 
-    .line 178
+    .line 171
     return-void
 .end method
 
@@ -314,14 +294,14 @@
     .registers 5
 
     .prologue
-    .line 186
+    .line 182
     const-string/jumbo v1, "SUPL20_PCM"
 
     const-string/jumbo v2, "calling nc.connect for pcm"
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 187
+    .line 183
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
     const/4 v2, 0x0
@@ -332,7 +312,7 @@
 
     move-result v0
 
-    .line 189
+    .line 185
     .local v0, "isConnected":Z
     return v0
 .end method
@@ -341,55 +321,55 @@
     .registers 7
 
     .prologue
-    .line 736
+    .line 695
     iget-object v3, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v3}, Landroid/os/Handler;->obtainMessage()Landroid/os/Message;
 
     move-result-object v1
 
-    .line 737
+    .line 696
     .local v1, "message":Landroid/os/Message;
     const/4 v3, 0x2
 
     iput v3, v1, Landroid/os/Message;->what:I
 
-    .line 738
+    .line 697
     iget-object v3, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v3, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 739
+    .line 698
     iget-object v3, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v3}, Landroid/os/Handler;->obtainMessage()Landroid/os/Message;
 
     move-result-object v1
 
-    .line 740
+    .line 699
     const/4 v3, 0x4
 
     iput v3, v1, Landroid/os/Message;->what:I
 
-    .line 741
+    .line 700
     iget-object v3, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v3, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 742
+    .line 701
     new-instance v2, Lcom/android/supl/commprocessor/NDKCommProcessor$2;
 
     invoke-direct {v2, p0}, Lcom/android/supl/commprocessor/NDKCommProcessor$2;-><init>(Lcom/android/supl/commprocessor/NDKCommProcessor;)V
 
-    .line 765
+    .line 724
     .local v2, "thread":Ljava/lang/Thread;
     invoke-virtual {v2}, Ljava/lang/Thread;->start()V
 
-    .line 767
+    .line 726
     :try_start_24
     invoke-virtual {v2}, Ljava/lang/Thread;->join()V
 
-    .line 768
+    .line 727
     const-string/jumbo v3, "SUPL20_PCM"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -416,19 +396,19 @@
     :try_end_43
     .catch Ljava/lang/InterruptedException; {:try_start_24 .. :try_end_43} :catch_44
 
-    .line 772
+    .line 693
     :goto_43
     return-void
 
-    .line 769
+    .line 728
     :catch_44
     move-exception v0
 
-    .line 770
+    .line 729
     .local v0, "e":Ljava/lang/InterruptedException;
     const-string/jumbo v3, "SUPL20_PCM"
 
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/InterruptedException;->getMessage()Ljava/lang/String;
 
     move-result-object v4
 
@@ -438,2876 +418,2492 @@
 .end method
 
 .method public process(Lcom/android/supl/commprocessor/FromServer;)V
-    .registers 50
+    .registers 47
     .param p1, "fromServer"    # Lcom/android/supl/commprocessor/FromServer;
 
     .prologue
-    .line 302
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v43, v0
-
-    if-eqz v43, :cond_13c
-
-    .line 303
-    if-eqz p1, :cond_13c
-
-    .line 304
+    .line 299
     move-object/from16 v0, p1
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
-    move-object/from16 v43, v0
-
-    if-eqz v43, :cond_13c
-
-    .line 305
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v43, v0
-
-    move-object/from16 v0, p1
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
-
-    move-object/from16 v44, v0
-
-    move-object/from16 v0, v44
-
-    array-length v0, v0
-
-    move/from16 v44, v0
-
-    add-int v43, v43, v44
-
-    const/16 v44, 0x1388
-
-    move/from16 v0, v43
-
-    move/from16 v1, v44
-
-    if-ge v0, v1, :cond_13c
-
-    .line 307
-    :try_start_2d
-    move-object/from16 v0, p1
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
-
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
-    .line 308
+    .line 300
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v45, v0
+    move/from16 v42, v0
 
     move-object/from16 v0, p1
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
-    move-object/from16 v46, v0
-
-    move-object/from16 v0, v46
-
-    array-length v0, v0
-
-    move/from16 v46, v0
-
-    .line 307
-    const/16 v47, 0x0
+    move-object/from16 v43, v0
 
     move-object/from16 v0, v43
 
-    move/from16 v1, v47
+    array-length v0, v0
 
-    move-object/from16 v2, v44
+    move/from16 v43, v0
 
-    move/from16 v3, v45
+    .line 299
+    const/16 v44, 0x0
 
-    move/from16 v4, v46
+    move-object/from16 v0, v40
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    move/from16 v1, v44
 
-    .line 309
+    move-object/from16 v2, v41
+
+    move/from16 v3, v42
+
+    move/from16 v4, v43
+
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
+
+    .line 301
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
     move-object/from16 v0, p1
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
-    move-object/from16 v0, v44
+    move-object/from16 v0, v41
 
     array-length v0, v0
 
-    move/from16 v44, v0
+    move/from16 v41, v0
 
-    add-int v43, v43, v44
+    add-int v40, v40, v41
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    .line 310
+    .line 302
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
     move-object/from16 v0, p1
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
-    move-object/from16 v0, v44
+    move-object/from16 v0, v41
 
     array-length v0, v0
 
-    move/from16 v44, v0
+    move/from16 v41, v0
 
-    add-int v43, v43, v44
+    add-int v40, v40, v41
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
     .line 311
-    const-string/jumbo v43, "SUPL20_PCM"
+    :cond_5e
+    :goto_5e
+    const/16 v20, 0x0
 
-    new-instance v44, Ljava/lang/StringBuilder;
+    .line 312
+    .local v20, "iPacketSize":I
+    new-instance v25, Ljava/io/DataInputStream;
 
-    invoke-direct/range {v44 .. v44}, Ljava/lang/StringBuilder;-><init>()V
+    new-instance v40, Ljava/io/ByteArrayInputStream;
 
-    const-string/jumbo v45, "buffer size:"
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    move/from16 v45, v0
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    const-string/jumbo v45, "writePosition: "
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v45, v0
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    invoke-virtual/range {v44 .. v44}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v44
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_bc
-    .catch Ljava/lang/Exception; {:try_start_2d .. :try_end_bc} :catch_f9
-
-    .line 327
-    :cond_bc
-    :goto_bc
-    const/16 v25, 0x0
-
-    .line 328
-    .local v25, "iReadLen":I
-    const/16 v23, 0x0
-
-    .line 329
-    .local v23, "iPacketSize":I
-    new-instance v28, Ljava/io/DataInputStream;
-
-    new-instance v43, Ljava/io/ByteArrayInputStream;
-
-    .line 330
+    .line 313
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
-    .line 329
-    invoke-direct/range {v43 .. v44}, Ljava/io/ByteArrayInputStream;-><init>([B)V
+    .line 312
+    invoke-direct/range {v40 .. v41}, Ljava/io/ByteArrayInputStream;-><init>([B)V
 
-    move-object/from16 v0, v28
+    move-object/from16 v0, v25
 
-    move-object/from16 v1, v43
+    move-object/from16 v1, v40
 
     invoke-direct {v0, v1}, Ljava/io/DataInputStream;-><init>(Ljava/io/InputStream;)V
 
-    .line 332
-    .local v28, "in":Ljava/io/DataInputStream;
-    :try_start_d4
-    invoke-virtual/range {v28 .. v28}, Ljava/io/DataInputStream;->readInt()I
-
-    move-result v23
-
-    .line 334
-    if-gtz v23, :cond_156
-
-    .line 335
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    new-instance v44, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v44 .. v44}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v45, "process: process less then zero "
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    move-object/from16 v0, v44
-
-    move/from16 v1, v23
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    invoke-virtual/range {v44 .. v44}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v44
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_f8
-    .catch Ljava/io/IOException; {:try_start_d4 .. :try_end_f8} :catch_192
-
-    .line 722
-    :cond_f8
-    :goto_f8
-    :sswitch_f8
-    return-void
-
-    .line 312
-    .end local v23    # "iPacketSize":I
-    .end local v25    # "iReadLen":I
-    .end local v28    # "in":Ljava/io/DataInputStream;
-    :catch_f9
-    move-exception v18
-
-    .line 313
-    .local v18, "ex":Ljava/lang/Exception;
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    new-instance v44, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v44 .. v44}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v45, "process m_bMasterBuffer overflow,"
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v45, v0
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    const-string/jumbo v45, ","
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    move/from16 v45, v0
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    invoke-virtual/range {v44 .. v44}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v44
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 314
-    const/16 v43, 0x0
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
     .line 315
-    const/16 v43, 0x0
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    .line 316
-    return-void
-
-    .line 319
-    .end local v18    # "ex":Ljava/lang/Exception;
-    :cond_13c
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, "m_bMasterBuff is null or fromServer is null or m_bMasterBuffer overflow!"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 320
-    const/16 v43, 0x0
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    .line 321
-    const/16 v43, 0x0
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    .line 322
-    return-void
-
-    .line 339
-    .restart local v23    # "iPacketSize":I
-    .restart local v25    # "iReadLen":I
-    .restart local v28    # "in":Ljava/io/DataInputStream;
-    :cond_156
-    const/16 v25, 0x4
-
-    .line 340
-    :try_start_158
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0x4
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    .line 342
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    move/from16 v43, v0
-
-    move/from16 v0, v43
-
-    move/from16 v1, v23
-
-    if-ge v0, v1, :cond_1a2
-
-    .line 343
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    .line 344
-    new-instance v44, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v44 .. v44}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v45, "process: iTotalArrival less then PacketSize "
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    move-object/from16 v0, v44
-
-    move/from16 v1, v23
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    invoke-virtual/range {v44 .. v44}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v44
-
-    .line 343
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_190
-    .catch Ljava/io/IOException; {:try_start_158 .. :try_end_190} :catch_192
-
-    goto/16 :goto_f8
-
-    .line 717
-    :catch_192
-    move-exception v10
-
-    .line 719
-    .local v10, "e":Ljava/io/IOException;
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, "Error in process "
-
-    move-object/from16 v0, v43
-
-    move-object/from16 v1, v44
-
-    invoke-static {v0, v1, v10}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    goto/16 :goto_bc
-
-    .line 348
-    .end local v10    # "e":Ljava/io/IOException;
-    :cond_1a2
-    :try_start_1a2
-    invoke-virtual/range {v28 .. v28}, Ljava/io/DataInputStream;->readInt()I
-
-    move-result v27
-
-    .line 349
-    .local v27, "icmdID":I
-    add-int/lit8 v25, v25, 0x4
-
-    .line 350
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    new-instance v44, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v44 .. v44}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v45, "process icmdID: 0X"
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    invoke-static/range {v27 .. v27}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
-
-    move-result-object v45
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    invoke-virtual/range {v44 .. v44}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v44
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 351
-    sparse-switch v27, :sswitch_data_9d8
-
-    .line 706
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    .line 707
-    new-instance v44, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v44 .. v44}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v45, "default : recvd cmdid 0X"
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    .line 708
-    invoke-static/range {v27 .. v27}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
-
-    move-result-object v45
-
-    .line 707
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    invoke-virtual/range {v44 .. v44}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v44
-
-    .line 706
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 709
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v43, v0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v44, v0
-
-    .line 710
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v45, v0
-
-    move-object/from16 v0, v45
-
-    array-length v0, v0
-
-    move/from16 v45, v0
-
-    add-int/lit8 v45, v45, -0x8
-
-    .line 709
-    const/16 v46, 0x0
-
-    move-object/from16 v0, v43
-
-    move/from16 v1, v25
-
-    move-object/from16 v2, v44
-
-    move/from16 v3, v46
-
-    move/from16 v4, v45
-
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
-
-    .line 711
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0x8
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    .line 712
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0x4
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-    :try_end_22b
-    .catch Ljava/io/IOException; {:try_start_1a2 .. :try_end_22b} :catch_192
-
-    goto/16 :goto_f8
-
-    .line 358
-    :sswitch_22d
-    :try_start_22d
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, "process hello msg"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 360
-    invoke-virtual/range {v28 .. v28}, Ljava/io/DataInputStream;->readInt()I
+    .local v25, "in":Ljava/io/DataInputStream;
+    :try_start_74
+    invoke-virtual/range {v25 .. v25}, Ljava/io/DataInputStream;->readInt()I
 
     move-result v20
 
-    .line 362
-    .local v20, "iMagicNum":I
-    add-int/lit8 v25, v25, 0x4
+    .line 317
+    if-gtz v20, :cond_99
 
-    .line 363
-    const v43, 0x53589793
+    .line 318
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    move/from16 v0, v20
+    new-instance v41, Ljava/lang/StringBuilder;
 
-    move/from16 v1, v43
+    invoke-direct/range {v41 .. v41}, Ljava/lang/StringBuilder;-><init>()V
 
-    if-ne v0, v1, :cond_f8
+    const-string/jumbo v42, "process: process less then zero "
 
-    .line 364
-    const-string/jumbo v43, "SUPL20_PCM"
+    invoke-virtual/range {v41 .. v42}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string/jumbo v44, "init msg success"
+    move-result-object v41
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    move-object/from16 v0, v41
 
-    .line 369
-    move-object/from16 v0, p0
+    move/from16 v1, v20
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-object/from16 v43, v0
+    move-result-object v41
 
-    .line 370
-    move-object/from16 v0, p0
+    invoke-virtual/range {v41 .. v41}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+    move-result-object v41
 
-    move-object/from16 v44, v0
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    move-object/from16 v0, p0
+    .line 297
+    :cond_98
+    :goto_98
+    :sswitch_98
+    return-void
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+    .line 322
+    :cond_99
+    const/16 v22, 0x4
 
-    move-object/from16 v45, v0
-
-    move-object/from16 v0, v45
-
-    array-length v0, v0
-
-    move/from16 v45, v0
-
-    add-int/lit8 v45, v45, -0xc
-
-    const/16 v46, 0x0
-
-    .line 369
-    move-object/from16 v0, v43
-
-    move/from16 v1, v25
-
-    move-object/from16 v2, v44
-
-    move/from16 v3, v46
-
-    move/from16 v4, v45
-
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
-
-    .line 372
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0xc
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    .line 373
+    .line 323
+    .local v22, "iReadLen":I
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x8
+    add-int/lit8 v40, v40, -0x4
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    .line 374
+    .line 325
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    move/from16 v40, v0
+
+    move/from16 v0, v40
+
+    move/from16 v1, v20
+
+    if-ge v0, v1, :cond_e4
+
+    .line 326
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    .line 327
+    new-instance v41, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v41 .. v41}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v42, "process: iTotalArrival less then PacketSize "
+
+    invoke-virtual/range {v41 .. v42}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v41
+
+    move-object/from16 v0, v41
+
+    move/from16 v1, v20
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v41
+
+    invoke-virtual/range {v41 .. v41}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v41
+
+    .line 326
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    :try_end_d3
+    .catch Ljava/io/IOException; {:try_start_74 .. :try_end_d3} :catch_d4
+
+    goto :goto_98
+
+    .line 676
+    .end local v22    # "iReadLen":I
+    :catch_d4
+    move-exception v9
+
+    .line 678
+    .local v9, "e":Ljava/io/IOException;
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, "Error in process "
+
+    move-object/from16 v0, v40
+
+    move-object/from16 v1, v41
+
+    invoke-static {v0, v1, v9}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto/16 :goto_5e
+
+    .line 331
+    .end local v9    # "e":Ljava/io/IOException;
+    .restart local v22    # "iReadLen":I
+    :cond_e4
+    :try_start_e4
+    invoke-virtual/range {v25 .. v25}, Ljava/io/DataInputStream;->readInt()I
+
+    move-result v24
+
+    .line 332
+    .local v24, "icmdID":I
+    add-int/lit8 v22, v22, 0x4
+
+    .line 333
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    new-instance v41, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v41 .. v41}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v42, "process icmdID: 0X"
+
+    invoke-virtual/range {v41 .. v42}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v41
+
+    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+
+    move-result-object v42
+
+    invoke-virtual/range {v41 .. v42}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v41
+
+    invoke-virtual/range {v41 .. v41}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v41
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 334
+    sparse-switch v24, :sswitch_data_886
+
+    .line 665
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    .line 666
+    new-instance v41, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v41 .. v41}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v42, "default : recvd cmdid 0X"
+
+    invoke-virtual/range {v41 .. v42}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v41
+
+    .line 667
+    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
+
+    move-result-object v42
+
+    .line 666
+    invoke-virtual/range {v41 .. v42}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v41
+
+    invoke-virtual/range {v41 .. v41}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v41
+
+    .line 665
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 668
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v40, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v41, v0
+
+    .line 669
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v42, v0
+
+    move-object/from16 v0, v42
+
+    array-length v0, v0
+
+    move/from16 v42, v0
+
+    add-int/lit8 v42, v42, -0x8
+
+    .line 668
+    const/16 v43, 0x0
+
+    move-object/from16 v0, v40
+
+    move/from16 v1, v22
+
+    move-object/from16 v2, v41
+
+    move/from16 v3, v43
+
+    move/from16 v4, v42
+
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
+
+    .line 670
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0x8
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    .line 671
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0x4
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+    :try_end_16d
+    .catch Ljava/io/IOException; {:try_start_e4 .. :try_end_16d} :catch_d4
+
+    goto/16 :goto_98
+
+    .line 341
+    :sswitch_16f
+    :try_start_16f
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, "process hello msg"
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 343
+    invoke-virtual/range {v25 .. v25}, Ljava/io/DataInputStream;->readInt()I
+
+    move-result v17
+
+    .line 345
+    .local v17, "iMagicNum":I
+    add-int/lit8 v22, v22, 0x4
+
+    .line 346
+    const v40, 0x53589793
+
+    move/from16 v0, v17
+
+    move/from16 v1, v40
+
+    if-ne v0, v1, :cond_98
+
+    .line 347
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, "init msg success"
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 352
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v40, v0
+
+    .line 353
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v41, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v42, v0
+
+    move-object/from16 v0, v42
+
+    array-length v0, v0
+
+    move/from16 v42, v0
+
+    add-int/lit8 v42, v42, -0xc
+
+    const/16 v43, 0x0
+
+    .line 352
+    move-object/from16 v0, v40
+
+    move/from16 v1, v22
+
+    move-object/from16 v2, v41
+
+    move/from16 v3, v43
+
+    move/from16 v4, v42
+
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
+
+    .line 355
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0xc
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    .line 356
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0x8
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    .line 357
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->pauseLock:Ljava/lang/Object;
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
-    monitor-enter v44
-    :try_end_299
-    .catch Ljava/io/IOException; {:try_start_22d .. :try_end_299} :catch_2a7
+    monitor-enter v41
+    :try_end_1db
+    .catch Ljava/io/IOException; {:try_start_16f .. :try_end_1db} :catch_1e9
 
-    .line 375
-    :try_start_299
+    .line 358
+    :try_start_1db
     move-object/from16 v0, p0
 
     iget-boolean v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->isPause:Z
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    if-nez v43, :cond_2a4
+    if-nez v40, :cond_1e6
 
-    .line 376
+    .line 359
     invoke-virtual/range {p0 .. p0}, Lcom/android/supl/commprocessor/NDKCommProcessor;->sendHelloMessage()V
-    :try_end_2a4
-    .catchall {:try_start_299 .. :try_end_2a4} :catchall_2ba
+    :try_end_1e6
+    .catchall {:try_start_1db .. :try_end_1e6} :catchall_1fa
 
-    :cond_2a4
-    :try_start_2a4
-    monitor-exit v44
-    :try_end_2a5
-    .catch Ljava/io/IOException; {:try_start_2a4 .. :try_end_2a5} :catch_2a7
+    :cond_1e6
+    :try_start_1e6
+    monitor-exit v41
+    :try_end_1e7
+    .catch Ljava/io/IOException; {:try_start_1e6 .. :try_end_1e7} :catch_1e9
 
-    goto/16 :goto_bc
+    goto/16 :goto_5e
 
-    .line 379
-    .end local v20    # "iMagicNum":I
-    :catch_2a7
-    move-exception v17
+    .line 362
+    .end local v17    # "iMagicNum":I
+    :catch_1e9
+    move-exception v15
 
-    .line 381
-    .local v17, "ex":Ljava/io/IOException;
-    :try_start_2a8
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 364
+    .local v15, "ex":Ljava/io/IOException;
+    :try_start_1ea
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    invoke-virtual/range {v17 .. v17}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v15}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
-    move-result-object v44
+    move-result-object v41
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
-    move-object/from16 v1, v44
+    move-object/from16 v1, v41
 
-    move-object/from16 v2, v17
+    invoke-static {v0, v1, v15}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    :try_end_1f8
+    .catch Ljava/io/IOException; {:try_start_1ea .. :try_end_1f8} :catch_d4
 
-    invoke-static {v0, v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :try_end_2b8
-    .catch Ljava/io/IOException; {:try_start_2a8 .. :try_end_2b8} :catch_192
+    goto/16 :goto_5e
 
-    goto/16 :goto_bc
+    .line 357
+    .end local v15    # "ex":Ljava/io/IOException;
+    .restart local v17    # "iMagicNum":I
+    :catchall_1fa
+    move-exception v40
 
-    .line 374
-    .end local v17    # "ex":Ljava/io/IOException;
-    .restart local v20    # "iMagicNum":I
-    :catchall_2ba
-    move-exception v43
+    :try_start_1fb
+    monitor-exit v41
 
-    :try_start_2bb
-    monitor-exit v44
+    throw v40
+    :try_end_1fd
+    .catch Ljava/io/IOException; {:try_start_1fb .. :try_end_1fd} :catch_1e9
 
-    throw v43
-    :try_end_2bd
-    .catch Ljava/io/IOException; {:try_start_2bb .. :try_end_2bd} :catch_2a7
-
-    .line 387
-    .end local v20    # "iMagicNum":I
-    :sswitch_2bd
-    :try_start_2bd
+    .line 370
+    .end local v17    # "iMagicNum":I
+    :sswitch_1fd
+    :try_start_1fd
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    .line 388
+    .line 371
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v45, v0
+    move-object/from16 v42, v0
 
-    move-object/from16 v0, v45
+    move-object/from16 v0, v42
 
     array-length v0, v0
 
-    move/from16 v45, v0
+    move/from16 v42, v0
 
-    add-int/lit8 v45, v45, -0x8
+    add-int/lit8 v42, v42, -0x8
 
-    const/16 v46, 0x0
+    const/16 v43, 0x0
 
-    .line 387
-    move-object/from16 v0, v43
+    .line 370
+    move-object/from16 v0, v40
 
-    move/from16 v1, v25
+    move/from16 v1, v22
 
-    move-object/from16 v2, v44
+    move-object/from16 v2, v41
 
-    move/from16 v3, v46
+    move/from16 v3, v43
 
-    move/from16 v4, v45
+    move/from16 v4, v42
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 390
+    .line 373
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x8
+    add-int/lit8 v40, v40, -0x8
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    .line 391
+    .line 374
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x4
+    add-int/lit8 v40, v40, -0x4
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-    :try_end_301
-    .catch Ljava/io/IOException; {:try_start_2bd .. :try_end_301} :catch_192
 
-    goto/16 :goto_bc
+    goto/16 :goto_5e
 
-    .line 396
-    :sswitch_303
-    :try_start_303
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 378
+    :sswitch_243
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, " process MSG_PCM_GET_SET_ID"
+    const-string/jumbo v41, " process MSG_PCM_GET_SET_ID"
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_30c
-    .catch Ljava/lang/Exception; {:try_start_303 .. :try_end_30c} :catch_3ba
-    .catch Ljava/io/IOException; {:try_start_303 .. :try_end_30c} :catch_192
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 400
-    :try_start_30c
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 379
+    invoke-virtual/range {v25 .. v25}, Ljava/io/DataInputStream;->readInt()I
 
-    const-string/jumbo v44, "add 2s delay before fetch set id"
+    move-result v23
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    .line 380
+    .local v23, "iReqSetType":I
+    add-int/lit8 v22, v22, 0x4
 
-    .line 401
-    const-wide/16 v44, 0x7d0
+    .line 381
+    invoke-static/range {v23 .. v23}, Lcom/android/supl/loc/SetID;->isValidSetIDRequest(I)Z
 
-    invoke-static/range {v44 .. v45}, Ljava/lang/Thread;->sleep(J)V
-    :try_end_31a
-    .catch Ljava/lang/InterruptedException; {:try_start_30c .. :try_end_31a} :catch_9d4
-    .catch Ljava/lang/Exception; {:try_start_30c .. :try_end_31a} :catch_3ba
-    .catch Ljava/io/IOException; {:try_start_30c .. :try_end_31a} :catch_192
+    move-result v27
 
-    .line 409
-    :goto_31a
-    :try_start_31a
+    .line 382
+    .local v27, "isValid":Z
+    if-nez v27, :cond_260
+
+    .line 383
+    sget-object v40, Ljava/lang/System;->out:Ljava/io/PrintStream;
+
+    const-string/jumbo v41, "SUPL20_PCMprocess: in Valid set id request"
+
+    invoke-virtual/range {v40 .. v41}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+
+    .line 386
+    :cond_260
+    invoke-virtual/range {v25 .. v25}, Ljava/io/DataInputStream;->readUnsignedShort()I
+
+    move-result v36
+
+    .line 387
+    .local v36, "sSessionId":I
+    add-int/lit8 v22, v22, 0x2
+
+    .line 388
+    if-gez v36, :cond_270
+
+    .line 389
+    sget-object v40, Ljava/lang/System;->out:Ljava/io/PrintStream;
+
+    const-string/jumbo v41, "SUPL20_PCMprocess: in Valid set id sSessionId"
+
+    invoke-virtual/range {v40 .. v41}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+
+    .line 392
+    :cond_270
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    invoke-virtual/range {v43 .. v43}, Lcom/android/supl/loc/SETLocationManager;->forceCellLocationUpdate()V
+    move-object/from16 v0, v40
 
-    .line 410
-    invoke-virtual/range {v28 .. v28}, Ljava/io/DataInputStream;->readInt()I
+    move/from16 v1, v23
 
-    move-result v26
-
-    .line 411
-    .local v26, "iReqSetType":I
-    add-int/lit8 v25, v25, 0x4
-
-    .line 412
-    invoke-static/range {v26 .. v26}, Lcom/android/supl/loc/SetID;->isValidSetIDRequest(I)Z
-
-    move-result v30
-
-    .line 413
-    .local v30, "isValid":Z
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    new-instance v44, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v44 .. v44}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v45, "iReqSetType: "
-
-    invoke-virtual/range {v44 .. v45}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    move-object/from16 v0, v44
-
-    move/from16 v1, v26
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v44
-
-    invoke-virtual/range {v44 .. v44}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v44
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 414
-    if-nez v30, :cond_355
-
-    .line 415
-    sget-object v43, Ljava/lang/System;->out:Ljava/io/PrintStream;
-
-    const-string/jumbo v44, "SUPL20_PCMprocess: in Valid set id request"
-
-    invoke-virtual/range {v43 .. v44}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
-
-    .line 418
-    :cond_355
-    invoke-virtual/range {v28 .. v28}, Ljava/io/DataInputStream;->readUnsignedShort()I
-
-    move-result v39
-
-    .line 419
-    .local v39, "sSessionId":I
-    add-int/lit8 v25, v25, 0x2
-
-    .line 420
-    if-gez v39, :cond_365
-
-    .line 421
-    sget-object v43, Ljava/lang/System;->out:Ljava/io/PrintStream;
-
-    const-string/jumbo v44, "SUPL20_PCMprocess: in Valid set id sSessionId"
-
-    invoke-virtual/range {v43 .. v44}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
-
-    .line 424
-    :cond_365
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
-
-    move-object/from16 v43, v0
-
-    move-object/from16 v0, v43
-
-    move/from16 v1, v26
-
-    move/from16 v2, v39
+    move/from16 v2, v36
 
     invoke-virtual {v0, v1, v2}, Lcom/android/supl/loc/SETLocationManager;->sendSETIDInfo(II)V
 
-    .line 425
+    .line 393
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    .line 426
+    .line 394
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v45, v0
+    move-object/from16 v42, v0
 
-    move-object/from16 v0, v45
+    move-object/from16 v0, v42
 
     array-length v0, v0
 
-    move/from16 v45, v0
+    move/from16 v42, v0
 
-    add-int/lit8 v45, v45, -0xe
+    add-int/lit8 v42, v42, -0xe
 
-    const/16 v46, 0x0
+    const/16 v43, 0x0
 
-    .line 425
-    move-object/from16 v0, v43
+    .line 393
+    move-object/from16 v0, v40
 
-    move/from16 v1, v25
+    move/from16 v1, v22
 
-    move-object/from16 v2, v44
+    move-object/from16 v2, v41
 
-    move/from16 v3, v46
+    move/from16 v3, v43
 
-    move/from16 v4, v45
+    move/from16 v4, v42
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 428
+    .line 396
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0xe
+    add-int/lit8 v40, v40, -0xe
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    .line 397
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0xa
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    goto/16 :goto_5e
+
+    .line 402
+    .end local v23    # "iReqSetType":I
+    .end local v27    # "isValid":Z
+    .end local v36    # "sSessionId":I
+    :sswitch_2c5
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, " process MSG_PCM_GET_LOCATION_ID"
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 403
+    invoke-virtual/range {v25 .. v25}, Ljava/io/DataInputStream;->readInt()I
+
+    move-result v21
+
+    .line 405
+    .local v21, "iPushModule":I
+    add-int/lit8 v22, v22, 0x4
+
+    .line 416
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
+
+    move-object/from16 v40, v0
+
+    invoke-virtual/range {v40 .. v40}, Landroid/os/Handler;->obtainMessage()Landroid/os/Message;
+
+    move-result-object v33
+
+    .line 417
+    .local v33, "message":Landroid/os/Message;
+    const/16 v40, 0x3
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, v33
+
+    iput v0, v1, Landroid/os/Message;->what:I
+
+    .line 418
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
+
+    move-object/from16 v40, v0
+
+    move-object/from16 v0, v40
+
+    move-object/from16 v1, v33
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
+
+    .line 420
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v40, v0
+
+    .line 421
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v41, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v42, v0
+
+    move-object/from16 v0, v42
+
+    array-length v0, v0
+
+    move/from16 v42, v0
+
+    add-int/lit8 v42, v42, -0xc
+
+    const/16 v43, 0x0
+
+    .line 420
+    move-object/from16 v0, v40
+
+    move/from16 v1, v22
+
+    move-object/from16 v2, v41
+
+    move/from16 v3, v43
+
+    move/from16 v4, v42
+
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
+
+    .line 423
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0xc
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    .line 424
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0x8
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    goto/16 :goto_5e
+
+    .line 428
+    .end local v21    # "iPushModule":I
+    .end local v33    # "message":Landroid/os/Message;
+    :sswitch_339
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, " process MSG_PCM_START_TRIGGER_PERIODIC"
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 429
     move-object/from16 v0, p0
 
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mPeriodicTriggerHandler:Lcom/android/supl/trigger/PeriodicTriggerHandler;
 
-    move/from16 v43, v0
+    move-object/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0xa
+    move-object/from16 v0, v40
 
-    move/from16 v0, v43
+    move-object/from16 v1, v25
 
-    move-object/from16 v1, p0
+    invoke-virtual {v0, v1}, Lcom/android/supl/trigger/PeriodicTriggerHandler;->startTriggerPeriodic(Ljava/io/DataInputStream;)Z
 
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-    :try_end_3b8
-    .catch Ljava/lang/Exception; {:try_start_31a .. :try_end_3b8} :catch_3ba
-    .catch Ljava/io/IOException; {:try_start_31a .. :try_end_3b8} :catch_192
-
-    goto/16 :goto_bc
+    move-result v26
 
     .line 431
-    .end local v26    # "iReqSetType":I
-    .end local v30    # "isValid":Z
-    .end local v39    # "sSessionId":I
-    :catch_3ba
-    move-exception v18
+    .local v26, "isReadSuccess":Z
+    if-eqz v26, :cond_5e
 
-    .line 432
-    .restart local v18    # "ex":Ljava/lang/Exception;
-    :try_start_3bb
+    .line 434
+    add-int/lit8 v22, v22, 0xb
+
+    .line 438
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    .line 433
+    .line 439
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v45, v0
+    move-object/from16 v42, v0
 
-    move-object/from16 v0, v45
+    move-object/from16 v0, v42
 
     array-length v0, v0
 
-    move/from16 v45, v0
+    move/from16 v42, v0
 
-    sub-int v45, v45, v25
+    add-int/lit8 v42, v42, -0x13
 
-    const/16 v46, 0x0
+    const/16 v43, 0x0
 
-    .line 432
-    move-object/from16 v0, v43
+    .line 438
+    move-object/from16 v0, v40
 
-    move/from16 v1, v25
+    move/from16 v1, v22
 
-    move-object/from16 v2, v44
+    move-object/from16 v2, v41
 
-    move/from16 v3, v46
+    move/from16 v3, v43
 
-    move/from16 v4, v45
+    move/from16 v4, v42
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 435
+    .line 441
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    sub-int v43, v43, v25
+    add-int/lit8 v40, v40, -0x13
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    .line 436
+    .line 442
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v44, v25, -0x4
+    add-int/lit8 v40, v40, -0xf
 
-    sub-int v43, v43, v44
-
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    .line 437
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    invoke-virtual/range {v18 .. v18}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    move-result-object v44
-
-    move-object/from16 v0, v43
-
-    move-object/from16 v1, v44
-
-    move-object/from16 v2, v18
-
-    invoke-static {v0, v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    goto/16 :goto_bc
-
-    .line 443
-    .end local v18    # "ex":Ljava/lang/Exception;
-    :sswitch_413
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, " process MSG_PCM_GET_LOCATION_ID"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 444
-    invoke-virtual/range {v28 .. v28}, Ljava/io/DataInputStream;->readInt()I
-
-    move-result v24
+    goto/16 :goto_5e
 
     .line 446
-    .local v24, "iPushModule":I
-    add-int/lit8 v25, v25, 0x4
+    .end local v26    # "isReadSuccess":Z
+    :sswitch_39a
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    .line 457
+    const-string/jumbo v41, " process MSG_PCM_STOP_TRIGGER_PERIODIC"
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 447
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mPeriodicTriggerHandler:Lcom/android/supl/trigger/PeriodicTriggerHandler;
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    invoke-virtual/range {v43 .. v43}, Landroid/os/Handler;->obtainMessage()Landroid/os/Message;
+    move-object/from16 v0, v40
 
-    move-result-object v36
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Lcom/android/supl/trigger/PeriodicTriggerHandler;->stopTriggerPeriodic(Ljava/io/DataInputStream;)Z
+
+    move-result v26
+
+    .line 449
+    .restart local v26    # "isReadSuccess":Z
+    if-eqz v26, :cond_5e
+
+    .line 452
+    add-int/lit8 v22, v22, 0x3
+
+    .line 455
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v40, v0
+
+    .line 456
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v41, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v42, v0
+
+    move-object/from16 v0, v42
+
+    array-length v0, v0
+
+    move/from16 v42, v0
+
+    add-int/lit8 v42, v42, -0xb
+
+    const/16 v43, 0x0
+
+    .line 455
+    move-object/from16 v0, v40
+
+    move/from16 v1, v22
+
+    move-object/from16 v2, v41
+
+    move/from16 v3, v43
+
+    move/from16 v4, v42
+
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 458
-    .local v36, "message":Landroid/os/Message;
-    const/16 v43, 0x3
+    move-object/from16 v0, p0
 
-    move/from16 v0, v43
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move-object/from16 v1, v36
+    move/from16 v40, v0
 
-    iput v0, v1, Landroid/os/Message;->what:I
+    add-int/lit8 v40, v40, -0xb
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
     .line 459
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move-object/from16 v43, v0
+    move/from16 v40, v0
 
-    move-object/from16 v0, v43
+    add-int/lit8 v40, v40, -0x7
 
-    move-object/from16 v1, v36
+    move/from16 v0, v40
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
+    move-object/from16 v1, p0
 
-    .line 461
-    move-object/from16 v0, p0
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v43, v0
-
-    .line 462
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v44, v0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v45, v0
-
-    move-object/from16 v0, v45
-
-    array-length v0, v0
-
-    move/from16 v45, v0
-
-    add-int/lit8 v45, v45, -0xc
-
-    const/16 v46, 0x0
-
-    .line 461
-    move-object/from16 v0, v43
-
-    move/from16 v1, v25
-
-    move-object/from16 v2, v44
-
-    move/from16 v3, v46
-
-    move/from16 v4, v45
-
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    goto/16 :goto_5e
 
     .line 464
-    move-object/from16 v0, p0
+    .end local v26    # "isReadSuccess":Z
+    :sswitch_3fb
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+    const-string/jumbo v41, " process MSG_PCM_ON_SI_LOCATION_REPORT"
 
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0xc
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 465
-    move-object/from16 v0, p0
+    new-instance v30, Lcom/android/supl/si/SILocationReport;
 
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+    invoke-direct/range {v30 .. v30}, Lcom/android/supl/si/SILocationReport;-><init>()V
 
-    move/from16 v43, v0
+    .line 467
+    .local v30, "locationReport":Lcom/android/supl/si/SILocationReport;
+    move-object/from16 v0, v30
 
-    add-int/lit8 v43, v43, -0x8
+    move-object/from16 v1, v25
 
-    move/from16 v0, v43
+    invoke-virtual {v0, v1}, Lcom/android/supl/si/SILocationReport;->readSILocationReport(Ljava/io/DataInputStream;)Z
 
-    move-object/from16 v1, p0
+    move-result v26
 
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    goto/16 :goto_bc
-
-    .line 469
-    .end local v24    # "iPushModule":I
-    .end local v36    # "message":Landroid/os/Message;
-    :sswitch_487
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, " process MSG_PCM_START_TRIGGER_PERIODIC"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 470
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mPeriodicTriggerHandler:Lcom/android/supl/trigger/PeriodicTriggerHandler;
-
-    move-object/from16 v43, v0
-
-    move-object/from16 v0, v43
-
-    move-object/from16 v1, v28
-
-    invoke-virtual {v0, v1}, Lcom/android/supl/trigger/PeriodicTriggerHandler;->startTriggerPeriodic(Ljava/io/DataInputStream;)Z
-
-    move-result v29
+    .line 468
+    .restart local v26    # "isReadSuccess":Z
+    if-eqz v26, :cond_5e
 
     .line 472
-    .local v29, "isReadSuccess":Z
-    if-eqz v29, :cond_bc
+    add-int/lit8 v22, v22, 0xa
 
     .line 475
-    add-int/lit8 v25, v25, 0xb
-
-    .line 479
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    .line 480
+    .line 476
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v45, v0
+    move-object/from16 v42, v0
 
-    move-object/from16 v0, v45
+    move-object/from16 v0, v42
 
     array-length v0, v0
 
-    move/from16 v45, v0
+    move/from16 v42, v0
 
-    add-int/lit8 v45, v45, -0x13
+    add-int/lit8 v42, v42, -0x12
 
-    const/16 v46, 0x0
+    const/16 v43, 0x0
 
-    .line 479
-    move-object/from16 v0, v43
+    .line 475
+    move-object/from16 v0, v40
 
-    move/from16 v1, v25
+    move/from16 v1, v22
 
-    move-object/from16 v2, v44
+    move-object/from16 v2, v41
 
-    move/from16 v3, v46
+    move/from16 v3, v43
 
-    move/from16 v4, v45
+    move/from16 v4, v42
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 482
+    .line 478
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x13
+    add-int/lit8 v40, v40, -0x12
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    .line 483
+    .line 479
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0xf
+    add-int/lit8 v40, v40, -0xe
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    goto/16 :goto_bc
+    goto/16 :goto_5e
 
-    .line 487
-    .end local v29    # "isReadSuccess":Z
-    :sswitch_4e8
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 483
+    .end local v26    # "isReadSuccess":Z
+    .end local v30    # "locationReport":Lcom/android/supl/si/SILocationReport;
+    :sswitch_45b
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, " process MSG_PCM_STOP_TRIGGER_PERIODIC"
+    const-string/jumbo v41, " process MSG_PCM_ON_SI_SESSION_COMPLETE"
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 484
+    new-instance v38, Lcom/android/supl/si/SISessionComplete;
+
+    invoke-direct/range {v38 .. v38}, Lcom/android/supl/si/SISessionComplete;-><init>()V
+
+    .line 486
+    .local v38, "sessionComplete":Lcom/android/supl/si/SISessionComplete;
+    move-object/from16 v0, v38
+
+    move-object/from16 v1, v25
+
+    invoke-virtual {v0, v1}, Lcom/android/supl/si/SISessionComplete;->readSISessionComplete(Ljava/io/DataInputStream;)Z
+
+    move-result v26
 
     .line 488
-    move-object/from16 v0, p0
+    .restart local v26    # "isReadSuccess":Z
+    if-eqz v26, :cond_5e
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mPeriodicTriggerHandler:Lcom/android/supl/trigger/PeriodicTriggerHandler;
-
-    move-object/from16 v43, v0
-
-    move-object/from16 v0, v43
-
-    move-object/from16 v1, v28
-
-    invoke-virtual {v0, v1}, Lcom/android/supl/trigger/PeriodicTriggerHandler;->stopTriggerPeriodic(Ljava/io/DataInputStream;)Z
-
-    move-result v29
-
-    .line 490
-    .restart local v29    # "isReadSuccess":Z
-    if-eqz v29, :cond_bc
+    .line 491
+    add-int/lit8 v22, v22, 0x2
 
     .line 493
-    add-int/lit8 v25, v25, 0x3
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v40, v0
+
+    .line 494
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v41, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v42, v0
+
+    move-object/from16 v0, v42
+
+    array-length v0, v0
+
+    move/from16 v42, v0
+
+    add-int/lit8 v42, v42, -0xa
+
+    const/16 v43, 0x0
+
+    .line 493
+    move-object/from16 v0, v40
+
+    move/from16 v1, v22
+
+    move-object/from16 v2, v41
+
+    move/from16 v3, v43
+
+    move/from16 v4, v42
+
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 496
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move-object/from16 v43, v0
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0xa
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
     .line 497
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v44, v0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v45, v0
-
-    move-object/from16 v0, v45
-
-    array-length v0, v0
-
-    move/from16 v45, v0
-
-    add-int/lit8 v45, v45, -0xb
-
-    const/16 v46, 0x0
-
-    .line 496
-    move-object/from16 v0, v43
-
-    move/from16 v1, v25
-
-    move-object/from16 v2, v44
-
-    move/from16 v3, v46
-
-    move/from16 v4, v45
-
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
-
-    .line 499
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0xb
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    .line 500
-    move-object/from16 v0, p0
-
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x7
+    add-int/lit8 v40, v40, -0x6
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    goto/16 :goto_bc
+    goto/16 :goto_5e
+
+    .line 502
+    .end local v26    # "isReadSuccess":Z
+    .end local v38    # "sessionComplete":Lcom/android/supl/si/SISessionComplete;
+    :sswitch_4bb
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, " process MSG_PCM_ON_SI_FAILURE"
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 503
+    new-instance v16, Lcom/android/supl/si/SIFailure;
+
+    invoke-direct/range {v16 .. v16}, Lcom/android/supl/si/SIFailure;-><init>()V
 
     .line 505
-    .end local v29    # "isReadSuccess":Z
-    :sswitch_549
-    const-string/jumbo v43, "SUPL20_PCM"
+    .local v16, "failure":Lcom/android/supl/si/SIFailure;
+    move-object/from16 v0, v16
 
-    const-string/jumbo v44, " process MSG_PCM_ON_SI_LOCATION_REPORT"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 506
-    new-instance v33, Lcom/android/supl/si/SILocationReport;
-
-    invoke-direct/range {v33 .. v33}, Lcom/android/supl/si/SILocationReport;-><init>()V
-
-    .line 508
-    .local v33, "locationReport":Lcom/android/supl/si/SILocationReport;
-    move-object/from16 v0, v33
-
-    move-object/from16 v1, v28
-
-    invoke-virtual {v0, v1}, Lcom/android/supl/si/SILocationReport;->readSILocationReport(Ljava/io/DataInputStream;)Z
-
-    move-result v29
-
-    .line 509
-    .restart local v29    # "isReadSuccess":Z
-    if-eqz v29, :cond_bc
-
-    .line 513
-    add-int/lit8 v25, v25, 0xa
-
-    .line 516
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v43, v0
-
-    .line 517
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v44, v0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v45, v0
-
-    move-object/from16 v0, v45
-
-    array-length v0, v0
-
-    move/from16 v45, v0
-
-    add-int/lit8 v45, v45, -0x12
-
-    const/16 v46, 0x0
-
-    .line 516
-    move-object/from16 v0, v43
-
-    move/from16 v1, v25
-
-    move-object/from16 v2, v44
-
-    move/from16 v3, v46
-
-    move/from16 v4, v45
-
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
-
-    .line 519
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0x12
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    .line 520
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0xe
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    goto/16 :goto_bc
-
-    .line 524
-    .end local v29    # "isReadSuccess":Z
-    .end local v33    # "locationReport":Lcom/android/supl/si/SILocationReport;
-    :sswitch_5a9
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, " process MSG_PCM_ON_SI_SESSION_COMPLETE"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 525
-    new-instance v41, Lcom/android/supl/si/SISessionComplete;
-
-    invoke-direct/range {v41 .. v41}, Lcom/android/supl/si/SISessionComplete;-><init>()V
-
-    .line 527
-    .local v41, "sessionComplete":Lcom/android/supl/si/SISessionComplete;
-    move-object/from16 v0, v41
-
-    move-object/from16 v1, v28
-
-    invoke-virtual {v0, v1}, Lcom/android/supl/si/SISessionComplete;->readSISessionComplete(Ljava/io/DataInputStream;)Z
-
-    move-result v29
-
-    .line 529
-    .restart local v29    # "isReadSuccess":Z
-    if-eqz v29, :cond_bc
-
-    .line 532
-    add-int/lit8 v25, v25, 0x2
-
-    .line 534
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v43, v0
-
-    .line 535
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v44, v0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v45, v0
-
-    move-object/from16 v0, v45
-
-    array-length v0, v0
-
-    move/from16 v45, v0
-
-    add-int/lit8 v45, v45, -0xa
-
-    const/16 v46, 0x0
-
-    .line 534
-    move-object/from16 v0, v43
-
-    move/from16 v1, v25
-
-    move-object/from16 v2, v44
-
-    move/from16 v3, v46
-
-    move/from16 v4, v45
-
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
-
-    .line 537
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0xa
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    .line 538
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0x6
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    goto/16 :goto_bc
-
-    .line 543
-    .end local v29    # "isReadSuccess":Z
-    .end local v41    # "sessionComplete":Lcom/android/supl/si/SISessionComplete;
-    :sswitch_609
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, " process MSG_PCM_ON_SI_FAILURE"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 544
-    new-instance v19, Lcom/android/supl/si/SIFailure;
-
-    invoke-direct/range {v19 .. v19}, Lcom/android/supl/si/SIFailure;-><init>()V
-
-    .line 546
-    .local v19, "failure":Lcom/android/supl/si/SIFailure;
-    move-object/from16 v0, v19
-
-    move-object/from16 v1, v28
+    move-object/from16 v1, v25
 
     invoke-virtual {v0, v1}, Lcom/android/supl/si/SIFailure;->readSIFailure(Ljava/io/DataInputStream;)Z
 
-    move-result v29
+    move-result v26
 
-    .line 547
-    .restart local v29    # "isReadSuccess":Z
-    if-eqz v29, :cond_bc
+    .line 506
+    .restart local v26    # "isReadSuccess":Z
+    if-eqz v26, :cond_5e
 
-    .line 550
-    add-int/lit8 v25, v25, 0x6
+    .line 509
+    add-int/lit8 v22, v22, 0x6
 
-    .line 553
+    .line 512
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    .line 554
+    .line 513
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v45, v0
+    move-object/from16 v42, v0
 
-    move-object/from16 v0, v45
+    move-object/from16 v0, v42
 
     array-length v0, v0
 
-    move/from16 v45, v0
+    move/from16 v42, v0
 
-    add-int/lit8 v45, v45, -0xe
+    add-int/lit8 v42, v42, -0xe
 
-    const/16 v46, 0x0
+    const/16 v43, 0x0
 
-    .line 553
-    move-object/from16 v0, v43
+    .line 512
+    move-object/from16 v0, v40
 
-    move/from16 v1, v25
+    move/from16 v1, v22
 
-    move-object/from16 v2, v44
+    move-object/from16 v2, v41
 
-    move/from16 v3, v46
+    move/from16 v3, v43
 
-    move/from16 v4, v45
+    move/from16 v4, v42
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 556
+    .line 515
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0xe
+    add-int/lit8 v40, v40, -0xe
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    .line 557
+    .line 516
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0xa
+    add-int/lit8 v40, v40, -0xa
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    goto/16 :goto_bc
+    goto/16 :goto_5e
 
-    .line 562
-    .end local v19    # "failure":Lcom/android/supl/si/SIFailure;
-    .end local v29    # "isReadSuccess":Z
-    :sswitch_669
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 521
+    .end local v16    # "failure":Lcom/android/supl/si/SIFailure;
+    .end local v26    # "isReadSuccess":Z
+    :sswitch_51b
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, " process MSG_PCM_BYE"
+    const-string/jumbo v41, " process MSG_PCM_BYE"
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 563
+    .line 522
     invoke-virtual/range {p0 .. p0}, Lcom/android/supl/commprocessor/NDKCommProcessor;->stopNetWork()V
 
-    .line 564
+    .line 523
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
-    .line 565
+    .line 524
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v45, v0
+    move-object/from16 v42, v0
 
-    move-object/from16 v0, v45
+    move-object/from16 v0, v42
 
     array-length v0, v0
 
-    move/from16 v45, v0
+    move/from16 v42, v0
 
-    add-int/lit8 v45, v45, -0x8
+    add-int/lit8 v42, v42, -0x8
 
-    .line 564
-    const/16 v46, 0x0
+    .line 523
+    const/16 v43, 0x0
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
-    move/from16 v1, v25
+    move/from16 v1, v22
 
-    move-object/from16 v2, v44
+    move-object/from16 v2, v41
 
-    move/from16 v3, v46
+    move/from16 v3, v43
 
-    move/from16 v4, v45
+    move/from16 v4, v42
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 566
+    .line 525
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x8
+    add-int/lit8 v40, v40, -0x8
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    .line 567
+    .line 526
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x4
+    add-int/lit8 v40, v40, -0x4
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    goto/16 :goto_bc
+    goto/16 :goto_5e
 
-    .line 571
-    :sswitch_6bb
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 530
+    :sswitch_56d
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, " process MSG_PCM_SYS_IDLE"
+    const-string/jumbo v41, " process MSG_PCM_SYS_IDLE"
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 572
+    .line 531
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v41, v0
 
-    .line 573
+    .line 532
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v45, v0
+    move-object/from16 v42, v0
 
-    move-object/from16 v0, v45
+    move-object/from16 v0, v42
 
     array-length v0, v0
 
-    move/from16 v45, v0
+    move/from16 v42, v0
 
-    add-int/lit8 v45, v45, -0x8
+    add-int/lit8 v42, v42, -0x8
 
-    .line 572
-    const/16 v46, 0x0
+    .line 531
+    const/16 v43, 0x0
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
-    move/from16 v1, v25
+    move/from16 v1, v22
 
-    move-object/from16 v2, v44
+    move-object/from16 v2, v41
 
-    move/from16 v3, v46
+    move/from16 v3, v43
 
-    move/from16 v4, v45
+    move/from16 v4, v42
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 574
+    .line 533
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x8
+    add-int/lit8 v40, v40, -0x8
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    .line 575
+    .line 534
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x4
+    add-int/lit8 v40, v40, -0x4
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    goto/16 :goto_bc
+    goto/16 :goto_5e
 
-    .line 578
-    :sswitch_70a
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 537
+    :sswitch_5bc
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, " process MSG_PCM_GET_OTHER_MEAS"
+    const-string/jumbo v41, " process MSG_PCM_GET_OTHER_MEAS"
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 580
-    invoke-virtual/range {v28 .. v28}, Ljava/io/DataInputStream;->readInt()I
+    .line 539
+    invoke-virtual/range {v25 .. v25}, Ljava/io/DataInputStream;->readInt()I
 
-    move-result v21
+    move-result v18
 
-    .line 581
-    .local v21, "iMeasureType":I
-    add-int/lit8 v25, v25, 0x4
+    .line 540
+    .local v18, "iMeasureType":I
+    add-int/lit8 v22, v22, 0x4
 
-    .line 582
-    packed-switch v21, :pswitch_data_a16
-
-    .line 627
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, " process SUPL_OTHER_MEAS_AFLT"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 632
-    :goto_725
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v43, v0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v44, v0
-
-    .line 633
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v45, v0
-
-    move-object/from16 v0, v45
-
-    array-length v0, v0
-
-    move/from16 v45, v0
-
-    add-int/lit8 v45, v45, -0xc
-
-    .line 632
-    const/16 v46, 0x0
-
-    move-object/from16 v0, v43
-
-    move/from16 v1, v25
-
-    move-object/from16 v2, v44
-
-    move/from16 v3, v46
-
-    move/from16 v4, v45
-
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
-
-    .line 634
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0xc
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    .line 635
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0x8
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    goto/16 :goto_bc
-
-    .line 584
-    :pswitch_76b
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, " process MSG_PCM_GET_OTDOA_GSM_MEAS"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 585
-    new-instance v9, Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;
-
-    invoke-direct {v9}, Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;-><init>()V
+    .line 541
+    packed-switch v18, :pswitch_data_8c4
 
     .line 586
-    .local v9, "configParser":Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;
-    invoke-virtual {v9}, Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;->getOtdoa_Measurement()Lcom/android/supl/loc/measure/odtoa/SUPL_OTDOA_Measurement;
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    move-result-object v35
+    const-string/jumbo v41, " process SUPL_OTHER_MEAS_AFLT"
 
-    .line 587
-    .local v35, "measurement":Lcom/android/supl/loc/measure/odtoa/SUPL_OTDOA_Measurement;
-    move-object/from16 v0, v35
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    move/from16 v1, v21
+    .line 591
+    :goto_5d7
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v40, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v41, v0
+
+    .line 592
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v42, v0
+
+    move-object/from16 v0, v42
+
+    array-length v0, v0
+
+    move/from16 v42, v0
+
+    add-int/lit8 v42, v42, -0xc
+
+    .line 591
+    const/16 v43, 0x0
+
+    move-object/from16 v0, v40
+
+    move/from16 v1, v22
+
+    move-object/from16 v2, v41
+
+    move/from16 v3, v43
+
+    move/from16 v4, v42
+
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
+
+    .line 593
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0xc
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    .line 594
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0x8
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    goto/16 :goto_5e
+
+    .line 543
+    :pswitch_61d
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, " process MSG_PCM_GET_OTDOA_GSM_MEAS"
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 544
+    new-instance v8, Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;
+
+    invoke-direct {v8}, Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;-><init>()V
+
+    .line 545
+    .local v8, "configParser":Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;
+    invoke-virtual {v8}, Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;->getOtdoa_Measurement()Lcom/android/supl/loc/measure/odtoa/SUPL_OTDOA_Measurement;
+
+    move-result-object v32
+
+    .line 546
+    .local v32, "measurement":Lcom/android/supl/loc/measure/odtoa/SUPL_OTDOA_Measurement;
+    move-object/from16 v0, v32
+
+    move/from16 v1, v18
 
     invoke-virtual {v0, v1}, Lcom/android/supl/loc/measure/odtoa/SUPL_OTDOA_Measurement;->getOTDOA_Measurement(I)[B
 
-    move-result-object v37
+    move-result-object v34
 
-    .line 588
-    .local v37, "odtoaMeas":[B
-    new-instance v40, Lcom/android/supl/nc/SendToServer;
+    .line 547
+    .local v34, "odtoaMeas":[B
+    new-instance v37, Lcom/android/supl/nc/SendToServer;
 
-    invoke-direct/range {v40 .. v40}, Lcom/android/supl/nc/SendToServer;-><init>()V
+    invoke-direct/range {v37 .. v37}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 589
-    .local v40, "sendToServer":Lcom/android/supl/nc/SendToServer;
-    move-object/from16 v0, v37
+    .line 548
+    .local v37, "sendToServer":Lcom/android/supl/nc/SendToServer;
+    move-object/from16 v0, v34
 
-    move-object/from16 v1, v40
+    move-object/from16 v1, v37
 
     iput-object v0, v1, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 590
+    .line 549
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
-    move-object/from16 v1, v40
+    move-object/from16 v1, v37
 
     invoke-virtual {v0, v1}, Lcom/android/supl/nc/NetworkController;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    goto :goto_725
+    goto :goto_5d7
 
-    .line 594
-    .end local v9    # "configParser":Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;
-    .end local v35    # "measurement":Lcom/android/supl/loc/measure/odtoa/SUPL_OTDOA_Measurement;
-    .end local v37    # "odtoaMeas":[B
-    .end local v40    # "sendToServer":Lcom/android/supl/nc/SendToServer;
-    :pswitch_79e
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 553
+    .end local v8    # "configParser":Lcom/android/supl/loc/measure/odtoa/OTDOAConfigParser;
+    .end local v32    # "measurement":Lcom/android/supl/loc/measure/odtoa/SUPL_OTDOA_Measurement;
+    .end local v34    # "odtoaMeas":[B
+    .end local v37    # "sendToServer":Lcom/android/supl/nc/SendToServer;
+    :pswitch_650
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, " process MSG_PCM_GET_OTDOA_LPP_MEAS"
+    const-string/jumbo v41, " process MSG_PCM_GET_OTDOA_LPP_MEAS"
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 595
-    new-instance v34, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;
+    .line 554
+    new-instance v31, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;
 
-    invoke-direct/range {v34 .. v34}, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;-><init>()V
+    invoke-direct/range {v31 .. v31}, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;-><init>()V
 
-    .line 596
-    .local v34, "lpp_OTDOA_MEASUREMENT":Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;
-    move-object/from16 v0, v34
+    .line 555
+    .local v31, "lpp_OTDOA_MEASUREMENT":Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;
+    move-object/from16 v0, v31
 
-    move/from16 v1, v21
+    move/from16 v1, v18
 
     invoke-virtual {v0, v1}, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->getOTDOA_MEASUREMENT(I)[B
 
-    move-result-object v8
+    move-result-object v7
 
-    .line 597
-    .local v8, "bLPPOTDOAMeas":[B
-    new-instance v40, Lcom/android/supl/nc/SendToServer;
+    .line 556
+    .local v7, "bLPPOTDOAMeas":[B
+    new-instance v37, Lcom/android/supl/nc/SendToServer;
 
-    invoke-direct/range {v40 .. v40}, Lcom/android/supl/nc/SendToServer;-><init>()V
+    invoke-direct/range {v37 .. v37}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 598
-    .restart local v40    # "sendToServer":Lcom/android/supl/nc/SendToServer;
-    move-object/from16 v0, v40
+    .line 557
+    .restart local v37    # "sendToServer":Lcom/android/supl/nc/SendToServer;
+    move-object/from16 v0, v37
 
-    iput-object v8, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
+    iput-object v7, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 599
+    .line 558
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
-    move-object/from16 v1, v40
+    move-object/from16 v1, v37
 
     invoke-virtual {v0, v1}, Lcom/android/supl/nc/NetworkController;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    goto/16 :goto_725
+    goto/16 :goto_5d7
 
-    .line 603
-    .end local v8    # "bLPPOTDOAMeas":[B
-    .end local v34    # "lpp_OTDOA_MEASUREMENT":Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;
-    .end local v40    # "sendToServer":Lcom/android/supl/nc/SendToServer;
-    :pswitch_7cc
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 562
+    .end local v7    # "bLPPOTDOAMeas":[B
+    .end local v31    # "lpp_OTDOA_MEASUREMENT":Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;
+    .end local v37    # "sendToServer":Lcom/android/supl/nc/SendToServer;
+    :pswitch_67e
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, " process MSG_PCM_GET_EOTD_MEAS"
+    const-string/jumbo v41, " process MSG_PCM_GET_EOTD_MEAS"
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 604
-    new-instance v16, Lcom/android/supl/loc/measure/eotd/EOTDParser;
+    .line 563
+    new-instance v14, Lcom/android/supl/loc/measure/eotd/EOTDParser;
 
-    invoke-direct/range {v16 .. v16}, Lcom/android/supl/loc/measure/eotd/EOTDParser;-><init>()V
+    invoke-direct {v14}, Lcom/android/supl/loc/measure/eotd/EOTDParser;-><init>()V
 
-    .line 605
-    .local v16, "eotdParser":Lcom/android/supl/loc/measure/eotd/EOTDParser;
-    invoke-virtual/range {v16 .. v16}, Lcom/android/supl/loc/measure/eotd/EOTDParser;->getEotdMeasInfo()Lcom/android/supl/loc/measure/eotd/SUPL_EOTDMeasInfo;
+    .line 564
+    .local v14, "eotdParser":Lcom/android/supl/loc/measure/eotd/EOTDParser;
+    invoke-virtual {v14}, Lcom/android/supl/loc/measure/eotd/EOTDParser;->getEotdMeasInfo()Lcom/android/supl/loc/measure/eotd/SUPL_EOTDMeasInfo;
 
-    move-result-object v15
+    move-result-object v13
 
-    .line 606
-    .local v15, "eotdMeasInfo":Lcom/android/supl/loc/measure/eotd/SUPL_EOTDMeasInfo;
-    move/from16 v0, v21
+    .line 565
+    .local v13, "eotdMeasInfo":Lcom/android/supl/loc/measure/eotd/SUPL_EOTDMeasInfo;
+    move/from16 v0, v18
 
-    invoke-virtual {v15, v0}, Lcom/android/supl/loc/measure/eotd/SUPL_EOTDMeasInfo;->getEOTDMeasInfo(I)[B
+    invoke-virtual {v13, v0}, Lcom/android/supl/loc/measure/eotd/SUPL_EOTDMeasInfo;->getEOTDMeasInfo(I)[B
 
-    move-result-object v14
+    move-result-object v12
 
-    .line 607
-    .local v14, "eotdMeas":[B
-    new-instance v40, Lcom/android/supl/nc/SendToServer;
+    .line 566
+    .local v12, "eotdMeas":[B
+    new-instance v37, Lcom/android/supl/nc/SendToServer;
 
-    invoke-direct/range {v40 .. v40}, Lcom/android/supl/nc/SendToServer;-><init>()V
+    invoke-direct/range {v37 .. v37}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 608
-    .restart local v40    # "sendToServer":Lcom/android/supl/nc/SendToServer;
-    move-object/from16 v0, v40
+    .line 567
+    .restart local v37    # "sendToServer":Lcom/android/supl/nc/SendToServer;
+    move-object/from16 v0, v37
 
-    iput-object v14, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
+    iput-object v12, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 609
+    .line 568
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
-    move-object/from16 v1, v40
+    move-object/from16 v1, v37
 
     invoke-virtual {v0, v1}, Lcom/android/supl/nc/NetworkController;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    goto/16 :goto_725
+    goto/16 :goto_5d7
 
-    .line 614
-    .end local v14    # "eotdMeas":[B
-    .end local v15    # "eotdMeasInfo":Lcom/android/supl/loc/measure/eotd/SUPL_EOTDMeasInfo;
-    .end local v16    # "eotdParser":Lcom/android/supl/loc/measure/eotd/EOTDParser;
-    .end local v40    # "sendToServer":Lcom/android/supl/nc/SendToServer;
-    :pswitch_7fc
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 573
+    .end local v12    # "eotdMeas":[B
+    .end local v13    # "eotdMeasInfo":Lcom/android/supl/loc/measure/eotd/SUPL_EOTDMeasInfo;
+    .end local v14    # "eotdParser":Lcom/android/supl/loc/measure/eotd/EOTDParser;
+    .end local v37    # "sendToServer":Lcom/android/supl/nc/SendToServer;
+    :pswitch_6ae
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, " process MSG_PCM_GET_AFLT_MEAS"
+    const-string/jumbo v41, " process MSG_PCM_GET_AFLT_MEAS"
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 615
-    new-instance v7, Lcom/android/supl/loc/measure/aflt/AfltConfigParser;
+    .line 574
+    new-instance v6, Lcom/android/supl/loc/measure/aflt/AfltConfigParser;
 
-    invoke-direct {v7}, Lcom/android/supl/loc/measure/aflt/AfltConfigParser;-><init>()V
+    invoke-direct {v6}, Lcom/android/supl/loc/measure/aflt/AfltConfigParser;-><init>()V
 
-    .line 616
-    .local v7, "afltParser":Lcom/android/supl/loc/measure/aflt/AfltConfigParser;
-    invoke-virtual {v7}, Lcom/android/supl/loc/measure/aflt/AfltConfigParser;->getAFLTMeasInfo()Lcom/android/supl/loc/measure/aflt/AfltMeasure;
+    .line 575
+    .local v6, "afltParser":Lcom/android/supl/loc/measure/aflt/AfltConfigParser;
+    invoke-virtual {v6}, Lcom/android/supl/loc/measure/aflt/AfltConfigParser;->getAFLTMeasInfo()Lcom/android/supl/loc/measure/aflt/AfltMeasure;
 
-    move-result-object v42
+    move-result-object v39
 
-    .line 617
-    .local v42, "suplafltMeasInfo":Lcom/android/supl/loc/measure/aflt/AfltMeasure;
-    move-object/from16 v0, v42
+    .line 576
+    .local v39, "suplafltMeasInfo":Lcom/android/supl/loc/measure/aflt/AfltMeasure;
+    move-object/from16 v0, v39
 
-    move/from16 v1, v21
+    move/from16 v1, v18
 
     invoke-virtual {v0, v1}, Lcom/android/supl/loc/measure/aflt/AfltMeasure;->getAFLTMeasInfo(I)[B
 
-    move-result-object v6
+    move-result-object v5
 
-    .line 618
-    .local v6, "afltMeas":[B
-    new-instance v40, Lcom/android/supl/nc/SendToServer;
+    .line 577
+    .local v5, "afltMeas":[B
+    new-instance v37, Lcom/android/supl/nc/SendToServer;
 
-    invoke-direct/range {v40 .. v40}, Lcom/android/supl/nc/SendToServer;-><init>()V
+    invoke-direct/range {v37 .. v37}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 619
-    .restart local v40    # "sendToServer":Lcom/android/supl/nc/SendToServer;
+    .line 578
+    .restart local v37    # "sendToServer":Lcom/android/supl/nc/SendToServer;
+    move-object/from16 v0, v37
+
+    iput-object v5, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
+
+    .line 579
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
+
+    move-object/from16 v40, v0
+
     move-object/from16 v0, v40
 
-    iput-object v6, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
+    move-object/from16 v1, v37
+
+    invoke-virtual {v0, v1}, Lcom/android/supl/nc/NetworkController;->addPacket(Lcom/android/supl/nc/SendToServer;)V
+
+    goto/16 :goto_5d7
+
+    .line 583
+    .end local v5    # "afltMeas":[B
+    .end local v6    # "afltParser":Lcom/android/supl/loc/measure/aflt/AfltConfigParser;
+    .end local v37    # "sendToServer":Lcom/android/supl/nc/SendToServer;
+    .end local v39    # "suplafltMeasInfo":Lcom/android/supl/loc/measure/aflt/AfltMeasure;
+    :pswitch_6e0
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, " process SUPLOtherMeasureMent NONE "
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto/16 :goto_5d7
+
+    .line 598
+    .end local v18    # "iMeasureType":I
+    :sswitch_6eb
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, " process MSG_PCM_GET_SIM_MCC_MNC"
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 600
+    invoke-virtual/range {v25 .. v25}, Ljava/io/DataInputStream;->readUnsignedShort()I
+
+    move-result v36
+
+    .line 601
+    .restart local v36    # "sSessionId":I
+    add-int/lit8 v22, v22, 0x2
+
+    .line 602
+    if-gez v36, :cond_704
+
+    .line 603
+    sget-object v40, Ljava/lang/System;->out:Ljava/io/PrintStream;
+
+    const-string/jumbo v41, "SUPL20_PCMprocess: in Valid set id sSessionId"
+
+    invoke-virtual/range {v40 .. v41}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+
+    .line 606
+    :cond_704
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
+
+    move-object/from16 v40, v0
+
+    if-eqz v40, :cond_721
+
+    .line 607
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
+
+    move-object/from16 v40, v0
+
+    move-object/from16 v0, v40
+
+    move/from16 v1, v36
+
+    invoke-virtual {v0, v1}, Lcom/android/supl/loc/SETLocationManager;->getSIM_Mnc_MCC(I)Lcom/android/supl/nc/SendToServer;
+
+    move-result-object v40
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v40
+
+    invoke-virtual {v0, v1}, Lcom/android/supl/commprocessor/NDKCommProcessor;->sendServer(Lcom/android/supl/nc/SendToServer;)V
+
+    .line 611
+    :cond_721
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v40, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v41, v0
+
+    .line 612
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v42, v0
+
+    move-object/from16 v0, v42
+
+    array-length v0, v0
+
+    move/from16 v42, v0
+
+    add-int/lit8 v42, v42, -0xa
+
+    .line 611
+    const/16 v43, 0x0
+
+    move-object/from16 v0, v40
+
+    move/from16 v1, v22
+
+    move-object/from16 v2, v41
+
+    move/from16 v3, v43
+
+    move/from16 v4, v42
+
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
+
+    .line 613
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0xa
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
+
+    .line 614
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    move/from16 v40, v0
+
+    add-int/lit8 v40, v40, -0x6
+
+    move/from16 v0, v40
+
+    move-object/from16 v1, p0
+
+    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
+
+    goto/16 :goto_5e
+
+    .line 618
+    .end local v36    # "sSessionId":I
+    :sswitch_767
+    const-string/jumbo v40, "SUPL20_PCM"
+
+    const-string/jumbo v41, " process MSG_PCM_GET_HIST_KEY"
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 619
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v40, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
+
+    move-object/from16 v41, v0
 
     .line 620
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
-
-    move-object/from16 v43, v0
-
-    move-object/from16 v0, v43
-
-    move-object/from16 v1, v40
-
-    invoke-virtual {v0, v1}, Lcom/android/supl/nc/NetworkController;->addPacket(Lcom/android/supl/nc/SendToServer;)V
-
-    goto/16 :goto_725
-
-    .line 624
-    .end local v6    # "afltMeas":[B
-    .end local v7    # "afltParser":Lcom/android/supl/loc/measure/aflt/AfltConfigParser;
-    .end local v40    # "sendToServer":Lcom/android/supl/nc/SendToServer;
-    .end local v42    # "suplafltMeasInfo":Lcom/android/supl/loc/measure/aflt/AfltMeasure;
-    :pswitch_82e
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, " process SUPLOtherMeasureMent NONE "
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto/16 :goto_725
-
-    .line 639
-    .end local v21    # "iMeasureType":I
-    :sswitch_839
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, " process MSG_PCM_GET_SIM_MCC_MNC"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 641
-    invoke-virtual/range {v28 .. v28}, Ljava/io/DataInputStream;->readUnsignedShort()I
-
-    move-result v39
-
-    .line 642
-    .restart local v39    # "sSessionId":I
-    add-int/lit8 v25, v25, 0x2
-
-    .line 643
-    if-gez v39, :cond_852
-
-    .line 644
-    sget-object v43, Ljava/lang/System;->out:Ljava/io/PrintStream;
-
-    const-string/jumbo v44, "SUPL20_PCMprocess: in Valid set id sSessionId"
-
-    invoke-virtual/range {v43 .. v44}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
-
-    .line 647
-    :cond_852
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
-
-    move-object/from16 v43, v0
-
-    if-eqz v43, :cond_86f
-
-    .line 648
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->locationID_Manager:Lcom/android/supl/loc/SETLocationManager;
-
-    move-object/from16 v43, v0
-
-    move-object/from16 v0, v43
-
-    move/from16 v1, v39
-
-    invoke-virtual {v0, v1}, Lcom/android/supl/loc/SETLocationManager;->getSIM_Mnc_MCC(I)Lcom/android/supl/nc/SendToServer;
-
-    move-result-object v43
-
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, v43
-
-    invoke-virtual {v0, v1}, Lcom/android/supl/commprocessor/NDKCommProcessor;->sendServer(Lcom/android/supl/nc/SendToServer;)V
-
-    .line 652
-    :cond_86f
-    move-object/from16 v0, p0
-
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
 
-    move-object/from16 v43, v0
+    move-object/from16 v42, v0
 
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v44, v0
-
-    .line 653
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v45, v0
-
-    move-object/from16 v0, v45
+    move-object/from16 v0, v42
 
     array-length v0, v0
 
-    move/from16 v45, v0
+    move/from16 v42, v0
 
-    add-int/lit8 v45, v45, -0xa
+    add-int/lit8 v42, v42, -0x8
 
-    .line 652
-    const/16 v46, 0x0
+    .line 619
+    const/16 v43, 0x0
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
-    move/from16 v1, v25
+    move/from16 v1, v22
 
-    move-object/from16 v2, v44
+    move-object/from16 v2, v41
 
-    move/from16 v3, v46
+    move/from16 v3, v43
 
-    move/from16 v4, v45
+    move/from16 v4, v42
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 654
+    .line 621
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0xa
+    add-int/lit8 v40, v40, -0x8
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
 
-    .line 655
+    .line 622
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, -0x6
+    add-int/lit8 v40, v40, -0x4
 
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    goto/16 :goto_bc
-
-    .line 659
-    .end local v39    # "sSessionId":I
-    :sswitch_8b5
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    const-string/jumbo v44, " process MSG_PCM_GET_HIST_KEY"
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 660
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v43, v0
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v44, v0
-
-    .line 661
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->m_bMasterBuffer:[B
-
-    move-object/from16 v45, v0
-
-    move-object/from16 v0, v45
-
-    array-length v0, v0
-
-    move/from16 v45, v0
-
-    add-int/lit8 v45, v45, -0x8
-
-    .line 660
-    const/16 v46, 0x0
-
-    move-object/from16 v0, v43
-
-    move/from16 v1, v25
-
-    move-object/from16 v2, v44
-
-    move/from16 v3, v46
-
-    move/from16 v4, v45
-
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
-
-    .line 662
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0x8
-
-    move/from16 v0, v43
-
-    move-object/from16 v1, p0
-
-    iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iLastWritePostion:I
-
-    .line 663
-    move-object/from16 v0, p0
-
-    iget v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-
-    move/from16 v43, v0
-
-    add-int/lit8 v43, v43, -0x4
-
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->iTotalArrival:I
-    :try_end_902
-    .catch Ljava/io/IOException; {:try_start_3bb .. :try_end_902} :catch_192
+    :try_end_7b4
+    .catch Ljava/io/IOException; {:try_start_1fd .. :try_end_7b4} :catch_d4
 
-    .line 668
-    :try_start_902
+    .line 627
+    :try_start_7b4
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->final_key:Ljavax/crypto/SecretKey;
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    if-nez v43, :cond_9aa
+    if-nez v40, :cond_85c
 
-    .line 670
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 629
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, "generator a key"
+    const-string/jumbo v41, "generator a key"
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 673
-    const-string/jumbo v43, "AES"
+    .line 632
+    const-string/jumbo v40, "AES"
 
-    invoke-static/range {v43 .. v43}, Ljavax/crypto/KeyGenerator;->getInstance(Ljava/lang/String;)Ljavax/crypto/KeyGenerator;
+    invoke-static/range {v40 .. v40}, Ljavax/crypto/KeyGenerator;->getInstance(Ljava/lang/String;)Ljavax/crypto/KeyGenerator;
 
-    move-result-object v32
+    move-result-object v29
 
-    .line 674
-    .local v32, "keyGen":Ljavax/crypto/KeyGenerator;
-    new-instance v43, Ljava/security/SecureRandom;
+    .line 633
+    .local v29, "keyGen":Ljavax/crypto/KeyGenerator;
+    new-instance v40, Ljava/security/SecureRandom;
 
-    invoke-direct/range {v43 .. v43}, Ljava/security/SecureRandom;-><init>()V
+    invoke-direct/range {v40 .. v40}, Ljava/security/SecureRandom;-><init>()V
 
-    const/16 v44, 0x80
+    const/16 v41, 0x80
 
-    move-object/from16 v0, v32
+    move-object/from16 v0, v29
 
-    move/from16 v1, v44
+    move/from16 v1, v41
 
-    move-object/from16 v2, v43
+    move-object/from16 v2, v40
 
     invoke-virtual {v0, v1, v2}, Ljavax/crypto/KeyGenerator;->init(ILjava/security/SecureRandom;)V
 
-    .line 675
-    invoke-virtual/range {v32 .. v32}, Ljavax/crypto/KeyGenerator;->generateKey()Ljavax/crypto/SecretKey;
+    .line 634
+    invoke-virtual/range {v29 .. v29}, Ljavax/crypto/KeyGenerator;->generateKey()Ljavax/crypto/SecretKey;
 
-    move-result-object v43
+    move-result-object v40
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
     move-object/from16 v1, p0
 
     iput-object v0, v1, Lcom/android/supl/commprocessor/NDKCommProcessor;->final_key:Ljavax/crypto/SecretKey;
-    :try_end_934
-    .catch Ljava/security/NoSuchAlgorithmException; {:try_start_902 .. :try_end_934} :catch_9b4
-    .catch Ljava/lang/Exception; {:try_start_902 .. :try_end_934} :catch_9c4
-    .catch Ljava/io/IOException; {:try_start_902 .. :try_end_934} :catch_192
+    :try_end_7e6
+    .catch Ljava/security/NoSuchAlgorithmException; {:try_start_7b4 .. :try_end_7e6} :catch_866
+    .catch Ljava/lang/Exception; {:try_start_7b4 .. :try_end_7e6} :catch_876
+    .catch Ljava/io/IOException; {:try_start_7b4 .. :try_end_7e6} :catch_d4
 
-    .line 695
-    .end local v32    # "keyGen":Ljavax/crypto/KeyGenerator;
-    :goto_934
-    :try_start_934
+    .line 654
+    .end local v29    # "keyGen":Ljavax/crypto/KeyGenerator;
+    :goto_7e6
+    :try_start_7e6
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/supl/commprocessor/NDKCommProcessor;->final_key:Ljavax/crypto/SecretKey;
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    invoke-interface/range {v43 .. v43}, Ljavax/crypto/SecretKey;->getEncoded()[B
+    invoke-interface/range {v40 .. v40}, Ljavax/crypto/SecretKey;->getEncoded()[B
 
-    move-result-object v31
+    move-result-object v28
 
-    .line 696
-    .local v31, "key":[B
-    new-instance v38, Lcom/android/supl/nc/SendToServer;
+    .line 655
+    .local v28, "key":[B
+    new-instance v35, Lcom/android/supl/nc/SendToServer;
 
-    invoke-direct/range {v38 .. v38}, Lcom/android/supl/nc/SendToServer;-><init>()V
+    invoke-direct/range {v35 .. v35}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 697
-    .local v38, "packet":Lcom/android/supl/nc/SendToServer;
-    move-object/from16 v0, v31
+    .line 656
+    .local v35, "packet":Lcom/android/supl/nc/SendToServer;
+    move-object/from16 v0, v28
 
     array-length v0, v0
 
-    move/from16 v43, v0
+    move/from16 v40, v0
 
-    add-int/lit8 v43, v43, 0x8
+    add-int/lit8 v40, v40, 0x8
 
-    move/from16 v0, v43
+    move/from16 v0, v40
 
     new-array v0, v0, [B
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
-    move-object/from16 v1, v38
+    move-object/from16 v1, v35
 
     iput-object v0, v1, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 698
-    const/16 v22, 0x0
+    .line 657
+    const/16 v19, 0x0
 
-    .line 699
-    .local v22, "iOffset":I
-    move-object/from16 v0, v38
-
-    iget-object v0, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
-
-    move-object/from16 v43, v0
-
-    move-object/from16 v0, v38
+    .line 658
+    .local v19, "iOffset":I
+    move-object/from16 v0, v35
 
     iget-object v0, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    move-object/from16 v44, v0
+    move-object/from16 v40, v0
 
-    move-object/from16 v0, v44
+    move-object/from16 v0, v35
+
+    iget-object v0, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
+
+    move-object/from16 v41, v0
+
+    move-object/from16 v0, v41
 
     array-length v0, v0
 
-    move/from16 v44, v0
+    move/from16 v41, v0
 
-    add-int/lit8 v44, v44, -0x4
+    add-int/lit8 v41, v41, -0x4
 
-    move-object/from16 v0, v43
+    move-object/from16 v0, v40
 
-    move/from16 v1, v22
+    move/from16 v1, v19
 
-    move/from16 v2, v44
-
-    invoke-static {v0, v1, v2}, Lcom/android/bytewriter/IO;->put4([BII)I
-
-    move-result v22
-
-    .line 700
-    move-object/from16 v0, v38
-
-    iget-object v0, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
-
-    move-object/from16 v43, v0
-
-    const/16 v44, 0x11b
-
-    move-object/from16 v0, v43
-
-    move/from16 v1, v22
-
-    move/from16 v2, v44
+    move/from16 v2, v41
 
     invoke-static {v0, v1, v2}, Lcom/android/bytewriter/IO;->put4([BII)I
 
-    move-result v22
+    move-result v19
 
-    .line 701
-    move-object/from16 v0, v38
+    .line 659
+    move-object/from16 v0, v35
 
     iget-object v0, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    move-object/from16 v43, v0
+    move-object/from16 v40, v0
 
-    move-object/from16 v0, v31
+    const/16 v41, 0x11b
+
+    move-object/from16 v0, v40
+
+    move/from16 v1, v19
+
+    move/from16 v2, v41
+
+    invoke-static {v0, v1, v2}, Lcom/android/bytewriter/IO;->put4([BII)I
+
+    move-result v19
+
+    .line 660
+    move-object/from16 v0, v35
+
+    iget-object v0, v0, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
+
+    move-object/from16 v40, v0
+
+    move-object/from16 v0, v28
 
     array-length v0, v0
 
-    move/from16 v44, v0
+    move/from16 v41, v0
 
-    const/16 v45, 0x0
+    const/16 v42, 0x0
 
-    move-object/from16 v0, v31
+    move-object/from16 v0, v28
 
-    move/from16 v1, v45
+    move/from16 v1, v42
 
-    move-object/from16 v2, v43
+    move-object/from16 v2, v40
 
-    move/from16 v3, v22
+    move/from16 v3, v19
 
-    move/from16 v4, v44
+    move/from16 v4, v41
 
-    invoke-static {v0, v1, v2, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 702
+    .line 661
     move-object/from16 v0, p0
 
-    move-object/from16 v1, v38
+    move-object/from16 v1, v35
 
     invoke-virtual {v0, v1}, Lcom/android/supl/commprocessor/NDKCommProcessor;->sendServer(Lcom/android/supl/nc/SendToServer;)V
-    :try_end_9a8
-    .catch Ljava/io/IOException; {:try_start_934 .. :try_end_9a8} :catch_192
+    :try_end_85a
+    .catch Ljava/io/IOException; {:try_start_7e6 .. :try_end_85a} :catch_d4
 
-    goto/16 :goto_bc
+    goto/16 :goto_5e
 
-    .line 679
-    .end local v22    # "iOffset":I
-    .end local v31    # "key":[B
-    .end local v38    # "packet":Lcom/android/supl/nc/SendToServer;
-    :cond_9aa
-    :try_start_9aa
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 638
+    .end local v19    # "iOffset":I
+    .end local v28    # "key":[B
+    .end local v35    # "packet":Lcom/android/supl/nc/SendToServer;
+    :cond_85c
+    :try_start_85c
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    const-string/jumbo v44, "key is already exist."
+    const-string/jumbo v41, "key is already exist."
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_9b3
-    .catch Ljava/security/NoSuchAlgorithmException; {:try_start_9aa .. :try_end_9b3} :catch_9b4
-    .catch Ljava/lang/Exception; {:try_start_9aa .. :try_end_9b3} :catch_9c4
-    .catch Ljava/io/IOException; {:try_start_9aa .. :try_end_9b3} :catch_192
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    :try_end_865
+    .catch Ljava/security/NoSuchAlgorithmException; {:try_start_85c .. :try_end_865} :catch_866
+    .catch Ljava/lang/Exception; {:try_start_85c .. :try_end_865} :catch_876
+    .catch Ljava/io/IOException; {:try_start_85c .. :try_end_865} :catch_d4
 
-    goto :goto_934
+    goto :goto_7e6
 
-    .line 683
-    :catch_9b4
-    move-exception v13
-
-    .line 684
-    .local v13, "e":Ljava/security/NoSuchAlgorithmException;
-    :try_start_9b5
-    const-string/jumbo v43, "SUPL20_PCM"
-
-    invoke-virtual {v13}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    move-result-object v44
-
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 685
-    invoke-virtual {v13}, Ljava/lang/Throwable;->printStackTrace()V
-
-    goto/16 :goto_bc
-
-    .line 689
-    .end local v13    # "e":Ljava/security/NoSuchAlgorithmException;
-    :catch_9c4
+    .line 642
+    :catch_866
     move-exception v11
 
-    .line 690
-    .local v11, "e":Ljava/lang/Exception;
-    const-string/jumbo v43, "SUPL20_PCM"
+    .line 643
+    .local v11, "e":Ljava/security/NoSuchAlgorithmException;
+    :try_start_867
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    invoke-virtual {v11}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v11}, Ljava/security/NoSuchAlgorithmException;->getMessage()Ljava/lang/String;
 
-    move-result-object v44
+    move-result-object v41
 
-    invoke-static/range {v43 .. v44}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 691
-    invoke-virtual {v11}, Ljava/lang/Throwable;->printStackTrace()V
-    :try_end_9d2
-    .catch Ljava/io/IOException; {:try_start_9b5 .. :try_end_9d2} :catch_192
+    .line 644
+    invoke-virtual {v11}, Ljava/security/NoSuchAlgorithmException;->printStackTrace()V
 
-    goto/16 :goto_bc
+    goto/16 :goto_5e
 
-    .line 403
-    .end local v11    # "e":Ljava/lang/Exception;
-    :catch_9d4
-    move-exception v12
+    .line 648
+    .end local v11    # "e":Ljava/security/NoSuchAlgorithmException;
+    :catch_876
+    move-exception v10
 
-    .local v12, "e":Ljava/lang/InterruptedException;
-    goto/16 :goto_31a
+    .line 649
+    .local v10, "e":Ljava/lang/Exception;
+    const-string/jumbo v40, "SUPL20_PCM"
 
-    .line 351
-    nop
+    invoke-virtual {v10}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
-    :sswitch_data_9d8
+    move-result-object v41
+
+    invoke-static/range {v40 .. v41}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 650
+    invoke-virtual {v10}, Ljava/lang/Exception;->printStackTrace()V
+    :try_end_884
+    .catch Ljava/io/IOException; {:try_start_867 .. :try_end_884} :catch_d4
+
+    goto/16 :goto_5e
+
+    .line 334
+    :sswitch_data_886
     .sparse-switch
-        0x0 -> :sswitch_f8
-        0x100 -> :sswitch_669
-        0x101 -> :sswitch_22d
-        0x102 -> :sswitch_303
-        0x103 -> :sswitch_413
-        0x104 -> :sswitch_487
-        0x105 -> :sswitch_4e8
-        0x106 -> :sswitch_549
-        0x107 -> :sswitch_5a9
-        0x108 -> :sswitch_609
-        0x112 -> :sswitch_6bb
-        0x113 -> :sswitch_70a
-        0x118 -> :sswitch_839
-        0x11a -> :sswitch_8b5
-        0x300 -> :sswitch_2bd
+        0x0 -> :sswitch_98
+        0x100 -> :sswitch_51b
+        0x101 -> :sswitch_16f
+        0x102 -> :sswitch_243
+        0x103 -> :sswitch_2c5
+        0x104 -> :sswitch_339
+        0x105 -> :sswitch_39a
+        0x106 -> :sswitch_3fb
+        0x107 -> :sswitch_45b
+        0x108 -> :sswitch_4bb
+        0x112 -> :sswitch_56d
+        0x113 -> :sswitch_5bc
+        0x118 -> :sswitch_6eb
+        0x11a -> :sswitch_767
+        0x300 -> :sswitch_1fd
     .end sparse-switch
 
-    .line 582
-    :pswitch_data_a16
+    .line 541
+    :pswitch_data_8c4
     .packed-switch 0x0
-        :pswitch_82e
-        :pswitch_76b
-        :pswitch_79e
-        :pswitch_7cc
-        :pswitch_7fc
+        :pswitch_6e0
+        :pswitch_61d
+        :pswitch_650
+        :pswitch_67e
+        :pswitch_6ae
     .end packed-switch
 .end method
 
@@ -3315,32 +2911,32 @@
     .registers 5
 
     .prologue
-    .line 774
+    .line 733
     iget-object v2, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->pauseLock:Ljava/lang/Object;
 
     monitor-enter v2
 
-    .line 775
+    .line 734
     :try_start_3
     iget-boolean v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->isPause:Z
 
     if-eqz v1, :cond_25
 
-    .line 776
+    .line 735
     const-string/jumbo v1, "SUPL20_PCM"
 
     const-string/jumbo v3, "PCM reInit invoked"
 
     invoke-static {v1, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 777
+    .line 736
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->readPacket:Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
     invoke-virtual {v1}, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->getThreadName()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 778
+    .line 737
     .local v0, "stThrName":Ljava/lang/String;
     new-instance v1, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
@@ -3348,12 +2944,12 @@
 
     iput-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->readPacket:Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
-    .line 779
+    .line 738
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
     invoke-virtual {v1}, Lcom/android/supl/nc/NetworkController;->initRead_WriteThread()V
 
-    .line 780
+    .line 739
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->isPause:Z
@@ -3364,10 +2960,10 @@
     :cond_25
     monitor-exit v2
 
-    .line 784
+    .line 732
     return-void
 
-    .line 774
+    .line 733
     :catchall_27
     move-exception v1
 
@@ -3380,22 +2976,22 @@
     .registers 6
 
     .prologue
-    .line 259
+    .line 255
     new-instance v2, Lcom/android/supl/nc/SendToServer;
 
     invoke-direct {v2}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 260
+    .line 256
     .local v2, "sendToServer":Lcom/android/supl/nc/SendToServer;
     const/16 v3, 0xc
 
     new-array v0, v3, [B
 
-    .line 262
+    .line 258
     .local v0, "bData":[B
     const/4 v1, 0x0
 
-    .line 263
+    .line 259
     .local v1, "offset":I
     const/16 v3, 0x8
 
@@ -3403,29 +2999,29 @@
 
     move-result v1
 
-    .line 264
+    .line 260
     const/16 v3, 0x100
 
     invoke-static {v0, v1, v3}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v1
 
-    .line 265
+    .line 261
     iput-object v0, v2, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 266
+    .line 262
     iget-object v3, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
     invoke-virtual {v3, v2}, Lcom/android/supl/nc/NetworkController;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 267
+    .line 263
     const-string/jumbo v3, "SUPL20_PCM"
 
     const-string/jumbo v4, "sendByeMessage"
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 268
+    .line 254
     return-void
 .end method
 
@@ -3433,22 +3029,22 @@
     .registers 7
 
     .prologue
-    .line 197
+    .line 193
     new-instance v3, Lcom/android/supl/nc/SendToServer;
 
     invoke-direct {v3}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 199
+    .line 195
     .local v3, "sendToServer":Lcom/android/supl/nc/SendToServer;
     const/16 v4, 0xc
 
     new-array v0, v4, [B
 
-    .line 201
+    .line 197
     .local v0, "bData":[B
     const/4 v2, 0x0
 
-    .line 202
+    .line 198
     .local v2, "offset":I
     const/16 v4, 0x8
 
@@ -3456,54 +3052,54 @@
 
     move-result v2
 
-    .line 203
+    .line 199
     const/16 v4, 0x109
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 204
+    .line 200
     const v4, 0x31415926
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 205
+    .line 201
     iput-object v0, v3, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 206
+    .line 202
     iget-object v4, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
     invoke-virtual {v4, v3}, Lcom/android/supl/nc/NetworkController;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 207
+    .line 203
     const-string/jumbo v4, "SUPL20_PCM"
 
     const-string/jumbo v5, "sendHelloMessage"
 
     invoke-static {v4, v5}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 209
+    .line 205
     iget-object v4, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v4}, Landroid/os/Handler;->obtainMessage()Landroid/os/Message;
 
     move-result-object v1
 
-    .line 210
+    .line 206
     .local v1, "message":Landroid/os/Message;
     const/4 v4, 0x1
 
     iput v4, v1, Landroid/os/Message;->what:I
 
-    .line 211
+    .line 207
     iget-object v4, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v4, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 212
+    .line 192
     return-void
 .end method
 
@@ -3512,12 +3108,12 @@
     .param p1, "sendToServer"    # Lcom/android/supl/nc/SendToServer;
 
     .prologue
-    .line 277
+    .line 273
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
     invoke-virtual {v0, p1}, Lcom/android/supl/nc/NetworkController;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 279
+    .line 272
     return-void
 .end method
 
@@ -3525,19 +3121,19 @@
     .registers 5
 
     .prologue
-    .line 728
+    .line 687
     const-string/jumbo v0, "SUPL20_PCM"
 
     const-string/jumbo v1, "PCM stopNetWork invoked"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 729
+    .line 688
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->readPacket:Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
     invoke-virtual {v0}, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->stopRead()V
 
-    .line 730
+    .line 689
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->nc:Lcom/android/supl/nc/NetworkController;
 
     const/4 v1, 0x1
@@ -3548,7 +3144,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Lcom/android/supl/nc/NetworkController;->stop(ZLjava/lang/Object;Z)Z
 
-    .line 732
+    .line 686
     return-void
 .end method
 
@@ -3556,7 +3152,7 @@
     .registers 3
 
     .prologue
-    .line 848
+    .line 807
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -3620,44 +3216,44 @@
     .end annotation
 
     .prologue
-    .line 286
+    .line 282
     if-nez p1, :cond_17
 
-    .line 287
+    .line 283
     :try_start_2
     new-instance v1, Ljava/lang/NullPointerException;
 
-    .line 288
+    .line 284
     const-string/jumbo v2, "fromServer object must not be null"
 
-    .line 287
+    .line 283
     invoke-direct {v1, v2}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
     throw v1
     :try_end_b
     .catch Ljava/lang/InterruptedException; {:try_start_2 .. :try_end_b} :catch_b
 
-    .line 293
+    .line 289
     :catch_b
     move-exception v0
 
-    .line 294
+    .line 290
     .local v0, "ex":Ljava/lang/InterruptedException;
     const-string/jumbo v1, "SUPL20_PCM"
 
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/InterruptedException;->getMessage()Ljava/lang/String;
 
     move-result-object v2
 
     invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 296
+    .line 280
     .end local v0    # "ex":Ljava/lang/InterruptedException;
     :cond_16
     :goto_16
     return-void
 
-    .line 290
+    .line 286
     :cond_17
     :try_start_17
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->readPacket:Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
@@ -3672,7 +3268,7 @@
 
     if-eqz v1, :cond_16
 
-    .line 291
+    .line 287
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor;->readPacket:Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
     invoke-static {v1}, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->-get0(Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;)Ljava/util/concurrent/BlockingQueue;

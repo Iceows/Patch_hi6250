@@ -9,29 +9,7 @@
 .field private static is_service_start:Z
 
 
-# instance fields
-.field private mContext:Landroid/content/Context;
-
-
 # direct methods
-.method static synthetic -get0()Ljava/lang/String;
-    .registers 1
-
-    sget-object v0, Lcom/android/supl/receiver/BootUpReceiver;->TAG:Ljava/lang/String;
-
-    return-object v0
-.end method
-
-.method static synthetic -get1(Lcom/android/supl/receiver/BootUpReceiver;)Landroid/content/Context;
-    .registers 2
-    .param p0, "-this"    # Lcom/android/supl/receiver/BootUpReceiver;
-
-    .prologue
-    iget-object v0, p0, Lcom/android/supl/receiver/BootUpReceiver;->mContext:Landroid/content/Context;
-
-    return-object v0
-.end method
-
 .method static constructor <clinit>()V
     .registers 1
 
@@ -55,39 +33,58 @@
 .end method
 
 .method public constructor <init>()V
-    .registers 2
+    .registers 1
 
     .prologue
     .line 53
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
-    .line 57
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lcom/android/supl/receiver/BootUpReceiver;->mContext:Landroid/content/Context;
-
-    .line 53
     return-void
 .end method
 
 .method private startSuplServices(Landroid/content/Context;)V
-    .registers 3
+    .registers 5
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 89
-    iput-object p1, p0, Lcom/android/supl/receiver/BootUpReceiver;->mContext:Landroid/content/Context;
+    .line 82
+    new-instance v0, Landroid/content/Intent;
 
-    .line 90
-    new-instance v0, Lcom/android/supl/receiver/BootUpReceiver$1;
+    const-class v1, Lcom/android/supl/loc/SUPLPlatformService;
 
-    invoke-direct {v0, p0}, Lcom/android/supl/receiver/BootUpReceiver$1;-><init>(Lcom/android/supl/receiver/BootUpReceiver;)V
+    invoke-direct {v0, p1, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    .line 103
-    .local v0, "thread":Ljava/lang/Thread;
-    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
+    .line 83
+    .local v0, "serviceIntent":Landroid/content/Intent;
+    invoke-virtual {p1, v0}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
 
-    .line 104
+    .line 84
+    sget-object v1, Lcom/android/supl/receiver/BootUpReceiver;->TAG:Ljava/lang/String;
+
+    const-string/jumbo v2, "Starting platform service"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 86
+    new-instance v0, Landroid/content/Intent;
+
+    .end local v0    # "serviceIntent":Landroid/content/Intent;
+    const-class v1, Lcom/android/supl/commprocessor/SUPLSCMService;
+
+    invoke-direct {v0, p1, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    .line 87
+    .restart local v0    # "serviceIntent":Landroid/content/Intent;
+    invoke-virtual {p1, v0}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+
+    .line 88
+    sget-object v1, Lcom/android/supl/receiver/BootUpReceiver;->TAG:Ljava/lang/String;
+
+    const-string/jumbo v2, "Starting scm service"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 81
     return-void
 .end method
 
@@ -99,14 +96,14 @@
     .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 61
+    .line 60
     const-string/jumbo v2, "is_hisi_connectivity_chip"
 
     invoke-static {v2}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 62
+    .line 61
     .local v1, "chipType":Ljava/lang/String;
     const-string/jumbo v2, "1"
 
@@ -116,45 +113,18 @@
 
     if-nez v2, :cond_19
 
-    .line 64
+    .line 63
     sget-object v2, Lcom/android/supl/receiver/BootUpReceiver;->TAG:Ljava/lang/String;
 
     const-string/jumbo v3, "BootUpReceiver onReceive called, but quit now"
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 65
+    .line 64
     return-void
 
-    .line 68
+    .line 67
     :cond_19
-    const-string/jumbo v2, "ro.connectivity.sub_chiptype"
-
-    invoke-static {v2}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v1
-
-    .line 69
-    const-string/jumbo v2, "hi1102"
-
-    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_32
-
-    .line 70
-    sget-object v2, Lcom/android/supl/receiver/BootUpReceiver;->TAG:Ljava/lang/String;
-
-    const-string/jumbo v3, "supl application quit now"
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 71
-    return-void
-
-    .line 74
-    :cond_32
     sget-object v2, Lcom/android/supl/receiver/BootUpReceiver;->TAG:Ljava/lang/String;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -181,22 +151,22 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 76
+    .line 69
     const-string/jumbo v0, "android.intent.action.SIM_STATE_CHANGED"
 
-    .line 78
+    .line 71
     .local v0, "ACTION_SIM_STATE_CHANGED":Ljava/lang/String;
     sget-boolean v2, Lcom/android/supl/receiver/BootUpReceiver;->is_service_start:Z
 
-    if-nez v2, :cond_86
+    if-nez v2, :cond_6d
 
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v2
 
-    if-eqz v2, :cond_86
+    if-eqz v2, :cond_6d
 
-    .line 79
+    .line 72
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v2
@@ -207,9 +177,9 @@
 
     move-result v2
 
-    if-nez v2, :cond_80
+    if-nez v2, :cond_67
 
-    .line 80
+    .line 73
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v2
@@ -220,10 +190,10 @@
 
     move-result v2
 
-    .line 79
-    if-nez v2, :cond_80
+    .line 72
+    if-nez v2, :cond_67
 
-    .line 81
+    .line 74
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v2
@@ -232,19 +202,19 @@
 
     move-result v2
 
-    .line 79
-    if-eqz v2, :cond_86
+    .line 72
+    if-eqz v2, :cond_6d
 
-    .line 82
-    :cond_80
+    .line 75
+    :cond_67
     invoke-direct {p0, p1}, Lcom/android/supl/receiver/BootUpReceiver;->startSuplServices(Landroid/content/Context;)V
 
-    .line 83
+    .line 76
     const/4 v2, 0x1
 
     sput-boolean v2, Lcom/android/supl/receiver/BootUpReceiver;->is_service_start:Z
 
-    .line 86
-    :cond_86
+    .line 59
+    :cond_6d
     return-void
 .end method

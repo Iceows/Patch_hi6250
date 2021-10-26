@@ -192,7 +192,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 222
+    .line 210
     return-void
 .end method
 
@@ -286,7 +286,7 @@
     .line 232
     invoke-virtual {p0}, Lcom/android/supl/trigger/PeriodicTriggerHandler$RemainderTask;->stopTrigger()V
 
-    .line 235
+    .line 225
     :cond_52
     return-void
 .end method
@@ -378,8 +378,8 @@
     invoke-virtual {v1}, Ljava/util/Timer;->cancel()V
 
     .line 244
-    invoke-virtual {p0}, Ljava/util/TimerTask;->cancel()Z
+    invoke-virtual {p0}, Lcom/android/supl/trigger/PeriodicTriggerHandler$RemainderTask;->cancel()Z
 
-    .line 246
+    .line 237
     return-void
 .end method

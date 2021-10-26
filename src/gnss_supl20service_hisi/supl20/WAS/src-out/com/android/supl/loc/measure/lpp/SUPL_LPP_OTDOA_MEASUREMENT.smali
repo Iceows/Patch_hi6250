@@ -51,7 +51,7 @@
 
     iput-object v0, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->stLPPOTDOAError:Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_ERRINFO;
 
-    .line 51
+    .line 46
     return-void
 .end method
 
@@ -66,14 +66,11 @@
 
     const/4 v7, 0x0
 
-    .line 55
-    const/4 v4, 0x4
-
     .line 57
-    .local v4, "iSize":I
     const/16 v4, 0xc
 
     .line 58
+    .local v4, "iSize":I
     add-int/lit8 v4, v4, 0x4
 
     .line 60
@@ -87,7 +84,7 @@
     .local v1, "bError":[B
     iget-boolean v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->bValidMmtPresent:Z
 
-    if-eqz v5, :cond_34
+    if-eqz v5, :cond_33
 
     .line 64
     add-int/lit8 v4, v4, 0x4
@@ -95,11 +92,11 @@
     .line 65
     iget-boolean v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->bValidMmtPresent:Z
 
-    if-eqz v5, :cond_22
+    if-eqz v5, :cond_21
 
     iget-object v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->stLPPOTDOASignalMmt:Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_SIGNAL_MMT;
 
-    if-eqz v5, :cond_22
+    if-eqz v5, :cond_21
 
     .line 66
     iget-object v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->stLPPOTDOASignalMmt:Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_SIGNAL_MMT;
@@ -110,7 +107,7 @@
 
     .line 67
     .local v2, "bMMT":[B
-    if-eqz v2, :cond_22
+    if-eqz v2, :cond_21
 
     .line 68
     array-length v5, v2
@@ -119,14 +116,14 @@
 
     .line 72
     .end local v2    # "bMMT":[B
-    :cond_22
+    :cond_21
     iget-boolean v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->bErrorInfoPresent:Z
 
-    if-eqz v5, :cond_34
+    if-eqz v5, :cond_33
 
     iget-object v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->stLPPOTDOAError:Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_ERRINFO;
 
-    if-eqz v5, :cond_34
+    if-eqz v5, :cond_33
 
     .line 73
     iget-object v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->stLPPOTDOAError:Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_ERRINFO;
@@ -137,7 +134,7 @@
 
     .line 74
     .local v1, "bError":[B
-    if-eqz v1, :cond_34
+    if-eqz v1, :cond_33
 
     .line 75
     array-length v5, v1
@@ -146,7 +143,7 @@
 
     .line 79
     .end local v1    # "bError":[B
-    :cond_34
+    :cond_33
     const/4 v3, 0x0
 
     .line 80
@@ -177,11 +174,11 @@
     .line 86
     iget-boolean v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->bValidMmtPresent:Z
 
-    if-eqz v5, :cond_71
+    if-eqz v5, :cond_70
 
     move v5, v6
 
-    :goto_4c
+    :goto_4b
     invoke-static {v0, v3, v5}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v3
@@ -189,15 +186,15 @@
     .line 87
     iget-boolean v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->bValidMmtPresent:Z
 
-    if-eqz v5, :cond_70
+    if-eqz v5, :cond_6f
 
     .line 88
-    if-eqz v2, :cond_5c
+    if-eqz v2, :cond_5b
 
     .line 89
     array-length v5, v2
 
-    invoke-static {v2, v7, v0, v3, v5}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v2, v7, v0, v3, v5}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 90
     array-length v5, v2
@@ -205,12 +202,12 @@
     add-int/2addr v3, v5
 
     .line 93
-    :cond_5c
+    :cond_5b
     iget-boolean v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->bErrorInfoPresent:Z
 
-    if-eqz v5, :cond_73
+    if-eqz v5, :cond_72
 
-    :goto_60
+    :goto_5f
     invoke-static {v0, v3, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v3
@@ -218,14 +215,14 @@
     .line 94
     iget-boolean v5, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MEASUREMENT;->bErrorInfoPresent:Z
 
-    if-eqz v5, :cond_70
+    if-eqz v5, :cond_6f
 
-    if-eqz v1, :cond_70
+    if-eqz v1, :cond_6f
 
     .line 95
     array-length v5, v1
 
-    invoke-static {v1, v7, v0, v3, v5}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v7, v0, v3, v5}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 96
     array-length v5, v1
@@ -233,18 +230,18 @@
     add-int/2addr v3, v5
 
     .line 99
-    :cond_70
+    :cond_6f
     return-object v0
 
-    :cond_71
+    :cond_70
     move v5, v7
 
     .line 86
-    goto :goto_4c
+    goto :goto_4b
 
-    :cond_73
+    :cond_72
     move v6, v7
 
     .line 93
-    goto :goto_60
+    goto :goto_5f
 .end method

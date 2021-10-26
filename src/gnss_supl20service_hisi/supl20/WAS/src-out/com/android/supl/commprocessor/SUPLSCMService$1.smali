@@ -24,17 +24,16 @@
 .method constructor <init>(Lcom/android/supl/commprocessor/SUPLSCMService;Landroid/content/Context;)V
     .registers 3
     .param p1, "this$0"    # Lcom/android/supl/commprocessor/SUPLSCMService;
+    .param p2, "val$context"    # Landroid/content/Context;
 
     .prologue
-    .line 1
+    .line 232
     iput-object p1, p0, Lcom/android/supl/commprocessor/SUPLSCMService$1;->this$0:Lcom/android/supl/commprocessor/SUPLSCMService;
 
     iput-object p2, p0, Lcom/android/supl/commprocessor/SUPLSCMService$1;->val$context:Landroid/content/Context;
 
-    .line 217
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -44,22 +43,22 @@
     .registers 3
 
     .prologue
-    .line 221
+    .line 236
     const-string/jumbo v0, "SUPL20_SCMService"
 
-    .line 222
+    .line 237
     const-string/jumbo v1, "Support for MultiBearer"
 
-    .line 221
+    .line 236
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 223
+    .line 238
     iget-object v0, p0, Lcom/android/supl/commprocessor/SUPLSCMService$1;->this$0:Lcom/android/supl/commprocessor/SUPLSCMService;
 
     iget-object v1, p0, Lcom/android/supl/commprocessor/SUPLSCMService$1;->val$context:Landroid/content/Context;
 
     invoke-static {v0, v1}, Lcom/android/supl/commprocessor/SUPLSCMService;->-wrap0(Lcom/android/supl/commprocessor/SUPLSCMService;Landroid/content/Context;)V
 
-    .line 224
+    .line 235
     return-void
 .end method

@@ -34,9 +34,7 @@
 # direct methods
 .method static synthetic -get0(Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;)Ljava/util/concurrent/BlockingQueue;
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
 
-    .prologue
     iget-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->myJobDeque:Ljava/util/concurrent/BlockingQueue;
 
     return-object v0
@@ -48,35 +46,35 @@
     .param p2, "stThreadName"    # Ljava/lang/String;
 
     .prologue
-    .line 798
+    .line 757
     iput-object p1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->this$0:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 796
+    .line 755
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->isStopRead:Z
 
-    .line 797
+    .line 756
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->myJobDeque:Ljava/util/concurrent/BlockingQueue;
 
-    .line 799
+    .line 758
     new-instance v0, Ljava/util/concurrent/LinkedBlockingQueue;
 
     invoke-direct {v0}, Ljava/util/concurrent/LinkedBlockingQueue;-><init>()V
 
     iput-object v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->myJobDeque:Ljava/util/concurrent/BlockingQueue;
 
-    .line 800
-    invoke-virtual {p0, p2}, Ljava/lang/Thread;->setName(Ljava/lang/String;)V
+    .line 759
+    invoke-virtual {p0, p2}, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->setName(Ljava/lang/String;)V
 
-    .line 801
-    invoke-virtual {p0}, Ljava/lang/Thread;->start()V
+    .line 760
+    invoke-virtual {p0}, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->start()V
 
-    .line 802
+    .line 757
     return-void
 .end method
 
@@ -86,8 +84,8 @@
     .registers 2
 
     .prologue
-    .line 840
-    invoke-virtual {p0}, Ljava/lang/Thread;->getName()Ljava/lang/String;
+    .line 799
+    invoke-virtual {p0}, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->getName()Ljava/lang/String;
 
     move-result-object v0
 
@@ -98,14 +96,14 @@
     .registers 6
 
     .prologue
-    .line 815
+    .line 774
     :cond_0
     :goto_0
     iget-boolean v2, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->isStopRead:Z
 
     if-nez v2, :cond_a
 
-    .line 817
+    .line 776
     :try_start_4
     invoke-static {}, Ljava/lang/Thread;->interrupted()Z
 
@@ -113,12 +111,12 @@
 
     if-eqz v2, :cond_b
 
-    .line 838
+    .line 773
     :cond_a
     :goto_a
     return-void
 
-    .line 821
+    .line 780
     :cond_b
     iget-object v2, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->myJobDeque:Ljava/util/concurrent/BlockingQueue;
 
@@ -128,11 +126,11 @@
 
     check-cast v1, Lcom/android/supl/commprocessor/FromServer;
 
-    .line 822
+    .line 781
     .local v1, "fromServer":Lcom/android/supl/commprocessor/FromServer;
     if-eqz v1, :cond_0
 
-    .line 826
+    .line 785
     iget-object v2, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->this$0:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     invoke-virtual {v2, v1}, Lcom/android/supl/commprocessor/NDKCommProcessor;->process(Lcom/android/supl/commprocessor/FromServer;)V
@@ -141,12 +139,12 @@
 
     goto :goto_0
 
-    .line 828
+    .line 787
     .end local v1    # "fromServer":Lcom/android/supl/commprocessor/FromServer;
     :catch_1b
     move-exception v0
 
-    .line 830
+    .line 789
     .local v0, "ex":Ljava/lang/InterruptedException;
     const-string/jumbo v2, "SUPL20_PCM"
 
@@ -154,7 +152,7 @@
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {p0}, Ljava/lang/Thread;->getName()Ljava/lang/String;
+    invoke-virtual {p0}, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->getName()Ljava/lang/String;
 
     move-result-object v4
 
@@ -181,14 +179,14 @@
     .registers 2
 
     .prologue
-    .line 808
-    invoke-virtual {p0}, Ljava/lang/Thread;->interrupt()V
+    .line 767
+    invoke-virtual {p0}, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->interrupt()V
 
-    .line 809
+    .line 768
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->isStopRead:Z
 
-    .line 811
+    .line 766
     return-void
 .end method

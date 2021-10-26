@@ -67,7 +67,7 @@
     .line 132
     invoke-virtual {p0, p1}, Lcom/android/supl/si/ganss/SuplGanssAssistCapabilities;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 133
+    .line 131
     return-void
 .end method
 
@@ -126,7 +126,7 @@
     .line 79
     iput p2, p0, Lcom/android/supl/si/ganss/SuplGanssAssistCapabilities;->uiAsstCmnCapBitmap:I
 
-    .line 80
+    .line 69
     return-void
 .end method
 
@@ -205,7 +205,7 @@
     .local v0, "bAsstCapElem":[B
     array-length v9, v0
 
-    invoke-static {v0, v6, v1, v4, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v6, v1, v4, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 91
     array-length v9, v0
@@ -318,7 +318,7 @@
     .restart local v1    # "i":I
     goto :goto_23
 
-    .line 153
+    .line 139
     .end local v1    # "i":I
     .end local v3    # "parcels":[Landroid/os/Parcelable;
     :cond_33
@@ -421,7 +421,7 @@
 
     invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelableArray([Landroid/os/Parcelable;I)V
 
-    .line 172
+    .line 165
     :cond_13
     return-void
 .end method

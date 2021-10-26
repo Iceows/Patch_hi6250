@@ -113,7 +113,7 @@
     :goto_32
     iput-boolean v1, p0, Lcom/android/supl/loc/measure/ModeTDD;->isTimeslotISCP_ListPresent:Z
 
-    .line 71
+    .line 60
     return-void
 
     :cond_35
@@ -266,7 +266,7 @@
 
     const/4 v5, 0x0
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 105
     array-length v4, v1

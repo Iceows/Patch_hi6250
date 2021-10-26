@@ -81,7 +81,7 @@
     .line 183
     invoke-virtual {p0, p1}, Lcom/android/supl/si/ThirdPartyReqParams;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 184
+    .line 182
     return-void
 .end method
 
@@ -171,7 +171,7 @@
     :cond_3a
     iput-object p5, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stTargetSetId:Lcom/android/supl/si/SUPLSETID;
 
-    .line 91
+    .line 75
     return-void
 .end method
 
@@ -205,11 +205,7 @@
 
     const/4 v7, 0x0
 
-    .line 112
-    const/4 v4, 0x0
-
     .line 113
-    .local v4, "iOffset":I
     const/16 v5, 0xe
 
     .line 114
@@ -220,7 +216,7 @@
     .local v2, "bQOPData":[B
     iget-boolean v6, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsQOPPresent:Z
 
-    if-eqz v6, :cond_13
+    if-eqz v6, :cond_12
 
     .line 116
     iget-object v6, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stQop:Lcom/android/supl/si/SUPLQOPParams;
@@ -237,14 +233,14 @@
 
     .line 119
     .end local v2    # "bQOPData":[B
-    :cond_13
+    :cond_12
     const/4 v0, 0x0
 
     .line 120
     .local v0, "bAPPID":[B
     iget-boolean v6, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsAppIdPresent:Z
 
-    if-eqz v6, :cond_20
+    if-eqz v6, :cond_1f
 
     .line 121
     iget-object v6, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stAppId:Lcom/android/supl/si/ApplicationID;
@@ -261,7 +257,7 @@
 
     .line 124
     .end local v0    # "bAPPID":[B
-    :cond_20
+    :cond_1f
     iget-object v6, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stTargetSetId:Lcom/android/supl/si/SUPLSETID;
 
     invoke-virtual {v6}, Lcom/android/supl/si/SUPLSETID;->getSETID()[B
@@ -284,6 +280,7 @@
     const/4 v4, 0x4
 
     .line 128
+    .local v4, "iOffset":I
     const/16 v6, 0x10e
 
     invoke-static {v1, v4, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -300,7 +297,7 @@
     .line 130
     iget-boolean v6, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsQOPPresent:Z
 
-    if-eqz v6, :cond_6b
+    if-eqz v6, :cond_6a
 
     .line 131
     invoke-static {v1, v4, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -310,7 +307,7 @@
     .line 132
     array-length v6, v2
 
-    invoke-static {v2, v7, v1, v4, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v2, v7, v1, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 133
     array-length v6, v2
@@ -318,10 +315,10 @@
     add-int/2addr v4, v6
 
     .line 137
-    :goto_47
+    :goto_46
     iget-boolean v6, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsAppIdPresent:Z
 
-    if-eqz v6, :cond_70
+    if-eqz v6, :cond_6f
 
     .line 138
     invoke-static {v1, v4, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -331,7 +328,7 @@
     .line 139
     array-length v6, v0
 
-    invoke-static {v0, v7, v1, v4, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v7, v1, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 140
     array-length v6, v0
@@ -339,10 +336,10 @@
     add-int/2addr v4, v6
 
     .line 144
-    :goto_55
+    :goto_54
     array-length v6, v3
 
-    invoke-static {v3, v7, v1, v4, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v7, v1, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 145
     array-length v6, v3
@@ -355,7 +352,7 @@
     .line 147
     add-int/lit8 v6, v4, -0x4
 
-    if-eq v6, v5, :cond_6a
+    if-eq v6, v5, :cond_69
 
     .line 148
     sget-object v6, Ljava/lang/System;->err:Ljava/io/PrintStream;
@@ -365,24 +362,24 @@
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 150
-    :cond_6a
+    :cond_69
     return-object v1
 
     .line 135
-    :cond_6b
+    :cond_6a
     invoke-static {v1, v4, v7}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v4
 
-    goto :goto_47
+    goto :goto_46
 
     .line 142
-    :cond_70
+    :cond_6f
     invoke-static {v1, v4, v7}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v4
 
-    goto :goto_55
+    goto :goto_54
 .end method
 
 .method public readFromParcel(Landroid/os/Parcel;)V
@@ -483,7 +480,7 @@
 
     iput-object v1, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stTargetSetId:Lcom/android/supl/si/SUPLSETID;
 
-    .line 208
+    .line 190
     return-void
 .end method
 
@@ -495,7 +492,7 @@
     .line 98
     iput-short p1, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_usPlatformSessionId:S
 
-    .line 99
+    .line 97
     return-void
 .end method
 
@@ -595,85 +592,77 @@
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .registers 8
+    .registers 6
     .param p1, "dest"    # Landroid/os/Parcel;
     .param p2, "flags"    # I
 
     .prologue
-    const/4 v3, 0x1
-
-    const/4 v4, 0x0
-
-    .line 215
-    iget-short v2, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_usPlatformSessionId:S
-
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 216
     const/4 v1, 0x1
 
-    .line 217
-    .local v1, "bTrue":B
-    const/4 v0, 0x0
+    const/4 v2, 0x0
+
+    .line 215
+    iget-short v0, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_usPlatformSessionId:S
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 218
-    .local v0, "bFalse":B
-    iget-boolean v2, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsQOPPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsQOPPresent:Z
 
-    if-eqz v2, :cond_30
+    if-eqz v0, :cond_2e
 
-    move v2, v3
+    move v0, v1
 
-    :goto_e
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_c
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 219
-    iget-boolean v2, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsQOPPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsQOPPresent:Z
 
-    if-eqz v2, :cond_1a
+    if-eqz v0, :cond_18
 
     .line 220
-    iget-object v2, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stQop:Lcom/android/supl/si/SUPLQOPParams;
+    iget-object v0, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stQop:Lcom/android/supl/si/SUPLQOPParams;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
     .line 224
-    :cond_1a
-    iget-boolean v2, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsAppIdPresent:Z
+    :cond_18
+    iget-boolean v0, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsAppIdPresent:Z
 
-    if-eqz v2, :cond_32
+    if-eqz v0, :cond_30
 
-    :goto_1e
-    invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_1c
+    invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 225
-    iget-boolean v2, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsAppIdPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_bIsAppIdPresent:Z
 
-    if-eqz v2, :cond_2a
+    if-eqz v0, :cond_28
 
     .line 226
-    iget-object v2, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stAppId:Lcom/android/supl/si/ApplicationID;
+    iget-object v0, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stAppId:Lcom/android/supl/si/ApplicationID;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
     .line 229
-    :cond_2a
-    iget-object v2, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stTargetSetId:Lcom/android/supl/si/SUPLSETID;
+    :cond_28
+    iget-object v0, p0, Lcom/android/supl/si/ThirdPartyReqParams;->m_stTargetSetId:Lcom/android/supl/si/SUPLSETID;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 231
+    .line 214
     return-void
 
-    :cond_30
-    move v2, v4
+    :cond_2e
+    move v0, v2
 
     .line 218
-    goto :goto_e
+    goto :goto_c
 
-    :cond_32
-    move v3, v4
+    :cond_30
+    move v1, v2
 
     .line 224
-    goto :goto_1e
+    goto :goto_1c
 .end method

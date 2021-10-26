@@ -60,7 +60,6 @@
     .line 83
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 85
     return-void
 .end method
 
@@ -87,7 +86,7 @@
     .line 80
     iput p4, p0, Lcom/android/supl/si/ganss/SuplGanssDataModel;->ucUtcModel:I
 
-    .line 81
+    .line 76
     return-void
 .end method
 
@@ -102,7 +101,7 @@
     .line 126
     invoke-virtual {p0, p1}, Lcom/android/supl/si/ganss/SuplGanssDataModel;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 127
+    .line 125
     return-void
 .end method
 
@@ -213,7 +212,7 @@
 
     iput v0, p0, Lcom/android/supl/si/ganss/SuplGanssDataModel;->ucUtcModel:I
 
-    .line 138
+    .line 133
     return-void
 .end method
 
@@ -301,6 +300,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 161
+    .line 155
     return-void
 .end method

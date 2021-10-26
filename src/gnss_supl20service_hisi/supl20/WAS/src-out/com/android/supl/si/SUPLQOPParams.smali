@@ -70,7 +70,7 @@
     .line 171
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLQOPParams;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 172
+    .line 170
     return-void
 .end method
 
@@ -109,7 +109,7 @@
     .line 104
     iput p7, p0, Lcom/android/supl/si/SUPLQOPParams;->byDelay:I
 
-    .line 105
+    .line 97
     return-void
 .end method
 
@@ -378,7 +378,7 @@
 
     iput v1, p0, Lcom/android/supl/si/SUPLQOPParams;->byDelay:I
 
-    .line 206
+    .line 178
     :cond_45
     return-void
 .end method
@@ -442,107 +442,99 @@
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .registers 8
+    .registers 6
     .param p1, "dest"    # Landroid/os/Parcel;
     .param p2, "flags"    # I
 
     .prologue
-    const/4 v3, 0x1
-
-    const/4 v4, 0x0
-
-    .line 214
     const/4 v1, 0x1
 
-    .line 215
-    .local v1, "bTrue":B
-    const/4 v0, 0x0
+    const/4 v2, 0x0
 
     .line 216
-    .local v0, "bFalse":B
-    iget-boolean v2, p0, Lcom/android/supl/si/SUPLQOPParams;->bVeraccPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SUPLQOPParams;->bVeraccPresent:Z
 
-    if-eqz v2, :cond_3c
+    if-eqz v0, :cond_3a
 
-    move v2, v3
+    move v0, v1
 
-    :goto_9
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_7
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 217
-    iget-boolean v2, p0, Lcom/android/supl/si/SUPLQOPParams;->bMaxLocAgePresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SUPLQOPParams;->bMaxLocAgePresent:Z
 
-    if-eqz v2, :cond_3e
+    if-eqz v0, :cond_3c
 
-    move v2, v3
+    move v0, v1
 
-    :goto_11
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_f
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 218
-    iget-boolean v2, p0, Lcom/android/supl/si/SUPLQOPParams;->bdelayPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SUPLQOPParams;->bdelayPresent:Z
 
-    if-eqz v2, :cond_40
+    if-eqz v0, :cond_3e
 
-    :goto_18
-    invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_16
+    invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 219
-    iget v2, p0, Lcom/android/supl/si/SUPLQOPParams;->byHorAcc:I
+    iget v0, p0, Lcom/android/supl/si/SUPLQOPParams;->byHorAcc:I
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 220
-    iget-boolean v2, p0, Lcom/android/supl/si/SUPLQOPParams;->bVeraccPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SUPLQOPParams;->bVeraccPresent:Z
 
-    if-eqz v2, :cond_29
+    if-eqz v0, :cond_27
 
     .line 221
-    iget v2, p0, Lcom/android/supl/si/SUPLQOPParams;->byVerAcc:I
+    iget v0, p0, Lcom/android/supl/si/SUPLQOPParams;->byVerAcc:I
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 223
-    :cond_29
-    iget-boolean v2, p0, Lcom/android/supl/si/SUPLQOPParams;->bMaxLocAgePresent:Z
+    :cond_27
+    iget-boolean v0, p0, Lcom/android/supl/si/SUPLQOPParams;->bMaxLocAgePresent:Z
 
-    if-eqz v2, :cond_32
+    if-eqz v0, :cond_30
 
     .line 224
-    iget v2, p0, Lcom/android/supl/si/SUPLQOPParams;->wMaxLocAge:I
+    iget v0, p0, Lcom/android/supl/si/SUPLQOPParams;->wMaxLocAge:I
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 226
-    :cond_32
-    iget-boolean v2, p0, Lcom/android/supl/si/SUPLQOPParams;->bdelayPresent:Z
+    :cond_30
+    iget-boolean v0, p0, Lcom/android/supl/si/SUPLQOPParams;->bdelayPresent:Z
 
-    if-eqz v2, :cond_3b
+    if-eqz v0, :cond_39
 
     .line 227
-    iget v2, p0, Lcom/android/supl/si/SUPLQOPParams;->byDelay:I
+    iget v0, p0, Lcom/android/supl/si/SUPLQOPParams;->byDelay:I
 
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 229
-    :cond_3b
+    .line 213
+    :cond_39
     return-void
 
-    :cond_3c
-    move v2, v4
+    :cond_3a
+    move v0, v2
 
     .line 216
-    goto :goto_9
+    goto :goto_7
 
-    :cond_3e
-    move v2, v4
+    :cond_3c
+    move v0, v2
 
     .line 217
-    goto :goto_11
+    goto :goto_f
 
-    :cond_40
-    move v3, v4
+    :cond_3e
+    move v1, v2
 
     .line 218
-    goto :goto_18
+    goto :goto_16
 .end method

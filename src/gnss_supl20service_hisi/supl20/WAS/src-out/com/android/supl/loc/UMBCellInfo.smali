@@ -41,12 +41,8 @@
     .line 57
     const/4 v2, 0x0
 
-    .line 58
-    .local v2, "iOffset":I
-    const/16 v3, 0x12
-
     .line 60
-    .local v3, "iSize":I
+    .local v2, "iOffset":I
     iget-object v4, p0, Lcom/android/supl/loc/UMBCellInfo;->stRefSectorID:Lcom/android/supl/loc/BitString;
 
     invoke-virtual {v4}, Lcom/android/supl/loc/BitString;->getBitStringInfo()[B
@@ -60,13 +56,14 @@
     add-int/lit8 v3, v4, 0x12
 
     .line 62
+    .local v3, "iSize":I
     new-array v0, v3, [B
 
     .line 63
     .local v0, "bData":[B
     array-length v4, v1
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 64
     array-length v4, v1
@@ -116,7 +113,7 @@
     move-result v2
 
     .line 71
-    if-eq v2, v3, :cond_44
+    if-eq v2, v3, :cond_42
 
     .line 72
     sget-object v4, Ljava/lang/System;->out:Ljava/io/PrintStream;
@@ -126,7 +123,7 @@
     invoke-virtual {v4, v5}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 74
-    :cond_44
+    :cond_42
     return-object v0
 .end method
 
@@ -173,6 +170,6 @@
 
     iput v0, p0, Lcom/android/supl/loc/UMBCellInfo;->unRefSeconds:I
 
-    .line 87
+    .line 77
     return-void
 .end method

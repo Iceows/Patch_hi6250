@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest android:sharedUserId="android.uid.system" android:versionCode="6" android:versionName="2.13.2.0" package="com.android.supl" platformBuildVersionCode="26" platformBuildVersionName="8.0.0"
+<manifest android:sharedUserId="android.uid.system" android:versionCode="6" android:versionName="2.13.0.4" package="com.android.supl" platformBuildVersionCode="26" platformBuildVersionName="20211026"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:label="SUPL20Services" android:name="com.android.supl.SuplApplication" android:persistent="true" android:debuggable="false" android:allowBackup="false">
-        <service android:name="com.android.supl.loc.SUPLPlatformService" android:enabled="true" android:exported="false" />
-        <service android:name="com.android.supl.commprocessor.SUPLSCMService" android:enabled="true" android:exported="false" />
+    <application android:label="SUPL20ServicesIceows" android:name="com.android.supl.SuplApplication" android:persistent="true" android:debuggable="false">
+        <service android:name="com.android.supl.loc.SUPLPlatformService" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.supl.loc.SUPLPlatformService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <service android:name="com.android.supl.commprocessor.SUPLSCMService" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.supl.commprocessor.SUPLSCMService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <receiver android:name="com.android.supl.receiver.BootUpReceiver" android:permission="android.permission.RECEIVE_BOOT_COMPLETED" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SCREEN_ON" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SIM_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
         <receiver android:name="com.android.supl.receiver.ShutdownReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_SHUTDOWN" />
@@ -12,13 +34,17 @@
         </receiver>
         <receiver android:name="com.android.supl.loc.SETLocationManager$NetworkStateBroadcastReceiver" />
     </application>
-    <permission android:name="supl20servicePermission" android:protectionLevel="signatureOrSystem" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
 </manifest>

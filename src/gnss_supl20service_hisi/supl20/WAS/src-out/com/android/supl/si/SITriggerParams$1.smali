@@ -35,7 +35,6 @@
     .line 248
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -63,6 +62,7 @@
 
 .method public bridge synthetic createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
     .registers 3
+    .param p1, "in"    # Landroid/os/Parcel;
 
     .prologue
     .line 249
@@ -86,6 +86,7 @@
 
 .method public bridge synthetic newArray(I)[Ljava/lang/Object;
     .registers 3
+    .param p1, "size"    # I
 
     .prologue
     .line 254

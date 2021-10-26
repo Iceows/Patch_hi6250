@@ -24,13 +24,11 @@
     .param p1, "this$0"    # Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     .prologue
-    .line 1
+    .line 701
     iput-object p1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$2;->this$0:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
-    .line 742
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -40,7 +38,7 @@
     .registers 7
 
     .prologue
-    .line 746
+    .line 705
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$2;->this$0:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     invoke-static {v1}, Lcom/android/supl/commprocessor/NDKCommProcessor;->-get3(Lcom/android/supl/commprocessor/NDKCommProcessor;)Ljava/lang/Object;
@@ -49,7 +47,7 @@
 
     monitor-enter v2
 
-    .line 747
+    .line 706
     :try_start_7
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$2;->this$0:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
@@ -59,14 +57,14 @@
 
     if-nez v1, :cond_51
 
-    .line 748
+    .line 707
     const-string/jumbo v1, "SUPL20_PCM"
 
     const-string/jumbo v3, "PCM pause invoked"
 
     invoke-static {v1, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 749
+    .line 708
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$2;->this$0:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     invoke-static {v1}, Lcom/android/supl/commprocessor/NDKCommProcessor;->-get2(Lcom/android/supl/commprocessor/NDKCommProcessor;)Lcom/android/supl/nc/NetworkController;
@@ -87,7 +85,7 @@
     :try_end_29
     .catchall {:try_start_7 .. :try_end_29} :catchall_58
 
-    .line 751
+    .line 710
     :try_start_29
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$2;->this$0:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
@@ -100,7 +98,7 @@
     .catch Ljava/lang/InterruptedException; {:try_start_29 .. :try_end_32} :catch_53
     .catchall {:try_start_29 .. :try_end_32} :catchall_58
 
-    .line 755
+    .line 714
     :goto_32
     :try_start_32
     const-string/jumbo v1, "SUPL20_PCM"
@@ -109,7 +107,7 @@
 
     invoke-static {v1, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 756
+    .line 715
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$2;->this$0:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     invoke-static {v1}, Lcom/android/supl/commprocessor/NDKCommProcessor;->-get4(Lcom/android/supl/commprocessor/NDKCommProcessor;)Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;
@@ -118,14 +116,14 @@
 
     invoke-virtual {v1}, Lcom/android/supl/commprocessor/NDKCommProcessor$ReadPacket;->stopRead()V
 
-    .line 758
+    .line 717
     invoke-static {}, Lcom/android/supl/trigger/PeriodicTriggerHandler;->getInstance()Lcom/android/supl/trigger/PeriodicTriggerHandler;
 
     move-result-object v1
 
     invoke-virtual {v1}, Lcom/android/supl/trigger/PeriodicTriggerHandler;->pause()V
 
-    .line 759
+    .line 718
     iget-object v1, p0, Lcom/android/supl/commprocessor/NDKCommProcessor$2;->this$0:Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     const/4 v3, 0x1
@@ -137,23 +135,23 @@
     :cond_51
     monitor-exit v2
 
-    .line 762
+    .line 704
     return-void
 
-    .line 752
+    .line 711
     :catch_53
     move-exception v0
 
-    .line 753
+    .line 712
     .local v0, "e":Ljava/lang/InterruptedException;
     :try_start_54
-    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
+    invoke-virtual {v0}, Ljava/lang/InterruptedException;->printStackTrace()V
     :try_end_57
     .catchall {:try_start_54 .. :try_end_57} :catchall_58
 
     goto :goto_32
 
-    .line 746
+    .line 705
     .end local v0    # "e":Ljava/lang/InterruptedException;
     :catchall_58
     move-exception v1

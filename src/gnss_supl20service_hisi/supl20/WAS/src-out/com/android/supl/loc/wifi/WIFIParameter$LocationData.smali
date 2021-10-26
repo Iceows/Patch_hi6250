@@ -109,7 +109,7 @@
     :goto_22
     array-length v4, v0
 
-    invoke-static {v0, v6, v1, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v6, v1, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 447
     array-length v4, v0

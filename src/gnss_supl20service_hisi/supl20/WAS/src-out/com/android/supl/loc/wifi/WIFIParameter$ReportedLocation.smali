@@ -57,12 +57,8 @@
     .line 409
     const/4 v2, 0x0
 
-    .line 410
-    .local v2, "iOffset":I
-    const/4 v3, 0x4
-
     .line 411
-    .local v3, "iSize":I
+    .local v2, "iOffset":I
     iget-object v4, p0, Lcom/android/supl/loc/wifi/WIFIParameter$ReportedLocation;->stLocationData:Lcom/android/supl/loc/wifi/WIFIParameter$LocationData;
 
     invoke-virtual {v4}, Lcom/android/supl/loc/wifi/WIFIParameter$LocationData;->getLocationInfo()[B
@@ -76,6 +72,7 @@
     add-int/lit8 v3, v4, 0x4
 
     .line 413
+    .local v3, "iSize":I
     new-array v0, v3, [B
 
     .line 414
@@ -91,7 +88,7 @@
 
     const/4 v5, 0x0
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 416
     array-length v4, v1
@@ -99,7 +96,7 @@
     add-int/2addr v2, v4
 
     .line 417
-    if-eq v2, v3, :cond_24
+    if-eq v2, v3, :cond_23
 
     .line 418
     sget-object v4, Ljava/lang/System;->out:Ljava/io/PrintStream;
@@ -109,6 +106,6 @@
     invoke-virtual {v4, v5}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 420
-    :cond_24
+    :cond_23
     return-object v0
 .end method

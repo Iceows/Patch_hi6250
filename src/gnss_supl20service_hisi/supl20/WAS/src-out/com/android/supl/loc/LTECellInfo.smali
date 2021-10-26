@@ -9,81 +9,40 @@
         Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;,
         Lcom/android/supl/loc/LTECellInfo$MCC_LIST;,
         Lcom/android/supl/loc/LTECellInfo$MNCList;,
-        Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;,
-        Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;
+        Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
     }
 .end annotation
 
 
 # static fields
-.field private static final LOG:Ljava/lang/String; = "SUPL20_LTECellInfo"
-
-.field public static bIsMeasResultListEUTRA:Z = false
-
-.field public static bIsRSRPInfoPresent:Z = false
-
-.field public static bIsRSRQInfoPresent:Z = false
-
-.field public static bIsTAInfoPresent:Z = false
-
-.field public static listMRLEUTRA:Ljava/util/List; = null
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/List",
-            "<",
-            "Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;",
-            ">;"
-        }
-    .end annotation
-.end field
-
-.field public static ucRSRPResult:S = 0x0s
-
-.field public static ucRSRQResult:S = 0x0s
-
-.field public static final usMaxCellReport:S = 0x8s
-
-.field public static usTA:S
+.field private static final LOG:Ljava/lang/String; = "LTECEllInfo"
 
 
 # instance fields
+.field public bIsMeasResListInfoPresent:Z
+
+.field public bIsRSRPInfoPresent:Z
+
+.field public bIsRSRQInfoPresent:Z
+
+.field public bIsTAInfoPresent:Z
+
 .field public stCELLGlobalID:Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
 
+.field public stMRL:Lcom/android/supl/loc/measure/MeasuredResultsList;
+
+.field public ucRSRPResult:S
+
+.field public ucRSRQResult:S
+
 .field public usPhysCellID:S
+
+.field public usTA:S
 
 .field public usTrackAreaCode:C
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .registers 1
-
-    .prologue
-    const/4 v0, 0x0
-
-    .line 65
-    sput-boolean v0, Lcom/android/supl/loc/LTECellInfo;->bIsRSRPInfoPresent:Z
-
-    .line 69
-    sput-boolean v0, Lcom/android/supl/loc/LTECellInfo;->bIsRSRQInfoPresent:Z
-
-    .line 73
-    sput-boolean v0, Lcom/android/supl/loc/LTECellInfo;->bIsTAInfoPresent:Z
-
-    .line 80
-    sput-boolean v0, Lcom/android/supl/loc/LTECellInfo;->bIsMeasResultListEUTRA:Z
-
-    .line 81
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    sput-object v0, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
-
-    .line 57
-    return-void
-.end method
-
 .method public constructor <init>(Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;CS)V
     .registers 6
     .param p1, "stCELLGlobalID"    # Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
@@ -91,18 +50,32 @@
     .param p3, "ucPhysCellID"    # S
 
     .prologue
+    const/4 v1, 0x0
+
     const/4 v0, 0x0
 
-    .line 85
+    .line 81
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 59
-    iput-object v0, p0, Lcom/android/supl/loc/LTECellInfo;->stCELLGlobalID:Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
+    .line 57
+    iput-object v1, p0, Lcom/android/supl/loc/LTECellInfo;->stCELLGlobalID:Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
 
-    .line 86
-    if-nez p1, :cond_11
+    .line 63
+    iput-boolean v0, p0, Lcom/android/supl/loc/LTECellInfo;->bIsRSRPInfoPresent:Z
 
-    .line 87
+    .line 67
+    iput-boolean v0, p0, Lcom/android/supl/loc/LTECellInfo;->bIsRSRQInfoPresent:Z
+
+    .line 71
+    iput-boolean v0, p0, Lcom/android/supl/loc/LTECellInfo;->bIsTAInfoPresent:Z
+
+    .line 75
+    iput-boolean v0, p0, Lcom/android/supl/loc/LTECellInfo;->bIsMeasResListInfoPresent:Z
+
+    .line 83
+    if-nez p1, :cond_1a
+
+    .line 84
     new-instance v0, Ljava/lang/NullPointerException;
 
     const-string/jumbo v1, "Cell_Globalid_Eutra should not null"
@@ -111,1173 +84,317 @@
 
     throw v0
 
+    .line 86
+    :cond_1a
+    if-nez p2, :cond_25
+
+    .line 87
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string/jumbo v1, "TrackAreaCode should not zero"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
     .line 89
-    :cond_11
-    if-nez p2, :cond_1c
-
-    .line 91
-    const-string/jumbo v0, "SUPL20_LTECellInfo"
-
-    const-string/jumbo v1, "TrackAreaCode should not be zero"
-
-    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 93
-    :cond_1c
+    :cond_25
     iput-object p1, p0, Lcom/android/supl/loc/LTECellInfo;->stCELLGlobalID:Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
 
-    .line 94
+    .line 90
     iput-char p2, p0, Lcom/android/supl/loc/LTECellInfo;->usTrackAreaCode:C
 
-    .line 95
+    .line 91
     iput-short p3, p0, Lcom/android/supl/loc/LTECellInfo;->usPhysCellID:S
 
-    .line 96
+    .line 82
     return-void
 .end method
 
 .method public static getAPILTECellInfo(Landroid/content/Context;)Lcom/android/supl/loc/LTECellInfo;
-    .registers 15
+    .registers 7
     .param p0, "mContext"    # Landroid/content/Context;
 
     .prologue
-    const/4 v13, 0x0
+    const/4 v5, 0x0
 
-    .line 334
-    const-string/jumbo v10, "phone"
+    .line 293
+    const-string/jumbo v2, "phone"
 
-    invoke-virtual {p0, v10}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {p0, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/telephony/TelephonyManager;
+
+    .line 294
+    .local v1, "manager":Landroid/telephony/TelephonyManager;
+    const-string/jumbo v2, "LTECEllInfo"
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v4, "TelephonyManager class:"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    check-cast v3, Landroid/telephony/TelephonyManager;
-
-    .line 335
-    .local v3, "manager":Landroid/telephony/TelephonyManager;
-    const-string/jumbo v10, "SUPL20_LTECellInfo"
-
-    new-instance v11, Ljava/lang/StringBuilder;
-
-    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v12, "TelephonyManager class:"
-
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v12
-
-    invoke-virtual {v12}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
-
-    move-result-object v12
-
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v11
-
-    invoke-static {v10, v11}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 336
-    invoke-virtual {v3}, Landroid/telephony/TelephonyManager;->getAllCellInfo()Ljava/util/List;
-
-    move-result-object v0
-
-    .line 337
-    .local v0, "cellInfo":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/CellInfo;>;"
-    if-nez v0, :cond_3c
-
-    .line 338
-    const-string/jumbo v10, "SUPL20_LTECellInfo"
-
-    const-string/jumbo v11, "getAllCellInfo function returns list is null"
-
-    invoke-static {v10, v11}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 339
-    return-object v13
-
-    .line 342
-    :cond_3c
-    invoke-virtual {v3}, Landroid/telephony/TelephonyManager;->getNeighboringCellInfo()Ljava/util/List;
-
-    move-result-object v6
-
-    .line 343
-    .local v6, "neighborCellInfo":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/NeighboringCellInfo;>;"
-    if-eqz v6, :cond_b7
-
-    .line 344
-    const-string/jumbo v10, "SUPL20_LTECellInfo"
-
-    new-instance v11, Ljava/lang/StringBuilder;
-
-    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v12, "neighborCellInfoList size: "
-
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    invoke-interface {v6}, Ljava/util/List;->size()I
-
-    move-result v12
-
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v11
-
-    invoke-static {v10, v11}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 345
-    invoke-interface {v6}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
-
-    move-result-object v5
-
-    .local v5, "neighbor$iterator":Ljava/util/Iterator;
-    :cond_64
-    :goto_64
-    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v10
-
-    if-eqz v10, :cond_b7
-
-    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-virtual {v1}, Landroid/telephony/TelephonyManager;->getClass()Ljava/lang/Class;
 
     move-result-object v4
 
-    check-cast v4, Landroid/telephony/NeighboringCellInfo;
+    invoke-virtual {v4}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
 
-    .line 346
-    .local v4, "neighbor":Landroid/telephony/NeighboringCellInfo;
-    if-eqz v4, :cond_64
+    move-result-object v4
 
-    .line 347
-    invoke-virtual {v4}, Landroid/telephony/NeighboringCellInfo;->getLac()I
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result v2
+    move-result-object v3
 
-    .line 348
-    .local v2, "lac":I
-    invoke-virtual {v4}, Landroid/telephony/NeighboringCellInfo;->getCid()I
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result v1
+    move-result-object v3
 
-    .line 349
-    .local v1, "cid":I
-    invoke-virtual {v4}, Landroid/telephony/NeighboringCellInfo;->getPsc()I
+    invoke-static {v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    move-result v8
+    .line 295
+    invoke-virtual {v1}, Landroid/telephony/TelephonyManager;->getAllCellInfo()Ljava/util/List;
 
-    .line 350
-    .local v8, "psc":I
-    invoke-virtual {v4}, Landroid/telephony/NeighboringCellInfo;->getRssi()I
+    move-result-object v0
 
-    move-result v9
+    .line 296
+    .local v0, "cellInfo":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/CellInfo;>;"
+    if-nez v0, :cond_3c
 
-    .line 351
-    .local v9, "rssi":I
-    invoke-virtual {v4}, Landroid/telephony/NeighboringCellInfo;->getNetworkType()I
+    .line 297
+    const-string/jumbo v2, "LTECEllInfo"
 
-    move-result v7
+    const-string/jumbo v3, "getAllCellInfo function returns list is null"
 
-    .line 352
-    .local v7, "nwtype":I
-    const-string/jumbo v10, "SUPL20_LTECellInfo"
+    invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    new-instance v11, Ljava/lang/StringBuilder;
+    .line 298
+    return-object v5
 
-    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+    .line 301
+    :cond_3c
+    invoke-static {v0}, Lcom/android/supl/loc/LTECellInfo;->getCellInfo_To_LTECellInfo(Ljava/util/List;)Lcom/android/supl/loc/LTECellInfo;
 
-    const-string/jumbo v12, "neighborCellInfo psc:"
+    move-result-object v2
 
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    invoke-virtual {v11, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    const-string/jumbo v12, "rssi:"
-
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    invoke-virtual {v11, v9}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    const-string/jumbo v12, "nwtype:"
-
-    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    invoke-virtual {v11, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v11
-
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v11
-
-    invoke-static {v10, v11}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_64
-
-    .line 357
-    .end local v1    # "cid":I
-    .end local v2    # "lac":I
-    .end local v4    # "neighbor":Landroid/telephony/NeighboringCellInfo;
-    .end local v5    # "neighbor$iterator":Ljava/util/Iterator;
-    .end local v7    # "nwtype":I
-    .end local v8    # "psc":I
-    .end local v9    # "rssi":I
-    :cond_b7
-    invoke-static {v0, v6}, Lcom/android/supl/loc/LTECellInfo;->getCellInfo_To_LTECellInfo(Ljava/util/List;Ljava/util/List;)Lcom/android/supl/loc/LTECellInfo;
-
-    move-result-object v10
-
-    return-object v10
+    return-object v2
 .end method
 
-.method public static getCellInfo_To_LTECellInfo(Ljava/util/List;Ljava/util/List;)Lcom/android/supl/loc/LTECellInfo;
-    .registers 30
+.method public static getCellInfo_To_LTECellInfo(Ljava/util/List;)Lcom/android/supl/loc/LTECellInfo;
+    .registers 16
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
             "Ljava/util/List",
             "<",
             "Landroid/telephony/CellInfo;",
-            ">;",
-            "Ljava/util/List",
-            "<",
-            "Landroid/telephony/NeighboringCellInfo;",
             ">;)",
             "Lcom/android/supl/loc/LTECellInfo;"
         }
     .end annotation
 
     .prologue
-    .line 403
     .local p0, "cellInfoList":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/CellInfo;>;"
-    .local p1, "neighborCellInfoList":Ljava/util/List;, "Ljava/util/List<Landroid/telephony/NeighboringCellInfo;>;"
-    const-string/jumbo v23, "SUPL20_LTECellInfo"
+    const/4 v14, 0x0
 
-    const-string/jumbo v24, "start to get lte cell info"
+    const/4 v13, 0x1
 
-    invoke-static/range {v23 .. v24}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 404
-    const/16 v23, 0x0
-
-    sput-boolean v23, Lcom/android/supl/loc/LTECellInfo;->bIsMeasResultListEUTRA:Z
-
-    .line 405
-    sget-object v23, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
-
-    invoke-interface/range {v23 .. v23}, Ljava/util/List;->clear()V
-
-    .line 407
-    if-nez p0, :cond_20
-
-    .line 408
-    const-string/jumbo v23, "SUPL20_LTECellInfo"
-
-    const-string/jumbo v24, "cellInfoList is null"
-
-    invoke-static/range {v23 .. v24}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 409
-    const/16 v23, 0x0
-
-    return-object v23
-
-    .line 412
-    :cond_20
     const/4 v12, 0x0
 
-    .line 414
-    .local v12, "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
-    const-string/jumbo v23, "SUPL20_LTECellInfo"
+    .line 339
+    if-nez p0, :cond_f
 
-    new-instance v24, Ljava/lang/StringBuilder;
+    .line 340
+    const-string/jumbo v10, "LTECEllInfo"
 
-    invoke-direct/range {v24 .. v24}, Ljava/lang/StringBuilder;-><init>()V
+    const-string/jumbo v11, "cellInfoList is null"
 
-    const-string/jumbo v25, "cellinfo list size: "
+    invoke-static {v10, v11}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    invoke-virtual/range {v24 .. v25}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v24
-
-    invoke-interface/range {p0 .. p0}, Ljava/util/List;->size()I
-
-    move-result v25
-
-    invoke-virtual/range {v24 .. v25}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v24
-
-    invoke-virtual/range {v24 .. v24}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v24
-
-    invoke-static/range {v23 .. v24}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 415
-    const/4 v7, 0x0
-
-    .line 416
-    .local v7, "cellInfoLte":Landroid/telephony/CellInfoLte;
-    invoke-interface/range {p0 .. p0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
-
-    move-result-object v4
-
-    .end local v7    # "cellInfoLte":Landroid/telephony/CellInfoLte;
-    .end local v12    # "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
-    .local v4, "allCellInfo$iterator":Ljava/util/Iterator;
-    :cond_44
-    :goto_44
-    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v23
-
-    if-eqz v23, :cond_292
-
-    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Landroid/telephony/CellInfo;
-
-    .line 417
-    .local v3, "allCellInfo":Landroid/telephony/CellInfo;
-    instance-of v0, v3, Landroid/telephony/CellInfoLte;
-
-    move/from16 v23, v0
-
-    if-eqz v23, :cond_44
-
-    move-object v7, v3
-
-    .line 418
-    check-cast v7, Landroid/telephony/CellInfoLte;
-
-    .line 420
-    .local v7, "cellInfoLte":Landroid/telephony/CellInfoLte;
-    invoke-virtual {v7}, Landroid/telephony/CellInfo;->isRegistered()Z
-
-    move-result v23
-
-    if-eqz v23, :cond_1c9
-
-    .line 421
-    const/4 v11, 0x0
-
-    .line 423
-    .local v11, "identityLte":Landroid/telephony/CellIdentityLte;
-    invoke-virtual {v7}, Landroid/telephony/CellInfoLte;->getCellIdentity()Landroid/telephony/CellIdentityLte;
-
-    move-result-object v11
-
-    .line 424
-    .local v11, "identityLte":Landroid/telephony/CellIdentityLte;
-    if-nez v11, :cond_72
-
-    .line 425
-    const-string/jumbo v23, "SUPL20_LTECellInfo"
-
-    const-string/jumbo v24, "getCellIdentity function returns null"
-
-    invoke-static/range {v23 .. v24}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 426
-    const/16 v23, 0x0
-
-    return-object v23
-
-    .line 429
-    :cond_72
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getMnc()I
-
-    move-result v15
-
-    .line 430
-    .local v15, "mnc":I
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getMcc()I
-
-    move-result v13
-
-    .line 431
-    .local v13, "mcc":I
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getTac()I
-
-    move-result v20
-
-    .line 432
-    .local v20, "tac":I
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getCi()I
-
-    move-result v8
-
-    .line 433
-    .local v8, "ci":I
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getPci()I
-
-    move-result v16
-
-    .line 435
-    .local v16, "pci":I
-    const/16 v23, 0x3
-
-    move/from16 v0, v23
-
-    new-array v5, v0, [C
-
-    .line 437
-    .local v5, "c_mcc":[C
-    div-int/lit8 v23, v13, 0x64
-
-    move/from16 v0, v23
-
-    int-to-char v0, v0
-
-    move/from16 v23, v0
-
-    const/16 v24, 0x0
-
-    aput-char v23, v5, v24
-
-    .line 438
-    rem-int/lit8 v23, v13, 0x64
-
-    div-int/lit8 v23, v23, 0xa
-
-    move/from16 v0, v23
-
-    int-to-char v0, v0
-
-    move/from16 v23, v0
-
-    const/16 v24, 0x1
-
-    aput-char v23, v5, v24
-
-    .line 439
-    rem-int/lit8 v23, v13, 0xa
-
-    move/from16 v0, v23
-
-    int-to-char v0, v0
-
-    move/from16 v23, v0
-
-    const/16 v24, 0x2
-
-    aput-char v23, v5, v24
-
-    .line 441
-    const/16 v23, 0x63
-
-    move/from16 v0, v23
-
-    if-le v15, v0, :cond_183
-
-    .line 442
-    const/16 v23, 0x3
-
-    move/from16 v0, v23
-
-    new-array v6, v0, [C
-
-    .line 443
-    .local v6, "c_mnc":[C
-    div-int/lit8 v23, v15, 0x64
-
-    move/from16 v0, v23
-
-    int-to-char v0, v0
-
-    move/from16 v23, v0
-
-    const/16 v24, 0x0
-
-    aput-char v23, v6, v24
-
-    .line 444
-    rem-int/lit8 v23, v15, 0x64
-
-    div-int/lit8 v23, v23, 0xa
-
-    move/from16 v0, v23
-
-    int-to-char v0, v0
-
-    move/from16 v23, v0
-
-    const/16 v24, 0x1
-
-    aput-char v23, v6, v24
-
-    .line 445
-    rem-int/lit8 v23, v15, 0xa
-
-    move/from16 v0, v23
-
-    int-to-char v0, v0
-
-    move/from16 v23, v0
-
-    const/16 v24, 0x2
-
-    aput-char v23, v6, v24
-
-    .line 452
-    :goto_de
-    new-instance v19, Lcom/android/supl/loc/LTECellInfo$MNCList;
-
-    move-object/from16 v0, v19
-
-    invoke-direct {v0, v6}, Lcom/android/supl/loc/LTECellInfo$MNCList;-><init>([C)V
-
-    .line 453
-    .local v19, "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
-    new-instance v18, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
-
-    move-object/from16 v0, v18
-
-    invoke-direct {v0, v5}, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;-><init>([C)V
-
-    .line 454
-    .local v18, "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
-    new-instance v10, Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
-
-    const/16 v23, 0x1
-
-    move/from16 v0, v23
-
-    move-object/from16 v1, v18
-
-    move-object/from16 v2, v19
-
-    invoke-direct {v10, v0, v1, v2}, Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;-><init>(ZLcom/android/supl/loc/LTECellInfo$MCC_LIST;Lcom/android/supl/loc/LTECellInfo$MNCList;)V
-
-    .line 455
-    .local v10, "identity":Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
-    new-instance v9, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
-
-    invoke-direct {v9, v10, v8}, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;-><init>(Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;I)V
-
-    .line 456
-    .local v9, "eutra":Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
-    new-instance v12, Lcom/android/supl/loc/LTECellInfo;
-
-    move/from16 v0, v20
-
-    int-to-char v0, v0
-
-    move/from16 v23, v0
-
-    move/from16 v0, v16
-
-    int-to-short v0, v0
-
-    move/from16 v24, v0
-
-    move/from16 v0, v23
-
-    move/from16 v1, v24
-
-    invoke-direct {v12, v9, v0, v1}, Lcom/android/supl/loc/LTECellInfo;-><init>(Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;CS)V
-
-    .line 458
-    .local v12, "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
-    invoke-virtual {v7}, Landroid/telephony/CellInfoLte;->getCellSignalStrength()Landroid/telephony/CellSignalStrengthLte;
-
-    move-result-object v17
-
-    .line 459
-    .local v17, "signal_strength":Landroid/telephony/CellSignalStrengthLte;
-    if-eqz v17, :cond_1bf
-
-    .line 460
-    invoke-virtual/range {v17 .. v17}, Landroid/telephony/CellSignalStrengthLte;->getDbm()I
-
-    move-result v23
-
-    move/from16 v0, v23
-
-    int-to-short v0, v0
-
-    move/from16 v23, v0
-
-    sput-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
-
-    .line 464
-    sget-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
-
-    move/from16 v0, v23
-
-    add-int/lit16 v0, v0, 0x8d
-
-    move/from16 v23, v0
-
-    move/from16 v0, v23
-
-    int-to-short v0, v0
-
-    move/from16 v23, v0
-
-    sput-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
-
-    .line 465
-    sget-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
-
-    if-gez v23, :cond_1a1
-
-    .line 466
-    const/16 v23, 0x0
-
-    sput-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
-
-    .line 471
-    :cond_139
-    :goto_139
-    const/16 v23, 0x1
-
-    sput-boolean v23, Lcom/android/supl/loc/LTECellInfo;->bIsRSRPInfoPresent:Z
-
-    .line 475
-    invoke-virtual/range {v17 .. v17}, Landroid/telephony/CellSignalStrengthLte;->getRsrq()I
-
-    move-result v23
-
-    mul-int/lit8 v23, v23, 0x2
-
-    add-int/lit8 v23, v23, 0x28
-
-    move/from16 v0, v23
-
-    int-to-short v0, v0
-
-    move/from16 v23, v0
-
-    sput-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRQResult:S
-
-    .line 476
-    sget-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRQResult:S
-
-    if-gez v23, :cond_1b0
-
-    .line 477
-    const/16 v23, 0x0
-
-    sput-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRQResult:S
-
-    .line 482
-    :cond_154
-    :goto_154
-    const/16 v23, 0x1
-
-    sput-boolean v23, Lcom/android/supl/loc/LTECellInfo;->bIsRSRQInfoPresent:Z
-
-    .line 485
-    const-string/jumbo v23, "SUPL20_LTECellInfo"
-
-    const-string/jumbo v24, "ucRSRPResult:%d, ucRSRQResult:%d"
-
-    const/16 v25, 0x2
-
-    move/from16 v0, v25
-
-    new-array v0, v0, [Ljava/lang/Object;
-
-    move-object/from16 v25, v0
-
-    sget-short v26, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
-
-    invoke-static/range {v26 .. v26}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v26
-
-    const/16 v27, 0x0
-
-    aput-object v26, v25, v27
-
-    sget-short v26, Lcom/android/supl/loc/LTECellInfo;->ucRSRQResult:S
-
-    invoke-static/range {v26 .. v26}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v26
-
-    const/16 v27, 0x1
-
-    aput-object v26, v25, v27
-
-    invoke-static/range {v24 .. v25}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v24
-
-    invoke-static/range {v23 .. v24}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto/16 :goto_44
-
-    .line 447
-    .end local v6    # "c_mnc":[C
-    .end local v9    # "eutra":Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
-    .end local v10    # "identity":Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
-    .end local v12    # "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
-    .end local v17    # "signal_strength":Landroid/telephony/CellSignalStrengthLte;
-    .end local v18    # "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
-    .end local v19    # "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
-    :cond_183
-    const/16 v23, 0x2
-
-    move/from16 v0, v23
-
-    new-array v6, v0, [C
-
-    .line 448
-    .restart local v6    # "c_mnc":[C
-    div-int/lit8 v23, v15, 0xa
-
-    move/from16 v0, v23
-
-    int-to-char v0, v0
-
-    move/from16 v23, v0
-
-    const/16 v24, 0x0
-
-    aput-char v23, v6, v24
-
-    .line 449
-    rem-int/lit8 v23, v15, 0xa
-
-    move/from16 v0, v23
-
-    int-to-char v0, v0
-
-    move/from16 v23, v0
-
-    const/16 v24, 0x1
-
-    aput-char v23, v6, v24
-
-    goto/16 :goto_de
-
-    .line 468
-    .restart local v9    # "eutra":Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
-    .restart local v10    # "identity":Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
-    .restart local v12    # "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
-    .restart local v17    # "signal_strength":Landroid/telephony/CellSignalStrengthLte;
-    .restart local v18    # "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
-    .restart local v19    # "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
-    :cond_1a1
-    sget-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
-
-    const/16 v24, 0x61
-
-    move/from16 v0, v23
-
-    move/from16 v1, v24
-
-    if-le v0, v1, :cond_139
-
-    .line 469
-    const/16 v23, 0x61
-
-    sput-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
-
-    goto :goto_139
-
-    .line 479
-    :cond_1b0
-    sget-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRQResult:S
-
-    const/16 v24, 0x22
-
-    move/from16 v0, v23
-
-    move/from16 v1, v24
-
-    if-le v0, v1, :cond_154
-
-    .line 480
-    const/16 v23, 0x22
-
-    sput-short v23, Lcom/android/supl/loc/LTECellInfo;->ucRSRQResult:S
-
-    goto :goto_154
-
-    .line 488
-    :cond_1bf
-    const/16 v23, 0x0
-
-    sput-boolean v23, Lcom/android/supl/loc/LTECellInfo;->bIsRSRPInfoPresent:Z
-
-    .line 489
-    const/16 v23, 0x0
-
-    sput-boolean v23, Lcom/android/supl/loc/LTECellInfo;->bIsRSRQInfoPresent:Z
-
-    goto/16 :goto_44
-
-    .line 494
-    .end local v5    # "c_mcc":[C
-    .end local v6    # "c_mnc":[C
-    .end local v8    # "ci":I
-    .end local v9    # "eutra":Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
-    .end local v10    # "identity":Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
-    .end local v11    # "identityLte":Landroid/telephony/CellIdentityLte;
-    .end local v12    # "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
-    .end local v13    # "mcc":I
-    .end local v15    # "mnc":I
-    .end local v16    # "pci":I
-    .end local v17    # "signal_strength":Landroid/telephony/CellSignalStrengthLte;
-    .end local v18    # "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
-    .end local v19    # "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
-    .end local v20    # "tac":I
-    :cond_1c9
-    invoke-virtual {v7}, Landroid/telephony/CellInfoLte;->getCellIdentity()Landroid/telephony/CellIdentityLte;
-
-    move-result-object v11
-
-    .line 495
-    .restart local v11    # "identityLte":Landroid/telephony/CellIdentityLte;
-    if-nez v11, :cond_1da
-
-    .line 496
-    const-string/jumbo v23, "SUPL20_LTECellInfo"
-
-    const-string/jumbo v24, "get neighbor cell returns null"
-
-    invoke-static/range {v23 .. v24}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto/16 :goto_44
-
-    .line 500
-    :cond_1da
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getMnc()I
-
-    move-result v15
-
-    .line 501
-    .restart local v15    # "mnc":I
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getMcc()I
-
-    move-result v13
-
-    .line 502
-    .restart local v13    # "mcc":I
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getTac()I
-
-    move-result v20
-
-    .line 503
-    .restart local v20    # "tac":I
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getCi()I
-
-    move-result v8
-
-    .line 504
-    .restart local v8    # "ci":I
-    invoke-virtual {v11}, Landroid/telephony/CellIdentityLte;->getPci()I
-
-    move-result v16
-
-    .line 506
-    .restart local v16    # "pci":I
-    const/16 v21, 0x0
-
-    .line 507
-    .local v21, "usMeasResultRSRP":S
-    const/16 v22, 0x0
-
-    .line 508
-    .local v22, "usMeasResultRSRQ":S
-    invoke-virtual {v7}, Landroid/telephony/CellInfoLte;->getCellSignalStrength()Landroid/telephony/CellSignalStrengthLte;
-
-    move-result-object v17
-
-    .line 509
-    .restart local v17    # "signal_strength":Landroid/telephony/CellSignalStrengthLte;
-    if-eqz v17, :cond_246
-
-    .line 510
-    invoke-virtual/range {v17 .. v17}, Landroid/telephony/CellSignalStrengthLte;->getDbm()I
-
-    move-result v23
-
-    move/from16 v0, v23
-
-    int-to-short v0, v0
-
-    move/from16 v21, v0
-
-    .line 511
-    .local v21, "usMeasResultRSRP":S
-    move/from16 v0, v21
-
-    add-int/lit16 v0, v0, 0x8d
-
-    move/from16 v23, v0
-
-    move/from16 v0, v23
-
-    int-to-short v0, v0
-
-    move/from16 v21, v0
-
-    .line 512
-    if-gez v21, :cond_271
-
-    .line 513
-    const/16 v21, 0x0
-
-    .line 519
-    .end local v21    # "usMeasResultRSRP":S
-    :cond_210
-    :goto_210
-    invoke-virtual/range {v17 .. v17}, Landroid/telephony/CellSignalStrengthLte;->getRsrq()I
-
-    move-result v23
-
-    mul-int/lit8 v23, v23, 0x2
-
-    add-int/lit8 v23, v23, 0x28
-
-    move/from16 v0, v23
-
-    int-to-short v0, v0
-
-    move/from16 v22, v0
-
-    .line 520
-    .local v22, "usMeasResultRSRQ":S
-    if-gez v22, :cond_27c
-
-    .line 521
-    const/16 v22, 0x0
-
-    .line 526
-    .end local v22    # "usMeasResultRSRQ":S
-    :cond_221
-    :goto_221
-    const-string/jumbo v23, "SUPL20_LTECellInfo"
-
-    const-string/jumbo v24, "usMeasResultRSRP:%d, usMeasResultRSRQ:%d"
-
-    const/16 v25, 0x2
-
-    move/from16 v0, v25
-
-    new-array v0, v0, [Ljava/lang/Object;
-
-    move-object/from16 v25, v0
-
-    invoke-static/range {v21 .. v21}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v26
-
-    const/16 v27, 0x0
-
-    aput-object v26, v25, v27
-
-    invoke-static/range {v22 .. v22}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v26
-
-    const/16 v27, 0x1
-
-    aput-object v26, v25, v27
-
-    invoke-static/range {v24 .. v25}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v24
-
-    invoke-static/range {v23 .. v24}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 528
-    :cond_246
-    sget-object v23, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
-
-    invoke-interface/range {v23 .. v23}, Ljava/util/List;->size()I
-
-    move-result v23
-
-    const/16 v24, 0x8
-
-    move/from16 v0, v23
-
-    move/from16 v1, v24
-
-    if-ge v0, v1, :cond_287
-
-    .line 530
-    new-instance v14, Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;
-
-    move/from16 v0, v16
-
-    int-to-short v0, v0
-
-    move/from16 v23, v0
-
-    move/from16 v0, v23
-
-    move/from16 v1, v21
-
-    move/from16 v2, v22
-
-    invoke-direct {v14, v0, v1, v2}, Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;-><init>(SSS)V
-
-    .line 531
-    .local v14, "measResult":Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;
-    sget-object v23, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
-
-    move-object/from16 v0, v23
-
-    invoke-interface {v0, v14}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 532
-    const/16 v23, 0x1
-
-    sput-boolean v23, Lcom/android/supl/loc/LTECellInfo;->bIsMeasResultListEUTRA:Z
-
-    goto/16 :goto_44
-
-    .line 515
-    .end local v14    # "measResult":Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;
-    .restart local v21    # "usMeasResultRSRP":S
-    .local v22, "usMeasResultRSRQ":S
-    :cond_271
-    const/16 v23, 0x61
-
-    move/from16 v0, v21
-
-    move/from16 v1, v23
-
-    if-le v0, v1, :cond_210
-
-    .line 516
-    const/16 v21, 0x61
-
-    .local v21, "usMeasResultRSRP":S
-    goto :goto_210
-
-    .line 523
-    .end local v21    # "usMeasResultRSRP":S
-    .local v22, "usMeasResultRSRQ":S
-    :cond_27c
-    const/16 v23, 0x22
-
-    move/from16 v0, v22
-
-    move/from16 v1, v23
-
-    if-le v0, v1, :cond_221
-
-    .line 524
-    const/16 v22, 0x22
-
-    .local v22, "usMeasResultRSRQ":S
-    goto :goto_221
-
-    .line 536
-    .end local v22    # "usMeasResultRSRQ":S
-    :cond_287
-    const-string/jumbo v23, "SUPL20_LTECellInfo"
-
-    const-string/jumbo v24, "listMRLEUTRA size > 8, discard!"
-
-    invoke-static/range {v23 .. v24}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto/16 :goto_44
-
-    .line 541
-    .end local v3    # "allCellInfo":Landroid/telephony/CellInfo;
-    .end local v7    # "cellInfoLte":Landroid/telephony/CellInfoLte;
-    .end local v8    # "ci":I
-    .end local v11    # "identityLte":Landroid/telephony/CellIdentityLte;
-    .end local v13    # "mcc":I
-    .end local v15    # "mnc":I
-    .end local v16    # "pci":I
-    .end local v17    # "signal_strength":Landroid/telephony/CellSignalStrengthLte;
-    .end local v20    # "tac":I
-    :cond_292
-    const-string/jumbo v23, "SUPL20_LTECellInfo"
-
-    new-instance v24, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v24 .. v24}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v25, "listMRLEUTRA size: "
-
-    invoke-virtual/range {v24 .. v25}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v24
-
-    sget-object v25, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
-
-    invoke-interface/range {v25 .. v25}, Ljava/util/List;->size()I
-
-    move-result v25
-
-    invoke-virtual/range {v24 .. v25}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v24
-
-    invoke-virtual/range {v24 .. v24}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v24
-
-    invoke-static/range {v23 .. v24}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 543
+    .line 341
     return-object v12
+
+    .line 343
+    :cond_f
+    const/4 v2, 0x0
+
+    .line 344
+    .local v2, "cellInfoLte":Landroid/telephony/CellInfoLte;
+    invoke-interface {p0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    .local v1, "allCellInfo$iterator":Ljava/util/Iterator;
+    :cond_14
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v10
+
+    if-eqz v10, :cond_27
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/telephony/CellInfo;
+
+    .line 345
+    .local v0, "allCellInfo":Landroid/telephony/CellInfo;
+    instance-of v10, v0, Landroid/telephony/CellInfoLte;
+
+    if-eqz v10, :cond_14
+
+    move-object v2, v0
+
+    .line 346
+    check-cast v2, Landroid/telephony/CellInfoLte;
+
+    .line 350
+    .end local v0    # "allCellInfo":Landroid/telephony/CellInfo;
+    .end local v2    # "cellInfoLte":Landroid/telephony/CellInfoLte;
+    :cond_27
+    const/4 v5, 0x0
+
+    .line 351
+    .local v5, "identityLte":Landroid/telephony/CellIdentityLte;
+    if-nez v2, :cond_34
+
+    .line 352
+    const-string/jumbo v10, "LTECEllInfo"
+
+    const-string/jumbo v11, "cellInfoList could not find the CellInfoLte"
+
+    invoke-static {v10, v11}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 353
+    return-object v12
+
+    .line 355
+    :cond_34
+    invoke-virtual {v2}, Landroid/telephony/CellInfoLte;->getCellIdentity()Landroid/telephony/CellIdentityLte;
+
+    move-result-object v5
+
+    .line 356
+    .local v5, "identityLte":Landroid/telephony/CellIdentityLte;
+    if-nez v5, :cond_44
+
+    .line 357
+    const-string/jumbo v10, "LTECEllInfo"
+
+    const-string/jumbo v11, "getCellIdentity function returns null CellIdentityLte"
+
+    invoke-static {v10, v11}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 358
+    return-object v12
+
+    .line 360
+    :cond_44
+    new-instance v8, Lcom/android/supl/loc/LTECellInfo$MNCList;
+
+    new-array v10, v13, [C
+
+    invoke-virtual {v5}, Landroid/telephony/CellIdentityLte;->getMnc()I
+
+    move-result v11
+
+    int-to-char v11, v11
+
+    aput-char v11, v10, v14
+
+    invoke-direct {v8, v10}, Lcom/android/supl/loc/LTECellInfo$MNCList;-><init>([C)V
+
+    .line 361
+    .local v8, "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
+    new-instance v7, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
+
+    new-array v10, v13, [C
+
+    invoke-virtual {v5}, Landroid/telephony/CellIdentityLte;->getMcc()I
+
+    move-result v11
+
+    int-to-char v11, v11
+
+    aput-char v11, v10, v14
+
+    invoke-direct {v7, v10}, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;-><init>([C)V
+
+    .line 362
+    .local v7, "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
+    new-instance v4, Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
+
+    invoke-direct {v4, v13, v7, v8}, Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;-><init>(ZLcom/android/supl/loc/LTECellInfo$MCC_LIST;Lcom/android/supl/loc/LTECellInfo$MNCList;)V
+
+    .line 363
+    .local v4, "identity":Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
+    new-instance v3, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
+
+    invoke-virtual {v5}, Landroid/telephony/CellIdentityLte;->getCi()I
+
+    move-result v10
+
+    int-to-char v10, v10
+
+    invoke-direct {v3, v4, v10}, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;-><init>(Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;I)V
+
+    .line 364
+    .local v3, "eutra":Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
+    invoke-virtual {v5}, Landroid/telephony/CellIdentityLte;->getPci()I
+
+    move-result v10
+
+    int-to-short v9, v10
+
+    .line 365
+    .local v9, "ucPhysCellID":S
+    new-instance v6, Lcom/android/supl/loc/LTECellInfo;
+
+    invoke-virtual {v5}, Landroid/telephony/CellIdentityLte;->getTac()I
+
+    move-result v10
+
+    int-to-char v10, v10
+
+    invoke-direct {v6, v3, v10, v9}, Lcom/android/supl/loc/LTECellInfo;-><init>(Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;CS)V
+
+    .line 366
+    .local v6, "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
+    return-object v6
 .end method
 
 .method public static getCellLocation_To_LTECellInfo(Landroid/telephony/CellLocation;II)Lcom/android/supl/loc/LTECellInfo;
-    .registers 14
+    .registers 15
     .param p0, "cellLoc"    # Landroid/telephony/CellLocation;
     .param p1, "mcc"    # I
     .param p2, "mnc"    # I
 
     .prologue
-    .line 361
+    .line 305
     instance-of v9, p0, Landroid/telephony/gsm/GsmCellLocation;
 
-    if-eqz v9, :cond_81
+    if-eqz v9, :cond_cf
 
     move-object v3, p0
 
-    .line 362
-    nop
+    .line 306
+    check-cast v3, Landroid/telephony/gsm/GsmCellLocation;
 
-    nop
-
-    .line 363
+    .line 307
     .local v3, "gsmCell":Landroid/telephony/gsm/GsmCellLocation;
     const/4 v9, 0x3
 
     new-array v0, v9, [C
 
-    .line 366
+    .line 310
     .local v0, "c_mcc":[C
     div-int/lit8 v9, p1, 0x64
 
@@ -1287,7 +404,7 @@
 
     aput-char v9, v0, v10
 
-    .line 367
+    .line 311
     rem-int/lit8 v9, p1, 0x64
 
     div-int/lit8 v9, v9, 0xa
@@ -1298,7 +415,7 @@
 
     aput-char v9, v0, v10
 
-    .line 368
+    .line 312
     rem-int/lit8 v9, p1, 0xa
 
     int-to-char v9, v9
@@ -1307,17 +424,17 @@
 
     aput-char v9, v0, v10
 
-    .line 370
+    .line 314
     const/16 v9, 0x63
 
-    if-le p2, v9, :cond_71
+    if-le p2, v9, :cond_be
 
-    .line 371
+    .line 315
     const/4 v9, 0x3
 
     new-array v1, v9, [C
 
-    .line 372
+    .line 316
     .local v1, "c_mnc":[C
     div-int/lit8 v9, p2, 0x64
 
@@ -1327,7 +444,7 @@
 
     aput-char v9, v1, v10
 
-    .line 373
+    .line 317
     rem-int/lit8 v9, p2, 0x64
 
     div-int/lit8 v9, v9, 0xa
@@ -1338,7 +455,7 @@
 
     aput-char v9, v1, v10
 
-    .line 374
+    .line 318
     rem-int/lit8 v9, p2, 0xa
 
     int-to-char v9, v9
@@ -1347,27 +464,121 @@
 
     aput-char v9, v1, v10
 
-    .line 381
+    .line 324
     :goto_39
-    new-instance v8, Lcom/android/supl/loc/LTECellInfo$MNCList;
+    const-string/jumbo v9, "LTECEllInfo"
 
-    invoke-direct {v8, v1}, Lcom/android/supl/loc/LTECellInfo$MNCList;-><init>([C)V
+    new-instance v10, Ljava/lang/StringBuilder;
 
-    .line 382
-    .local v8, "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
-    new-instance v7, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
+    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v7, v0}, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;-><init>([C)V
+    const-string/jumbo v11, "mcc: "
 
-    .line 383
-    .local v7, "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const/4 v11, 0x0
+
+    aget-char v11, v0, v11
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const/4 v11, 0x1
+
+    aget-char v11, v0, v11
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const/4 v11, 0x2
+
+    aget-char v11, v0, v11
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const-string/jumbo v11, " Len: "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    array-length v11, v0
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v9, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 325
+    const-string/jumbo v9, "LTECEllInfo"
+
+    new-instance v10, Ljava/lang/StringBuilder;
+
+    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v11, "mnc: "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const/4 v11, 0x0
+
+    aget-char v11, v1, v11
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    const-string/jumbo v11, " Len: "
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    array-length v11, v1
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v9, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 327
+    new-instance v7, Lcom/android/supl/loc/LTECellInfo$MNCList;
+
+    invoke-direct {v7, v1}, Lcom/android/supl/loc/LTECellInfo$MNCList;-><init>([C)V
+
+    .line 328
+    .local v7, "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
+    new-instance v6, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
+
+    invoke-direct {v6, v0}, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;-><init>([C)V
+
+    .line 329
+    .local v6, "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
     new-instance v4, Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
 
     const/4 v9, 0x1
 
-    invoke-direct {v4, v9, v7, v8}, Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;-><init>(ZLcom/android/supl/loc/LTECellInfo$MCC_LIST;Lcom/android/supl/loc/LTECellInfo$MNCList;)V
+    invoke-direct {v4, v9, v6, v7}, Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;-><init>(ZLcom/android/supl/loc/LTECellInfo$MCC_LIST;Lcom/android/supl/loc/LTECellInfo$MNCList;)V
 
-    .line 384
+    .line 330
     .local v4, "identity":Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
     new-instance v2, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
 
@@ -1377,36 +588,12 @@
 
     invoke-direct {v2, v4, v9}, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;-><init>(Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;I)V
 
-    .line 387
+    .line 331
     .local v2, "eutra":Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    .line 388
-    .local v6, "sPhysCellID":S
-    invoke-virtual {v3}, Landroid/telephony/gsm/GsmCellLocation;->getPsc()I
-
-    move-result v9
-
-    if-ltz v9, :cond_66
-
-    invoke-virtual {v3}, Landroid/telephony/gsm/GsmCellLocation;->getPsc()I
-
-    move-result v9
-
-    const/16 v10, 0x1f7
-
-    if-lt v10, v9, :cond_66
-
-    .line 389
-    invoke-virtual {v3}, Landroid/telephony/gsm/GsmCellLocation;->getPsc()I
-
-    move-result v9
-
-    int-to-short v6, v9
-
-    .line 392
-    .end local v6    # "sPhysCellID":S
-    :cond_66
+    .line 332
+    .local v8, "ucPhysCellID":S
     new-instance v5, Lcom/android/supl/loc/LTECellInfo;
 
     invoke-virtual {v3}, Landroid/telephony/gsm/GsmCellLocation;->getLac()I
@@ -1415,25 +602,26 @@
 
     int-to-char v9, v9
 
-    invoke-direct {v5, v2, v9, v6}, Lcom/android/supl/loc/LTECellInfo;-><init>(Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;CS)V
+    invoke-direct {v5, v2, v9, v8}, Lcom/android/supl/loc/LTECellInfo;-><init>(Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;CS)V
 
-    .line 393
+    .line 333
     .local v5, "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
     return-object v5
 
-    .line 376
+    .line 320
     .end local v1    # "c_mnc":[C
     .end local v2    # "eutra":Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
     .end local v4    # "identity":Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
     .end local v5    # "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
-    .end local v7    # "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
-    .end local v8    # "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
-    :cond_71
+    .end local v6    # "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
+    .end local v7    # "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
+    .end local v8    # "ucPhysCellID":S
+    :cond_be
     const/4 v9, 0x2
 
     new-array v1, v9, [C
 
-    .line 377
+    .line 321
     .restart local v1    # "c_mnc":[C
     div-int/lit8 v9, p2, 0xa
 
@@ -1443,7 +631,7 @@
 
     aput-char v9, v1, v10
 
-    .line 378
+    .line 322
     rem-int/lit8 v9, p2, 0xa
 
     int-to-char v9, v9
@@ -1452,13 +640,13 @@
 
     aput-char v9, v1, v10
 
-    goto :goto_39
+    goto/16 :goto_39
 
-    .line 396
+    .line 335
     .end local v0    # "c_mcc":[C
     .end local v1    # "c_mnc":[C
     .end local v3    # "gsmCell":Landroid/telephony/gsm/GsmCellLocation;
-    :cond_81
+    :cond_cf
     const/4 v9, 0x0
 
     return-object v9
@@ -1486,18 +674,18 @@
     .end annotation
 
     .prologue
-    .line 605
+    .line 427
     .local p3, "pType":[Ljava/lang/Class;, "[Ljava/lang/Class<*>;"
     const/4 v12, 0x0
 
-    .line 607
+    .line 429
     .local v12, "retobj":Ljava/lang/Object;
     :try_start_1
     invoke-static/range {p1 .. p1}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
 
     move-result-object v2
 
-    .line 610
+    .line 432
     .local v2, "c":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
     move-object/from16 v0, p2
 
@@ -1507,9 +695,9 @@
 
     move-result-object v10
 
-    .line 612
+    .line 434
     .local v10, "getMethod":Ljava/lang/reflect/Method;
-    const-string/jumbo v13, "SUPL20_LTECellInfo"
+    const-string/jumbo v13, "LTECEllInfo"
 
     invoke-virtual {v10}, Ljava/lang/reflect/Method;->getName()Ljava/lang/String;
 
@@ -1517,19 +705,19 @@
 
     invoke-static {v13, v14}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 613
+    .line 435
     const/4 v11, 0x0
 
-    .line 615
+    .line 437
     .local v11, "methobj":Ljava/lang/Object;
     if-nez p0, :cond_25
 
-    .line 616
+    .line 438
     invoke-virtual {v2}, Ljava/lang/Class;->newInstance()Ljava/lang/Object;
 
     move-result-object v11
 
-    .line 622
+    .line 444
     :goto_1e
     move-object/from16 v0, p4
 
@@ -1545,7 +733,7 @@
 
     move-result-object v12
 
-    .line 639
+    .line 461
     .end local v2    # "c":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
     .end local v10    # "getMethod":Ljava/lang/reflect/Method;
     .end local v11    # "methobj":Ljava/lang/Object;
@@ -1553,7 +741,7 @@
     :goto_24
     return-object v12
 
-    .line 618
+    .line 440
     .restart local v2    # "c":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
     .restart local v10    # "getMethod":Ljava/lang/reflect/Method;
     .restart local v11    # "methobj":Ljava/lang/Object;
@@ -1563,18 +751,18 @@
 
     goto :goto_1e
 
-    .line 635
+    .line 457
     .end local v2    # "c":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
     .end local v10    # "getMethod":Ljava/lang/reflect/Method;
     .end local v11    # "methobj":Ljava/lang/Object;
     :catch_27
     move-exception v3
 
-    .line 636
+    .line 458
     .local v3, "ex":Ljava/lang/ClassNotFoundException;
-    const-string/jumbo v13, "SUPL20_LTECellInfo"
+    const-string/jumbo v13, "LTECEllInfo"
 
-    invoke-virtual {v3}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/ClassNotFoundException;->getMessage()Ljava/lang/String;
 
     move-result-object v14
 
@@ -1582,16 +770,16 @@
 
     goto :goto_24
 
-    .line 633
+    .line 455
     .end local v3    # "ex":Ljava/lang/ClassNotFoundException;
     :catch_33
     move-exception v8
 
-    .line 634
+    .line 456
     .local v8, "ex":Ljava/lang/SecurityException;
-    const-string/jumbo v13, "SUPL20_LTECellInfo"
+    const-string/jumbo v13, "LTECEllInfo"
 
-    invoke-virtual {v8}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v8}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
 
     move-result-object v14
 
@@ -1599,16 +787,16 @@
 
     goto :goto_24
 
-    .line 631
+    .line 453
     .end local v8    # "ex":Ljava/lang/SecurityException;
     :catch_3f
     move-exception v7
 
-    .line 632
+    .line 454
     .local v7, "ex":Ljava/lang/NoSuchMethodException;
-    const-string/jumbo v13, "SUPL20_LTECellInfo"
+    const-string/jumbo v13, "LTECEllInfo"
 
-    invoke-virtual {v7}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v7}, Ljava/lang/NoSuchMethodException;->getMessage()Ljava/lang/String;
 
     move-result-object v14
 
@@ -1616,16 +804,16 @@
 
     goto :goto_24
 
-    .line 629
+    .line 451
     .end local v7    # "ex":Ljava/lang/NoSuchMethodException;
     :catch_4b
     move-exception v4
 
-    .line 630
+    .line 452
     .local v4, "ex":Ljava/lang/IllegalAccessException;
-    const-string/jumbo v13, "SUPL20_LTECellInfo"
+    const-string/jumbo v13, "LTECEllInfo"
 
-    invoke-virtual {v4}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v4}, Ljava/lang/IllegalAccessException;->getMessage()Ljava/lang/String;
 
     move-result-object v14
 
@@ -1633,16 +821,16 @@
 
     goto :goto_24
 
-    .line 627
+    .line 449
     .end local v4    # "ex":Ljava/lang/IllegalAccessException;
     :catch_57
     move-exception v9
 
-    .line 628
+    .line 450
     .local v9, "ex":Ljava/lang/reflect/InvocationTargetException;
-    const-string/jumbo v13, "SUPL20_LTECellInfo"
+    const-string/jumbo v13, "LTECEllInfo"
 
-    invoke-virtual {v9}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v9}, Ljava/lang/reflect/InvocationTargetException;->getMessage()Ljava/lang/String;
 
     move-result-object v14
 
@@ -1650,16 +838,16 @@
 
     goto :goto_24
 
-    .line 625
+    .line 447
     .end local v9    # "ex":Ljava/lang/reflect/InvocationTargetException;
     :catch_63
     move-exception v5
 
-    .line 626
+    .line 448
     .local v5, "ex":Ljava/lang/IllegalArgumentException;
-    const-string/jumbo v13, "SUPL20_LTECellInfo"
+    const-string/jumbo v13, "LTECEllInfo"
 
-    invoke-virtual {v5}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v5}, Ljava/lang/IllegalArgumentException;->getMessage()Ljava/lang/String;
 
     move-result-object v14
 
@@ -1667,16 +855,16 @@
 
     goto :goto_24
 
-    .line 623
+    .line 445
     .end local v5    # "ex":Ljava/lang/IllegalArgumentException;
     :catch_6f
     move-exception v6
 
-    .line 624
+    .line 446
     .local v6, "ex":Ljava/lang/InstantiationException;
-    const-string/jumbo v13, "SUPL20_LTECellInfo"
+    const-string/jumbo v13, "LTECEllInfo"
 
-    invoke-virtual {v6}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/InstantiationException;->getMessage()Ljava/lang/String;
 
     move-result-object v14
 
@@ -1690,7 +878,7 @@
     .param p0, "mContext"    # Landroid/content/Context;
 
     .prologue
-    .line 548
+    .line 370
     :try_start_0
     const-class v26, Landroid/telephony/TelephonyManager;
 
@@ -1702,18 +890,18 @@
 
     move-result-object v11
 
-    .line 550
+    .line 372
     .local v11, "method":Ljava/lang/reflect/Method;
     if-eqz v11, :cond_1e2
 
-    .line 551
+    .line 373
     const/16 v26, 0x0
 
     move/from16 v0, v26
 
     new-array v12, v0, [Ljava/lang/Class;
 
-    .line 552
+    .line 374
     .local v12, "noparams":[Ljava/lang/Class;, "[Ljava/lang/Class<*>;"
     const-string/jumbo v26, "phone"
 
@@ -1727,9 +915,9 @@
 
     check-cast v10, Landroid/telephony/TelephonyManager;
 
-    .line 553
+    .line 375
     .local v10, "manager":Landroid/telephony/TelephonyManager;
-    invoke-virtual {v10}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {v10}, Landroid/telephony/TelephonyManager;->getClass()Ljava/lang/Class;
 
     move-result-object v26
 
@@ -1751,48 +939,48 @@
 
     move-result-object v16
 
-    .line 554
+    .line 376
     .local v16, "retobj":Ljava/lang/Object;
     if-nez v16, :cond_45
 
-    .line 555
-    const-string/jumbo v26, "SUPL20_LTECellInfo"
+    .line 377
+    const-string/jumbo v26, "LTECEllInfo"
 
     const-string/jumbo v27, "getAllCellInfo function return null"
 
     invoke-static/range {v26 .. v27}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 556
+    .line 378
     const/16 v26, 0x0
 
     return-object v26
 
-    .line 558
+    .line 380
     :cond_45
     invoke-virtual/range {v16 .. v16}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v15
 
-    .line 559
+    .line 381
     .local v15, "reClass":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
     const-class v26, Ljava/util/ArrayList;
 
     move-object/from16 v0, v26
 
-    invoke-virtual {v15, v0}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v15, v0}, Ljava/lang/Class;->equals(Ljava/lang/Object;)Z
 
     move-result v26
 
     if-eqz v26, :cond_1e2
 
-    .line 560
+    .line 382
     move-object/from16 v0, v16
 
     check-cast v0, Ljava/util/ArrayList;
 
     move-object v4, v0
 
-    .line 561
+    .line 383
     .local v4, "allCellInfoarrayList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<*>;"
     invoke-interface {v4}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
@@ -1810,12 +998,12 @@
 
     move-result-object v13
 
-    .line 562
+    .line 384
     .local v13, "object":Ljava/lang/Object;
     if-eqz v13, :cond_5c
 
-    .line 563
-    const-string/jumbo v26, "SUPL20_LTECellInfo"
+    .line 385
+    const-string/jumbo v26, "LTECEllInfo"
 
     invoke-virtual {v13}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
@@ -1827,7 +1015,7 @@
 
     invoke-static/range {v26 .. v27}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 565
+    .line 387
     invoke-virtual {v13}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v26
@@ -1850,11 +1038,11 @@
 
     move-result-object v17
 
-    .line 566
+    .line 388
     .local v17, "retobjCellInde":Ljava/lang/Object;
     if-eqz v17, :cond_5c
 
-    .line 567
+    .line 389
     invoke-virtual/range {v17 .. v17}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v26
@@ -1871,7 +1059,7 @@
 
     if-eqz v26, :cond_5c
 
-    .line 568
+    .line 390
     invoke-virtual/range {v17 .. v17}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v26
@@ -1896,7 +1084,7 @@
 
     move-result-object v19
 
-    .line 569
+    .line 391
     .local v19, "retobjMCC":Ljava/lang/Object;
     invoke-virtual/range {v17 .. v17}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
@@ -1922,7 +1110,7 @@
 
     move-result-object v20
 
-    .line 570
+    .line 392
     .local v20, "retobjMNC":Ljava/lang/Object;
     invoke-virtual/range {v17 .. v17}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
@@ -1948,7 +1136,7 @@
 
     move-result-object v18
 
-    .line 571
+    .line 393
     .local v18, "retobjCi":Ljava/lang/Object;
     invoke-virtual/range {v17 .. v17}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
@@ -1974,7 +1162,7 @@
 
     move-result-object v21
 
-    .line 572
+    .line 394
     .local v21, "retobjPci":Ljava/lang/Object;
     invoke-virtual/range {v17 .. v17}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
@@ -2000,9 +1188,9 @@
 
     move-result-object v22
 
-    .line 573
+    .line 395
     .local v22, "retobjTac":Ljava/lang/Object;
-    const-string/jumbo v26, "SUPL20_LTECellInfo"
+    const-string/jumbo v26, "LTECEllInfo"
 
     invoke-virtual/range {v19 .. v19}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
@@ -2010,8 +1198,8 @@
 
     invoke-static/range {v26 .. v27}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 574
-    const-string/jumbo v26, "SUPL20_LTECellInfo"
+    .line 396
+    const-string/jumbo v26, "LTECEllInfo"
 
     invoke-virtual/range {v20 .. v20}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
@@ -2019,8 +1207,8 @@
 
     invoke-static/range {v26 .. v27}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 575
-    const-string/jumbo v26, "SUPL20_LTECellInfo"
+    .line 397
+    const-string/jumbo v26, "LTECEllInfo"
 
     invoke-virtual/range {v18 .. v18}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
@@ -2028,8 +1216,8 @@
 
     invoke-static/range {v26 .. v27}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 576
-    const-string/jumbo v26, "SUPL20_LTECellInfo"
+    .line 398
+    const-string/jumbo v26, "LTECEllInfo"
 
     invoke-virtual/range {v21 .. v21}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
@@ -2037,8 +1225,8 @@
 
     invoke-static/range {v26 .. v27}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 577
-    const-string/jumbo v26, "SUPL20_LTECellInfo"
+    .line 399
+    const-string/jumbo v26, "LTECEllInfo"
 
     invoke-virtual/range {v22 .. v22}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
@@ -2046,7 +1234,7 @@
 
     invoke-static/range {v26 .. v27}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 578
+    .line 400
     new-instance v24, Lcom/android/supl/loc/LTECellInfo$MNCList;
 
     const/16 v26, 0x1
@@ -2081,7 +1269,7 @@
 
     invoke-direct {v0, v1}, Lcom/android/supl/loc/LTECellInfo$MNCList;-><init>([C)V
 
-    .line 579
+    .line 401
     .local v24, "stMNC":Lcom/android/supl/loc/LTECellInfo$MNCList;
     new-instance v23, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
 
@@ -2117,7 +1305,7 @@
 
     invoke-direct {v0, v1}, Lcom/android/supl/loc/LTECellInfo$MCC_LIST;-><init>([C)V
 
-    .line 581
+    .line 403
     .local v23, "stMCC":Lcom/android/supl/loc/LTECellInfo$MCC_LIST;
     new-instance v8, Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
 
@@ -2131,7 +1319,7 @@
 
     invoke-direct {v8, v0, v1, v2}, Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;-><init>(ZLcom/android/supl/loc/LTECellInfo$MCC_LIST;Lcom/android/supl/loc/LTECellInfo$MNCList;)V
 
-    .line 583
+    .line 405
     .local v8, "identity":Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
     new-instance v5, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
 
@@ -2153,7 +1341,7 @@
 
     invoke-direct {v5, v8, v0}, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;-><init>(Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;I)V
 
-    .line 585
+    .line 407
     .local v5, "eutra":Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
     invoke-virtual/range {v21 .. v21}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
@@ -2163,7 +1351,7 @@
 
     move-result v25
 
-    .line 586
+    .line 408
     .local v25, "ucPhysCellID":S
     new-instance v9, Lcom/android/supl/loc/LTECellInfo;
 
@@ -2190,11 +1378,11 @@
     .catch Ljava/lang/NoSuchMethodException; {:try_start_0 .. :try_end_1d2} :catch_1e5
     .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_1d2} :catch_1d3
 
-    .line 587
+    .line 409
     .local v9, "lteCellInfo":Lcom/android/supl/loc/LTECellInfo;
     return-object v9
 
-    .line 596
+    .line 418
     .end local v4    # "allCellInfoarrayList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<*>;"
     .end local v5    # "eutra":Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
     .end local v8    # "identity":Lcom/android/supl/loc/LTECellInfo$PlmnIdentity;
@@ -2218,11 +1406,11 @@
     :catch_1d3
     move-exception v7
 
-    .line 597
+    .line 419
     .local v7, "ex":Ljava/lang/SecurityException;
-    const-string/jumbo v26, "SUPL20_LTECellInfo"
+    const-string/jumbo v26, "LTECEllInfo"
 
-    invoke-virtual {v7}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v7}, Ljava/lang/SecurityException;->getMessage()Ljava/lang/String;
 
     move-result-object v27
 
@@ -2232,7 +1420,7 @@
 
     invoke-static {v0, v1, v7}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 600
+    .line 422
     .end local v7    # "ex":Ljava/lang/SecurityException;
     :cond_1e2
     :goto_1e2
@@ -2240,15 +1428,15 @@
 
     return-object v26
 
-    .line 594
+    .line 416
     :catch_1e5
     move-exception v6
 
-    .line 595
+    .line 417
     .local v6, "ex":Ljava/lang/NoSuchMethodException;
-    const-string/jumbo v26, "SUPL20_LTECellInfo"
+    const-string/jumbo v26, "LTECEllInfo"
 
-    invoke-virtual {v6}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/NoSuchMethodException;->getMessage()Ljava/lang/String;
 
     move-result-object v27
 
@@ -2264,314 +1452,242 @@
 
 # virtual methods
 .method public getLTECellInfo()[B
-    .registers 13
+    .registers 9
 
     .prologue
-    const/4 v11, 0x1
+    const/4 v7, 0x1
 
-    const/4 v10, 0x0
+    const/4 v6, 0x0
 
-    .line 99
-    const/4 v4, 0x0
+    .line 95
+    const/4 v3, 0x0
 
-    .line 100
-    .local v4, "iOffset":I
-    const/4 v5, 0x0
-
-    .line 102
-    .local v5, "iSize":I
-    const/4 v1, 0x0
-
-    .line 103
-    .local v1, "bData":[B
-    iget-object v8, p0, Lcom/android/supl/loc/LTECellInfo;->stCELLGlobalID:Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
-
-    invoke-virtual {v8}, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;->getCellGlobalidInfo()[B
-
-    move-result-object v3
-
-    .line 104
-    .local v3, "bstCELLGlobalID":[B
-    array-length v8, v3
-
-    add-int/lit8 v5, v8, 0x0
-
-    .line 105
-    add-int/lit8 v5, v5, 0x2
-
-    .line 107
-    add-int/lit8 v5, v5, 0x2
-
-    .line 109
-    add-int/lit8 v5, v5, 0x10
-
-    .line 110
-    sget-boolean v8, Lcom/android/supl/loc/LTECellInfo;->bIsRSRPInfoPresent:Z
-
-    if-eqz v8, :cond_1a
-
-    .line 111
-    add-int/lit8 v5, v5, 0x1
-
-    .line 113
-    :cond_1a
-    sget-boolean v8, Lcom/android/supl/loc/LTECellInfo;->bIsRSRQInfoPresent:Z
-
-    if-eqz v8, :cond_20
-
-    .line 114
-    add-int/lit8 v5, v5, 0x1
-
-    .line 116
-    :cond_20
-    sget-boolean v8, Lcom/android/supl/loc/LTECellInfo;->bIsTAInfoPresent:Z
-
-    if-eqz v8, :cond_26
-
-    .line 117
-    add-int/lit8 v5, v5, 0x2
-
-    .line 119
-    :cond_26
-    const/4 v2, 0x0
-
-    .line 120
-    .local v2, "bMeasureList":[B
-    sget-boolean v8, Lcom/android/supl/loc/LTECellInfo;->bIsMeasResultListEUTRA:Z
-
-    if-eqz v8, :cond_5b
-
-    sget-object v8, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
-
-    if-eqz v8, :cond_5b
-
-    .line 121
+    .line 98
+    .local v3, "iOffset":I
     const/4 v0, 0x0
 
+    .line 99
+    .local v0, "bData":[B
+    iget-object v5, p0, Lcom/android/supl/loc/LTECellInfo;->stCELLGlobalID:Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;
+
+    invoke-virtual {v5}, Lcom/android/supl/loc/LTECellInfo$Cell_Globalid_Eutra;->getCellGlobalidInfo()[B
+
+    move-result-object v2
+
+    .line 100
+    .local v2, "bstCELLGlobalID":[B
+    array-length v5, v2
+
+    add-int/lit8 v4, v5, 0x0
+
+    .line 101
+    .local v4, "iSize":I
+    add-int/lit8 v4, v4, 0x2
+
+    .line 103
+    add-int/lit8 v4, v4, 0x2
+
+    .line 105
+    add-int/lit8 v4, v4, 0x10
+
+    .line 106
+    iget-boolean v5, p0, Lcom/android/supl/loc/LTECellInfo;->bIsRSRPInfoPresent:Z
+
+    if-eqz v5, :cond_19
+
+    .line 107
+    add-int/lit8 v4, v4, 0x1
+
+    .line 109
+    :cond_19
+    iget-boolean v5, p0, Lcom/android/supl/loc/LTECellInfo;->bIsRSRQInfoPresent:Z
+
+    if-eqz v5, :cond_1f
+
+    .line 110
+    add-int/lit8 v4, v4, 0x1
+
+    .line 112
+    :cond_1f
+    iget-boolean v5, p0, Lcom/android/supl/loc/LTECellInfo;->bIsTAInfoPresent:Z
+
+    if-eqz v5, :cond_25
+
+    .line 113
+    add-int/lit8 v4, v4, 0x2
+
+    .line 115
+    :cond_25
+    const/4 v1, 0x0
+
+    .line 116
+    .local v1, "bMeasureList":[B
+    iget-boolean v5, p0, Lcom/android/supl/loc/LTECellInfo;->bIsMeasResListInfoPresent:Z
+
+    if-eqz v5, :cond_36
+
+    iget-object v5, p0, Lcom/android/supl/loc/LTECellInfo;->stMRL:Lcom/android/supl/loc/measure/MeasuredResultsList;
+
+    if-eqz v5, :cond_36
+
+    .line 117
+    iget-object v5, p0, Lcom/android/supl/loc/LTECellInfo;->stMRL:Lcom/android/supl/loc/measure/MeasuredResultsList;
+
+    invoke-virtual {v5}, Lcom/android/supl/loc/measure/MeasuredResultsList;->getMeasuredResultsListInfo()[B
+
+    move-result-object v1
+
+    .line 118
+    .local v1, "bMeasureList":[B
+    array-length v5, v1
+
+    add-int/2addr v4, v5
+
+    .line 120
+    .end local v1    # "bMeasureList":[B
+    :cond_36
+    new-array v0, v4, [B
+
+    .line 121
+    .local v0, "bData":[B
+    array-length v5, v2
+
+    invoke-static {v2, v6, v0, v3, v5}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
+
     .line 122
-    .local v0, "MeasOffset":I
-    sget-object v8, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
+    array-length v5, v2
 
-    invoke-interface {v8}, Ljava/util/List;->size()I
-
-    move-result v8
-
-    mul-int/lit8 v8, v8, 0x6
-
-    new-array v2, v8, [B
+    add-int/lit8 v3, v5, 0x0
 
     .line 123
-    .local v2, "bMeasureList":[B
-    sget-object v8, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
+    iget-short v5, p0, Lcom/android/supl/loc/LTECellInfo;->usPhysCellID:S
 
-    invoke-interface {v8}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+    invoke-static {v0, v3, v5}, Lcom/android/bytewriter/IO;->put2([BII)I
 
-    move-result-object v7
-
-    .local v7, "measResult$iterator":Ljava/util/Iterator;
-    :goto_40
-    invoke-interface {v7}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v8
-
-    if-eqz v8, :cond_57
-
-    invoke-interface {v7}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v6
-
-    check-cast v6, Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;
-
-    .line 124
-    .local v6, "measResult":Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;
-    invoke-virtual {v6}, Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;->getMeasResultEUTRA()[B
-
-    move-result-object v8
-
-    const/4 v9, 0x6
-
-    invoke-static {v8, v10, v2, v0, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    move-result v3
 
     .line 125
-    add-int/lit8 v0, v0, 0x6
+    iget-char v5, p0, Lcom/android/supl/loc/LTECellInfo;->usTrackAreaCode:C
 
-    goto :goto_40
+    invoke-static {v0, v3, v5}, Lcom/android/bytewriter/IO;->put2([BII)I
+
+    move-result v3
+
+    .line 126
+    iget-boolean v5, p0, Lcom/android/supl/loc/LTECellInfo;->bIsRSRPInfoPresent:Z
+
+    if-eqz v5, :cond_8c
+
+    .line 127
+    invoke-static {v0, v3, v7}, Lcom/android/bytewriter/IO;->put4([BII)I
+
+    move-result v3
 
     .line 128
-    .end local v6    # "measResult":Lcom/android/supl/loc/LTECellInfo$measResultEUTRA;
-    :cond_57
-    add-int/lit8 v5, v5, 0x1
+    iget-short v5, p0, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
 
-    .line 129
-    array-length v8, v2
+    invoke-static {v0, v3, v5}, Lcom/android/bytewriter/IO;->put1([BII)I
 
-    add-int/2addr v5, v8
-
-    .line 132
-    .end local v0    # "MeasOffset":I
-    .end local v2    # "bMeasureList":[B
-    .end local v7    # "measResult$iterator":Ljava/util/Iterator;
-    :cond_5b
-    new-array v1, v5, [B
+    move-result v3
 
     .line 133
-    .local v1, "bData":[B
-    array-length v8, v3
+    :goto_59
+    iget-boolean v5, p0, Lcom/android/supl/loc/LTECellInfo;->bIsRSRQInfoPresent:Z
 
-    invoke-static {v3, v10, v1, v4, v8}, Ljava/lang/System;->arraycopy([BI[BII)V
+    if-eqz v5, :cond_91
 
     .line 134
-    array-length v8, v3
+    invoke-static {v0, v3, v7}, Lcom/android/bytewriter/IO;->put4([BII)I
 
-    add-int/lit8 v4, v8, 0x0
+    move-result v3
 
     .line 135
-    iget-short v8, p0, Lcom/android/supl/loc/LTECellInfo;->usPhysCellID:S
+    iget-short v5, p0, Lcom/android/supl/loc/LTECellInfo;->ucRSRQResult:S
 
-    invoke-static {v1, v4, v8}, Lcom/android/bytewriter/IO;->put2([BII)I
+    invoke-static {v0, v3, v5}, Lcom/android/bytewriter/IO;->put1([BII)I
 
-    move-result v4
-
-    .line 137
-    iget-char v8, p0, Lcom/android/supl/loc/LTECellInfo;->usTrackAreaCode:C
-
-    invoke-static {v1, v4, v8}, Lcom/android/bytewriter/IO;->put2([BII)I
-
-    move-result v4
-
-    .line 138
-    sget-boolean v8, Lcom/android/supl/loc/LTECellInfo;->bIsRSRPInfoPresent:Z
-
-    if-eqz v8, :cond_c1
-
-    .line 139
-    invoke-static {v1, v4, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
-
-    move-result v4
+    move-result v3
 
     .line 140
-    sget-short v8, Lcom/android/supl/loc/LTECellInfo;->ucRSRPResult:S
+    :goto_67
+    iget-boolean v5, p0, Lcom/android/supl/loc/LTECellInfo;->bIsTAInfoPresent:Z
 
-    invoke-static {v1, v4, v8}, Lcom/android/bytewriter/IO;->put1([BII)I
+    if-eqz v5, :cond_96
 
-    move-result v4
+    .line 141
+    invoke-static {v0, v3, v7}, Lcom/android/bytewriter/IO;->put4([BII)I
 
-    .line 145
-    :goto_7e
-    sget-boolean v8, Lcom/android/supl/loc/LTECellInfo;->bIsRSRQInfoPresent:Z
-
-    if-eqz v8, :cond_c6
-
-    .line 146
-    invoke-static {v1, v4, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
-
-    move-result v4
-
-    .line 147
-    sget-short v8, Lcom/android/supl/loc/LTECellInfo;->ucRSRQResult:S
-
-    invoke-static {v1, v4, v8}, Lcom/android/bytewriter/IO;->put1([BII)I
-
-    move-result v4
-
-    .line 152
-    :goto_8c
-    sget-boolean v8, Lcom/android/supl/loc/LTECellInfo;->bIsTAInfoPresent:Z
-
-    if-eqz v8, :cond_cb
-
-    .line 153
-    invoke-static {v1, v4, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
-
-    move-result v4
-
-    .line 154
-    sget-short v8, Lcom/android/supl/loc/LTECellInfo;->usTA:S
-
-    invoke-static {v1, v4, v8}, Lcom/android/bytewriter/IO;->put2([BII)I
-
-    move-result v4
-
-    .line 158
-    :goto_9a
-    sget-boolean v8, Lcom/android/supl/loc/LTECellInfo;->bIsMeasResultListEUTRA:Z
-
-    if-eqz v8, :cond_d0
-
-    sget-object v8, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
-
-    if-eqz v8, :cond_d0
-
-    .line 159
-    invoke-static {v1, v4, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
-
-    move-result v4
-
-    .line 160
-    sget-object v8, Lcom/android/supl/loc/LTECellInfo;->listMRLEUTRA:Ljava/util/List;
-
-    invoke-interface {v8}, Ljava/util/List;->size()I
-
-    move-result v8
-
-    invoke-static {v1, v4, v8}, Lcom/android/bytewriter/IO;->put1([BII)I
-
-    move-result v4
-
-    .line 161
-    array-length v8, v2
-
-    invoke-static {v2, v10, v1, v4, v8}, Ljava/lang/System;->arraycopy([BI[BII)V
-
-    .line 162
-    array-length v8, v2
-
-    add-int/2addr v4, v8
-
-    .line 167
-    :goto_b6
-    if-eq v4, v5, :cond_c0
-
-    .line 168
-    sget-object v8, Ljava/lang/System;->out:Ljava/io/PrintStream;
-
-    const-string/jumbo v9, "LTECellInfo length error"
-
-    invoke-virtual {v8, v9}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
-
-    .line 170
-    :cond_c0
-    return-object v1
+    move-result v3
 
     .line 142
-    :cond_c1
-    invoke-static {v1, v4, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
+    iget-short v5, p0, Lcom/android/supl/loc/LTECellInfo;->usTA:S
 
-    move-result v4
+    invoke-static {v0, v3, v5}, Lcom/android/bytewriter/IO;->put2([BII)I
 
-    goto :goto_7e
+    move-result v3
 
-    .line 149
-    :cond_c6
-    invoke-static {v1, v4, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
+    .line 146
+    :goto_75
+    iget-boolean v5, p0, Lcom/android/supl/loc/LTECellInfo;->bIsMeasResListInfoPresent:Z
 
-    move-result v4
+    if-eqz v5, :cond_9b
 
-    goto :goto_8c
+    if-eqz v1, :cond_9b
 
-    .line 156
-    :cond_cb
-    invoke-static {v1, v4, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
+    .line 147
+    array-length v5, v1
 
-    move-result v4
+    invoke-static {v1, v6, v0, v3, v5}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    goto :goto_9a
+    .line 148
+    array-length v5, v1
 
-    .line 165
-    :cond_d0
-    invoke-static {v1, v4, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
+    add-int/2addr v3, v5
 
-    move-result v4
+    .line 152
+    :goto_81
+    if-eq v3, v4, :cond_8b
 
-    goto :goto_b6
+    .line 153
+    sget-object v5, Ljava/lang/System;->out:Ljava/io/PrintStream;
+
+    const-string/jumbo v6, "LTECellInfo length error"
+
+    invoke-virtual {v5, v6}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+
+    .line 155
+    :cond_8b
+    return-object v0
+
+    .line 130
+    :cond_8c
+    invoke-static {v0, v3, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
+
+    move-result v3
+
+    goto :goto_59
+
+    .line 137
+    :cond_91
+    invoke-static {v0, v3, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
+
+    move-result v3
+
+    goto :goto_67
+
+    .line 144
+    :cond_96
+    invoke-static {v0, v3, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
+
+    move-result v3
+
+    goto :goto_75
+
+    .line 150
+    :cond_9b
+    invoke-static {v0, v3, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
+
+    move-result v3
+
+    goto :goto_81
 .end method

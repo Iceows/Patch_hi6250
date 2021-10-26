@@ -26,11 +26,7 @@
     .registers 7
 
     .prologue
-    .line 51
-    const/4 v3, 0x4
-
     .line 52
-    .local v3, "iSize":I
     const/4 v2, 0x0
 
     .line 54
@@ -41,7 +37,7 @@
     .local v0, "bData":[B
     iget-object v4, p0, Lcom/android/supl/loc/measure/eotd/Neighbor_Identity;->stNeigh:Lcom/android/supl/loc/measure/eotd/Neighbor_ID_Union;
 
-    if-eqz v4, :cond_23
+    if-eqz v4, :cond_22
 
     .line 56
     iget-object v4, p0, Lcom/android/supl/loc/measure/eotd/Neighbor_Identity;->stNeigh:Lcom/android/supl/loc/measure/eotd/Neighbor_ID_Union;
@@ -59,6 +55,7 @@
     add-int/lit8 v3, v4, 0x4
 
     .line 58
+    .local v3, "iSize":I
     new-array v0, v3, [B
 
     .line 59
@@ -70,14 +67,14 @@
     move-result v2
 
     .line 61
-    if-eqz v1, :cond_23
+    if-eqz v1, :cond_22
 
     .line 62
     array-length v4, v1
 
     const/4 v5, 0x0
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 63
     array-length v4, v1
@@ -87,6 +84,7 @@
     .line 66
     .end local v0    # "bData":[B
     .end local v1    # "bNeighbor":[B
-    :cond_23
+    .end local v3    # "iSize":I
+    :cond_22
     return-object v0
 .end method

@@ -51,7 +51,7 @@
     .end local p2    # "objMode":Ljava/lang/Object;
     iput-object p2, p0, Lcom/android/supl/loc/measure/ModeSpecificInfo;->mFdd:Lcom/android/supl/loc/measure/ModeFDD;
 
-    .line 59
+    .line 51
     :goto_12
     return-void
 
@@ -142,7 +142,7 @@
 
     const/4 v5, 0x0
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 77
     array-length v4, v1

@@ -113,7 +113,7 @@
     .line 264
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SITriggerParams;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 265
+    .line 263
     return-void
 .end method
 
@@ -292,7 +292,7 @@
     :cond_7a
     iput-object p11, p0, Lcom/android/supl/si/SITriggerParams;->mGanssAssistCapabilities:Lcom/android/supl/si/ganss/SuplGanssAssistCapabilities;
 
-    .line 124
+    .line 92
     return-void
 .end method
 
@@ -339,19 +339,15 @@
     .line 143
     const/16 v8, 0x1a
 
-    .line 144
-    .local v8, "iSize":I
-    const/4 v7, 0x0
-
     .line 146
-    .local v7, "iOffset":I
+    .local v8, "iSize":I
     const/4 v4, 0x0
 
     .line 147
     .local v4, "bQOP":[B
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsQOPPresent:Z
 
-    if-eqz v9, :cond_13
+    if-eqz v9, :cond_12
 
     .line 148
     iget-object v9, p0, Lcom/android/supl/si/SITriggerParams;->m_stQoP:Lcom/android/supl/si/SUPLQOPParams;
@@ -368,14 +364,14 @@
 
     .line 151
     .end local v4    # "bQOP":[B
-    :cond_13
+    :cond_12
     const/4 v6, 0x0
 
     .line 152
     .local v6, "bTriggerParam":[B
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsTriggerParamsPresent:Z
 
-    if-eqz v9, :cond_22
+    if-eqz v9, :cond_21
 
     .line 153
     iget-object v9, p0, Lcom/android/supl/si/SITriggerParams;->m_stTriggerParams:Lcom/android/supl/si/SUPLTriggerParams;
@@ -386,7 +382,7 @@
 
     .line 154
     .local v6, "bTriggerParam":[B
-    if-eqz v6, :cond_22
+    if-eqz v6, :cond_21
 
     .line 155
     array-length v9, v6
@@ -395,14 +391,14 @@
 
     .line 157
     .end local v6    # "bTriggerParam":[B
-    :cond_22
+    :cond_21
     const/4 v0, 0x0
 
     .line 158
     .local v0, "bAppID":[B
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAppIdPresent:Z
 
-    if-eqz v9, :cond_2f
+    if-eqz v9, :cond_2e
 
     .line 159
     iget-object v9, p0, Lcom/android/supl/si/SITriggerParams;->m_stAppId:Lcom/android/supl/si/ApplicationID;
@@ -419,7 +415,7 @@
 
     .line 162
     .end local v0    # "bAppID":[B
-    :cond_2f
+    :cond_2e
     iget-object v9, p0, Lcom/android/supl/si/SITriggerParams;->m_st3rdPartyIds:Lcom/android/supl/si/SUPLThirdPartyIDs;
 
     invoke-virtual {v9}, Lcom/android/supl/si/SUPLThirdPartyIDs;->getSUPLThirdPartyIDs()[B
@@ -439,7 +435,7 @@
     .local v3, "bPOSData":[B
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsPOSPresent:Z
 
-    if-eqz v9, :cond_46
+    if-eqz v9, :cond_45
 
     .line 167
     iget-object v9, p0, Lcom/android/supl/si/SITriggerParams;->mGanssPOSCapabilities:Lcom/android/supl/si/ganss/SuplGanssPOSCapabilities;
@@ -450,7 +446,7 @@
 
     .line 168
     .local v3, "bPOSData":[B
-    if-eqz v3, :cond_46
+    if-eqz v3, :cond_45
 
     .line 169
     array-length v9, v3
@@ -459,14 +455,14 @@
 
     .line 172
     .end local v3    # "bPOSData":[B
-    :cond_46
+    :cond_45
     const/4 v1, 0x0
 
     .line 173
     .local v1, "bAssistData":[B
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAssitancePresent:Z
 
-    if-eqz v9, :cond_55
+    if-eqz v9, :cond_54
 
     .line 174
     iget-object v9, p0, Lcom/android/supl/si/SITriggerParams;->mGanssAssistCapabilities:Lcom/android/supl/si/ganss/SuplGanssAssistCapabilities;
@@ -477,7 +473,7 @@
 
     .line 175
     .local v1, "bAssistData":[B
-    if-eqz v1, :cond_55
+    if-eqz v1, :cond_54
 
     .line 176
     array-length v9, v1
@@ -486,7 +482,7 @@
 
     .line 179
     .end local v1    # "bAssistData":[B
-    :cond_55
+    :cond_54
     add-int/lit8 v9, v8, 0x4
 
     new-array v2, v9, [B
@@ -496,6 +492,7 @@
     const/4 v7, 0x4
 
     .line 183
+    .local v7, "iOffset":I
     const/16 v9, 0x10d
 
     invoke-static {v2, v7, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -512,7 +509,7 @@
     .line 185
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsQOPPresent:Z
 
-    if-eqz v9, :cond_c4
+    if-eqz v9, :cond_c3
 
     .line 186
     invoke-static {v2, v7, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -522,7 +519,7 @@
     .line 187
     array-length v9, v4
 
-    invoke-static {v4, v11, v2, v7, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v4, v11, v2, v7, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 188
     array-length v9, v4
@@ -530,10 +527,10 @@
     add-int/2addr v7, v9
 
     .line 192
-    :goto_74
+    :goto_73
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsTriggerParamsPresent:Z
 
-    if-eqz v9, :cond_c9
+    if-eqz v9, :cond_c8
 
     .line 193
     invoke-static {v2, v7, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -541,12 +538,12 @@
     move-result v7
 
     .line 194
-    if-eqz v6, :cond_84
+    if-eqz v6, :cond_83
 
     .line 195
     array-length v9, v6
 
-    invoke-static {v6, v11, v2, v7, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v6, v11, v2, v7, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 196
     array-length v9, v6
@@ -554,11 +551,11 @@
     add-int/2addr v7, v9
 
     .line 201
-    :cond_84
-    :goto_84
+    :cond_83
+    :goto_83
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAppIdPresent:Z
 
-    if-eqz v9, :cond_ce
+    if-eqz v9, :cond_cd
 
     .line 202
     invoke-static {v2, v7, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -568,7 +565,7 @@
     .line 203
     array-length v9, v0
 
-    invoke-static {v0, v11, v2, v7, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v11, v2, v7, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 204
     array-length v9, v0
@@ -576,10 +573,10 @@
     add-int/2addr v7, v9
 
     .line 208
-    :goto_92
+    :goto_91
     array-length v9, v5
 
-    invoke-static {v5, v11, v2, v7, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v5, v11, v2, v7, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 209
     array-length v9, v5
@@ -589,7 +586,7 @@
     .line 211
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsPOSPresent:Z
 
-    if-eqz v9, :cond_d3
+    if-eqz v9, :cond_d2
 
     .line 212
     invoke-static {v2, v7, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -599,7 +596,7 @@
     .line 213
     array-length v9, v3
 
-    invoke-static {v3, v11, v2, v7, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v11, v2, v7, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 214
     array-length v9, v3
@@ -607,10 +604,10 @@
     add-int/2addr v7, v9
 
     .line 219
-    :goto_a6
+    :goto_a5
     iget-boolean v9, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAssitancePresent:Z
 
-    if-eqz v9, :cond_d8
+    if-eqz v9, :cond_d7
 
     .line 220
     invoke-static {v2, v7, v10}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -620,7 +617,7 @@
     .line 221
     array-length v9, v1
 
-    invoke-static {v1, v11, v2, v7, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v11, v2, v7, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 222
     array-length v9, v1
@@ -628,10 +625,10 @@
     add-int/2addr v7, v9
 
     .line 227
-    :goto_b4
+    :goto_b3
     add-int/lit8 v9, v7, -0x4
 
-    if-eq v9, v8, :cond_c0
+    if-eq v9, v8, :cond_bf
 
     .line 228
     sget-object v9, Ljava/lang/System;->err:Ljava/io/PrintStream;
@@ -641,51 +638,51 @@
     invoke-virtual {v9, v10}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 230
-    :cond_c0
+    :cond_bf
     invoke-static {v2, v11, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     .line 231
     return-object v2
 
     .line 190
-    :cond_c4
+    :cond_c3
     invoke-static {v2, v7, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v7
 
-    goto :goto_74
+    goto :goto_73
 
     .line 199
-    :cond_c9
+    :cond_c8
     invoke-static {v2, v7, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v7
 
-    goto :goto_84
+    goto :goto_83
 
     .line 206
-    :cond_ce
+    :cond_cd
     invoke-static {v2, v7, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v7
 
-    goto :goto_92
+    goto :goto_91
 
     .line 216
-    :cond_d3
+    :cond_d2
     invoke-static {v2, v7, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v7
 
-    goto :goto_a6
+    goto :goto_a5
 
     .line 224
-    :cond_d8
+    :cond_d7
     invoke-static {v2, v7, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v7
 
-    goto :goto_b4
+    goto :goto_b3
 .end method
 
 .method public getTriggerParams()Lcom/android/supl/si/SUPLTriggerParams;
@@ -885,7 +882,7 @@
 
     iput-object v1, p0, Lcom/android/supl/si/SITriggerParams;->mGanssAssistCapabilities:Lcom/android/supl/si/ganss/SuplGanssAssistCapabilities;
 
-    .line 310
+    .line 271
     :cond_90
     return-void
 .end method
@@ -900,7 +897,7 @@
 
     iput-short v0, p0, Lcom/android/supl/si/SITriggerParams;->m_usPlatformSessionId:S
 
-    .line 399
+    .line 397
     return-void
 .end method
 
@@ -1042,166 +1039,158 @@
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .registers 8
+    .registers 6
     .param p1, "dest"    # Landroid/os/Parcel;
     .param p2, "flags"    # I
 
     .prologue
-    const/4 v3, 0x1
-
-    const/4 v4, 0x0
-
-    .line 319
-    iget-short v2, p0, Lcom/android/supl/si/SITriggerParams;->m_usPlatformSessionId:S
-
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 320
     const/4 v1, 0x1
 
-    .line 321
-    .local v1, "bTrue":B
-    const/4 v0, 0x0
+    const/4 v2, 0x0
+
+    .line 319
+    iget-short v0, p0, Lcom/android/supl/si/SITriggerParams;->m_usPlatformSessionId:S
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 322
-    .local v0, "bFalse":B
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsQOPPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsQOPPresent:Z
 
-    if-eqz v2, :cond_63
+    if-eqz v0, :cond_61
 
-    move v2, v3
+    move v0, v1
 
-    :goto_e
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_c
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 323
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsQOPPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsQOPPresent:Z
 
-    if-eqz v2, :cond_1a
+    if-eqz v0, :cond_18
 
     .line 324
-    iget-object v2, p0, Lcom/android/supl/si/SITriggerParams;->m_stQoP:Lcom/android/supl/si/SUPLQOPParams;
+    iget-object v0, p0, Lcom/android/supl/si/SITriggerParams;->m_stQoP:Lcom/android/supl/si/SUPLQOPParams;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
     .line 327
-    :cond_1a
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsTriggerParamsPresent:Z
+    :cond_18
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsTriggerParamsPresent:Z
 
-    if-eqz v2, :cond_65
+    if-eqz v0, :cond_63
 
-    move v2, v3
+    move v0, v1
 
-    :goto_1f
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_1d
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 328
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsTriggerParamsPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsTriggerParamsPresent:Z
 
-    if-eqz v2, :cond_2b
+    if-eqz v0, :cond_29
 
     .line 329
-    iget-object v2, p0, Lcom/android/supl/si/SITriggerParams;->m_stTriggerParams:Lcom/android/supl/si/SUPLTriggerParams;
+    iget-object v0, p0, Lcom/android/supl/si/SITriggerParams;->m_stTriggerParams:Lcom/android/supl/si/SUPLTriggerParams;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
     .line 332
-    :cond_2b
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAppIdPresent:Z
+    :cond_29
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAppIdPresent:Z
 
-    if-eqz v2, :cond_67
+    if-eqz v0, :cond_65
 
-    move v2, v3
+    move v0, v1
 
-    :goto_30
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_2e
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 333
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAppIdPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAppIdPresent:Z
 
-    if-eqz v2, :cond_3c
+    if-eqz v0, :cond_3a
 
     .line 334
-    iget-object v2, p0, Lcom/android/supl/si/SITriggerParams;->m_stAppId:Lcom/android/supl/si/ApplicationID;
+    iget-object v0, p0, Lcom/android/supl/si/SITriggerParams;->m_stAppId:Lcom/android/supl/si/ApplicationID;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
     .line 337
-    :cond_3c
-    iget-object v2, p0, Lcom/android/supl/si/SITriggerParams;->m_st3rdPartyIds:Lcom/android/supl/si/SUPLThirdPartyIDs;
+    :cond_3a
+    iget-object v0, p0, Lcom/android/supl/si/SITriggerParams;->m_st3rdPartyIds:Lcom/android/supl/si/SUPLThirdPartyIDs;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
     .line 339
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsPOSPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsPOSPresent:Z
 
-    if-eqz v2, :cond_69
+    if-eqz v0, :cond_67
 
-    move v2, v3
+    move v0, v1
 
-    :goto_46
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_44
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 340
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsPOSPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsPOSPresent:Z
 
-    if-eqz v2, :cond_52
+    if-eqz v0, :cond_50
 
     .line 341
-    iget-object v2, p0, Lcom/android/supl/si/SITriggerParams;->mGanssPOSCapabilities:Lcom/android/supl/si/ganss/SuplGanssPOSCapabilities;
+    iget-object v0, p0, Lcom/android/supl/si/SITriggerParams;->mGanssPOSCapabilities:Lcom/android/supl/si/ganss/SuplGanssPOSCapabilities;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
     .line 344
-    :cond_52
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAssitancePresent:Z
+    :cond_50
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAssitancePresent:Z
 
-    if-eqz v2, :cond_6b
+    if-eqz v0, :cond_69
 
-    :goto_56
-    invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_54
+    invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 345
-    iget-boolean v2, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAssitancePresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SITriggerParams;->m_bIsAssitancePresent:Z
 
-    if-eqz v2, :cond_62
+    if-eqz v0, :cond_60
 
     .line 346
-    iget-object v2, p0, Lcom/android/supl/si/SITriggerParams;->mGanssAssistCapabilities:Lcom/android/supl/si/ganss/SuplGanssAssistCapabilities;
+    iget-object v0, p0, Lcom/android/supl/si/SITriggerParams;->mGanssAssistCapabilities:Lcom/android/supl/si/ganss/SuplGanssAssistCapabilities;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 348
-    :cond_62
+    .line 317
+    :cond_60
     return-void
 
-    :cond_63
-    move v2, v4
+    :cond_61
+    move v0, v2
 
     .line 322
-    goto :goto_e
+    goto :goto_c
 
-    :cond_65
-    move v2, v4
+    :cond_63
+    move v0, v2
 
     .line 327
-    goto :goto_1f
+    goto :goto_1d
 
-    :cond_67
-    move v2, v4
+    :cond_65
+    move v0, v2
 
     .line 332
-    goto :goto_30
+    goto :goto_2e
 
-    :cond_69
-    move v2, v4
+    :cond_67
+    move v0, v2
 
     .line 339
-    goto :goto_46
+    goto :goto_44
 
-    :cond_6b
-    move v3, v4
+    :cond_69
+    move v1, v2
 
     .line 344
-    goto :goto_56
+    goto :goto_54
 .end method

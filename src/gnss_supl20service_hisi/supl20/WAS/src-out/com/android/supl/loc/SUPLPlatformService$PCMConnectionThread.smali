@@ -27,7 +27,7 @@
     .param p1, "this$0"    # Lcom/android/supl/loc/SUPLPlatformService;
 
     .prologue
-    .line 138
+    .line 153
     iput-object p1, p0, Lcom/android/supl/loc/SUPLPlatformService$PCMConnectionThread;->this$0:Lcom/android/supl/loc/SUPLPlatformService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,18 +41,18 @@
     .registers 9
 
     .prologue
-    .line 141
+    .line 156
     const/4 v3, 0x1
 
-    .line 142
+    .line 157
     .local v3, "isLogEnable":Z
     const/4 v0, 0x0
 
-    .line 144
+    .line 159
     .local v0, "connected":Z
     if-eqz v3, :cond_16
 
-    .line 146
+    .line 161
     :try_start_4
     const-string/jumbo v5, "SUPL20_PCMService"
 
@@ -60,14 +60,14 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 147
+    .line 162
     const-string/jumbo v5, "SUPL20_PCMService"
 
-    const-string/jumbo v6, "SUPL Services version:2.13.2.0"
+    const-string/jumbo v6, "SUPL Services version:2.13.0.3"
 
     invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 150
+    .line 165
     :cond_16
     const-string/jumbo v5, "SUPL20_PCMService"
 
@@ -77,23 +77,23 @@
     :try_end_1f
     .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_1f} :catch_77
 
-    .line 151
+    .line 166
     const/4 v4, 0x1
 
-    .line 152
+    .line 167
     .end local v0    # "connected":Z
     .local v4, "isOneTimeLog":Z
     :cond_20
     :goto_20
     if-nez v0, :cond_61
 
-    .line 155
+    .line 170
     if-nez v0, :cond_3e
 
-    .line 156
+    .line 171
     if-eqz v3, :cond_38
 
-    .line 158
+    .line 173
     :try_start_26
     const-string/jumbo v5, "SUPL20_PCMService"
 
@@ -101,23 +101,23 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 159
+    .line 174
     const-string/jumbo v5, "SUPL20_PCMService"
 
-    const-string/jumbo v6, "SUPL Services version:2.13.2.0"
+    const-string/jumbo v6, "SUPL Services version:2.13.0.3"
 
     invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 161
+    .line 176
     :cond_38
     const-wide/16 v6, 0x7d0
 
     invoke-static {v6, v7}, Ljava/lang/Thread;->sleep(J)V
 
-    .line 162
+    .line 177
     const/4 v4, 0x1
 
-    .line 164
+    .line 179
     :cond_3e
     iget-object v5, p0, Lcom/android/supl/loc/SUPLPlatformService$PCMConnectionThread;->this$0:Lcom/android/supl/loc/SUPLPlatformService;
 
@@ -129,17 +129,17 @@
 
     move-result v0
 
-    .line 166
+    .line 181
     .local v0, "connected":Z
     if-eqz v0, :cond_62
 
-    .line 167
+    .line 182
     if-eqz v4, :cond_20
 
-    .line 168
+    .line 183
     const/4 v4, 0x0
 
-    .line 169
+    .line 184
     const-string/jumbo v5, "SUPL20_PCMService"
 
     const-string/jumbo v6, "PCM connect.."
@@ -151,12 +151,12 @@
 
     goto :goto_20
 
-    .line 178
+    .line 193
     .end local v0    # "connected":Z
     :catch_57
     move-exception v2
 
-    .line 179
+    .line 194
     .local v2, "e":Ljava/lang/InterruptedException;
     :try_start_58
     const-string/jumbo v5, "SUPL20_PCMService"
@@ -167,14 +167,14 @@
     :try_end_61
     .catch Ljava/lang/Exception; {:try_start_58 .. :try_end_61} :catch_77
 
-    .line 191
+    .line 155
     .end local v2    # "e":Ljava/lang/InterruptedException;
     .end local v4    # "isOneTimeLog":Z
     :cond_61
     :goto_61
     return-void
 
-    .line 174
+    .line 189
     .restart local v0    # "connected":Z
     .restart local v4    # "isOneTimeLog":Z
     :cond_62
@@ -190,12 +190,12 @@
 
     goto :goto_61
 
-    .line 181
+    .line 196
     .end local v0    # "connected":Z
     :catch_6c
     move-exception v1
 
-    .line 182
+    .line 197
     .local v1, "e":Ljava/lang/Exception;
     :try_start_6d
     const-string/jumbo v5, "SUPL20_PCMService"
@@ -208,13 +208,13 @@
 
     goto :goto_20
 
-    .line 187
+    .line 202
     .end local v1    # "e":Ljava/lang/Exception;
     .end local v4    # "isOneTimeLog":Z
     :catch_77
     move-exception v1
 
-    .line 188
+    .line 203
     .restart local v1    # "e":Ljava/lang/Exception;
     const-string/jumbo v5, "SUPL20_PCMService"
 
@@ -222,7 +222,7 @@
 
     invoke-static {v5, v6, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 189
+    .line 204
     const/4 v0, 0x0
 
     .local v0, "connected":Z

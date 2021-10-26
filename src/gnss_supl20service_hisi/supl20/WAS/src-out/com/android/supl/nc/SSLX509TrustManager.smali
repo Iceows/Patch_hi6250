@@ -111,45 +111,16 @@
     iput-object v3, p0, Lcom/android/supl/nc/SSLX509TrustManager;->allx509TrustManager:Ljava/util/Vector;
 
     .line 85
-    if-eqz p1, :cond_44
+    if-eqz p1, :cond_2e
 
     invoke-interface {p1}, Ljava/util/List;->isEmpty()Z
 
     move-result v3
 
-    xor-int/lit8 v3, v3, 0x1
-
-    if-eqz v3, :cond_44
-
-    .line 87
-    invoke-interface {p1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
-
-    move-result-object v2
-
-    .local v2, "keystore$iterator":Ljava/util/Iterator;
-    :goto_34
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_44
-
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Ljava/security/KeyStore;
-
-    .line 88
-    .local v1, "keystore":Ljava/security/KeyStore;
-    invoke-virtual {p0, v1, v6}, Lcom/android/supl/nc/SSLX509TrustManager;->addKeyStore(Ljava/security/KeyStore;Z)V
-
-    goto :goto_34
+    if-eqz v3, :cond_48
 
     .line 93
-    .end local v1    # "keystore":Ljava/security/KeyStore;
-    .end local v2    # "keystore$iterator":Ljava/util/Iterator;
-    :cond_44
+    :cond_2e
     invoke-virtual {p0, v5, v6}, Lcom/android/supl/nc/SSLX509TrustManager;->addKeyStore(Ljava/security/KeyStore;Z)V
 
     .line 95
@@ -159,7 +130,7 @@
 
     move-result v3
 
-    if-eqz v3, :cond_5e
+    if-eqz v3, :cond_5c
 
     .line 96
     const-string/jumbo v0, "No Trust Manager Found"
@@ -177,9 +148,37 @@
 
     throw v3
 
-    .line 100
+    .line 87
     .end local v0    # "error":Ljava/lang/String;
-    :cond_5e
+    :cond_48
+    invoke-interface {p1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v2
+
+    .local v2, "keystore$iterator":Ljava/util/Iterator;
+    :goto_4c
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_2e
+
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/security/KeyStore;
+
+    .line 88
+    .local v1, "keystore":Ljava/security/KeyStore;
+    invoke-virtual {p0, v1, v6}, Lcom/android/supl/nc/SSLX509TrustManager;->addKeyStore(Ljava/security/KeyStore;Z)V
+
+    goto :goto_4c
+
+    .line 100
+    .end local v1    # "keystore":Ljava/security/KeyStore;
+    .end local v2    # "keystore$iterator":Ljava/util/Iterator;
+    :cond_5c
     const-string/jumbo v3, "SUPL20_TrustManager"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -214,7 +213,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 101
+    .line 75
     return-void
 .end method
 
@@ -507,7 +506,7 @@
 
     goto :goto_1a
 
-    .line 122
+    .line 104
     .end local v1    # "tm":Ljavax/net/ssl/TrustManager;
     .end local v3    # "xtm":Ljavax/net/ssl/X509TrustManager;
     :cond_78
@@ -588,7 +587,7 @@
 
     aget-object v14, p1, v14
 
-    invoke-virtual {v12, v13, v14}, Lorg/apache/http/conn/ssl/AbstractVerifier;->verify(Ljava/lang/String;Ljava/security/cert/X509Certificate;)V
+    invoke-virtual {v12, v13, v14}, Lorg/apache/http/conn/ssl/StrictHostnameVerifier;->verify(Ljava/lang/String;Ljava/security/cert/X509Certificate;)V
     :try_end_23
     .catch Ljavax/net/ssl/SSLException; {:try_start_16 .. :try_end_23} :catch_65
 
@@ -862,7 +861,7 @@
     .line 201
     throw v4
 
-    .line 204
+    .line 138
     .end local v3    # "certificate":Ljava/security/cert/X509Certificate;
     .end local v4    # "e":Ljava/security/cert/CertificateException;
     :cond_e7

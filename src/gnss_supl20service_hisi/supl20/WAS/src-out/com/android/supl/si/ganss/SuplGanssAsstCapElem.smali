@@ -63,7 +63,7 @@
 
     iput-object v0, p0, Lcom/android/supl/si/ganss/SuplGanssAsstCapElem;->ganssDataModels:Lcom/android/supl/si/ganss/SuplGanssDataModel;
 
-    .line 69
+    .line 67
     return-void
 .end method
 
@@ -104,7 +104,7 @@
     :cond_15
     iput-object p3, p0, Lcom/android/supl/si/ganss/SuplGanssAsstCapElem;->ganssDataModels:Lcom/android/supl/si/ganss/SuplGanssDataModel;
 
-    .line 66
+    .line 59
     return-void
 .end method
 
@@ -124,7 +124,7 @@
     .line 112
     invoke-virtual {p0, p1}, Lcom/android/supl/si/ganss/SuplGanssAsstCapElem;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 113
+    .line 111
     return-void
 .end method
 
@@ -202,7 +202,7 @@
 
     const/4 v5, 0x0
 
-    invoke-static {v0, v5, v1, v3, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v5, v1, v3, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 78
     array-length v4, v0
@@ -258,7 +258,7 @@
 
     iput-object v0, p0, Lcom/android/supl/si/ganss/SuplGanssAsstCapElem;->ganssDataModels:Lcom/android/supl/si/ganss/SuplGanssDataModel;
 
-    .line 123
+    .line 119
     return-void
 .end method
 
@@ -329,6 +329,6 @@
 
     invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
-    .line 135
+    .line 131
     return-void
 .end method

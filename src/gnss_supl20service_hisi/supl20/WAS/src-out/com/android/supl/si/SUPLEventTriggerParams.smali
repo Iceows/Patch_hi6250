@@ -91,7 +91,7 @@
     .line 187
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLEventTriggerParams;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 188
+    .line 186
     return-void
 .end method
 
@@ -195,7 +195,7 @@
 
     iput-wide v0, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->dwValidcount:J
 
-    .line 111
+    .line 93
     return-void
 .end method
 
@@ -217,11 +217,7 @@
     .prologue
     const/4 v8, 0x0
 
-    .line 118
-    const/4 v6, 0x0
-
     .line 119
-    .local v6, "iSize":I
     const/4 v5, 0x0
 
     .line 120
@@ -229,6 +225,7 @@
     const/16 v6, 0x10
 
     .line 121
+    .local v6, "iSize":I
     iget-object v7, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->eAreaEventType:Lcom/android/supl/si/SUPLAreaEventType;
 
     invoke-virtual {v7}, Lcom/android/supl/si/SUPLAreaEventType;->getAreaEventType()[B
@@ -248,7 +245,7 @@
     .local v3, "bRepeatParam":[B
     iget-boolean v7, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->bRepeatedReportingPresent:Z
 
-    if-eqz v7, :cond_1b
+    if-eqz v7, :cond_1a
 
     .line 125
     iget-object v7, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->stRepeatedReportingParams:Lcom/android/supl/si/SUPLRepeatedReportingParams;
@@ -265,15 +262,15 @@
 
     .line 128
     .end local v3    # "bRepeatParam":[B
-    :cond_1b
+    :cond_1a
     iget-object v9, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->stGeoTargetArea:[Lcom/android/supl/si/SUPLGeoTargetArea;
 
     array-length v10, v9
 
     move v7, v8
 
-    :goto_1f
-    if-ge v7, v10, :cond_2e
+    :goto_1e
+    if-ge v7, v10, :cond_2d
 
     aget-object v4, v9, v7
 
@@ -285,7 +282,7 @@
 
     .line 130
     .local v2, "bGeoTargetArea":[B
-    if-eqz v2, :cond_2b
+    if-eqz v2, :cond_2a
 
     .line 131
     array-length v11, v2
@@ -293,26 +290,26 @@
     add-int/2addr v6, v11
 
     .line 128
-    :cond_2b
+    :cond_2a
     add-int/lit8 v7, v7, 0x1
 
-    goto :goto_1f
+    goto :goto_1e
 
     .line 134
     .end local v2    # "bGeoTargetArea":[B
     .end local v4    # "geoTargetArea":Lcom/android/supl/si/SUPLGeoTargetArea;
-    :cond_2e
+    :cond_2d
     new-array v1, v6, [B
 
     .line 135
     .local v1, "bData":[B
     iget-boolean v7, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->bRepeatedReportingPresent:Z
 
-    if-eqz v7, :cond_75
+    if-eqz v7, :cond_74
 
     const/4 v7, 0x1
 
-    :goto_35
+    :goto_34
     invoke-static {v1, v5, v7}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -320,7 +317,7 @@
     .line 136
     array-length v7, v0
 
-    invoke-static {v0, v8, v1, v5, v7}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v8, v1, v5, v7}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 137
     array-length v7, v0
@@ -330,12 +327,12 @@
     .line 138
     iget-boolean v7, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->bRepeatedReportingPresent:Z
 
-    if-eqz v7, :cond_49
+    if-eqz v7, :cond_48
 
     .line 139
     array-length v7, v3
 
-    invoke-static {v3, v8, v1, v5, v7}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v8, v1, v5, v7}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 140
     array-length v7, v3
@@ -343,7 +340,7 @@
     add-int/2addr v5, v7
 
     .line 142
-    :cond_49
+    :cond_48
     iget-wide v10, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->dwStartTime:J
 
     long-to-int v7, v10
@@ -377,8 +374,8 @@
 
     move v7, v8
 
-    :goto_62
-    if-ge v7, v10, :cond_77
+    :goto_61
+    if-ge v7, v10, :cond_76
 
     aget-object v4, v9, v7
 
@@ -390,12 +387,12 @@
 
     .line 147
     .restart local v2    # "bGeoTargetArea":[B
-    if-eqz v2, :cond_72
+    if-eqz v2, :cond_71
 
     .line 148
     array-length v11, v2
 
-    invoke-static {v2, v8, v1, v5, v11}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v2, v8, v1, v5, v11}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 149
     array-length v11, v2
@@ -403,22 +400,22 @@
     add-int/2addr v5, v11
 
     .line 145
-    :cond_72
+    :cond_71
     add-int/lit8 v7, v7, 0x1
 
-    goto :goto_62
+    goto :goto_61
 
     .end local v2    # "bGeoTargetArea":[B
     .end local v4    # "geoTargetArea":Lcom/android/supl/si/SUPLGeoTargetArea;
-    :cond_75
+    :cond_74
     move v7, v8
 
     .line 135
-    goto :goto_35
+    goto :goto_34
 
     .line 152
-    :cond_77
-    if-eq v5, v6, :cond_81
+    :cond_76
+    if-eq v5, v6, :cond_80
 
     .line 153
     sget-object v7, Ljava/lang/System;->err:Ljava/io/PrintStream;
@@ -428,7 +425,7 @@
     invoke-virtual {v7, v8}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 155
-    :cond_81
+    :cond_80
     return-object v1
 .end method
 
@@ -577,7 +574,7 @@
     .restart local v2    # "i":I
     goto :goto_52
 
-    .line 218
+    .line 194
     :cond_62
     return-void
 .end method
@@ -679,74 +676,66 @@
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .registers 7
+    .registers 5
     .param p1, "dest"    # Landroid/os/Parcel;
     .param p2, "flags"    # I
 
     .prologue
-    .line 226
-    const/4 v1, 0x1
-
-    .line 227
-    .local v1, "bTrue":B
-    const/4 v0, 0x0
-
     .line 228
-    .local v0, "bFalse":B
-    iget-boolean v2, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->bRepeatedReportingPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->bRepeatedReportingPresent:Z
 
-    if-eqz v2, :cond_2d
+    if-eqz v0, :cond_2b
 
     .line 226
-    const/4 v2, 0x1
+    const/4 v0, 0x1
 
     .line 228
-    :goto_7
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_5
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 229
-    iget-object v2, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->eAreaEventType:Lcom/android/supl/si/SUPLAreaEventType;
+    iget-object v0, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->eAreaEventType:Lcom/android/supl/si/SUPLAreaEventType;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
     .line 230
-    iget-boolean v2, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->bRepeatedReportingPresent:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->bRepeatedReportingPresent:Z
 
-    if-eqz v2, :cond_18
+    if-eqz v0, :cond_16
 
     .line 231
-    iget-object v2, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->stRepeatedReportingParams:Lcom/android/supl/si/SUPLRepeatedReportingParams;
+    iget-object v0, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->stRepeatedReportingParams:Lcom/android/supl/si/SUPLRepeatedReportingParams;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
 
     .line 233
-    :cond_18
-    iget-wide v2, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->dwStartTime:J
+    :cond_16
+    iget-wide v0, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->dwStartTime:J
 
-    invoke-virtual {p1, v2, v3}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
     .line 234
-    iget-wide v2, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->dwStopTime:J
+    iget-wide v0, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->dwStopTime:J
 
-    invoke-virtual {p1, v2, v3}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
     .line 235
-    iget-wide v2, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->dwValidcount:J
+    iget-wide v0, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->dwValidcount:J
 
-    invoke-virtual {p1, v2, v3}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
     .line 236
-    iget-object v2, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->stGeoTargetArea:[Lcom/android/supl/si/SUPLGeoTargetArea;
+    iget-object v0, p0, Lcom/android/supl/si/SUPLEventTriggerParams;->stGeoTargetArea:[Lcom/android/supl/si/SUPLGeoTargetArea;
 
-    invoke-virtual {p1, v2, p2}, Landroid/os/Parcel;->writeParcelableArray([Landroid/os/Parcelable;I)V
+    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelableArray([Landroid/os/Parcelable;I)V
 
-    .line 237
+    .line 225
     return-void
 
     .line 227
-    :cond_2d
-    const/4 v2, 0x0
+    :cond_2b
+    const/4 v0, 0x0
 
     .line 228
-    goto :goto_7
+    goto :goto_5
 .end method

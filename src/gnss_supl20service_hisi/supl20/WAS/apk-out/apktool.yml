@@ -5,7 +5,7 @@ doNotCompress: null
 isFrameworkApk: false
 packageInfo: null
 sdkInfo:
-  minSdkVersion: '18'
+  minSdkVersion: '7'
   targetSdkVersion: '26'
 sharedLibrary: false
 sparseResources: false
@@ -17,4 +17,4 @@ usesFramework:
 version: 2.6.0
 versionInfo:
   versionCode: '6'
-  versionName: 2.13.2.0
+  versionName: 2.13.0.4

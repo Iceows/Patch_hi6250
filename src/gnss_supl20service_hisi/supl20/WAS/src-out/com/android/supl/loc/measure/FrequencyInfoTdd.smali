@@ -19,7 +19,7 @@
     .line 43
     iput-short p1, p0, Lcom/android/supl/loc/measure/FrequencyInfoTdd;->usUarfcn_Nt:S
 
-    .line 45
+    .line 42
     return-void
 .end method
 

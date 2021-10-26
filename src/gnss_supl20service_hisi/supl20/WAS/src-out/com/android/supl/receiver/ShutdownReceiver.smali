@@ -100,7 +100,7 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 73
+    .line 54
     .end local v1    # "serviceIntent":Landroid/content/Intent;
     :cond_4a
     return-void

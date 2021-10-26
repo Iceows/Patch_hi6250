@@ -27,7 +27,7 @@
     .param p1, "this$0"    # Lcom/android/supl/commprocessor/SUPLSCMService;
 
     .prologue
-    .line 113
+    .line 128
     iput-object p1, p0, Lcom/android/supl/commprocessor/SUPLSCMService$SCMConnectionThread;->this$0:Lcom/android/supl/commprocessor/SUPLSCMService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,31 +41,31 @@
     .registers 9
 
     .prologue
-    .line 116
+    .line 131
     const/4 v3, 0x1
 
-    .line 117
+    .line 132
     .local v3, "isLogEnable":Z
     const/4 v0, 0x0
 
-    .line 120
+    .line 135
     .local v0, "connected":Z
     const/4 v4, 0x1
 
-    .line 121
+    .line 136
     .end local v0    # "connected":Z
     .local v4, "isOneTimeLog":Z
     :cond_3
     :goto_3
     if-nez v0, :cond_5a
 
-    .line 123
+    .line 138
     if-nez v0, :cond_21
 
-    .line 124
+    .line 139
     if-eqz v3, :cond_1b
 
-    .line 126
+    .line 141
     :try_start_9
     const-string/jumbo v5, "SUPL20_SCMService"
 
@@ -73,23 +73,23 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 127
+    .line 142
     const-string/jumbo v5, "SUPL20_SCMService"
 
-    const-string/jumbo v6, "SUPL Services version: 2.13.2.0"
+    const-string/jumbo v6, "SUPL Services version: 2.13.0.3"
 
     invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 129
+    .line 144
     :cond_1b
     const-wide/16 v6, 0x7d0
 
     invoke-static {v6, v7}, Ljava/lang/Thread;->sleep(J)V
 
-    .line 130
+    .line 145
     const/4 v4, 0x1
 
-    .line 133
+    .line 148
     :cond_21
     iget-object v5, p0, Lcom/android/supl/commprocessor/SUPLSCMService$SCMConnectionThread;->this$0:Lcom/android/supl/commprocessor/SUPLSCMService;
 
@@ -101,24 +101,24 @@
 
     move-result v0
 
-    .line 135
+    .line 150
     .local v0, "connected":Z
     if-eqz v0, :cond_5b
 
-    .line 136
+    .line 151
     if-eqz v4, :cond_39
 
-    .line 137
+    .line 152
     const/4 v4, 0x0
 
-    .line 138
+    .line 153
     const-string/jumbo v5, "SUPL20_SCMService"
 
     const-string/jumbo v6, "SCM connect.."
 
     invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 147
+    .line 162
     :cond_39
     iget-object v5, p0, Lcom/android/supl/commprocessor/SUPLSCMService$SCMConnectionThread;->this$0:Lcom/android/supl/commprocessor/SUPLSCMService;
 
@@ -126,14 +126,14 @@
 
     if-eqz v5, :cond_3
 
-    .line 148
+    .line 163
     const-string/jumbo v5, "SUPL20_SCMService"
 
     const-string/jumbo v6, "Trying to start the UDP server"
 
     invoke-static {v5, v6}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 149
+    .line 164
     iget-object v5, p0, Lcom/android/supl/commprocessor/SUPLSCMService$SCMConnectionThread;->this$0:Lcom/android/supl/commprocessor/SUPLSCMService;
 
     iget-object v5, v5, Lcom/android/supl/commprocessor/SUPLSCMService;->datagramServer:Lcom/android/supl/commprocessor/DatagramServer;
@@ -145,12 +145,12 @@
 
     goto :goto_3
 
-    .line 152
+    .line 167
     .end local v0    # "connected":Z
     :catch_50
     move-exception v2
 
-    .line 153
+    .line 168
     .local v2, "e":Ljava/lang/InterruptedException;
     :try_start_51
     const-string/jumbo v5, "SUPL20_SCMService"
@@ -161,13 +161,13 @@
     :try_end_5a
     .catch Ljava/lang/Exception; {:try_start_51 .. :try_end_5a} :catch_70
 
-    .line 165
+    .line 130
     .end local v2    # "e":Ljava/lang/InterruptedException;
     :cond_5a
     :goto_5a
     return-void
 
-    .line 143
+    .line 158
     .restart local v0    # "connected":Z
     :cond_5b
     :try_start_5b
@@ -182,12 +182,12 @@
 
     goto :goto_5a
 
-    .line 155
+    .line 170
     .end local v0    # "connected":Z
     :catch_65
     move-exception v1
 
-    .line 156
+    .line 171
     .local v1, "e":Ljava/lang/Exception;
     :try_start_66
     const-string/jumbo v5, "SUPL20_SCMService"
@@ -200,12 +200,12 @@
 
     goto :goto_3
 
-    .line 161
+    .line 176
     .end local v1    # "e":Ljava/lang/Exception;
     :catch_70
     move-exception v1
 
-    .line 162
+    .line 177
     .restart local v1    # "e":Ljava/lang/Exception;
     const-string/jumbo v5, "SUPL20_SCMService"
 
@@ -213,7 +213,7 @@
 
     invoke-static {v5, v6, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 163
+    .line 178
     const/4 v0, 0x0
 
     .local v0, "connected":Z

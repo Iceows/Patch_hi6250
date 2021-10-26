@@ -35,7 +35,7 @@
     .line 55
     iput p2, p0, Lcom/android/supl/bearer/BearerNetwork;->iPriority:I
 
-    .line 56
+    .line 53
     return-void
 .end method
 

@@ -84,7 +84,7 @@
     :cond_15
     iput-object p2, p0, Lcom/android/supl/si/SUPLPolygonDescription;->stCoordinate:[Lcom/android/supl/si/SUPLCoordinate;
 
-    .line 71
+    .line 65
     return-void
 .end method
 
@@ -104,7 +104,7 @@
     .line 125
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLPolygonDescription;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 126
+    .line 124
     return-void
 .end method
 
@@ -126,11 +126,7 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 78
-    const/4 v3, 0x4
-
     .line 79
-    .local v3, "iSize":I
     const/4 v2, 0x0
 
     .line 80
@@ -142,6 +138,7 @@
     add-int/lit8 v3, v5, 0x4
 
     .line 81
+    .local v3, "iSize":I
     new-array v1, v3, [B
 
     .line 82
@@ -155,7 +152,7 @@
     .line 83
     iget v5, p0, Lcom/android/supl/si/SUPLPolygonDescription;->nValidCoordinates:I
 
-    if-lez v5, :cond_2a
+    if-lez v5, :cond_29
 
     .line 84
     iget-object v7, p0, Lcom/android/supl/si/SUPLPolygonDescription;->stCoordinate:[Lcom/android/supl/si/SUPLCoordinate;
@@ -164,8 +161,8 @@
 
     move v5, v6
 
-    :goto_19
-    if-ge v5, v8, :cond_2a
+    :goto_18
+    if-ge v5, v8, :cond_29
 
     aget-object v4, v7, v5
 
@@ -179,7 +176,7 @@
     .local v0, "bCoordinate":[B
     array-length v9, v0
 
-    invoke-static {v0, v6, v1, v2, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v6, v1, v2, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 87
     array-length v9, v0
@@ -189,13 +186,13 @@
     .line 84
     add-int/lit8 v5, v5, 0x1
 
-    goto :goto_19
+    goto :goto_18
 
     .line 90
     .end local v0    # "bCoordinate":[B
     .end local v4    # "stSuplCoordinate":Lcom/android/supl/si/SUPLCoordinate;
-    :cond_2a
-    if-eq v2, v3, :cond_34
+    :cond_29
+    if-eq v2, v3, :cond_33
 
     .line 91
     sget-object v5, Ljava/lang/System;->err:Ljava/io/PrintStream;
@@ -205,7 +202,7 @@
     invoke-virtual {v5, v6}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 93
-    :cond_34
+    :cond_33
     return-object v1
 .end method
 
@@ -285,7 +282,7 @@
     .restart local v1    # "i":I
     goto :goto_1d
 
-    .line 146
+    .line 132
     .end local v1    # "i":I
     .end local v3    # "parcels":[Landroid/os/Parcelable;
     :cond_2d
@@ -378,7 +375,7 @@
 
     invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelableArray([Landroid/os/Parcelable;I)V
 
-    .line 158
+    .line 153
     :cond_e
     return-void
 .end method

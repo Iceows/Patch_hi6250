@@ -1,16 +1,13 @@
 
 REM List le contenu du dex 
 java -jar baksmali-2.5.2.jar list dex .\supl20\PRA\gnss_supl20service_hisi.odex
-java -jar baksmali-2.5.2.jar list dex .\supl20\WAR\gnss_supl20service_hisi.odex
 
 REM Genere les fichier smali 
 java -jar baksmali-2.5.2.jar deodex -a 26 -o .\supl20\PRA\src-out -c boot.oat -d C:\Applis\supl20\android8\framework\arm64 .\supl20\PRA\gnss_supl20service_hisi.odex
-java -jar baksmali-2.5.2.jar deodex -a 26 -o .\supl20\WAS\src-out -c boot.oat -d C:\Applis\supl20\android8\framework\arm64 .\supl20\WAS\gnss_supl20service_hisi.odex
-
 
 REM Decompile APK, extrait le manifest dans le repertoire cible
 java -jar apktool_2.6.0.jar decode -f -o .\supl20\PRA\apk-out .\supl20\PRA\gnss_supl20service_hisi.apk
-java -jar apktool_2.6.0.jar decode -f -o .\supl20\WAS\apk-out .\supl20\WAS\gnss_supl20service_hisi.apk
+
 
 REM ---------------------------------------------------------------------------------------
 
@@ -23,9 +20,7 @@ java -jar apktool_2.6.0.jar decode -f -o .\supl20-new\apk-out .\supl20\app-relea
 
 REM Recopie le nouveau fichier CopyArrayMod.smali
 mkdir .\supl20\PRA\src-out\com\android\altair\
-mkdir .\supl20\WAS\src-out\com\android\altair\
 xcopy /Y .\supl20-new\apk-out\smali\com\android\altair\CopyArrayMod.smali .\supl20\PRA\src-out\com\android\altair\
-xcopy /Y .\supl20-new\apk-out\smali\com\android\altair\CopyArrayMod.smali .\supl20\WAS\src-out\com\android\altair\
 
 REM ---------------------------------------------------------------------------------------
 
@@ -35,8 +30,8 @@ REM par
 REM	Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
 REM Fabrique le ficher classes.dex  a partir des fichier smali, android 26
-REM java -jar smali-2.5.2.jar a --api 26 .\supl20\PRA\src-out -o .\supl20\PRA\apk-out\classes.dex
-java -jar smali-2.5.2.jar a --api 30 .\supl20\PRA\src-out -o .\supl20\PRA\apk-out\classes.dex
+java -jar smali-2.5.2.jar a --api 26 .\supl20\PRA\src-out -o .\supl20\PRA\apk-out\classes.dex
+REM java -jar smali-2.5.2.jar a --api 30 .\supl20\PRA\src-out -o .\supl20\PRA\apk-out\classes.dex
 
 REM Recompile APK  dans le repertoire cible
 java -jar apktool_2.6.0.jar build -o .\supl20\PRA\recompiled.apk  .\supl20\PRA\apk-out

@@ -36,6 +36,8 @@
 
 .field private m_CilentSocket:Ljava/net/Socket;
 
+.field private m_LocalSocket:Landroid/net/LocalSocket;
+
 .field private nc:Lcom/android/supl/nc/NetworkController;
 
 .field private objMyWriteLock:Ljava/lang/Object;
@@ -77,11 +79,14 @@
     .line 66
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 55
+    .line 54
     iput-object v1, p0, Lcom/android/supl/nc/WriterThread;->deque:Ljava/util/concurrent/BlockingQueue;
 
-    .line 56
+    .line 55
     iput-object v1, p0, Lcom/android/supl/nc/WriterThread;->m_CilentSocket:Ljava/net/Socket;
+
+    .line 56
+    iput-object v1, p0, Lcom/android/supl/nc/WriterThread;->m_LocalSocket:Landroid/net/LocalSocket;
 
     .line 57
     iput-boolean v2, p0, Lcom/android/supl/nc/WriterThread;->isStopWrite:Z
@@ -113,7 +118,7 @@
     iput-boolean v2, p0, Lcom/android/supl/nc/WriterThread;->isReadyForColse:Z
 
     .line 69
-    if-nez p1, :cond_27
+    if-nez p1, :cond_29
 
     .line 70
     new-instance v0, Ljava/lang/IllegalArgumentException;
@@ -125,7 +130,7 @@
     throw v0
 
     .line 73
-    :cond_27
+    :cond_29
     iput-object p1, p0, Lcom/android/supl/nc/WriterThread;->deque:Ljava/util/concurrent/BlockingQueue;
 
     .line 74
@@ -134,7 +139,7 @@
     .line 75
     iput-object p2, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
 
-    .line 77
+    .line 68
     return-void
 .end method
 
@@ -162,7 +167,7 @@
 
     monitor-exit v1
 
-    .line 155
+    .line 146
     return-void
 
     .line 147
@@ -178,19 +183,19 @@
     .registers 9
 
     .prologue
-    .line 228
+    .line 222
     iget-object v5, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
 
     if-eqz v5, :cond_5b
 
-    .line 229
+    .line 223
     iget-object v5, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
 
     invoke-virtual {v5}, Lcom/android/supl/nc/NetworkController;->getNetworkCommandProcessor()Lcom/android/supl/commprocessor/NetworkCommandProcessor;
 
     move-result-object v1
 
-    .line 230
+    .line 224
     .local v1, "cp":Lcom/android/supl/commprocessor/CommandProcessor;
     iget v5, p0, Lcom/android/supl/nc/WriterThread;->iNetWorkID:I
 
@@ -198,63 +203,63 @@
 
     if-eq v5, v6, :cond_5b
 
-    .line 231
+    .line 225
     if-eqz v1, :cond_5b
 
     instance-of v5, v1, Lcom/android/supl/commprocessor/NetworkCommandProcessor;
 
     if-eqz v5, :cond_5b
 
-    .line 232
+    .line 226
     const/16 v4, 0x9
 
-    .line 233
+    .line 227
     .local v4, "iSize":I
     const/16 v5, 0xd
 
     new-array v0, v5, [B
 
-    .line 234
+    .line 228
     .local v0, "bData":[B
     const/4 v3, 0x0
 
-    .line 235
+    .line 229
     .local v3, "iOffset":I
     invoke-static {v0, v3, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v3
 
-    .line 236
+    .line 230
     const/16 v5, 0x209
 
     invoke-static {v0, v3, v5}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v3
 
-    .line 237
+    .line 231
     iget v5, p0, Lcom/android/supl/nc/WriterThread;->iNetWorkID:I
 
     invoke-static {v0, v3, v5}, Lcom/android/bytewriter/IO;->put1([BII)I
 
     move-result v3
 
-    .line 238
+    .line 232
     const/4 v5, 0x1
 
     invoke-static {v0, v3, v5}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v3
 
-    .line 239
+    .line 233
     new-instance v2, Lcom/android/supl/commprocessor/FromServer;
 
     invoke-direct {v2}, Lcom/android/supl/commprocessor/FromServer;-><init>()V
 
-    .line 240
+    .line 234
     .local v2, "fs":Lcom/android/supl/commprocessor/FromServer;
     iput-object v0, v2, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
-    .line 241
+    .line 235
     const-string/jumbo v5, "SUPL20_SPIMESLP-SENDING"
 
     new-instance v6, Ljava/lang/StringBuilder;
@@ -283,10 +288,10 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 242
+    .line 236
     invoke-interface {v1, v2}, Lcom/android/supl/commprocessor/CommandProcessor;->writePacket(Lcom/android/supl/commprocessor/FromServer;)V
 
-    .line 246
+    .line 221
     .end local v0    # "bData":[B
     .end local v1    # "cp":Lcom/android/supl/commprocessor/CommandProcessor;
     .end local v2    # "fs":Lcom/android/supl/commprocessor/FromServer;
@@ -307,197 +312,9 @@
 
     const/4 v4, -0x1
 
-    if-ne v3, v4, :cond_ad
+    if-eq v3, v4, :cond_39
 
     .line 174
-    iget-object v3, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
-
-    invoke-virtual {v3}, Lcom/android/supl/nc/NetworkController;->IsSCM()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_41
-
-    .line 175
-    invoke-static {}, Lcom/android/supl/nc/SuplServiceMgr;->getInstance()Lcom/android/supl/nc/SuplServiceMgr;
-
-    move-result-object v3
-
-    invoke-virtual {v3, p1}, Lcom/android/supl/nc/SuplServiceMgr;->writeToScm(Lcom/android/supl/nc/SendToServer;)V
-    :try_end_14
-    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_0 .. :try_end_14} :catch_49
-    .catch Ljava/net/SocketException; {:try_start_0 .. :try_end_14} :catch_10c
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_14} :catch_14a
-    .catchall {:try_start_0 .. :try_end_14} :catchall_1ac
-
-    .line 220
-    :goto_14
-    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "bBrokenPipe = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    iget-boolean v5, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 221
-    iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
-
-    if-eqz v3, :cond_40
-
-    .line 222
-    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
-
-    const-string/jumbo v4, "Adding packet to queue since pipe is broken"
-
-    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 223
-    invoke-virtual {p0, p1}, Lcom/android/supl/nc/WriterThread;->addPacket(Lcom/android/supl/nc/SendToServer;)V
-
-    .line 226
-    :cond_40
-    :goto_40
-    return-void
-
-    .line 177
-    :cond_41
-    :try_start_41
-    invoke-static {}, Lcom/android/supl/nc/SuplServiceMgr;->getInstance()Lcom/android/supl/nc/SuplServiceMgr;
-
-    move-result-object v3
-
-    invoke-virtual {v3, p1}, Lcom/android/supl/nc/SuplServiceMgr;->writeToPcm(Lcom/android/supl/nc/SendToServer;)V
-    :try_end_48
-    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_41 .. :try_end_48} :catch_49
-    .catch Ljava/net/SocketException; {:try_start_41 .. :try_end_48} :catch_10c
-    .catch Ljava/io/IOException; {:try_start_41 .. :try_end_48} :catch_14a
-    .catchall {:try_start_41 .. :try_end_48} :catchall_1ac
-
-    goto :goto_14
-
-    .line 196
-    :catch_49
-    move-exception v0
-
-    .line 197
-    .local v0, "e":Ljavax/net/ssl/SSLProtocolException;
-    :try_start_4a
-    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
-
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v3, v4, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 198
-    invoke-direct {p0}, Lcom/android/supl/nc/WriterThread;->sendError()V
-
-    .line 199
-    iget-object v3, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
-
-    if-eqz v3, :cond_80
-
-    iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
-
-    if-nez v3, :cond_80
-
-    .line 200
-    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "Removing SLP Session for nc="
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    iget-object v5, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 201
-    iget-object v3, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
-
-    invoke-virtual {v3}, Lcom/android/supl/nc/NetworkController;->removeSLPSession()V
-    :try_end_80
-    .catchall {:try_start_4a .. :try_end_80} :catchall_1ac
-
-    .line 220
-    :cond_80
-    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "bBrokenPipe = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    iget-boolean v5, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 221
-    iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
-
-    if-eqz v3, :cond_40
-
-    .line 222
-    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
-
-    const-string/jumbo v4, "Adding packet to queue since pipe is broken"
-
-    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 223
-    invoke-virtual {p0, p1}, Lcom/android/supl/nc/WriterThread;->addPacket(Lcom/android/supl/nc/SendToServer;)V
-
-    goto :goto_40
-
-    .line 181
-    .end local v0    # "e":Ljavax/net/ssl/SSLProtocolException;
-    :cond_ad
-    :try_start_ad
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -544,19 +361,20 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 185
+    .line 180
+    :cond_39
     iget-object v3, p0, Lcom/android/supl/nc/WriterThread;->out:Ljava/io/OutputStream;
 
     iget-object v4, p1, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
     invoke-virtual {v3, v4}, Ljava/io/OutputStream;->write([B)V
 
-    .line 186
+    .line 181
     iget-object v3, p0, Lcom/android/supl/nc/WriterThread;->out:Ljava/io/OutputStream;
 
     invoke-virtual {v3}, Ljava/io/OutputStream;->flush()V
 
-    .line 187
+    .line 182
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -582,38 +400,13 @@
     move-result-object v4
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_10a
-    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_ad .. :try_end_10a} :catch_49
-    .catch Ljava/net/SocketException; {:try_start_ad .. :try_end_10a} :catch_10c
-    .catch Ljava/io/IOException; {:try_start_ad .. :try_end_10a} :catch_14a
-    .catchall {:try_start_ad .. :try_end_10a} :catchall_1ac
+    :try_end_62
+    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_0 .. :try_end_62} :catch_130
+    .catch Ljava/net/SocketException; {:try_start_0 .. :try_end_62} :catch_f0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_62} :catch_8f
+    .catchall {:try_start_0 .. :try_end_62} :catchall_195
 
-    goto/16 :goto_14
-
-    .line 203
-    :catch_10c
-    move-exception v2
-
-    .line 204
-    .local v2, "ex":Ljava/net/SocketException;
-    :try_start_10d
-    invoke-direct {p0}, Lcom/android/supl/nc/WriterThread;->sendError()V
-
-    .line 205
-    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
-
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v3, v4, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 206
-    iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
-    :try_end_11c
-    .catchall {:try_start_10d .. :try_end_11c} :catchall_1ac
-
-    .line 220
+    .line 214
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -638,62 +431,64 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 221
+    .line 215
     iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
 
-    if-eqz v3, :cond_40
+    if-eqz v3, :cond_8e
 
-    .line 222
+    .line 216
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     const-string/jumbo v4, "Adding packet to queue since pipe is broken"
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 223
+    .line 217
     invoke-virtual {p0, p1}, Lcom/android/supl/nc/WriterThread;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    goto/16 :goto_40
+    .line 171
+    :cond_8e
+    :goto_8e
+    return-void
 
-    .line 211
-    .end local v2    # "ex":Ljava/net/SocketException;
-    :catch_14a
+    .line 205
+    :catch_8f
     move-exception v1
 
-    .line 212
+    .line 206
     .local v1, "ex":Ljava/io/IOException;
-    :try_start_14b
+    :try_start_90
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     const-string/jumbo v4, "Inside the IOException block of write--brokenpipe"
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 213
+    .line 207
     invoke-direct {p0}, Lcom/android/supl/nc/WriterThread;->sendError()V
 
-    .line 214
+    .line 208
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
-    invoke-virtual {v1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
     move-result-object v4
 
     invoke-static {v3, v4, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 215
+    .line 209
     const/4 v3, 0x1
 
     iput-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
 
-    .line 216
+    .line 210
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     const-string/jumbo v4, "calling nc.stop with reconnect as true"
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 217
+    .line 211
     iget-object v3, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
 
     const/4 v4, 0x1
@@ -704,16 +499,16 @@
 
     invoke-virtual {v3, v4, v5, v6}, Lcom/android/supl/nc/NetworkController;->stop(ZLjava/lang/Object;Z)Z
 
-    .line 218
+    .line 212
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     const-string/jumbo v4, "addPacket after broken pipe"
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_17e
-    .catchall {:try_start_14b .. :try_end_17e} :catchall_1ac
+    :try_end_c3
+    .catchall {:try_start_90 .. :try_end_c3} :catchall_195
 
-    .line 220
+    .line 214
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -738,29 +533,201 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 221
+    .line 215
     iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
 
-    if-eqz v3, :cond_40
+    if-eqz v3, :cond_8e
 
-    .line 222
+    .line 216
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     const-string/jumbo v4, "Adding packet to queue since pipe is broken"
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 223
+    .line 217
     invoke-virtual {p0, p1}, Lcom/android/supl/nc/WriterThread;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    goto/16 :goto_40
+    goto :goto_8e
 
-    .line 219
+    .line 197
     .end local v1    # "ex":Ljava/io/IOException;
-    :catchall_1ac
+    :catch_f0
+    move-exception v2
+
+    .line 198
+    .local v2, "ex":Ljava/net/SocketException;
+    :try_start_f1
+    invoke-direct {p0}, Lcom/android/supl/nc/WriterThread;->sendError()V
+
+    .line 199
+    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
+
+    invoke-virtual {v2}, Ljava/net/SocketException;->getMessage()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 200
+    iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
+    :try_end_100
+    .catchall {:try_start_f1 .. :try_end_100} :catchall_195
+
+    if-nez v3, :cond_102
+
+    .line 214
+    :cond_102
+    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v5, "bBrokenPipe = "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    iget-boolean v5, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 215
+    iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
+
+    if-eqz v3, :cond_8e
+
+    .line 216
+    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
+
+    const-string/jumbo v4, "Adding packet to queue since pipe is broken"
+
+    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 217
+    invoke-virtual {p0, p1}, Lcom/android/supl/nc/WriterThread;->addPacket(Lcom/android/supl/nc/SendToServer;)V
+
+    goto/16 :goto_8e
+
+    .line 190
+    .end local v2    # "ex":Ljava/net/SocketException;
+    :catch_130
+    move-exception v0
+
+    .line 191
+    .local v0, "e":Ljavax/net/ssl/SSLProtocolException;
+    :try_start_131
+    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
+
+    invoke-virtual {v0}, Ljavax/net/ssl/SSLProtocolException;->getMessage()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 192
+    invoke-direct {p0}, Lcom/android/supl/nc/WriterThread;->sendError()V
+
+    .line 193
+    iget-object v3, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
+
+    if-eqz v3, :cond_167
+
+    iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
+
+    if-nez v3, :cond_167
+
+    .line 194
+    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v5, "Removing SLP Session for nc="
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    iget-object v5, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 195
+    iget-object v3, p0, Lcom/android/supl/nc/WriterThread;->nc:Lcom/android/supl/nc/NetworkController;
+
+    invoke-virtual {v3}, Lcom/android/supl/nc/NetworkController;->removeSLPSession()V
+    :try_end_167
+    .catchall {:try_start_131 .. :try_end_167} :catchall_195
+
+    .line 214
+    :cond_167
+    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v5, "bBrokenPipe = "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    iget-boolean v5, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 215
+    iget-boolean v3, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
+
+    if-eqz v3, :cond_8e
+
+    .line 216
+    const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
+
+    const-string/jumbo v4, "Adding packet to queue since pipe is broken"
+
+    invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 217
+    invoke-virtual {p0, p1}, Lcom/android/supl/nc/WriterThread;->addPacket(Lcom/android/supl/nc/SendToServer;)V
+
+    goto/16 :goto_8e
+
+    .line 213
+    .end local v0    # "e":Ljavax/net/ssl/SSLProtocolException;
+    :catchall_195
     move-exception v3
 
-    .line 220
+    .line 214
     const-string/jumbo v4, "SUPL20_SPIMESLP-SENDING"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -785,23 +752,23 @@
 
     invoke-static {v4, v5}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 221
+    .line 215
     iget-boolean v4, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
 
-    if-eqz v4, :cond_1d9
+    if-eqz v4, :cond_1c2
 
-    .line 222
+    .line 216
     const-string/jumbo v4, "SUPL20_SPIMESLP-SENDING"
 
     const-string/jumbo v5, "Adding packet to queue since pipe is broken"
 
     invoke-static {v4, v5}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 223
+    .line 217
     invoke-virtual {p0, p1}, Lcom/android/supl/nc/WriterThread;->addPacket(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 219
-    :cond_1d9
+    .line 213
+    :cond_1c2
     throw v3
 .end method
 
@@ -840,13 +807,13 @@
     .local v0, "ex":Ljava/lang/InterruptedException;
     const-string/jumbo v1, "SUPL20_SPIMESLP-SENDING"
 
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/InterruptedException;->getMessage()Ljava/lang/String;
 
     move-result-object v2
 
     invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 102
+    .line 86
     .end local v0    # "ex":Ljava/lang/InterruptedException;
     :goto_16
     return-void
@@ -919,25 +886,25 @@
     .registers 5
 
     .prologue
-    .line 255
+    .line 249
     :try_start_0
     iget-object v1, p0, Lcom/android/supl/nc/WriterThread;->out:Ljava/io/OutputStream;
 
     if-eqz v1, :cond_2e
 
-    .line 256
+    .line 250
     iget v1, p0, Lcom/android/supl/nc/WriterThread;->iNetWorkID:I
 
     const/4 v2, -0x1
 
     if-eq v1, v2, :cond_2e
 
-    .line 257
+    .line 251
     iget-object v1, p0, Lcom/android/supl/nc/WriterThread;->out:Ljava/io/OutputStream;
 
     invoke-virtual {v1}, Ljava/io/OutputStream;->close()V
 
-    .line 258
+    .line 252
     const-string/jumbo v1, "SUPL20_SPIMESLP-SENDING"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -968,20 +935,20 @@
     :try_end_2e
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_2e} :catch_2f
 
-    .line 265
+    .line 247
     :cond_2e
     :goto_2e
     return-void
 
-    .line 261
+    .line 255
     :catch_2f
     move-exception v0
 
-    .line 263
+    .line 257
     .local v0, "e":Ljava/io/IOException;
     const-string/jumbo v1, "SUPL20_SPIMESLP-SENDING"
 
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
     move-result-object v2
 
@@ -1008,7 +975,7 @@
 
     monitor-exit p0
 
-    .line 110
+    .line 108
     return-void
 
     :catchall_9
@@ -1061,7 +1028,7 @@
 
     monitor-exit p0
 
-    .line 106
+    .line 104
     return-void
 
     :catchall_9
@@ -1090,17 +1057,20 @@
 
     const/4 v2, 0x0
 
-    .line 248
+    .line 242
     iget-object v3, p0, Lcom/android/supl/nc/WriterThread;->deque:Ljava/util/concurrent/BlockingQueue;
 
     invoke-interface {v3}, Ljava/util/concurrent/BlockingQueue;->isEmpty()Z
 
     move-result v3
 
-    xor-int/lit8 v0, v3, 0x1
+    if-eqz v3, :cond_50
 
-    .line 249
+    const/4 v0, 0x0
+
+    .line 243
     .local v0, "isRunning":Z
+    :goto_b
     const-string/jumbo v3, "SUPL20_SPIMESLP-SENDING"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -1129,28 +1099,28 @@
 
     move-result-object v4
 
-    .line 250
+    .line 244
     invoke-virtual {p0}, Lcom/android/supl/nc/WriterThread;->getMessageCount()I
 
     move-result v5
 
-    .line 249
+    .line 243
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 250
+    .line 244
     const-string/jumbo v5, ", isBrokenPipe : "
 
-    .line 249
+    .line 243
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 250
+    .line 244
     iget-boolean v5, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
 
-    .line 249
+    .line 243
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
 
     move-result-object v4
@@ -1161,23 +1131,32 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 251
-    if-nez v0, :cond_4e
+    .line 245
+    if-nez v0, :cond_4f
 
     invoke-virtual {p0}, Lcom/android/supl/nc/WriterThread;->getMessageCount()I
 
     move-result v3
 
-    if-lez v3, :cond_4f
-
-    :cond_4e
-    :goto_4e
-    return v1
+    if-lez v3, :cond_52
 
     :cond_4f
+    :goto_4f
+    return v1
+
+    .line 242
+    .end local v0    # "isRunning":Z
+    :cond_50
+    const/4 v0, 0x1
+
+    .restart local v0    # "isRunning":Z
+    goto :goto_b
+
+    :cond_52
     move v1, v2
 
-    goto :goto_4e
+    .line 245
+    goto :goto_4f
 .end method
 
 .method public run()V
@@ -1278,7 +1257,7 @@
     .line 137
     invoke-direct {p0}, Lcom/android/supl/nc/WriterThread;->notifyToCloseConnection()V
 
-    .line 140
+    .line 119
     :cond_4d
     return-void
 .end method
@@ -1295,10 +1274,10 @@
     .end annotation
 
     .prologue
-    .line 290
+    .line 284
     if-nez p1, :cond_b
 
-    .line 291
+    .line 285
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v2, "socket object must not be null"
@@ -1307,7 +1286,7 @@
 
     throw v1
 
-    .line 293
+    .line 287
     :cond_b
     invoke-virtual {p1}, Ljava/net/Socket;->isConnected()Z
 
@@ -1315,7 +1294,7 @@
 
     if-nez v1, :cond_1a
 
-    .line 294
+    .line 288
     new-instance v1, Ljava/lang/IllegalStateException;
 
     const-string/jumbo v2, "socket is not connected"
@@ -1324,7 +1303,7 @@
 
     throw v1
 
-    .line 295
+    .line 289
     :cond_1a
     invoke-virtual {p1}, Ljava/net/Socket;->isClosed()Z
 
@@ -1332,15 +1311,15 @@
 
     if-nez v1, :cond_26
 
-    .line 296
+    .line 290
     invoke-virtual {p1}, Ljava/net/Socket;->isOutputShutdown()Z
 
     move-result v1
 
-    .line 295
+    .line 289
     if-eqz v1, :cond_2f
 
-    .line 297
+    .line 291
     :cond_26
     new-instance v1, Ljava/lang/IllegalStateException;
 
@@ -1350,14 +1329,14 @@
 
     throw v1
 
-    .line 300
+    .line 294
     :cond_2f
     if-nez p2, :cond_34
 
-    .line 301
+    .line 295
     const-string/jumbo p2, "WriterThread"
 
-    .line 303
+    .line 297
     :cond_34
     iget v1, p0, Lcom/android/supl/nc/WriterThread;->iNetWorkID:I
 
@@ -1365,7 +1344,7 @@
 
     if-eq v1, v2, :cond_6f
 
-    .line 304
+    .line 298
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -1390,7 +1369,7 @@
 
     move-result-object p2
 
-    .line 305
+    .line 299
     const-string/jumbo v1, "SUPL20_SPIMESLP-SENDING"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -1415,11 +1394,11 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 307
+    .line 301
     :cond_6f
     iput-object p1, p0, Lcom/android/supl/nc/WriterThread;->m_CilentSocket:Ljava/net/Socket;
 
-    .line 309
+    .line 303
     :try_start_71
     invoke-virtual {p1}, Ljava/net/Socket;->getOutputStream()Ljava/io/OutputStream;
 
@@ -1429,39 +1408,169 @@
     :try_end_77
     .catch Ljava/io/IOException; {:try_start_71 .. :try_end_77} :catch_89
 
-    .line 313
+    .line 307
     :goto_77
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
 
-    .line 314
+    .line 308
     new-instance v1, Ljava/lang/Thread;
 
     invoke-direct {v1, p0, p2}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
 
     iput-object v1, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
 
-    .line 315
+    .line 309
     iget-object v1, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
 
     invoke-virtual {v1}, Ljava/lang/Thread;->start()V
 
-    .line 316
+    .line 310
     iput-object p1, p0, Lcom/android/supl/nc/WriterThread;->m_CilentSocket:Ljava/net/Socket;
 
-    .line 317
+    .line 283
     return-void
 
-    .line 310
+    .line 304
     :catch_89
     move-exception v0
 
-    .line 311
+    .line 305
     .local v0, "e":Ljava/io/IOException;
-    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
+    invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
 
     goto :goto_77
+.end method
+
+.method public setLocalClientSocket(Landroid/net/LocalSocket;Ljava/lang/String;)V
+    .registers 6
+    .param p1, "m_localClientSocket"    # Landroid/net/LocalSocket;
+    .param p2, "stThreadName"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/IllegalStateException;,
+            Ljava/lang/IllegalArgumentException;
+        }
+    .end annotation
+
+    .prologue
+    .line 315
+    if-nez p1, :cond_b
+
+    .line 316
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    const-string/jumbo v2, "socket object must not be null"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 319
+    :cond_b
+    invoke-virtual {p1}, Landroid/net/LocalSocket;->isConnected()Z
+
+    move-result v1
+
+    if-nez v1, :cond_1a
+
+    .line 320
+    new-instance v1, Ljava/lang/IllegalStateException;
+
+    const-string/jumbo v2, "socket is not connected"
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 327
+    :cond_1a
+    if-nez p2, :cond_1f
+
+    .line 328
+    const-string/jumbo p2, "WriterThread"
+
+    .line 330
+    :cond_1f
+    iget v1, p0, Lcom/android/supl/nc/WriterThread;->iNetWorkID:I
+
+    const/4 v2, -0x1
+
+    if-eq v1, v2, :cond_3e
+
+    .line 331
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string/jumbo v2, " NW:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget v2, p0, Lcom/android/supl/nc/WriterThread;->iNetWorkID:I
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    .line 333
+    :cond_3e
+    iput-object p1, p0, Lcom/android/supl/nc/WriterThread;->m_LocalSocket:Landroid/net/LocalSocket;
+
+    .line 335
+    :try_start_40
+    invoke-virtual {p1}, Landroid/net/LocalSocket;->getOutputStream()Ljava/io/OutputStream;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/android/supl/nc/WriterThread;->out:Ljava/io/OutputStream;
+    :try_end_46
+    .catch Ljava/io/IOException; {:try_start_40 .. :try_end_46} :catch_58
+
+    .line 339
+    :goto_46
+    const/4 v1, 0x0
+
+    iput-boolean v1, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
+
+    .line 340
+    new-instance v1, Ljava/lang/Thread;
+
+    invoke-direct {v1, p0, p2}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
+
+    iput-object v1, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
+
+    .line 341
+    iget-object v1, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
+
+    invoke-virtual {v1}, Ljava/lang/Thread;->start()V
+
+    .line 342
+    iput-object p1, p0, Lcom/android/supl/nc/WriterThread;->m_LocalSocket:Landroid/net/LocalSocket;
+
+    .line 314
+    return-void
+
+    .line 336
+    :catch_58
+    move-exception v0
+
+    .line 337
+    .local v0, "e":Ljava/io/IOException;
+    invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
+
+    goto :goto_46
 .end method
 
 .method public setStopLock(Ljava/lang/Object;)V
@@ -1472,107 +1581,48 @@
     .line 163
     iput-object p1, p0, Lcom/android/supl/nc/WriterThread;->objMyWriteLock:Ljava/lang/Object;
 
-    .line 164
+    .line 162
     return-void
-.end method
-
-.method public startThread()V
-    .registers 3
-
-    .prologue
-    .line 320
-    const-string/jumbo v0, "SUPL20_SPIMESLP-SENDING"
-
-    const-string/jumbo v1, "startThread"
-
-    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 321
-    iget v0, p0, Lcom/android/supl/nc/WriterThread;->iNetWorkID:I
-
-    const/4 v1, -0x1
-
-    if-ne v0, v1, :cond_28
-
-    .line 322
-    const/4 v0, 0x0
-
-    iput-boolean v0, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
-
-    .line 323
-    new-instance v0, Ljava/lang/Thread;
-
-    const-string/jumbo v1, "WriterThread"
-
-    invoke-direct {v0, p0, v1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
-
-    iput-object v0, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
-
-    .line 324
-    iget-object v0, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
-
-    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
-
-    .line 326
-    invoke-static {}, Lcom/android/supl/nc/SuplServiceMgr;->getInstance()Lcom/android/supl/nc/SuplServiceMgr;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Lcom/android/supl/nc/SuplServiceMgr;->getSUPLHILDInterface()V
-
-    .line 330
-    :goto_27
-    return-void
-
-    .line 328
-    :cond_28
-    const-string/jumbo v0, "SUPL20_SPIMESLP-SENDING"
-
-    const-string/jumbo v1, "socket don\'t start write thread here."
-
-    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_27
 .end method
 
 .method public stopWrite()V
     .registers 2
 
     .prologue
-    .line 270
+    .line 264
     iget-boolean v0, p0, Lcom/android/supl/nc/WriterThread;->isBrokenPipe:Z
 
-    if-nez v0, :cond_c
+    if-nez v0, :cond_e
 
     invoke-virtual {p0}, Lcom/android/supl/nc/WriterThread;->isSessionRunning()Z
 
     move-result v0
 
-    xor-int/lit8 v0, v0, 0x1
+    if-eqz v0, :cond_e
 
-    if-eqz v0, :cond_18
-
-    .line 271
-    :cond_c
-    iget-object v0, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
-
-    if-eqz v0, :cond_15
-
-    .line 272
-    iget-object v0, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
-
-    invoke-virtual {v0}, Ljava/lang/Thread;->interrupt()V
-
-    .line 274
-    :cond_15
-    invoke-direct {p0}, Lcom/android/supl/nc/WriterThread;->notifyToCloseConnection()V
-
-    .line 276
-    :cond_18
+    .line 270
+    :goto_a
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/supl/nc/WriterThread;->isStopWrite:Z
 
-    .line 278
+    .line 263
     return-void
+
+    .line 265
+    :cond_e
+    iget-object v0, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
+
+    if-eqz v0, :cond_17
+
+    .line 266
+    iget-object v0, p0, Lcom/android/supl/nc/WriterThread;->workerThread:Ljava/lang/Thread;
+
+    invoke-virtual {v0}, Ljava/lang/Thread;->interrupt()V
+
+    .line 268
+    :cond_17
+    invoke-direct {p0}, Lcom/android/supl/nc/WriterThread;->notifyToCloseConnection()V
+
+    goto :goto_a
 .end method

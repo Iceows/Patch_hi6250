@@ -69,7 +69,7 @@
     .line 138
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLCircularArea;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 139
+    .line 137
     return-void
 .end method
 
@@ -114,7 +114,7 @@
     .line 85
     iput p4, p0, Lcom/android/supl/si/SUPLCircularArea;->nRadiusMax:I
 
-    .line 87
+    .line 78
     return-void
 .end method
 
@@ -136,11 +136,7 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 94
-    const/16 v3, 0xc
-
     .line 95
-    .local v3, "iSize":I
     const/4 v2, 0x0
 
     .line 96
@@ -158,13 +154,14 @@
     add-int/lit8 v3, v4, 0xc
 
     .line 98
+    .local v3, "iSize":I
     new-array v1, v3, [B
 
     .line 99
     .local v1, "bData":[B
     array-length v4, v0
 
-    invoke-static {v0, v5, v1, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v5, v1, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 100
     array-length v4, v0
@@ -193,7 +190,7 @@
     move-result v2
 
     .line 104
-    if-eq v2, v3, :cond_32
+    if-eq v2, v3, :cond_30
 
     .line 105
     sget-object v4, Ljava/lang/System;->err:Ljava/io/PrintStream;
@@ -203,7 +200,7 @@
     invoke-virtual {v4, v5}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 108
-    :cond_32
+    :cond_30
     return-object v1
 .end method
 
@@ -248,7 +245,7 @@
 
     iput v0, p0, Lcom/android/supl/si/SUPLCircularArea;->nRadiusMax:I
 
-    .line 150
+    .line 144
     return-void
 .end method
 
@@ -346,6 +343,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 161
+    .line 156
     return-void
 .end method

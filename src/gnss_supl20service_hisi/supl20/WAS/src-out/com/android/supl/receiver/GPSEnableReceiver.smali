@@ -40,7 +40,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_21
+    if-eqz v2, :cond_23
 
     .line 50
     invoke-virtual {p2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
@@ -51,12 +51,17 @@
     .local v0, "bundle":Landroid/os/Bundle;
     const-string/jumbo v2, "enabled"
 
-    invoke-virtual {v0, v2}, Landroid/os/BaseBundle;->getBoolean(Ljava/lang/String;)Z
+    invoke-virtual {v0, v2}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z
 
     move-result v1
 
-    .line 59
+    .line 52
+    .local v1, "isGPSEnabled":Z
+    if-eqz v1, :cond_23
+
+    .line 47
     .end local v0    # "bundle":Landroid/os/Bundle;
-    :cond_21
+    .end local v1    # "isGPSEnabled":Z
+    :cond_23
     return-void
 .end method

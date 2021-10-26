@@ -38,7 +38,6 @@
 .method synthetic constructor <init>(Lcom/android/supl/SUPLManager;Lcom/android/supl/SUPLManager$SettingsObserver;)V
     .registers 3
     .param p1, "this$0"    # Lcom/android/supl/SUPLManager;
-    .param p2, "-this1"    # Lcom/android/supl/SUPLManager$SettingsObserver;
 
     .prologue
     invoke-direct {p0, p1}, Lcom/android/supl/SUPLManager$SettingsObserver;-><init>(Lcom/android/supl/SUPLManager;)V
@@ -61,6 +60,6 @@
 
     invoke-static {v0, v1}, Lcom/android/supl/SUPLManager;->-wrap0(Lcom/android/supl/SUPLManager;Ljava/lang/String;)V
 
-    .line 175
+    .line 172
     return-void
 .end method

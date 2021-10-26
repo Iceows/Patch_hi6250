@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Lcom/android/supl/loc/SETLocationManager;
 
     .prologue
-    .line 393
+    .line 369
     iput-object p1, p0, Lcom/android/supl/loc/SETLocationManager$EmergencyCallListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-direct {p0}, Landroid/telephony/PhoneStateListener;-><init>()V
@@ -35,7 +35,6 @@
 .method synthetic constructor <init>(Lcom/android/supl/loc/SETLocationManager;Lcom/android/supl/loc/SETLocationManager$EmergencyCallListener;)V
     .registers 3
     .param p1, "this$0"    # Lcom/android/supl/loc/SETLocationManager;
-    .param p2, "-this1"    # Lcom/android/supl/loc/SETLocationManager$EmergencyCallListener;
 
     .prologue
     invoke-direct {p0, p1}, Lcom/android/supl/loc/SETLocationManager$EmergencyCallListener;-><init>(Lcom/android/supl/loc/SETLocationManager;)V
@@ -53,26 +52,26 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 398
+    .line 374
     const-string/jumbo v0, "UNKNOWN"
 
-    .line 400
+    .line 376
     .local v0, "callState":Ljava/lang/String;
     packed-switch p1, :pswitch_data_94
 
-    .line 430
+    .line 406
     :cond_7
     :goto_7
     invoke-super {p0, p1, p2}, Landroid/telephony/PhoneStateListener;->onCallStateChanged(ILjava/lang/String;)V
 
-    .line 431
+    .line 372
     return-void
 
-    .line 402
+    .line 378
     :pswitch_b
     const-string/jumbo v0, "IDLE"
 
-    .line 403
+    .line 379
     iget-object v5, p0, Lcom/android/supl/loc/SETLocationManager$EmergencyCallListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-static {v5}, Lcom/android/supl/loc/SETLocationManager;->-get0(Lcom/android/supl/loc/SETLocationManager;)Z
@@ -81,56 +80,56 @@
 
     if-eqz v5, :cond_7
 
-    .line 404
+    .line 380
     iget-object v5, p0, Lcom/android/supl/loc/SETLocationManager$EmergencyCallListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-static {v5, v4}, Lcom/android/supl/loc/SETLocationManager;->-set0(Lcom/android/supl/loc/SETLocationManager;Z)Z
 
-    .line 405
+    .line 381
     new-instance v3, Lcom/android/supl/nc/SendToServer;
 
     invoke-direct {v3}, Lcom/android/supl/nc/SendToServer;-><init>()V
 
-    .line 406
+    .line 382
     .local v3, "sendToServer":Lcom/android/supl/nc/SendToServer;
     const/16 v2, 0xc
 
-    .line 408
+    .line 384
     .local v2, "iSize":I
     new-array v5, v2, [B
 
     iput-object v5, v3, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 409
+    .line 385
     const/4 v1, 0x0
 
-    .line 410
+    .line 386
     .local v1, "iOffset":I
     iget-object v5, v3, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 411
+    .line 387
     const/16 v6, 0x8
 
-    .line 410
+    .line 386
     invoke-static {v5, v1, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v1
 
-    .line 412
+    .line 388
     iget-object v5, v3, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 413
+    .line 389
     const/16 v6, 0x116
 
-    .line 412
+    .line 388
     invoke-static {v5, v1, v6}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v1
 
-    .line 414
+    .line 390
     iget-object v5, v3, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B
 
-    .line 415
+    .line 391
     iget-object v6, p0, Lcom/android/supl/loc/SETLocationManager$EmergencyCallListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
     invoke-static {v6}, Lcom/android/supl/loc/SETLocationManager;->-get0(Lcom/android/supl/loc/SETLocationManager;)Z
@@ -141,22 +140,22 @@
 
     const/4 v4, 0x1
 
-    .line 414
+    .line 390
     :cond_42
     invoke-static {v5, v1, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v1
 
-    .line 416
+    .line 392
     iget-object v4, p0, Lcom/android/supl/loc/SETLocationManager$EmergencyCallListener;->this$0:Lcom/android/supl/loc/SETLocationManager;
 
-    invoke-static {v4}, Lcom/android/supl/loc/SETLocationManager;->-get2(Lcom/android/supl/loc/SETLocationManager;)Lcom/android/supl/commprocessor/NDKCommProcessor;
+    invoke-static {v4}, Lcom/android/supl/loc/SETLocationManager;->-get1(Lcom/android/supl/loc/SETLocationManager;)Lcom/android/supl/commprocessor/NDKCommProcessor;
 
     move-result-object v4
 
     invoke-virtual {v4, v3}, Lcom/android/supl/commprocessor/NDKCommProcessor;->sendServer(Lcom/android/supl/nc/SendToServer;)V
 
-    .line 417
+    .line 393
     const-string/jumbo v4, "SUPL20_LocMan"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -187,7 +186,7 @@
 
     goto :goto_7
 
-    .line 422
+    .line 398
     .end local v1    # "iOffset":I
     .end local v2    # "iSize":I
     .end local v3    # "sendToServer":Lcom/android/supl/nc/SendToServer;
@@ -218,13 +217,13 @@
 
     goto/16 :goto_7
 
-    .line 425
+    .line 401
     :pswitch_8e
     const-string/jumbo v0, "Offhook"
 
     goto/16 :goto_7
 
-    .line 400
+    .line 376
     nop
 
     :pswitch_data_94

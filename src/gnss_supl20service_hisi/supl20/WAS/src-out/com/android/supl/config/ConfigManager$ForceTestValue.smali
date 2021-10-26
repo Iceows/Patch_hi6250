@@ -42,40 +42,40 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 686
+    .line 634
     iput-object p1, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->this$0:Lcom/android/supl/config/ConfigManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 687
+    .line 635
     iput v2, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iMnc:I
 
-    .line 688
+    .line 636
     iput v2, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iMcc:I
 
-    .line 689
+    .line 637
     iput v2, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iLac:I
 
-    .line 690
+    .line 638
     iput v2, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iCI:I
 
-    .line 691
+    .line 639
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iMSISDN:J
 
-    .line 692
+    .line 640
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->isFillTAandNMR:Z
 
-    .line 693
+    .line 641
     iput v2, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iTA:I
 
-    .line 694
+    .line 642
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->aNMR:[I
 
-    .line 686
+    .line 634
     return-void
 .end method
 
@@ -87,28 +87,28 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 697
+    .line 645
     const/16 v3, 0x20
 
-    .line 699
+    .line 647
     .local v3, "iSize":I
     iget-boolean v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->isFillTAandNMR:Z
 
     if-eqz v4, :cond_9
 
-    .line 700
+    .line 648
     const/16 v3, 0x24
 
-    .line 702
+    .line 650
     :cond_9
     iget-object v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->aNMR:[I
 
     if-eqz v4, :cond_15
 
-    .line 703
+    .line 651
     add-int/lit8 v3, v3, 0x4
 
-    .line 704
+    .line 652
     iget-object v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->aNMR:[I
 
     array-length v4, v4
@@ -117,15 +117,15 @@
 
     add-int/2addr v3, v4
 
-    .line 706
+    .line 654
     :cond_15
     new-array v0, v3, [B
 
-    .line 707
+    .line 655
     .local v0, "bData":[B
     const/4 v2, 0x0
 
-    .line 708
+    .line 656
     .local v2, "iOffset":I
     const/16 v4, 0x6f
 
@@ -133,49 +133,49 @@
 
     move-result v2
 
-    .line 709
+    .line 657
     add-int/lit8 v4, v3, -0x4
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 710
+    .line 658
     iget v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iMcc:I
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 711
+    .line 659
     iget v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iMnc:I
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 712
+    .line 660
     iget v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iLac:I
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 713
+    .line 661
     iget v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iCI:I
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 714
+    .line 662
     iget-wide v6, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iMSISDN:J
 
     invoke-static {v0, v2, v6, v7}, Lcom/android/bytewriter/IO;->put8([BIJ)I
 
     move-result v2
 
-    .line 715
+    .line 663
     iget-boolean v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->isFillTAandNMR:Z
 
     if-eqz v4, :cond_6e
@@ -187,25 +187,25 @@
 
     move-result v2
 
-    .line 716
+    .line 664
     iget-boolean v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->isFillTAandNMR:Z
 
     if-eqz v4, :cond_55
 
-    .line 717
+    .line 665
     iget v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iTA:I
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 719
+    .line 667
     :cond_55
     iget-object v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->aNMR:[I
 
     if-eqz v4, :cond_70
 
-    .line 720
+    .line 668
     iget-object v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->aNMR:[I
 
     array-length v4, v4
@@ -214,7 +214,7 @@
 
     move-result v2
 
-    .line 721
+    .line 669
     iget-object v4, p0, Lcom/android/supl/config/ConfigManager$ForceTestValue;->aNMR:[I
 
     array-length v6, v4
@@ -224,13 +224,13 @@
 
     aget v1, v4, v5
 
-    .line 722
+    .line 670
     .local v1, "iNmr":I
     invoke-static {v0, v2, v1}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 721
+    .line 669
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_63
@@ -239,16 +239,16 @@
     :cond_6e
     move v4, v5
 
-    .line 715
+    .line 663
     goto :goto_47
 
-    .line 725
+    .line 673
     :cond_70
     invoke-static {v0, v2, v5}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 727
+    .line 675
     :cond_74
     return-object v0
 .end method

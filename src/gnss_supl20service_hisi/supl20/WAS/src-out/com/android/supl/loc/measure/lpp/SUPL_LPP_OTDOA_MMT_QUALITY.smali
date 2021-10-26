@@ -39,7 +39,7 @@
 
     iput-byte v0, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_OTDOA_MMT_QUALITY;->byNumberofSamples:B
 
-    .line 100
+    .line 95
     return-void
 .end method
 

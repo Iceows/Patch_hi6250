@@ -53,7 +53,7 @@
     .line 51
     iput v1, p0, Lcom/android/supl/loc/BitString;->nBitsUnused:I
 
-    .line 53
+    .line 47
     :cond_1a
     return-void
 .end method
@@ -99,7 +99,7 @@
 
     const/4 v5, 0x0
 
-    invoke-static {v3, v5, v0, v1, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v5, v0, v1, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 63
     iget v3, p0, Lcom/android/supl/loc/BitString;->ucLength:I

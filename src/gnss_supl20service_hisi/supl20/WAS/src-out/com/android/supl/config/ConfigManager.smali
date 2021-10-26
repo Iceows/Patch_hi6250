@@ -28,10 +28,6 @@
 
 .field private static final CONFIG_START:Ljava/lang/String; = "config_start"
 
-.field private static final CUST_SUPL_CONFIG_PATH:Ljava/lang/String; = "/data/cust/xml/gnss_suplconfig_hisi.xml"
-
-.field private static final DEFAULT_SUPL_CONFIG_PATH:Ljava/lang/String; = "/vendor/etc/gnss/config/gnss_suplconfig_hisi.xml"
-
 .field private static final FILLTAANDNMR:Ljava/lang/String; = "filltaandnmr"
 
 .field private static final FORCETESTVALUE:Ljava/lang/String; = "forcetestvalue"
@@ -68,19 +64,15 @@
 
 .field private static final PORT:Ljava/lang/String; = "port"
 
-.field private static final PREF_SETID:Ljava/lang/String; = "pref_setid"
-
 .field private static final PWD:Ljava/lang/String; = "pwd"
 
 .field private static final SCM:Ljava/lang/String; = "scm"
 
 .field private static ST_LOG:Ljava/lang/String; = null
 
-.field public static final SUPL_Services_Version:Ljava/lang/String; = "2.13.2.0"
+.field public static final SUPL_Services_Version:Ljava/lang/String; = "2.13.0.3"
 
 .field private static final SUPL_VERSION:Ljava/lang/String; = "suplver"
-
-.field private static final SWITCH_APN_ENABLE:Ljava/lang/String; = "switch_apn_enable"
 
 .field private static final TA:Ljava/lang/String; = "ta"
 
@@ -126,8 +118,6 @@
 
 .field private isSCMFound:Z
 
-.field private isSwitchApnEnabled:Z
-
 .field private mComparater:Lcom/android/supl/bearer/BearerNetworkComparater;
 
 .field private m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
@@ -165,8 +155,6 @@
 
 .field private stKeyStorePath:Ljava/lang/String;
 
-.field private stPerfSetId:Ljava/lang/String;
-
 .field private stPrivateKeyStore:Ljava/lang/String;
 
 .field private stPrivateKeyStoreConv:Ljava/lang/String;
@@ -179,17 +167,17 @@
     .registers 1
 
     .prologue
-    .line 128
+    .line 119
     const/4 v0, 0x0
 
     sput-object v0, Lcom/android/supl/config/ConfigManager;->sConfigManager:Lcom/android/supl/config/ConfigManager;
 
-    .line 130
+    .line 121
     const-string/jumbo v0, "SUPL20_Config"
 
     sput-object v0, Lcom/android/supl/config/ConfigManager;->ST_LOG:Ljava/lang/String;
 
-    .line 64
+    .line 63
     return-void
 .end method
 
@@ -201,104 +189,98 @@
 
     const/4 v1, 0x0
 
-    .line 200
+    .line 187
     invoke-direct {p0}, Lorg/xml/sax/helpers/DefaultHandler;-><init>()V
 
-    .line 126
+    .line 117
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    .line 132
+    .line 123
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    .line 134
+    .line 125
     const/4 v0, 0x1
 
     iput v0, p0, Lcom/android/supl/config/ConfigManager;->iSUPLVersion:I
 
-    .line 136
+    .line 127
     iput v1, p0, Lcom/android/supl/config/ConfigManager;->iConfigStartVersion:I
 
-    .line 138
+    .line 129
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isCertVaild:Z
 
-    .line 140
+    .line 131
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->stKeyStorePath:Ljava/lang/String;
 
-    .line 142
-    iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->stPerfSetId:Ljava/lang/String;
-
-    .line 144
+    .line 133
     const-string/jumbo v0, "format-convert"
 
     iput-object v0, p0, Lcom/android/supl/config/ConfigManager;->stKeyStoreConv:Ljava/lang/String;
 
-    .line 146
+    .line 135
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isForceTest:Z
 
-    .line 148
+    .line 137
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isCheckGPSEnabled:Z
 
-    .line 150
-    iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isSwitchApnEnabled:Z
-
-    .line 152
+    .line 139
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->stPrivateKeyStore:Ljava/lang/String;
 
-    .line 154
+    .line 141
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->stPrivateKeyStoreConv:Ljava/lang/String;
 
-    .line 156
+    .line 143
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    .line 158
+    .line 145
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupportRoaming:Z
 
-    .line 178
+    .line 165
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isBearNetworkFound:Z
 
-    .line 182
+    .line 169
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->stCurrentBearerNetWork:Ljava/lang/String;
 
-    .line 184
+    .line 171
     new-instance v0, Lcom/android/supl/bearer/BearerNetworkComparater;
 
     invoke-direct {v0}, Lcom/android/supl/bearer/BearerNetworkComparater;-><init>()V
 
     iput-object v0, p0, Lcom/android/supl/config/ConfigManager;->mComparater:Lcom/android/supl/bearer/BearerNetworkComparater;
 
-    .line 186
+    .line 173
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
-    .line 188
+    .line 175
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->roamingBearerNetwork:Ljava/util/HashMap;
 
-    .line 280
+    .line 262
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
-    .line 282
+    .line 264
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isPCMFound:Z
 
-    .line 284
+    .line 266
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isSCMFound:Z
 
-    .line 286
+    .line 268
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
 
-    .line 288
+    .line 270
     iput-boolean v1, p0, Lcom/android/supl/config/ConfigManager;->isNiUdpEnabled:Z
 
-    .line 290
+    .line 272
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
-    .line 201
+    .line 188
     invoke-virtual {p0}, Lcom/android/supl/config/ConfigManager;->init()V
 
-    .line 202
+    .line 189
     iget-object v0, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    if-eqz v0, :cond_54
+    if-eqz v0, :cond_50
 
-    .line 203
+    .line 190
     sget-object v0, Lcom/android/supl/config/ConfigManager;->ST_LOG:Ljava/lang/String;
 
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
@@ -309,11 +291,11 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 206
-    :cond_54
+    .line 193
+    :cond_50
     invoke-direct {p0}, Lcom/android/supl/config/ConfigManager;->setKeyStore_ConvFromConfig()V
 
-    .line 207
+    .line 187
     return-void
 .end method
 
@@ -325,20 +307,20 @@
 
     monitor-enter v1
 
-    .line 194
+    .line 181
     :try_start_3
     sget-object v0, Lcom/android/supl/config/ConfigManager;->sConfigManager:Lcom/android/supl/config/ConfigManager;
 
     if-nez v0, :cond_e
 
-    .line 195
+    .line 182
     new-instance v0, Lcom/android/supl/config/ConfigManager;
 
     invoke-direct {v0}, Lcom/android/supl/config/ConfigManager;-><init>()V
 
     sput-object v0, Lcom/android/supl/config/ConfigManager;->sConfigManager:Lcom/android/supl/config/ConfigManager;
 
-    .line 197
+    .line 184
     :cond_e
     sget-object v0, Lcom/android/supl/config/ConfigManager;->sConfigManager:Lcom/android/supl/config/ConfigManager;
     :try_end_10
@@ -360,21 +342,21 @@
     .registers 2
 
     .prologue
-    .line 210
+    .line 197
     invoke-virtual {p0}, Lcom/android/supl/config/ConfigManager;->getKeyStorePath()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/supl/config/ConfigManager;->stPrivateKeyStore:Ljava/lang/String;
 
-    .line 211
+    .line 198
     invoke-virtual {p0}, Lcom/android/supl/config/ConfigManager;->getKeyStoreConv()Ljava/lang/String;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/supl/config/ConfigManager;->stPrivateKeyStoreConv:Ljava/lang/String;
 
-    .line 212
+    .line 196
     return-void
 .end method
 
@@ -392,12 +374,12 @@
     .end annotation
 
     .prologue
-    .line 587
+    .line 535
     iget-boolean v0, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     if-eqz v0, :cond_12
 
-    .line 588
+    .line 536
     new-instance v0, Ljava/lang/String;
 
     invoke-direct {v0, p1, p2, p3}, Ljava/lang/String;-><init>([CII)V
@@ -408,12 +390,12 @@
 
     iput-object v0, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
-    .line 589
+    .line 537
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
-    .line 592
+    .line 534
     :cond_12
     return-void
 .end method
@@ -422,7 +404,7 @@
     .registers 2
 
     .prologue
-    .line 742
+    .line 690
     iget-boolean v0, p0, Lcom/android/supl/config/ConfigManager;->isCheckGPSEnabled:Z
 
     return v0
@@ -440,26 +422,16 @@
     .end annotation
 
     .prologue
-    const/4 v8, 0x1
+    .line 380
+    const-string/jumbo v8, "suplver"
 
-    const/4 v9, 0x0
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 403
-    :try_start_2
-    const-string/jumbo v10, "suplver"
+    move-result v8
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    if-eqz v8, :cond_2d
 
-    move-result v10
-
-    if-eqz v10, :cond_33
-
-    .line 404
-    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    if-eqz v8, :cond_32
-
-    .line 405
+    .line 381
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
     invoke-static {v8}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
@@ -468,7 +440,7 @@
 
     iput v8, p0, Lcom/android/supl/config/ConfigManager;->iSUPLVersion:I
 
-    .line 406
+    .line 382
     sget-object v8, Lcom/android/supl/config/ConfigManager;->ST_LOG:Ljava/lang/String;
 
     new-instance v9, Ljava/lang/StringBuilder;
@@ -493,127 +465,34 @@
 
     invoke-static {v8, v9}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 583
-    :cond_32
-    :goto_32
+    .line 379
+    :cond_2c
+    :goto_2c
     return-void
 
-    .line 408
-    :cond_33
-    iget v10, p0, Lcom/android/supl/config/ConfigManager;->iConfigStartVersion:I
+    .line 383
+    :cond_2d
+    iget v8, p0, Lcom/android/supl/config/ConfigManager;->iConfigStartVersion:I
 
-    iget v11, p0, Lcom/android/supl/config/ConfigManager;->iSUPLVersion:I
+    iget v9, p0, Lcom/android/supl/config/ConfigManager;->iSUPLVersion:I
 
-    if-ne v10, v11, :cond_32
+    if-ne v8, v9, :cond_2c
 
-    .line 409
-    const-string/jumbo v10, "switch_apn_enable"
+    .line 384
+    const-string/jumbo v8, "nw_timeout"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v10
-
-    if-eqz v10, :cond_5c
-
-    .line 410
-    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    if-eqz v8, :cond_32
-
-    .line 411
-    const-string/jumbo v8, "true"
-
-    iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    invoke-virtual {v8, v9}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isSwitchApnEnabled:Z
-    :try_end_51
-    .catch Ljava/lang/NumberFormatException; {:try_start_2 .. :try_end_51} :catch_52
+    if-eqz v8, :cond_4b
 
-    goto :goto_32
-
-    .line 580
-    :catch_52
-    move-exception v2
-
-    .line 581
-    .local v2, "e":Ljava/lang/NumberFormatException;
-    sget-object v8, Lcom/android/supl/config/ConfigManager;->ST_LOG:Ljava/lang/String;
-
-    const-string/jumbo v9, "NumberFormatException error "
-
-    invoke-static {v8, v9}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_32
-
-    .line 413
-    .end local v2    # "e":Ljava/lang/NumberFormatException;
-    :cond_5c
-    :try_start_5c
-    const-string/jumbo v10, "pref_setid"
-
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v10
-
-    if-eqz v10, :cond_89
-
-    .line 414
-    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    if-eqz v8, :cond_32
-
-    .line 415
-    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    iput-object v8, p0, Lcom/android/supl/config/ConfigManager;->stPerfSetId:Ljava/lang/String;
-
-    .line 416
-    sget-object v8, Lcom/android/supl/config/ConfigManager;->ST_LOG:Ljava/lang/String;
-
-    new-instance v9, Ljava/lang/StringBuilder;
-
-    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v10, "pref_setid is "
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->stPerfSetId:Ljava/lang/String;
-
-    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-static {v8, v9}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    goto :goto_32
-
-    .line 419
-    :cond_89
-    const-string/jumbo v10, "nw_timeout"
-
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v10
-
-    if-eqz v10, :cond_a1
-
-    .line 421
+    .line 386
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 422
+    .line 387
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -624,24 +503,24 @@
 
     iput v9, v8, Lcom/android/supl/config/NetworkConnectionParam;->m_iConnectionTimeOut:I
 
-    goto :goto_32
+    goto :goto_2c
 
-    .line 424
-    :cond_a1
-    const-string/jumbo v10, "nw_retries"
+    .line 389
+    :cond_4b
+    const-string/jumbo v8, "nw_retries"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_ba
+    if-eqz v8, :cond_63
 
-    .line 425
+    .line 390
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 426
+    .line 391
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -652,62 +531,62 @@
 
     iput v9, v8, Lcom/android/supl/config/NetworkConnectionParam;->m_iConnectionRetries:I
 
-    goto/16 :goto_32
+    goto :goto_2c
 
-    .line 428
-    :cond_ba
-    const-string/jumbo v10, "pcm"
+    .line 393
+    :cond_63
+    const-string/jumbo v8, "pcm"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_c8
+    if-eqz v8, :cond_70
 
-    .line 429
+    .line 394
     const/4 v8, 0x0
 
     iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isPCMFound:Z
 
-    goto/16 :goto_32
+    goto :goto_2c
 
-    .line 430
-    :cond_c8
-    const-string/jumbo v10, "scm"
+    .line 395
+    :cond_70
+    const-string/jumbo v8, "scm"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_d6
+    if-eqz v8, :cond_7d
 
-    .line 431
+    .line 396
     const/4 v8, 0x0
 
     iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isSCMFound:Z
 
-    goto/16 :goto_32
+    goto :goto_2c
 
-    .line 432
-    :cond_d6
-    const-string/jumbo v10, "port"
+    .line 397
+    :cond_7d
+    const-string/jumbo v8, "port"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_107
+    if-eqz v8, :cond_ac
 
-    .line 433
+    .line 398
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    if-eqz v8, :cond_f3
+    if-eqz v8, :cond_99
 
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isPCMFound:Z
 
-    if-eqz v8, :cond_f3
+    if-eqz v8, :cond_99
 
-    .line 434
+    .line 399
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -718,19 +597,19 @@
 
     iput v9, v8, Lcom/android/supl/config/NetworkConnectionParam;->m_iPCMPort:I
 
-    goto/16 :goto_32
+    goto :goto_2c
 
-    .line 435
-    :cond_f3
+    .line 400
+    :cond_99
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isSCMFound:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 436
+    .line 401
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -741,85 +620,82 @@
 
     iput v9, v8, Lcom/android/supl/config/NetworkConnectionParam;->m_iSCMPort:I
 
-    goto/16 :goto_32
+    goto :goto_2c
 
-    .line 438
-    :cond_107
-    const-string/jumbo v10, "ipaddress"
+    .line 403
+    :cond_ac
+    const-string/jumbo v8, "ipaddress"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_138
+    if-eqz v8, :cond_d5
 
-    .line 439
+    .line 404
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    if-eqz v8, :cond_124
+    if-eqz v8, :cond_c5
 
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isPCMFound:Z
 
-    if-eqz v8, :cond_124
+    if-eqz v8, :cond_c5
 
-    .line 440
-    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    if-eqz v8, :cond_32
-
-    .line 441
+    .line 405
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
     iput-object v9, v8, Lcom/android/supl/config/NetworkConnectionParam;->m_stPCMFQDN:Ljava/lang/String;
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 443
-    :cond_124
+    .line 406
+    :cond_c5
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isSCMFound:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 444
-    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    if-eqz v8, :cond_32
-
-    .line 445
+    .line 407
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
     iput-object v9, v8, Lcom/android/supl/config/NetworkConnectionParam;->m_stSCMFQDN:Ljava/lang/String;
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 448
-    :cond_138
-    const-string/jumbo v10, "unixsocketpath"
+    .line 409
+    :cond_d5
+    const-string/jumbo v8, "unixsocketpath"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_18f
+    if-eqz v8, :cond_152
 
-    .line 449
+    .line 410
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    if-eqz v8, :cond_168
+    if-eqz v8, :cond_118
 
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isPCMFound:Z
 
-    if-eqz v8, :cond_168
+    if-eqz v8, :cond_118
 
-    .line 452
+    .line 411
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
+
+    iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+
+    iput-object v9, v8, Lcom/android/supl/config/NetworkConnectionParam;->m_sPCMUnixSocPath:Ljava/lang/String;
+
+    .line 412
     sget-object v8, Lcom/android/supl/config/ConfigManager;->ST_LOG:Ljava/lang/String;
 
     new-instance v9, Ljava/lang/StringBuilder;
@@ -840,25 +716,44 @@
 
     move-result-object v9
 
+    const-string/jumbo v10, "the orginal parsed value is"
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
     invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v9
 
     invoke-static {v8, v9}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 454
-    :cond_168
+    .line 413
+    :cond_118
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isSCMFound:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 457
+    .line 414
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
+
+    iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+
+    iput-object v9, v8, Lcom/android/supl/config/NetworkConnectionParam;->m_sSCMUnixSocPath:Ljava/lang/String;
+
+    .line 415
     sget-object v8, Lcom/android/supl/config/ConfigManager;->ST_LOG:Ljava/lang/String;
 
     new-instance v9, Ljava/lang/StringBuilder;
@@ -879,37 +774,51 @@
 
     move-result-object v9
 
+    const-string/jumbo v10, "the orginal parsed value is"
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
     invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v9
 
     invoke-static {v8, v9}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 460
-    :cond_18f
-    const-string/jumbo v10, "ni_udp_enabled"
+    .line 417
+    :cond_152
+    const-string/jumbo v8, "ni_udp_enabled"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_1c1
+    if-eqz v8, :cond_185
 
-    .line 461
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+    .line 418
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
-    invoke-static {v10}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+    invoke-static {v8}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
-    move-result v10
+    move-result v8
 
-    if-lez v10, :cond_1bf
+    if-lez v8, :cond_183
 
-    :goto_1a0
+    const/4 v8, 0x1
+
+    :goto_164
     iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isNiUdpEnabled:Z
 
-    .line 462
+    .line 419
     sget-object v8, Lcom/android/supl/config/ConfigManager;->ST_LOG:Ljava/lang/String;
 
     new-instance v9, Ljava/lang/StringBuilder;
@@ -934,173 +843,167 @@
 
     invoke-static {v8, v9}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    :cond_1bf
-    move v8, v9
+    .line 418
+    :cond_183
+    const/4 v8, 0x0
 
-    .line 461
-    goto :goto_1a0
+    goto :goto_164
 
-    .line 463
-    :cond_1c1
-    const-string/jumbo v10, "cert"
+    .line 420
+    :cond_185
+    const-string/jumbo v8, "cert"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_1cf
+    if-eqz v8, :cond_193
 
-    .line 464
+    .line 421
     const/4 v8, 0x0
 
     iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 465
-    :cond_1cf
-    const-string/jumbo v10, "valid"
+    .line 422
+    :cond_193
+    const-string/jumbo v8, "valid"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_1ea
+    if-eqz v8, :cond_1af
 
-    .line 466
-    iget-boolean v10, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
-
-    if-eqz v10, :cond_32
-
-    .line 467
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    invoke-static {v10}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
-
-    move-result v10
-
-    if-lez v10, :cond_1e8
-
-    :goto_1e4
-    iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isCertVaild:Z
-
-    goto/16 :goto_32
-
-    :cond_1e8
-    move v8, v9
-
-    goto :goto_1e4
-
-    .line 470
-    :cond_1ea
-    const-string/jumbo v10, "path"
-
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v10
-
-    if-eqz v10, :cond_205
-
-    .line 471
+    .line 423
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
+
+    .line 424
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+
+    invoke-static {v8}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v8
+
+    if-lez v8, :cond_1ad
+
+    const/4 v8, 0x1
+
+    :goto_1a9
+    iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isCertVaild:Z
+
+    goto/16 :goto_2c
+
+    :cond_1ad
+    const/4 v8, 0x0
+
+    goto :goto_1a9
+
+    .line 427
+    :cond_1af
+    const-string/jumbo v8, "path"
+
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v8
+
+    if-eqz v8, :cond_1c6
+
+    .line 428
+    iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
+
+    if-eqz v8, :cond_2c
 
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isCertVaild:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 472
-    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    if-eqz v8, :cond_32
-
-    .line 473
+    .line 429
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
     iput-object v8, p0, Lcom/android/supl/config/ConfigManager;->stKeyStorePath:Ljava/lang/String;
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 477
-    :cond_205
-    const-string/jumbo v10, "pwd"
+    .line 432
+    :cond_1c6
+    const-string/jumbo v8, "pwd"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_220
+    if-eqz v8, :cond_1dd
 
-    .line 478
+    .line 433
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isCertVaild:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 479
-    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    if-eqz v8, :cond_32
-
-    .line 480
+    .line 434
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
     iput-object v8, p0, Lcom/android/supl/config/ConfigManager;->stKeyStoreConv:Ljava/lang/String;
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 483
-    :cond_220
-    const-string/jumbo v10, "forcetestvalue"
+    .line 436
+    :cond_1dd
+    const-string/jumbo v8, "forcetestvalue"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_23a
+    if-eqz v8, :cond_1f8
 
-    .line 485
-    iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+    .line 438
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
-    invoke-static {v9}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+    invoke-static {v8}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
     move-result v5
 
-    .line 486
+    .line 439
     .local v5, "iValue":I
-    if-ne v5, v8, :cond_32
+    const/4 v8, 0x1
 
-    .line 487
+    if-ne v5, v8, :cond_2c
+
+    .line 440
     new-instance v8, Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     invoke-direct {v8, p0}, Lcom/android/supl/config/ConfigManager$ForceTestValue;-><init>(Lcom/android/supl/config/ConfigManager;)V
 
     iput-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 490
+    .line 443
     .end local v5    # "iValue":I
-    :cond_23a
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
+    :cond_1f8
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v10, :cond_253
+    if-eqz v8, :cond_211
 
-    const-string/jumbo v10, "mcc"
+    const-string/jumbo v8, "mcc"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_253
+    if-eqz v8, :cond_211
 
-    .line 491
+    .line 444
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -1111,23 +1014,23 @@
 
     iput v9, v8, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iMcc:I
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 493
-    :cond_253
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
+    .line 446
+    :cond_211
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v10, :cond_26c
+    if-eqz v8, :cond_22a
 
-    const-string/jumbo v10, "mnc"
+    const-string/jumbo v8, "mnc"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_26c
+    if-eqz v8, :cond_22a
 
-    .line 494
+    .line 447
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -1138,23 +1041,23 @@
 
     iput v9, v8, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iMnc:I
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 496
-    :cond_26c
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
+    .line 449
+    :cond_22a
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v10, :cond_285
+    if-eqz v8, :cond_243
 
-    const-string/jumbo v10, "lac"
+    const-string/jumbo v8, "lac"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_285
+    if-eqz v8, :cond_243
 
-    .line 497
+    .line 450
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -1165,23 +1068,23 @@
 
     iput v9, v8, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iLac:I
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 499
-    :cond_285
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
+    .line 452
+    :cond_243
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v10, :cond_29e
+    if-eqz v8, :cond_25c
 
-    const-string/jumbo v10, "ci"
+    const-string/jumbo v8, "ci"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_29e
+    if-eqz v8, :cond_25c
 
-    .line 500
+    .line 453
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -1192,23 +1095,23 @@
 
     iput v9, v8, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iCI:I
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 502
-    :cond_29e
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
+    .line 455
+    :cond_25c
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v10, :cond_2b7
+    if-eqz v8, :cond_275
 
-    const-string/jumbo v10, "msisdn"
+    const-string/jumbo v8, "msisdn"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_2b7
+    if-eqz v8, :cond_275
 
-    .line 503
+    .line 456
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -1219,58 +1122,62 @@
 
     iput-wide v10, v8, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iMSISDN:J
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 505
-    :cond_2b7
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
+    .line 458
+    :cond_275
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v10, :cond_2d4
+    if-eqz v8, :cond_294
 
-    const-string/jumbo v10, "filltaandnmr"
+    const-string/jumbo v8, "filltaandnmr"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_2d4
+    if-eqz v8, :cond_294
 
-    .line 506
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
+    .line 459
+    iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    iget-object v11, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
-    invoke-static {v11}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+    invoke-static {v8}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
-    move-result v11
+    move-result v8
 
-    if-ne v11, v8, :cond_2d2
+    const/4 v10, 0x1
 
-    :goto_2ce
-    iput-boolean v8, v10, Lcom/android/supl/config/ConfigManager$ForceTestValue;->isFillTAandNMR:Z
+    if-ne v8, v10, :cond_292
 
-    goto/16 :goto_32
+    const/4 v8, 0x1
 
-    :cond_2d2
-    move v8, v9
+    :goto_28e
+    iput-boolean v8, v9, Lcom/android/supl/config/ConfigManager$ForceTestValue;->isFillTAandNMR:Z
 
-    goto :goto_2ce
+    goto/16 :goto_2c
 
-    .line 508
-    :cond_2d4
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
+    :cond_292
+    const/4 v8, 0x0
 
-    if-eqz v10, :cond_2ed
+    goto :goto_28e
 
-    const-string/jumbo v10, "ta"
+    .line 461
+    :cond_294
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    if-eqz v8, :cond_2ad
 
-    move-result v10
+    const-string/jumbo v8, "ta"
 
-    if-eqz v10, :cond_2ed
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 509
+    move-result v8
+
+    if-eqz v8, :cond_2ad
+
+    .line 462
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     iget-object v9, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
@@ -1281,60 +1188,57 @@
 
     iput v9, v8, Lcom/android/supl/config/ConfigManager$ForceTestValue;->iTA:I
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 511
-    :cond_2ed
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
+    .line 464
+    :cond_2ad
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v10, :cond_323
+    if-eqz v8, :cond_2e0
 
-    const-string/jumbo v10, "nmr"
+    const-string/jumbo v8, "nmr"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_323
+    if-eqz v8, :cond_2e0
 
-    .line 512
+    .line 465
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
-    if-eqz v8, :cond_32
+    const-string/jumbo v9, ","
 
-    .line 513
-    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
-
-    const-string/jumbo v10, ","
-
-    invoke-virtual {v8, v10}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+    invoke-virtual {v8, v9}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
 
     move-result-object v6
 
-    .line 514
+    .line 466
     .local v6, "stNMR":[Ljava/lang/String;
     array-length v8, v6
 
     new-array v0, v8, [I
 
-    .line 515
+    .line 467
     .local v0, "aNmr":[I
     const/4 v3, 0x0
 
-    .line 516
+    .line 468
     .local v3, "i":I
-    array-length v8, v6
+    const/4 v8, 0x0
+
+    array-length v9, v6
 
     move v4, v3
 
     .end local v3    # "i":I
     .local v4, "i":I
-    :goto_30d
-    if-ge v9, v8, :cond_31d
+    :goto_2ca
+    if-ge v8, v9, :cond_2da
 
-    aget-object v7, v6, v9
+    aget-object v7, v6, v8
 
-    .line 517
+    .line 469
     .local v7, "string":Ljava/lang/String;
     add-int/lit8 v3, v4, 0x1
 
@@ -1346,99 +1250,104 @@
 
     aput v10, v0, v4
 
-    .line 516
-    add-int/lit8 v9, v9, 0x1
+    .line 468
+    add-int/lit8 v8, v8, 0x1
 
     move v4, v3
 
     .end local v3    # "i":I
     .restart local v4    # "i":I
-    goto :goto_30d
+    goto :goto_2ca
 
-    .line 519
+    .line 471
     .end local v7    # "string":Ljava/lang/String;
-    :cond_31d
+    :cond_2da
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     iput-object v0, v8, Lcom/android/supl/config/ConfigManager$ForceTestValue;->aNMR:[I
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 521
+    .line 472
     .end local v0    # "aNmr":[I
     .end local v4    # "i":I
     .end local v6    # "stNMR":[Ljava/lang/String;
-    :cond_323
-    const-string/jumbo v10, "checkgps"
+    :cond_2e0
+    const-string/jumbo v8, "checkgps"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-    :try_end_329
-    .catch Ljava/lang/NumberFormatException; {:try_start_5c .. :try_end_329} :catch_52
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_33d
+    if-eqz v8, :cond_2fc
 
-    .line 523
-    :try_start_32c
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+    .line 474
+    :try_start_2e9
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
-    invoke-static {v10}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+    invoke-static {v8}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
-    move-result v10
+    move-result v8
 
-    if-ne v10, v8, :cond_33b
+    const/4 v9, 0x1
 
-    :goto_334
+    if-ne v8, v9, :cond_2fa
+
+    const/4 v8, 0x1
+
+    :goto_2f3
     iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isCheckGPSEnabled:Z
-    :try_end_336
-    .catch Ljava/lang/NumberFormatException; {:try_start_32c .. :try_end_336} :catch_338
+    :try_end_2f5
+    .catch Ljava/lang/NumberFormatException; {:try_start_2e9 .. :try_end_2f5} :catch_2f7
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 524
-    :catch_338
+    .line 475
+    :catch_2f7
     move-exception v2
 
-    .restart local v2    # "e":Ljava/lang/NumberFormatException;
-    goto/16 :goto_32
+    .local v2, "e":Ljava/lang/NumberFormatException;
+    goto/16 :goto_2c
 
+    .line 474
     .end local v2    # "e":Ljava/lang/NumberFormatException;
-    :cond_33b
-    move v8, v9
+    :cond_2fa
+    const/4 v8, 0x0
 
-    .line 523
-    goto :goto_334
+    goto :goto_2f3
 
-    .line 527
-    :cond_33d
-    :try_start_33d
-    const-string/jumbo v10, "bearer_network_enable"
+    .line 478
+    :cond_2fc
+    const-string/jumbo v8, "bearer_network_enable"
 
-    invoke-virtual {p2, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v10
+    move-result v8
 
-    if-eqz v10, :cond_360
+    if-eqz v8, :cond_321
 
-    .line 528
-    iget-object v10, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
+    .line 479
+    iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->stData:Ljava/lang/String;
 
-    invoke-static {v10}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+    invoke-static {v8}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
-    move-result v10
+    move-result v8
 
-    if-ne v10, v8, :cond_35e
+    const/4 v9, 0x1
 
-    :goto_34e
+    if-ne v8, v9, :cond_31f
+
+    const/4 v8, 0x1
+
+    :goto_30f
     iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    .line 529
+    .line 480
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 530
+    .line 481
     new-instance v8, Ljava/util/HashMap;
 
     const/4 v9, 0x2
@@ -1447,57 +1356,57 @@
 
     iput-object v8, p0, Lcom/android/supl/config/ConfigManager;->roamingBearerNetwork:Ljava/util/HashMap;
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    :cond_35e
-    move v8, v9
+    .line 479
+    :cond_31f
+    const/4 v8, 0x0
 
-    .line 528
-    goto :goto_34e
+    goto :goto_30f
 
-    .line 532
-    :cond_360
+    .line 483
+    :cond_321
     const-string/jumbo v8, "bearer_network_support"
 
     invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    if-eqz v8, :cond_371
+    if-eqz v8, :cond_332
 
-    .line 533
+    .line 484
     const/4 v8, 0x0
 
     iput-object v8, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
-    .line 534
+    .line 485
     const/4 v8, 0x0
 
     iput-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isBearNetworkFound:Z
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 535
-    :cond_371
+    .line 486
+    :cond_332
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isBearNetworkFound:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 537
+    .line 488
     const-string/jumbo v8, "wlan"
 
     invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    if-eqz v8, :cond_397
+    if-eqz v8, :cond_358
 
-    .line 538
+    .line 489
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 539
+    .line 490
     new-instance v1, Lcom/android/supl/bearer/BearerNetwork;
 
     const-string/jumbo v8, "wlan"
@@ -1510,31 +1419,31 @@
 
     invoke-direct {v1, v8, v9}, Lcom/android/supl/bearer/BearerNetwork;-><init>(Ljava/lang/String;I)V
 
-    .line 540
+    .line 491
     .local v1, "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
     invoke-virtual {v8, v1}, Ljava/util/PriorityQueue;->add(Ljava/lang/Object;)Z
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 542
+    .line 493
     .end local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
-    :cond_397
+    :cond_358
     const-string/jumbo v8, "lte"
 
     invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    if-eqz v8, :cond_3b9
+    if-eqz v8, :cond_37a
 
-    .line 543
+    .line 494
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 544
+    .line 495
     new-instance v1, Lcom/android/supl/bearer/BearerNetwork;
 
     const-string/jumbo v8, "lte"
@@ -1547,31 +1456,31 @@
 
     invoke-direct {v1, v8, v9}, Lcom/android/supl/bearer/BearerNetwork;-><init>(Ljava/lang/String;I)V
 
-    .line 545
+    .line 496
     .restart local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
     invoke-virtual {v8, v1}, Ljava/util/PriorityQueue;->add(Ljava/lang/Object;)Z
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 547
+    .line 498
     .end local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
-    :cond_3b9
+    :cond_37a
     const-string/jumbo v8, "gsm"
 
     invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    if-eqz v8, :cond_3db
+    if-eqz v8, :cond_39c
 
-    .line 548
+    .line 499
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 549
+    .line 500
     new-instance v1, Lcom/android/supl/bearer/BearerNetwork;
 
     const-string/jumbo v8, "gsm"
@@ -1584,31 +1493,31 @@
 
     invoke-direct {v1, v8, v9}, Lcom/android/supl/bearer/BearerNetwork;-><init>(Ljava/lang/String;I)V
 
-    .line 550
+    .line 501
     .restart local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
     invoke-virtual {v8, v1}, Ljava/util/PriorityQueue;->add(Ljava/lang/Object;)Z
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 552
+    .line 503
     .end local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
-    :cond_3db
+    :cond_39c
     const-string/jumbo v8, "cdma"
 
     invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    if-eqz v8, :cond_3fd
+    if-eqz v8, :cond_3be
 
-    .line 553
+    .line 504
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 554
+    .line 505
     new-instance v1, Lcom/android/supl/bearer/BearerNetwork;
 
     const-string/jumbo v8, "cdma"
@@ -1621,31 +1530,31 @@
 
     invoke-direct {v1, v8, v9}, Lcom/android/supl/bearer/BearerNetwork;-><init>(Ljava/lang/String;I)V
 
-    .line 555
+    .line 506
     .restart local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
     invoke-virtual {v8, v1}, Ljava/util/PriorityQueue;->add(Ljava/lang/Object;)Z
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 557
+    .line 508
     .end local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
-    :cond_3fd
+    :cond_3be
     const-string/jumbo v8, "wcdma"
 
     invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    if-eqz v8, :cond_41f
+    if-eqz v8, :cond_3e0
 
-    .line 558
+    .line 509
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 559
+    .line 510
     new-instance v1, Lcom/android/supl/bearer/BearerNetwork;
 
     const-string/jumbo v8, "wcdma"
@@ -1658,31 +1567,31 @@
 
     invoke-direct {v1, v8, v9}, Lcom/android/supl/bearer/BearerNetwork;-><init>(Ljava/lang/String;I)V
 
-    .line 560
+    .line 511
     .restart local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
     invoke-virtual {v8, v1}, Ljava/util/PriorityQueue;->add(Ljava/lang/Object;)Z
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 562
+    .line 513
     .end local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
-    :cond_41f
+    :cond_3e0
     const-string/jumbo v8, "umb"
 
     invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    if-eqz v8, :cond_441
+    if-eqz v8, :cond_402
 
-    .line 563
+    .line 514
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 564
+    .line 515
     new-instance v1, Lcom/android/supl/bearer/BearerNetwork;
 
     const-string/jumbo v8, "umb"
@@ -1695,31 +1604,31 @@
 
     invoke-direct {v1, v8, v9}, Lcom/android/supl/bearer/BearerNetwork;-><init>(Ljava/lang/String;I)V
 
-    .line 565
+    .line 516
     .restart local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
     invoke-virtual {v8, v1}, Ljava/util/PriorityQueue;->add(Ljava/lang/Object;)Z
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 567
+    .line 518
     .end local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
-    :cond_441
+    :cond_402
     const-string/jumbo v8, "wimax"
 
     invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    if-eqz v8, :cond_463
+    if-eqz v8, :cond_424
 
-    .line 568
+    .line 519
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 569
+    .line 520
     new-instance v1, Lcom/android/supl/bearer/BearerNetwork;
 
     const-string/jumbo v8, "wimax"
@@ -1732,31 +1641,31 @@
 
     invoke-direct {v1, v8, v9}, Lcom/android/supl/bearer/BearerNetwork;-><init>(Ljava/lang/String;I)V
 
-    .line 570
+    .line 521
     .restart local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
     invoke-virtual {v8, v1}, Ljava/util/PriorityQueue;->add(Ljava/lang/Object;)Z
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 
-    .line 572
+    .line 523
     .end local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
-    :cond_463
+    :cond_424
     const-string/jumbo v8, "hrpd"
 
     invoke-virtual {p2, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v8
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 573
+    .line 524
     iget-boolean v8, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
-    if-eqz v8, :cond_32
+    if-eqz v8, :cond_2c
 
-    .line 574
+    .line 525
     new-instance v1, Lcom/android/supl/bearer/BearerNetwork;
 
     const-string/jumbo v8, "hrpd"
@@ -1769,38 +1678,36 @@
 
     invoke-direct {v1, v8, v9}, Lcom/android/supl/bearer/BearerNetwork;-><init>(Ljava/lang/String;I)V
 
-    .line 575
+    .line 526
     .restart local v1    # "bearerNetwork":Lcom/android/supl/bearer/BearerNetwork;
     iget-object v8, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
     invoke-virtual {v8, v1}, Ljava/util/PriorityQueue;->add(Ljava/lang/Object;)Z
-    :try_end_483
-    .catch Ljava/lang/NumberFormatException; {:try_start_33d .. :try_end_483} :catch_52
 
-    goto/16 :goto_32
+    goto/16 :goto_2c
 .end method
 
 .method public getForceTestvalue()[B
     .registers 3
 
     .prologue
-    .line 680
+    .line 628
     const/4 v0, 0x0
 
-    .line 681
+    .line 629
     .local v0, "bTestValue":[B
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     if-eqz v1, :cond_b
 
-    .line 682
+    .line 630
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
     invoke-virtual {v1}, Lcom/android/supl/config/ConfigManager$ForceTestValue;->getForceTest()[B
 
     move-result-object v0
 
-    .line 684
+    .line 632
     .end local v0    # "bTestValue":[B
     :cond_b
     return-object v0
@@ -1810,7 +1717,7 @@
     .registers 2
 
     .prologue
-    .line 677
+    .line 625
     iget-object v0, p0, Lcom/android/supl/config/ConfigManager;->stKeyStoreConv:Ljava/lang/String;
 
     return-object v0
@@ -1820,7 +1727,7 @@
     .registers 2
 
     .prologue
-    .line 674
+    .line 622
     iget-object v0, p0, Lcom/android/supl/config/ConfigManager;->stKeyStorePath:Ljava/lang/String;
 
     return-object v0
@@ -1830,21 +1737,21 @@
     .registers 3
 
     .prologue
-    .line 607
+    .line 555
     const/4 v0, 0x5
 
-    .line 608
+    .line 556
     .local v0, "iRetries":I
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     if-eqz v1, :cond_9
 
-    .line 609
+    .line 557
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget v0, v1, Lcom/android/supl/config/NetworkConnectionParam;->m_iConnectionRetries:I
 
-    .line 611
+    .line 559
     :cond_9
     return v0
 .end method
@@ -1853,21 +1760,21 @@
     .registers 3
 
     .prologue
-    .line 595
+    .line 543
     const/16 v0, 0x1388
 
-    .line 596
+    .line 544
     .local v0, "iTimeout":I
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     if-eqz v1, :cond_a
 
-    .line 597
+    .line 545
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget v0, v1, Lcom/android/supl/config/NetworkConnectionParam;->m_iConnectionTimeOut:I
 
-    .line 599
+    .line 547
     :cond_a
     return v0
 .end method
@@ -1876,21 +1783,21 @@
     .registers 3
 
     .prologue
-    .line 631
+    .line 579
     const-string/jumbo v0, "127.0.0.1"
 
-    .line 632
+    .line 580
     .local v0, "stIPAddress":Ljava/lang/String;
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     if-eqz v1, :cond_b
 
-    .line 633
+    .line 581
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v0, v1, Lcom/android/supl/config/NetworkConnectionParam;->m_stPCMFQDN:Ljava/lang/String;
 
-    .line 635
+    .line 583
     :cond_b
     return-object v0
 .end method
@@ -1899,21 +1806,21 @@
     .registers 3
 
     .prologue
-    .line 615
+    .line 563
     const/16 v0, 0x2329
 
-    .line 616
+    .line 564
     .local v0, "iPortNumber":I
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     if-eqz v1, :cond_a
 
-    .line 617
+    .line 565
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget v0, v1, Lcom/android/supl/config/NetworkConnectionParam;->m_iPCMPort:I
 
-    .line 619
+    .line 567
     :cond_a
     return v0
 .end method
@@ -1922,32 +1829,22 @@
     .registers 3
 
     .prologue
-    .line 657
+    .line 605
     const-string/jumbo v0, "/data/gnss/pcm_soc"
 
-    .line 658
+    .line 606
     .local v0, "sPCMSocket":Ljava/lang/String;
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     if-eqz v1, :cond_b
 
-    .line 659
+    .line 607
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v0, v1, Lcom/android/supl/config/NetworkConnectionParam;->m_sPCMUnixSocPath:Ljava/lang/String;
 
-    .line 661
+    .line 609
     :cond_b
-    return-object v0
-.end method
-
-.method public getPrefSetId()Ljava/lang/String;
-    .registers 2
-
-    .prologue
-    .line 756
-    iget-object v0, p0, Lcom/android/supl/config/ConfigManager;->stPerfSetId:Ljava/lang/String;
-
     return-object v0
 .end method
 
@@ -1955,7 +1852,7 @@
     .registers 2
 
     .prologue
-    .line 218
+    .line 205
     iget-object v0, p0, Lcom/android/supl/config/ConfigManager;->stPrivateKeyStore:Ljava/lang/String;
 
     return-object v0
@@ -1965,7 +1862,7 @@
     .registers 2
 
     .prologue
-    .line 225
+    .line 212
     iget-object v0, p0, Lcom/android/supl/config/ConfigManager;->stPrivateKeyStoreConv:Ljava/lang/String;
 
     return-object v0
@@ -1987,7 +1884,7 @@
     .end annotation
 
     .prologue
-    .line 763
+    .line 697
     iget-object v0, p0, Lcom/android/supl/config/ConfigManager;->roamingBearerNetwork:Ljava/util/HashMap;
 
     return-object v0
@@ -1997,21 +1894,21 @@
     .registers 3
 
     .prologue
-    .line 639
+    .line 587
     const-string/jumbo v0, "127.0.0.1"
 
-    .line 640
+    .line 588
     .local v0, "stIPAddress":Ljava/lang/String;
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     if-eqz v1, :cond_b
 
-    .line 641
+    .line 589
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v0, v1, Lcom/android/supl/config/NetworkConnectionParam;->m_stSCMFQDN:Ljava/lang/String;
 
-    .line 643
+    .line 591
     :cond_b
     return-object v0
 .end method
@@ -2020,21 +1917,21 @@
     .registers 3
 
     .prologue
-    .line 623
+    .line 571
     const/16 v0, 0x232a
 
-    .line 624
+    .line 572
     .local v0, "iPortNumber":I
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     if-eqz v1, :cond_a
 
-    .line 625
+    .line 573
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget v0, v1, Lcom/android/supl/config/NetworkConnectionParam;->m_iSCMPort:I
 
-    .line 627
+    .line 575
     :cond_a
     return v0
 .end method
@@ -2043,21 +1940,21 @@
     .registers 3
 
     .prologue
-    .line 648
+    .line 596
     const-string/jumbo v0, "/data/gnss/scm_soc"
 
-    .line 649
+    .line 597
     .local v0, "sSCMSocket":Ljava/lang/String;
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     if-eqz v1, :cond_b
 
-    .line 650
+    .line 598
     iget-object v1, p0, Lcom/android/supl/config/ConfigManager;->m_connectionParam:Lcom/android/supl/config/NetworkConnectionParam;
 
     iget-object v0, v1, Lcom/android/supl/config/NetworkConnectionParam;->m_sSCMUnixSocPath:Ljava/lang/String;
 
-    .line 652
+    .line 600
     :cond_b
     return-object v0
 .end method
@@ -2066,373 +1963,426 @@
     .registers 2
 
     .prologue
-    .line 665
+    .line 613
     iget v0, p0, Lcom/android/supl/config/ConfigManager;->iSUPLVersion:I
 
     return v0
 .end method
 
 .method public init()V
-    .registers 12
+    .registers 11
 
     .prologue
-    .line 228
+    .line 215
     invoke-static {}, Ljavax/xml/parsers/SAXParserFactory;->newInstance()Ljavax/xml/parsers/SAXParserFactory;
-
-    move-result-object v8
-
-    .line 229
-    .local v8, "spf":Ljavax/xml/parsers/SAXParserFactory;
-    const/4 v7, 0x0
-
-    .line 230
-    .local v7, "sp":Ljavax/xml/parsers/SAXParser;
-    const/4 v9, 0x0
-
-    .line 231
-    .local v9, "xr":Lorg/xml/sax/XMLReader;
-    const/4 v5, 0x0
-
-    .line 233
-    .local v5, "fileInputStream":Ljava/io/FileInputStream;
-    :try_start_7
-    invoke-virtual {v8}, Ljavax/xml/parsers/SAXParserFactory;->newSAXParser()Ljavax/xml/parsers/SAXParser;
 
     move-result-object v7
 
-    .line 235
-    .local v7, "sp":Ljavax/xml/parsers/SAXParser;
-    invoke-virtual {v7}, Ljavax/xml/parsers/SAXParser;->getXMLReader()Lorg/xml/sax/XMLReader;
+    .line 216
+    .local v7, "spf":Ljavax/xml/parsers/SAXParserFactory;
+    const/4 v6, 0x0
 
-    move-result-object v9
-
-    .line 237
-    .local v9, "xr":Lorg/xml/sax/XMLReader;
-    invoke-interface {v9, p0}, Lorg/xml/sax/XMLReader;->setContentHandler(Lorg/xml/sax/ContentHandler;)V
-    :try_end_12
-    .catch Ljava/io/FileNotFoundException; {:try_start_7 .. :try_end_12} :catch_50
-    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_12} :catch_82
-    .catch Ljavax/xml/parsers/ParserConfigurationException; {:try_start_7 .. :try_end_12} :catch_73
-    .catch Lorg/xml/sax/SAXException; {:try_start_7 .. :try_end_12} :catch_64
-    .catchall {:try_start_7 .. :try_end_12} :catchall_91
-
-    .line 240
-    :try_start_12
-    new-instance v4, Ljava/io/File;
-
-    const-string/jumbo v10, "/data/cust/xml/gnss_suplconfig_hisi.xml"
-
-    invoke-direct {v4, v10}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    .line 241
-    .local v4, "file":Ljava/io/File;
-    invoke-virtual {v4}, Ljava/io/File;->exists()Z
-
-    move-result v10
-
-    if-eqz v10, :cond_3f
-
-    .line 242
-    new-instance v6, Ljava/io/FileInputStream;
-
-    const-string/jumbo v10, "/data/cust/xml/gnss_suplconfig_hisi.xml"
-
-    invoke-direct {v6, v10}, Ljava/io/FileInputStream;-><init>(Ljava/lang/String;)V
-
-    .local v6, "fileInputStream":Ljava/io/FileInputStream;
-    move-object v5, v6
-
-    .line 246
-    .end local v6    # "fileInputStream":Ljava/io/FileInputStream;
-    .local v5, "fileInputStream":Ljava/io/FileInputStream;
-    :goto_29
-    new-instance v10, Lorg/xml/sax/InputSource;
-
-    invoke-direct {v10, v5}, Lorg/xml/sax/InputSource;-><init>(Ljava/io/InputStream;)V
-
-    invoke-interface {v9, v10}, Lorg/xml/sax/XMLReader;->parse(Lorg/xml/sax/InputSource;)V
-    :try_end_31
-    .catchall {:try_start_12 .. :try_end_31} :catchall_49
-
-    .line 248
-    if-eqz v5, :cond_36
-
-    .line 249
-    :try_start_33
-    invoke-virtual {v5}, Ljava/io/FileInputStream;->close()V
-    :try_end_36
-    .catch Ljava/io/FileNotFoundException; {:try_start_33 .. :try_end_36} :catch_50
-    .catch Ljava/io/IOException; {:try_start_33 .. :try_end_36} :catch_82
-    .catch Ljavax/xml/parsers/ParserConfigurationException; {:try_start_33 .. :try_end_36} :catch_73
-    .catch Lorg/xml/sax/SAXException; {:try_start_33 .. :try_end_36} :catch_64
-    .catchall {:try_start_33 .. :try_end_36} :catchall_91
-
-    .line 265
-    :cond_36
-    if-eqz v5, :cond_3b
-
-    .line 267
-    :try_start_38
-    invoke-virtual {v5}, Ljava/io/FileInputStream;->close()V
-    :try_end_3b
-    .catch Ljava/io/IOException; {:try_start_38 .. :try_end_3b} :catch_5f
-
-    .line 275
-    .end local v4    # "file":Ljava/io/File;
-    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
-    .end local v7    # "sp":Ljavax/xml/parsers/SAXParser;
-    .end local v9    # "xr":Lorg/xml/sax/XMLReader;
-    :cond_3b
-    :goto_3b
+    .line 217
+    .local v6, "sp":Ljavax/xml/parsers/SAXParser;
     const/4 v8, 0x0
 
-    .line 276
-    .local v8, "spf":Ljavax/xml/parsers/SAXParserFactory;
-    const/4 v7, 0x0
+    .line 218
+    .local v8, "xr":Lorg/xml/sax/XMLReader;
+    const/4 v4, 0x0
 
-    .line 277
-    .local v7, "sp":Ljavax/xml/parsers/SAXParser;
-    const/4 v9, 0x0
+    .line 220
+    .local v4, "fileInputStream":Ljava/io/FileInputStream;
+    :try_start_7
+    invoke-virtual {v7}, Ljavax/xml/parsers/SAXParserFactory;->newSAXParser()Ljavax/xml/parsers/SAXParser;
 
-    .line 278
-    .local v9, "xr":Lorg/xml/sax/XMLReader;
-    return-void
+    move-result-object v6
 
-    .line 244
-    .restart local v4    # "file":Ljava/io/File;
+    .line 222
+    .local v6, "sp":Ljavax/xml/parsers/SAXParser;
+    invoke-virtual {v6}, Ljavax/xml/parsers/SAXParser;->getXMLReader()Lorg/xml/sax/XMLReader;
+
+    move-result-object v8
+
+    .line 224
+    .local v8, "xr":Lorg/xml/sax/XMLReader;
+    invoke-interface {v8, p0}, Lorg/xml/sax/XMLReader;->setContentHandler(Lorg/xml/sax/ContentHandler;)V
+    :try_end_12
+    .catch Ljava/io/FileNotFoundException; {:try_start_7 .. :try_end_12} :catch_38
+    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_12} :catch_6a
+    .catch Ljavax/xml/parsers/ParserConfigurationException; {:try_start_7 .. :try_end_12} :catch_5b
+    .catch Lorg/xml/sax/SAXException; {:try_start_7 .. :try_end_12} :catch_4c
+    .catchall {:try_start_7 .. :try_end_12} :catchall_79
+
+    .line 227
+    :try_start_12
+    new-instance v5, Ljava/io/FileInputStream;
+
+    const-string/jumbo v9, "/system/etc/gnss/config/gnss_suplconfig_hisi.xml"
+
+    invoke-direct {v5, v9}, Ljava/io/FileInputStream;-><init>(Ljava/lang/String;)V
+    :try_end_1a
+    .catchall {:try_start_12 .. :try_end_1a} :catchall_31
+
+    .line 228
+    .end local v4    # "fileInputStream":Ljava/io/FileInputStream;
     .local v5, "fileInputStream":Ljava/io/FileInputStream;
-    .local v7, "sp":Ljavax/xml/parsers/SAXParser;
-    .local v8, "spf":Ljavax/xml/parsers/SAXParserFactory;
-    .local v9, "xr":Lorg/xml/sax/XMLReader;
-    :cond_3f
-    :try_start_3f
-    new-instance v6, Ljava/io/FileInputStream;
+    :try_start_1a
+    new-instance v9, Lorg/xml/sax/InputSource;
 
-    const-string/jumbo v10, "/vendor/etc/gnss/config/gnss_suplconfig_hisi.xml"
+    invoke-direct {v9, v5}, Lorg/xml/sax/InputSource;-><init>(Ljava/io/InputStream;)V
 
-    invoke-direct {v6, v10}, Ljava/io/FileInputStream;-><init>(Ljava/lang/String;)V
-    :try_end_47
-    .catchall {:try_start_3f .. :try_end_47} :catchall_49
+    invoke-interface {v8, v9}, Lorg/xml/sax/XMLReader;->parse(Lorg/xml/sax/InputSource;)V
+    :try_end_22
+    .catchall {:try_start_1a .. :try_end_22} :catchall_94
 
-    .restart local v6    # "fileInputStream":Ljava/io/FileInputStream;
-    move-object v5, v6
+    .line 230
+    if-eqz v5, :cond_27
 
-    .end local v6    # "fileInputStream":Ljava/io/FileInputStream;
-    .local v5, "fileInputStream":Ljava/io/FileInputStream;
-    goto :goto_29
+    .line 231
+    :try_start_24
+    invoke-virtual {v5}, Ljava/io/FileInputStream;->close()V
+    :try_end_27
+    .catch Ljava/io/FileNotFoundException; {:try_start_24 .. :try_end_27} :catch_88
+    .catch Ljava/io/IOException; {:try_start_24 .. :try_end_27} :catch_8b
+    .catch Ljavax/xml/parsers/ParserConfigurationException; {:try_start_24 .. :try_end_27} :catch_8e
+    .catch Lorg/xml/sax/SAXException; {:try_start_24 .. :try_end_27} :catch_91
+    .catchall {:try_start_24 .. :try_end_27} :catchall_85
 
     .line 247
-    .end local v4    # "file":Ljava/io/File;
-    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
-    :catchall_49
-    move-exception v10
-
-    .line 248
-    if-eqz v5, :cond_4f
+    :cond_27
+    if-eqz v5, :cond_2c
 
     .line 249
-    :try_start_4c
+    :try_start_29
     invoke-virtual {v5}, Ljava/io/FileInputStream;->close()V
+    :try_end_2c
+    .catch Ljava/io/IOException; {:try_start_29 .. :try_end_2c} :catch_47
 
-    .line 247
-    :cond_4f
-    throw v10
-    :try_end_50
-    .catch Ljava/io/FileNotFoundException; {:try_start_4c .. :try_end_50} :catch_50
-    .catch Ljava/io/IOException; {:try_start_4c .. :try_end_50} :catch_82
-    .catch Ljavax/xml/parsers/ParserConfigurationException; {:try_start_4c .. :try_end_50} :catch_73
-    .catch Lorg/xml/sax/SAXException; {:try_start_4c .. :try_end_50} :catch_64
-    .catchall {:try_start_4c .. :try_end_50} :catchall_91
-
-    .line 252
-    .end local v7    # "sp":Ljavax/xml/parsers/SAXParser;
-    .end local v9    # "xr":Lorg/xml/sax/XMLReader;
-    :catch_50
-    move-exception v0
-
-    .line 254
-    .local v0, "e":Ljava/io/FileNotFoundException;
-    :try_start_51
-    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
-    :try_end_54
-    .catchall {:try_start_51 .. :try_end_54} :catchall_91
-
-    .line 265
-    if-eqz v5, :cond_3b
-
-    .line 267
-    :try_start_56
-    invoke-virtual {v5}, Ljava/io/FileInputStream;->close()V
-    :try_end_59
-    .catch Ljava/io/IOException; {:try_start_56 .. :try_end_59} :catch_5a
-
-    goto :goto_3b
-
-    .line 268
-    :catch_5a
-    move-exception v1
-
-    .line 270
-    .local v1, "e":Ljava/io/IOException;
-    invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
-
-    goto :goto_3b
-
-    .line 268
-    .end local v0    # "e":Ljava/io/FileNotFoundException;
-    .end local v1    # "e":Ljava/io/IOException;
-    .restart local v4    # "file":Ljava/io/File;
-    .restart local v5    # "fileInputStream":Ljava/io/FileInputStream;
-    .restart local v7    # "sp":Ljavax/xml/parsers/SAXParser;
-    .restart local v9    # "xr":Lorg/xml/sax/XMLReader;
-    :catch_5f
-    move-exception v1
-
-    .line 270
-    .restart local v1    # "e":Ljava/io/IOException;
-    invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
-
-    goto :goto_3b
-
-    .line 261
-    .end local v1    # "e":Ljava/io/IOException;
-    .end local v4    # "file":Ljava/io/File;
-    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
-    .end local v7    # "sp":Ljavax/xml/parsers/SAXParser;
-    .end local v9    # "xr":Lorg/xml/sax/XMLReader;
-    :catch_64
-    move-exception v3
-
-    .line 263
-    .local v3, "e1":Lorg/xml/sax/SAXException;
-    :try_start_65
-    invoke-virtual {v3}, Ljava/lang/Throwable;->printStackTrace()V
-    :try_end_68
-    .catchall {:try_start_65 .. :try_end_68} :catchall_91
-
-    .line 265
-    if-eqz v5, :cond_3b
-
-    .line 267
-    :try_start_6a
-    invoke-virtual {v5}, Ljava/io/FileInputStream;->close()V
-    :try_end_6d
-    .catch Ljava/io/IOException; {:try_start_6a .. :try_end_6d} :catch_6e
-
-    goto :goto_3b
-
-    .line 268
-    :catch_6e
-    move-exception v1
-
-    .line 270
-    .restart local v1    # "e":Ljava/io/IOException;
-    invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
-
-    goto :goto_3b
-
-    .line 258
-    .end local v1    # "e":Ljava/io/IOException;
-    .end local v3    # "e1":Lorg/xml/sax/SAXException;
-    :catch_73
-    move-exception v2
-
-    .line 260
-    .local v2, "e1":Ljavax/xml/parsers/ParserConfigurationException;
-    :try_start_74
-    invoke-virtual {v2}, Ljava/lang/Throwable;->printStackTrace()V
-    :try_end_77
-    .catchall {:try_start_74 .. :try_end_77} :catchall_91
-
-    .line 265
-    if-eqz v5, :cond_3b
-
-    .line 267
-    :try_start_79
-    invoke-virtual {v5}, Ljava/io/FileInputStream;->close()V
-    :try_end_7c
-    .catch Ljava/io/IOException; {:try_start_79 .. :try_end_7c} :catch_7d
-
-    goto :goto_3b
-
-    .line 268
-    :catch_7d
-    move-exception v1
-
-    .line 270
-    .restart local v1    # "e":Ljava/io/IOException;
-    invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
-
-    goto :goto_3b
-
-    .line 255
-    .end local v1    # "e":Ljava/io/IOException;
-    .end local v2    # "e1":Ljavax/xml/parsers/ParserConfigurationException;
-    :catch_82
-    move-exception v1
+    :cond_2c
+    :goto_2c
+    move-object v4, v5
 
     .line 257
-    .restart local v1    # "e":Ljava/io/IOException;
-    :try_start_83
-    invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
-    :try_end_86
-    .catchall {:try_start_83 .. :try_end_86} :catchall_91
+    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .end local v6    # "sp":Ljavax/xml/parsers/SAXParser;
+    .end local v8    # "xr":Lorg/xml/sax/XMLReader;
+    :cond_2d
+    :goto_2d
+    const/4 v7, 0x0
 
-    .line 265
-    if-eqz v5, :cond_3b
+    .line 258
+    .local v7, "spf":Ljavax/xml/parsers/SAXParserFactory;
+    const/4 v6, 0x0
 
-    .line 267
-    :try_start_88
-    invoke-virtual {v5}, Ljava/io/FileInputStream;->close()V
-    :try_end_8b
-    .catch Ljava/io/IOException; {:try_start_88 .. :try_end_8b} :catch_8c
+    .line 259
+    .local v6, "sp":Ljavax/xml/parsers/SAXParser;
+    const/4 v8, 0x0
 
-    goto :goto_3b
+    .line 214
+    .local v8, "xr":Lorg/xml/sax/XMLReader;
+    return-void
 
-    .line 268
-    :catch_8c
+    .line 229
+    .restart local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    .local v6, "sp":Ljavax/xml/parsers/SAXParser;
+    .local v7, "spf":Ljavax/xml/parsers/SAXParserFactory;
+    .local v8, "xr":Lorg/xml/sax/XMLReader;
+    :catchall_31
+    move-exception v9
+
+    .line 230
+    .end local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    :goto_32
+    if-eqz v4, :cond_37
+
+    .line 231
+    :try_start_34
+    invoke-virtual {v4}, Ljava/io/FileInputStream;->close()V
+
+    .line 229
+    :cond_37
+    throw v9
+    :try_end_38
+    .catch Ljava/io/FileNotFoundException; {:try_start_34 .. :try_end_38} :catch_38
+    .catch Ljava/io/IOException; {:try_start_34 .. :try_end_38} :catch_6a
+    .catch Ljavax/xml/parsers/ParserConfigurationException; {:try_start_34 .. :try_end_38} :catch_5b
+    .catch Lorg/xml/sax/SAXException; {:try_start_34 .. :try_end_38} :catch_4c
+    .catchall {:try_start_34 .. :try_end_38} :catchall_79
+
+    .line 234
+    .end local v6    # "sp":Ljavax/xml/parsers/SAXParser;
+    .end local v8    # "xr":Lorg/xml/sax/XMLReader;
+    :catch_38
+    move-exception v0
+
+    .line 236
+    .local v0, "e":Ljava/io/FileNotFoundException;
+    :goto_39
+    :try_start_39
+    invoke-virtual {v0}, Ljava/io/FileNotFoundException;->printStackTrace()V
+    :try_end_3c
+    .catchall {:try_start_39 .. :try_end_3c} :catchall_79
+
+    .line 247
+    if-eqz v4, :cond_2d
+
+    .line 249
+    :try_start_3e
+    invoke-virtual {v4}, Ljava/io/FileInputStream;->close()V
+    :try_end_41
+    .catch Ljava/io/IOException; {:try_start_3e .. :try_end_41} :catch_42
+
+    goto :goto_2d
+
+    .line 250
+    :catch_42
     move-exception v1
 
-    .line 270
-    invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
+    .line 252
+    .local v1, "e":Ljava/io/IOException;
+    invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
 
-    goto :goto_3b
+    goto :goto_2d
 
-    .line 264
+    .line 250
+    .end local v0    # "e":Ljava/io/FileNotFoundException;
     .end local v1    # "e":Ljava/io/IOException;
-    :catchall_91
-    move-exception v10
-
-    .line 265
-    if-eqz v5, :cond_97
-
-    .line 267
-    :try_start_94
-    invoke-virtual {v5}, Ljava/io/FileInputStream;->close()V
-    :try_end_97
-    .catch Ljava/io/IOException; {:try_start_94 .. :try_end_97} :catch_98
-
-    .line 264
-    :cond_97
-    :goto_97
-    throw v10
-
-    .line 268
-    :catch_98
+    .restart local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v6    # "sp":Ljavax/xml/parsers/SAXParser;
+    .restart local v8    # "xr":Lorg/xml/sax/XMLReader;
+    :catch_47
     move-exception v1
 
-    .line 270
+    .line 252
     .restart local v1    # "e":Ljava/io/IOException;
-    invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
+    invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
 
-    goto :goto_97
+    goto :goto_2c
+
+    .line 243
+    .end local v1    # "e":Ljava/io/IOException;
+    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .end local v6    # "sp":Ljavax/xml/parsers/SAXParser;
+    .end local v8    # "xr":Lorg/xml/sax/XMLReader;
+    :catch_4c
+    move-exception v3
+
+    .line 245
+    .local v3, "e1":Lorg/xml/sax/SAXException;
+    :goto_4d
+    :try_start_4d
+    invoke-virtual {v3}, Lorg/xml/sax/SAXException;->printStackTrace()V
+    :try_end_50
+    .catchall {:try_start_4d .. :try_end_50} :catchall_79
+
+    .line 247
+    if-eqz v4, :cond_2d
+
+    .line 249
+    :try_start_52
+    invoke-virtual {v4}, Ljava/io/FileInputStream;->close()V
+    :try_end_55
+    .catch Ljava/io/IOException; {:try_start_52 .. :try_end_55} :catch_56
+
+    goto :goto_2d
+
+    .line 250
+    :catch_56
+    move-exception v1
+
+    .line 252
+    .restart local v1    # "e":Ljava/io/IOException;
+    invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
+
+    goto :goto_2d
+
+    .line 240
+    .end local v1    # "e":Ljava/io/IOException;
+    .end local v3    # "e1":Lorg/xml/sax/SAXException;
+    :catch_5b
+    move-exception v2
+
+    .line 242
+    .local v2, "e1":Ljavax/xml/parsers/ParserConfigurationException;
+    :goto_5c
+    :try_start_5c
+    invoke-virtual {v2}, Ljavax/xml/parsers/ParserConfigurationException;->printStackTrace()V
+    :try_end_5f
+    .catchall {:try_start_5c .. :try_end_5f} :catchall_79
+
+    .line 247
+    if-eqz v4, :cond_2d
+
+    .line 249
+    :try_start_61
+    invoke-virtual {v4}, Ljava/io/FileInputStream;->close()V
+    :try_end_64
+    .catch Ljava/io/IOException; {:try_start_61 .. :try_end_64} :catch_65
+
+    goto :goto_2d
+
+    .line 250
+    :catch_65
+    move-exception v1
+
+    .line 252
+    .restart local v1    # "e":Ljava/io/IOException;
+    invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
+
+    goto :goto_2d
+
+    .line 237
+    .end local v1    # "e":Ljava/io/IOException;
+    .end local v2    # "e1":Ljavax/xml/parsers/ParserConfigurationException;
+    :catch_6a
+    move-exception v1
+
+    .line 239
+    .restart local v1    # "e":Ljava/io/IOException;
+    :goto_6b
+    :try_start_6b
+    invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
+    :try_end_6e
+    .catchall {:try_start_6b .. :try_end_6e} :catchall_79
+
+    .line 247
+    if-eqz v4, :cond_2d
+
+    .line 249
+    :try_start_70
+    invoke-virtual {v4}, Ljava/io/FileInputStream;->close()V
+    :try_end_73
+    .catch Ljava/io/IOException; {:try_start_70 .. :try_end_73} :catch_74
+
+    goto :goto_2d
+
+    .line 250
+    :catch_74
+    move-exception v1
+
+    .line 252
+    invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
+
+    goto :goto_2d
+
+    .line 246
+    .end local v1    # "e":Ljava/io/IOException;
+    :catchall_79
+    move-exception v9
+
+    .line 247
+    :goto_7a
+    if-eqz v4, :cond_7f
+
+    .line 249
+    :try_start_7c
+    invoke-virtual {v4}, Ljava/io/FileInputStream;->close()V
+    :try_end_7f
+    .catch Ljava/io/IOException; {:try_start_7c .. :try_end_7f} :catch_80
+
+    .line 246
+    :cond_7f
+    :goto_7f
+    throw v9
+
+    .line 250
+    :catch_80
+    move-exception v1
+
+    .line 252
+    .restart local v1    # "e":Ljava/io/IOException;
+    invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
+
+    goto :goto_7f
+
+    .line 246
+    .end local v1    # "e":Ljava/io/IOException;
+    .restart local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v6    # "sp":Ljavax/xml/parsers/SAXParser;
+    .restart local v8    # "xr":Lorg/xml/sax/XMLReader;
+    :catchall_85
+    move-exception v9
+
+    move-object v4, v5
+
+    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .local v4, "fileInputStream":Ljava/io/FileInputStream;
+    goto :goto_7a
+
+    .line 234
+    .end local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    :catch_88
+    move-exception v0
+
+    .restart local v0    # "e":Ljava/io/FileNotFoundException;
+    move-object v4, v5
+
+    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    goto :goto_39
+
+    .line 237
+    .end local v0    # "e":Ljava/io/FileNotFoundException;
+    .end local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    :catch_8b
+    move-exception v1
+
+    .restart local v1    # "e":Ljava/io/IOException;
+    move-object v4, v5
+
+    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    goto :goto_6b
+
+    .line 240
+    .end local v1    # "e":Ljava/io/IOException;
+    .end local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    :catch_8e
+    move-exception v2
+
+    .restart local v2    # "e1":Ljavax/xml/parsers/ParserConfigurationException;
+    move-object v4, v5
+
+    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    goto :goto_5c
+
+    .line 243
+    .end local v2    # "e1":Ljavax/xml/parsers/ParserConfigurationException;
+    .end local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    :catch_91
+    move-exception v3
+
+    .restart local v3    # "e1":Lorg/xml/sax/SAXException;
+    move-object v4, v5
+
+    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    goto :goto_4d
+
+    .line 229
+    .end local v3    # "e1":Lorg/xml/sax/SAXException;
+    .end local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    :catchall_94
+    move-exception v9
+
+    move-object v4, v5
+
+    .end local v5    # "fileInputStream":Ljava/io/FileInputStream;
+    .restart local v4    # "fileInputStream":Ljava/io/FileInputStream;
+    goto :goto_32
 .end method
 
 .method public isCertVaild()Z
     .registers 2
 
     .prologue
-    .line 671
+    .line 619
     iget-boolean v0, p0, Lcom/android/supl/config/ConfigManager;->isCertVaild:Z
 
     return v0
@@ -2442,7 +2392,7 @@
     .registers 2
 
     .prologue
-    .line 735
+    .line 683
     iget-boolean v0, p0, Lcom/android/supl/config/ConfigManager;->isForceTest:Z
 
     return v0
@@ -2452,7 +2402,7 @@
     .registers 2
 
     .prologue
-    .line 770
+    .line 704
     iget-boolean v0, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
     return v0
@@ -2462,7 +2412,7 @@
     .registers 2
 
     .prologue
-    .line 603
+    .line 551
     iget-boolean v0, p0, Lcom/android/supl/config/ConfigManager;->isNiUdpEnabled:Z
 
     return v0
@@ -2483,7 +2433,7 @@
     .prologue
     const/4 v2, 0x1
 
-    .line 296
+    .line 278
     const-string/jumbo v3, "suplver"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -2492,15 +2442,15 @@
 
     if-eqz v3, :cond_d
 
-    .line 297
+    .line 279
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
-    .line 398
+    .line 276
     :cond_c
     :goto_c
     return-void
 
-    .line 298
+    .line 280
     :cond_d
     const-string/jumbo v3, "config_start"
 
@@ -2510,7 +2460,7 @@
 
     if-eqz v3, :cond_2d
 
-    .line 300
+    .line 282
     :try_start_16
     const-string/jumbo v2, ""
 
@@ -2531,18 +2481,18 @@
     iput v2, p0, Lcom/android/supl/config/ConfigManager;->iConfigStartVersion:I
     :try_end_2a
     .catch Ljava/lang/NumberFormatException; {:try_start_16 .. :try_end_2a} :catch_2b
-    .catch Ljava/lang/NullPointerException; {:try_start_16 .. :try_end_2a} :catch_260
+    .catch Ljava/lang/NullPointerException; {:try_start_16 .. :try_end_2a} :catch_246
 
     goto :goto_c
 
-    .line 301
+    .line 283
     :catch_2b
     move-exception v1
 
     .local v1, "e":Ljava/lang/NumberFormatException;
     goto :goto_c
 
-    .line 304
+    .line 286
     .end local v1    # "e":Ljava/lang/NumberFormatException;
     :cond_2d
     iget v3, p0, Lcom/android/supl/config/ConfigManager;->iConfigStartVersion:I
@@ -2551,46 +2501,16 @@
 
     if-ne v3, v4, :cond_c
 
-    .line 305
-    const-string/jumbo v3, "switch_apn_enable"
-
-    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3f
-
-    .line 306
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
-
-    goto :goto_c
-
-    .line 307
-    :cond_3f
-    const-string/jumbo v3, "pref_setid"
-
-    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_4b
-
-    .line 308
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
-
-    goto :goto_c
-
-    .line 309
-    :cond_4b
+    .line 287
     const-string/jumbo v3, "netcont_params"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_5c
+    if-eqz v3, :cond_44
 
-    .line 310
+    .line 288
     new-instance v2, Lcom/android/supl/config/NetworkConnectionParam;
 
     invoke-direct {v2}, Lcom/android/supl/config/NetworkConnectionParam;-><init>()V
@@ -2599,9 +2519,39 @@
 
     goto :goto_c
 
-    .line 311
-    :cond_5c
+    .line 289
+    :cond_44
     const-string/jumbo v3, "nw_timeout"
+
+    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_50
+
+    .line 290
+    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
+
+    goto :goto_c
+
+    .line 291
+    :cond_50
+    const-string/jumbo v3, "nw_retries"
+
+    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_5c
+
+    .line 292
+    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
+
+    goto :goto_c
+
+    .line 293
+    :cond_5c
+    const-string/jumbo v3, "pcm"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -2609,14 +2559,14 @@
 
     if-eqz v3, :cond_68
 
-    .line 312
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
+    .line 294
+    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isPCMFound:Z
 
     goto :goto_c
 
-    .line 313
+    .line 295
     :cond_68
-    const-string/jumbo v3, "nw_retries"
+    const-string/jumbo v3, "scm"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -2624,14 +2574,14 @@
 
     if-eqz v3, :cond_74
 
-    .line 314
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
+    .line 296
+    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isSCMFound:Z
 
     goto :goto_c
 
-    .line 315
+    .line 297
     :cond_74
-    const-string/jumbo v3, "pcm"
+    const-string/jumbo v3, "port"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -2639,14 +2589,14 @@
 
     if-eqz v3, :cond_80
 
-    .line 316
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isPCMFound:Z
+    .line 298
+    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto :goto_c
 
-    .line 317
+    .line 299
     :cond_80
-    const-string/jumbo v3, "scm"
+    const-string/jumbo v3, "ipaddress"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -2654,14 +2604,14 @@
 
     if-eqz v3, :cond_8c
 
-    .line 318
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isSCMFound:Z
+    .line 300
+    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto :goto_c
 
-    .line 319
+    .line 301
     :cond_8c
-    const-string/jumbo v3, "port"
+    const-string/jumbo v3, "unixsocketpath"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -2669,14 +2619,14 @@
 
     if-eqz v3, :cond_99
 
-    .line 320
+    .line 302
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 321
+    .line 303
     :cond_99
-    const-string/jumbo v3, "ipaddress"
+    const-string/jumbo v3, "ni_udp_enabled"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -2684,14 +2634,14 @@
 
     if-eqz v3, :cond_a6
 
-    .line 322
+    .line 304
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 323
+    .line 305
     :cond_a6
-    const-string/jumbo v3, "unixsocketpath"
+    const-string/jumbo v3, "cert"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -2699,72 +2649,42 @@
 
     if-eqz v3, :cond_b3
 
-    .line 324
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
-
-    goto/16 :goto_c
-
-    .line 325
-    :cond_b3
-    const-string/jumbo v3, "ni_udp_enabled"
-
-    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_c0
-
-    .line 326
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
-
-    goto/16 :goto_c
-
-    .line 327
-    :cond_c0
-    const-string/jumbo v3, "cert"
-
-    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_cd
-
-    .line 328
+    .line 306
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
 
     goto/16 :goto_c
 
-    .line 329
-    :cond_cd
+    .line 307
+    :cond_b3
     const-string/jumbo v3, "valid"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_de
+    if-eqz v3, :cond_c4
 
-    .line 330
+    .line 308
     iget-boolean v3, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
 
     if-eqz v3, :cond_c
 
-    .line 331
+    .line 309
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 333
-    :cond_de
+    .line 311
+    :cond_c4
     const-string/jumbo v3, "path"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_f3
+    if-eqz v3, :cond_d9
 
-    .line 334
+    .line 312
     iget-boolean v3, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
 
     if-eqz v3, :cond_c
@@ -2773,22 +2693,22 @@
 
     if-eqz v3, :cond_c
 
-    .line 335
+    .line 313
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 337
-    :cond_f3
+    .line 315
+    :cond_d9
     const-string/jumbo v3, "pwd"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_108
+    if-eqz v3, :cond_ee
 
-    .line 338
+    .line 316
     iget-boolean v3, p0, Lcom/android/supl/config/ConfigManager;->isCertFound:Z
 
     if-eqz v3, :cond_c
@@ -2797,31 +2717,31 @@
 
     if-eqz v3, :cond_c
 
-    .line 339
+    .line 317
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 341
-    :cond_108
+    .line 319
+    :cond_ee
     const-string/jumbo v3, "forcetestvalue"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_115
+    if-eqz v3, :cond_fb
 
-    .line 342
+    .line 320
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 344
-    :cond_115
+    .line 322
+    :cond_fb
     iget-object v3, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v3, :cond_126
+    if-eqz v3, :cond_10c
 
     const-string/jumbo v3, "mcc"
 
@@ -2829,18 +2749,18 @@
 
     move-result v3
 
-    if-eqz v3, :cond_126
+    if-eqz v3, :cond_10c
 
-    .line 345
+    .line 323
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 347
-    :cond_126
+    .line 325
+    :cond_10c
     iget-object v3, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v3, :cond_137
+    if-eqz v3, :cond_11d
 
     const-string/jumbo v3, "mnc"
 
@@ -2848,18 +2768,18 @@
 
     move-result v3
 
-    if-eqz v3, :cond_137
+    if-eqz v3, :cond_11d
 
-    .line 348
+    .line 326
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 350
-    :cond_137
+    .line 328
+    :cond_11d
     iget-object v3, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v3, :cond_148
+    if-eqz v3, :cond_12e
 
     const-string/jumbo v3, "lac"
 
@@ -2867,18 +2787,18 @@
 
     move-result v3
 
-    if-eqz v3, :cond_148
+    if-eqz v3, :cond_12e
 
-    .line 351
+    .line 329
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 353
-    :cond_148
+    .line 331
+    :cond_12e
     iget-object v3, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v3, :cond_159
+    if-eqz v3, :cond_13f
 
     const-string/jumbo v3, "ci"
 
@@ -2886,18 +2806,18 @@
 
     move-result v3
 
-    if-eqz v3, :cond_159
+    if-eqz v3, :cond_13f
 
-    .line 354
+    .line 332
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 356
-    :cond_159
+    .line 334
+    :cond_13f
     iget-object v3, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v3, :cond_16a
+    if-eqz v3, :cond_150
 
     const-string/jumbo v3, "msisdn"
 
@@ -2905,18 +2825,18 @@
 
     move-result v3
 
-    if-eqz v3, :cond_16a
+    if-eqz v3, :cond_150
 
-    .line 357
+    .line 335
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 359
-    :cond_16a
+    .line 337
+    :cond_150
     iget-object v3, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v3, :cond_17b
+    if-eqz v3, :cond_161
 
     const-string/jumbo v3, "filltaandnmr"
 
@@ -2924,18 +2844,18 @@
 
     move-result v3
 
-    if-eqz v3, :cond_17b
+    if-eqz v3, :cond_161
 
-    .line 360
+    .line 338
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 362
-    :cond_17b
+    .line 340
+    :cond_161
     iget-object v3, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v3, :cond_18c
+    if-eqz v3, :cond_172
 
     const-string/jumbo v3, "ta"
 
@@ -2943,18 +2863,18 @@
 
     move-result v3
 
-    if-eqz v3, :cond_18c
+    if-eqz v3, :cond_172
 
-    .line 363
+    .line 341
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 365
-    :cond_18c
+    .line 343
+    :cond_172
     iget-object v3, p0, Lcom/android/supl/config/ConfigManager;->testValue:Lcom/android/supl/config/ConfigManager$ForceTestValue;
 
-    if-eqz v3, :cond_19d
+    if-eqz v3, :cond_183
 
     const-string/jumbo v3, "nmr"
 
@@ -2962,57 +2882,57 @@
 
     move-result v3
 
-    if-eqz v3, :cond_19d
+    if-eqz v3, :cond_183
 
-    .line 366
+    .line 344
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 367
-    :cond_19d
+    .line 345
+    :cond_183
     const-string/jumbo v3, "checkgps"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_1aa
+    if-eqz v3, :cond_190
 
-    .line 368
+    .line 346
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 369
-    :cond_1aa
+    .line 347
+    :cond_190
     const-string/jumbo v3, "bearer_network_enable"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_1b7
+    if-eqz v3, :cond_19d
 
-    .line 370
+    .line 348
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 371
-    :cond_1b7
+    .line 349
+    :cond_19d
     const-string/jumbo v3, "bearer_network_support"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_1f4
+    if-eqz v3, :cond_1da
 
-    .line 372
+    .line 350
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isBearNetworkFound:Z
 
-    .line 373
+    .line 351
     const-string/jumbo v3, ""
 
     const-string/jumbo v4, "roaming"
@@ -3025,17 +2945,17 @@
 
     move-result v3
 
-    if-ne v3, v2, :cond_1f2
+    if-ne v3, v2, :cond_1d8
 
-    :goto_1d2
+    :goto_1b8
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupportRoaming:Z
 
-    .line 374
+    .line 352
     iget-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupport:Z
 
     if-eqz v2, :cond_c
 
-    .line 375
+    .line 353
     new-instance v2, Ljava/util/PriorityQueue;
 
     iget-object v3, p0, Lcom/android/supl/config/ConfigManager;->mComparater:Lcom/android/supl/bearer/BearerNetworkComparater;
@@ -3046,7 +2966,7 @@
 
     iput-object v2, p0, Lcom/android/supl/config/ConfigManager;->queue:Ljava/util/PriorityQueue;
 
-    .line 376
+    .line 354
     iget-object v2, p0, Lcom/android/supl/config/ConfigManager;->roamingBearerNetwork:Ljava/util/HashMap;
 
     iget-boolean v3, p0, Lcom/android/supl/config/ConfigManager;->isMultipleBearNetworkSupportRoaming:Z
@@ -3061,20 +2981,50 @@
 
     goto/16 :goto_c
 
-    .line 373
-    :cond_1f2
+    .line 351
+    :cond_1d8
     const/4 v2, 0x0
 
-    goto :goto_1d2
+    goto :goto_1b8
 
-    .line 378
-    :cond_1f4
+    .line 356
+    :cond_1da
     iget-boolean v3, p0, Lcom/android/supl/config/ConfigManager;->isBearNetworkFound:Z
 
     if-eqz v3, :cond_c
 
-    .line 379
+    .line 357
     const-string/jumbo v3, "wlan"
+
+    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_1eb
+
+    .line 358
+    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
+
+    goto/16 :goto_c
+
+    .line 359
+    :cond_1eb
+    const-string/jumbo v3, "lte"
+
+    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_1f8
+
+    .line 360
+    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
+
+    goto/16 :goto_c
+
+    .line 361
+    :cond_1f8
+    const-string/jumbo v3, "gsm"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -3082,14 +3032,14 @@
 
     if-eqz v3, :cond_205
 
-    .line 380
+    .line 362
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 381
+    .line 363
     :cond_205
-    const-string/jumbo v3, "lte"
+    const-string/jumbo v3, "cdma"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -3097,14 +3047,14 @@
 
     if-eqz v3, :cond_212
 
-    .line 382
+    .line 364
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 383
+    .line 365
     :cond_212
-    const-string/jumbo v3, "gsm"
+    const-string/jumbo v3, "wcdma"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -3112,14 +3062,14 @@
 
     if-eqz v3, :cond_21f
 
-    .line 384
+    .line 366
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 385
+    .line 367
     :cond_21f
-    const-string/jumbo v3, "cdma"
+    const-string/jumbo v3, "umb"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -3127,14 +3077,14 @@
 
     if-eqz v3, :cond_22c
 
-    .line 386
+    .line 368
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 387
+    .line 369
     :cond_22c
-    const-string/jumbo v3, "wcdma"
+    const-string/jumbo v3, "wimax"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -3142,43 +3092,13 @@
 
     if-eqz v3, :cond_239
 
-    .line 388
+    .line 370
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 389
+    .line 371
     :cond_239
-    const-string/jumbo v3, "umb"
-
-    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_246
-
-    .line 390
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
-
-    goto/16 :goto_c
-
-    .line 391
-    :cond_246
-    const-string/jumbo v3, "wimax"
-
-    invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_253
-
-    .line 392
-    iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
-
-    goto/16 :goto_c
-
-    .line 393
-    :cond_253
     const-string/jumbo v3, "hrpd"
 
     invoke-virtual {p2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -3187,25 +3107,15 @@
 
     if-eqz v3, :cond_c
 
-    .line 394
+    .line 372
     iput-boolean v2, p0, Lcom/android/supl/config/ConfigManager;->isRequiredTag:Z
 
     goto/16 :goto_c
 
-    .line 302
-    :catch_260
+    .line 284
+    :catch_246
     move-exception v0
 
     .local v0, "e":Ljava/lang/NullPointerException;
     goto/16 :goto_c
-.end method
-
-.method public switchApnEnabled()Z
-    .registers 2
-
-    .prologue
-    .line 749
-    iget-boolean v0, p0, Lcom/android/supl/config/ConfigManager;->isSwitchApnEnabled:Z
-
-    return v0
 .end method

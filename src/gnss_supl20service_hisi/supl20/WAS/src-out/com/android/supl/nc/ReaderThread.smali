@@ -23,6 +23,8 @@
 
 .field private m_CilentSocket:Ljava/net/Socket;
 
+.field private m_LocalSocket:Landroid/net/LocalSocket;
+
 .field private nc:Lcom/android/supl/nc/NetworkController;
 
 .field public objMyReadLock:Ljava/lang/Object;
@@ -41,45 +43,48 @@
 
     const/4 v1, 0x0
 
-    .line 70
+    .line 72
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 57
     iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->m_CilentSocket:Ljava/net/Socket;
 
     .line 59
-    iput-boolean v2, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
+    iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->m_LocalSocket:Landroid/net/LocalSocket;
 
     .line 61
-    iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->workerThread:Ljava/lang/Thread;
+    iput-boolean v2, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
 
     .line 63
-    iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->in:Ljava/io/BufferedInputStream;
+    iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->workerThread:Ljava/lang/Thread;
 
     .line 65
-    iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->cp:Lcom/android/supl/commprocessor/CommandProcessor;
+    iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->in:Ljava/io/BufferedInputStream;
 
     .line 67
+    iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->cp:Lcom/android/supl/commprocessor/CommandProcessor;
+
+    .line 69
     const/4 v0, -0x1
 
     iput v0, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
 
-    .line 69
+    .line 71
     iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->nc:Lcom/android/supl/nc/NetworkController;
 
-    .line 203
+    .line 205
     iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->objMyReadLock:Ljava/lang/Object;
 
-    .line 204
+    .line 206
     iput-boolean v2, p0, Lcom/android/supl/nc/ReaderThread;->isReadyForClose:Z
 
-    .line 71
+    .line 73
     iput-object p1, p0, Lcom/android/supl/nc/ReaderThread;->cp:Lcom/android/supl/commprocessor/CommandProcessor;
 
-    .line 72
+    .line 74
     iput p2, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
 
-    .line 74
+    .line 72
     return-void
 .end method
 
@@ -87,12 +92,12 @@
     .registers 5
 
     .prologue
-    .line 244
+    .line 246
     iget-object v1, p0, Lcom/android/supl/nc/ReaderThread;->in:Ljava/io/BufferedInputStream;
 
     if-eqz v1, :cond_4e
 
-    .line 246
+    .line 248
     :try_start_4
     iget v1, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
 
@@ -100,12 +105,12 @@
 
     if-eq v1, v2, :cond_2e
 
-    .line 247
+    .line 249
     iget-object v1, p0, Lcom/android/supl/nc/ReaderThread;->in:Ljava/io/BufferedInputStream;
 
     invoke-virtual {v1}, Ljava/io/BufferedInputStream;->close()V
 
-    .line 248
+    .line 250
     const-string/jumbo v1, "SUPL20_SLP-RECEIVING"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -136,7 +141,7 @@
     :try_end_2e
     .catch Ljava/io/IOException; {:try_start_4 .. :try_end_2e} :catch_4f
 
-    .line 253
+    .line 255
     :cond_2e
     :goto_2e
     const-string/jumbo v1, "SUPL20_SLP-RECEIVING"
@@ -167,15 +172,15 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 255
+    .line 245
     :cond_4e
     return-void
 
-    .line 250
+    .line 252
     :catch_4f
     move-exception v0
 
-    .line 251
+    .line 253
     .local v0, "e":Ljava/io/IOException;
     const-string/jumbo v1, "SUPL20_SLP-RECEIVING"
 
@@ -212,14 +217,14 @@
     .registers 8
 
     .prologue
-    .line 211
+    .line 213
     iget v4, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
 
     const/4 v5, -0x1
 
     if-eq v4, v5, :cond_57
 
-    .line 212
+    .line 214
     iget-object v4, p0, Lcom/android/supl/nc/ReaderThread;->cp:Lcom/android/supl/commprocessor/CommandProcessor;
 
     if-eqz v4, :cond_57
@@ -230,56 +235,56 @@
 
     if-eqz v4, :cond_57
 
-    .line 213
+    .line 215
     const/16 v3, 0x9
 
-    .line 214
+    .line 216
     .local v3, "iSize":I
     const/16 v4, 0xd
 
     new-array v0, v4, [B
 
-    .line 215
+    .line 217
     .local v0, "bData":[B
     const/4 v2, 0x0
 
-    .line 216
+    .line 218
     .local v2, "iOffset":I
     invoke-static {v0, v2, v3}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 217
+    .line 219
     const/16 v4, 0x209
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 218
+    .line 220
     iget v4, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put1([BII)I
 
     move-result v2
 
-    .line 219
+    .line 221
     const/4 v4, 0x1
 
     invoke-static {v0, v2, v4}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v2
 
-    .line 220
+    .line 222
     new-instance v1, Lcom/android/supl/commprocessor/FromServer;
 
     invoke-direct {v1}, Lcom/android/supl/commprocessor/FromServer;-><init>()V
 
-    .line 221
+    .line 223
     .local v1, "fs":Lcom/android/supl/commprocessor/FromServer;
     iput-object v0, v1, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
-    .line 222
+    .line 224
     const-string/jumbo v4, "SUPL20_SLP-RECEIVING"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -308,12 +313,12 @@
 
     invoke-static {v4, v5}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 223
+    .line 225
     iget-object v4, p0, Lcom/android/supl/nc/ReaderThread;->cp:Lcom/android/supl/commprocessor/CommandProcessor;
 
     invoke-interface {v4, v1}, Lcom/android/supl/commprocessor/CommandProcessor;->writePacket(Lcom/android/supl/commprocessor/FromServer;)V
 
-    .line 226
+    .line 211
     .end local v0    # "bData":[B
     .end local v1    # "fs":Lcom/android/supl/commprocessor/FromServer;
     .end local v2    # "iOffset":I
@@ -329,12 +334,12 @@
     .param p3, "fs"    # Lcom/android/supl/commprocessor/FromServer;
 
     .prologue
-    .line 188
+    .line 190
     add-int/lit8 v2, p1, 0x8
 
     add-int/lit8 v0, v2, 0x1
 
-    .line 190
+    .line 192
     .local v0, "iPacketSize":I
     add-int/lit8 v2, v0, 0x4
 
@@ -342,10 +347,10 @@
 
     iput-object v2, p3, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
-    .line 191
+    .line 193
     const/4 v1, 0x0
 
-    .line 193
+    .line 195
     .local v1, "offset":I
     iget-object v2, p3, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
@@ -353,7 +358,7 @@
 
     move-result v1
 
-    .line 194
+    .line 196
     iget-object v2, p3, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
     const/16 v3, 0x208
@@ -362,24 +367,24 @@
 
     move-result v1
 
-    .line 195
+    .line 197
     iget-object v2, p3, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
     invoke-static {v2, v1, p1}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v1
 
-    .line 196
+    .line 198
     iget-object v2, p3, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
     const/4 v3, 0x0
 
-    invoke-static {p2, v3, v2, v1, p1}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {p2, v3, v2, v1, p1}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 197
+    .line 199
     add-int/2addr v1, p1
 
-    .line 198
+    .line 200
     iget-object v2, p3, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
     iget v3, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
@@ -388,7 +393,7 @@
 
     move-result v1
 
-    .line 199
+    .line 201
     const-string/jumbo v2, "SUPL20_SLP-RECEIVING"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -423,22 +428,22 @@
 
     move-result-object v3
 
-    .line 200
+    .line 202
     const-string/jumbo v4, " OnReceiveData from the "
 
-    .line 199
+    .line 201
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    .line 200
+    .line 202
     iget-object v4, p0, Lcom/android/supl/nc/ReaderThread;->cp:Lcom/android/supl/commprocessor/CommandProcessor;
 
     invoke-virtual {v4}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     move-result-object v4
 
-    .line 199
+    .line 201
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
@@ -449,7 +454,7 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 201
+    .line 189
     return-void
 .end method
 
@@ -459,23 +464,23 @@
     .registers 5
 
     .prologue
-    .line 228
+    .line 230
     iget-object v0, p0, Lcom/android/supl/nc/ReaderThread;->objMyReadLock:Ljava/lang/Object;
 
     if-eqz v0, :cond_30
 
-    .line 229
+    .line 231
     iget-object v1, p0, Lcom/android/supl/nc/ReaderThread;->objMyReadLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 230
+    .line 232
     const/4 v0, 0x1
 
     :try_start_8
     iput-boolean v0, p0, Lcom/android/supl/nc/ReaderThread;->isReadyForClose:Z
 
-    .line 231
+    .line 233
     const-string/jumbo v0, "SUPL20_SLP-RECEIVING"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -504,7 +509,7 @@
 
     invoke-static {v0, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 232
+    .line 234
     iget-object v0, p0, Lcom/android/supl/nc/ReaderThread;->objMyReadLock:Ljava/lang/Object;
 
     invoke-virtual {v0}, Ljava/lang/Object;->notify()V
@@ -513,25 +518,25 @@
 
     monitor-exit v1
 
-    .line 236
+    .line 238
     :cond_30
     iget-object v0, p0, Lcom/android/supl/nc/ReaderThread;->workerThread:Ljava/lang/Thread;
 
     if-eqz v0, :cond_39
 
-    .line 237
+    .line 239
     iget-object v0, p0, Lcom/android/supl/nc/ReaderThread;->workerThread:Ljava/lang/Thread;
 
     invoke-virtual {v0}, Ljava/lang/Thread;->interrupt()V
 
-    .line 240
+    .line 242
     :cond_39
     invoke-direct {p0}, Lcom/android/supl/nc/ReaderThread;->closeInputStream()V
 
-    .line 242
+    .line 229
     return-void
 
-    .line 229
+    .line 231
     :catchall_3d
     move-exception v0
 
@@ -544,7 +549,7 @@
     .registers 2
 
     .prologue
-    .line 207
+    .line 209
     iget-boolean v0, p0, Lcom/android/supl/nc/ReaderThread;->isReadyForClose:Z
 
     return v0
@@ -556,32 +561,18 @@
     .prologue
     const/4 v12, -0x1
 
-    .line 81
+    .line 84
     :try_start_1
     iget v9, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
-    :try_end_3
-    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_1 .. :try_end_3} :catch_b8
-    .catch Ljava/net/SocketTimeoutException; {:try_start_1 .. :try_end_3} :catch_158
-    .catch Ljava/net/SocketException; {:try_start_1 .. :try_end_3} :catch_10f
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_3} :catch_d4
-    .catchall {:try_start_1 .. :try_end_3} :catchall_10a
 
-    if-ne v9, v12, :cond_9
+    if-ne v9, v12, :cond_44
 
-    .line 177
-    invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
-
-    .line 84
-    return-void
-
-    .line 88
-    :cond_9
-    :try_start_9
+    .line 86
     new-instance v9, Ljava/io/BufferedInputStream;
 
-    iget-object v10, p0, Lcom/android/supl/nc/ReaderThread;->m_CilentSocket:Ljava/net/Socket;
+    iget-object v10, p0, Lcom/android/supl/nc/ReaderThread;->m_LocalSocket:Landroid/net/LocalSocket;
 
-    invoke-virtual {v10}, Ljava/net/Socket;->getInputStream()Ljava/io/InputStream;
+    invoke-virtual {v10}, Landroid/net/LocalSocket;->getInputStream()Ljava/io/InputStream;
 
     move-result-object v10
 
@@ -589,27 +580,28 @@
 
     iput-object v9, p0, Lcom/android/supl/nc/ReaderThread;->in:Ljava/io/BufferedInputStream;
 
-    .line 90
+    .line 92
+    :goto_12
     const/16 v9, 0x400
 
     new-array v0, v9, [B
 
-    .line 91
+    .line 93
     .local v0, "bdata":[B
-    :cond_1a
-    :goto_1a
+    :cond_16
+    :goto_16
     iget-boolean v9, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
 
-    if-eqz v9, :cond_44
+    if-eqz v9, :cond_40
 
-    .line 92
+    .line 94
     invoke-static {}, Ljava/lang/Thread;->interrupted()Z
 
     move-result v9
 
-    if-eqz v9, :cond_48
+    if-eqz v9, :cond_6d
 
-    .line 93
+    .line 95
     const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
 
     new-instance v10, Ljava/lang/StringBuilder;
@@ -637,115 +629,175 @@
     move-result-object v10
 
     invoke-static {v9, v10}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_44
-    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_9 .. :try_end_44} :catch_b8
-    .catch Ljava/net/SocketTimeoutException; {:try_start_9 .. :try_end_44} :catch_158
-    .catch Ljava/net/SocketException; {:try_start_9 .. :try_end_44} :catch_10f
-    .catch Ljava/io/IOException; {:try_start_9 .. :try_end_44} :catch_d4
-    .catchall {:try_start_9 .. :try_end_44} :catchall_10a
-
-    .line 177
-    :cond_44
-    :goto_44
-    invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
+    :try_end_40
+    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_1 .. :try_end_40} :catch_52
+    .catch Ljava/net/SocketTimeoutException; {:try_start_1 .. :try_end_40} :catch_164
+    .catch Ljava/net/SocketException; {:try_start_1 .. :try_end_40} :catch_e0
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_40} :catch_108
+    .catchall {:try_start_1 .. :try_end_40} :catchall_13e
 
     .line 179
+    :cond_40
+    :goto_40
+    invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
+
+    .line 81
     .end local v0    # "bdata":[B
-    :goto_47
+    :goto_43
     return-void
 
-    .line 97
+    .line 90
+    :cond_44
+    :try_start_44
+    new-instance v9, Ljava/io/BufferedInputStream;
+
+    iget-object v10, p0, Lcom/android/supl/nc/ReaderThread;->m_CilentSocket:Ljava/net/Socket;
+
+    invoke-virtual {v10}, Ljava/net/Socket;->getInputStream()Ljava/io/InputStream;
+
+    move-result-object v10
+
+    invoke-direct {v9, v10}, Ljava/io/BufferedInputStream;-><init>(Ljava/io/InputStream;)V
+
+    iput-object v9, p0, Lcom/android/supl/nc/ReaderThread;->in:Ljava/io/BufferedInputStream;
+    :try_end_51
+    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_44 .. :try_end_51} :catch_52
+    .catch Ljava/net/SocketTimeoutException; {:try_start_44 .. :try_end_51} :catch_164
+    .catch Ljava/net/SocketException; {:try_start_44 .. :try_end_51} :catch_e0
+    .catch Ljava/io/IOException; {:try_start_44 .. :try_end_51} :catch_108
+    .catchall {:try_start_44 .. :try_end_51} :catchall_13e
+
+    goto :goto_12
+
+    .line 145
+    :catch_52
+    move-exception v3
+
+    .line 146
+    .local v3, "e":Ljavax/net/ssl/SSLProtocolException;
+    :try_start_53
+    const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
+
+    invoke-virtual {v3}, Ljavax/net/ssl/SSLProtocolException;->getMessage()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-static {v9, v10, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 147
+    invoke-direct {p0}, Lcom/android/supl/nc/ReaderThread;->sendError()V
+
+    .line 148
+    iget-object v9, p0, Lcom/android/supl/nc/ReaderThread;->nc:Lcom/android/supl/nc/NetworkController;
+
+    if-eqz v9, :cond_69
+
+    .line 149
+    iget-object v9, p0, Lcom/android/supl/nc/ReaderThread;->nc:Lcom/android/supl/nc/NetworkController;
+
+    invoke-virtual {v9}, Lcom/android/supl/nc/NetworkController;->removeSLPSession()V
+    :try_end_69
+    .catchall {:try_start_53 .. :try_end_69} :catchall_13e
+
+    .line 179
+    :cond_69
+    invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
+
+    goto :goto_43
+
+    .line 99
+    .end local v3    # "e":Ljavax/net/ssl/SSLProtocolException;
     .restart local v0    # "bdata":[B
-    :cond_48
+    :cond_6d
     const/4 v8, -0x1
 
-    .line 103
+    .line 105
     .local v8, "iReadData":I
-    :try_start_49
+    :try_start_6e
     iget-object v9, p0, Lcom/android/supl/nc/ReaderThread;->in:Ljava/io/BufferedInputStream;
 
-    invoke-virtual {v9, v0}, Ljava/io/FilterInputStream;->read([B)I
+    invoke-virtual {v9, v0}, Ljava/io/BufferedInputStream;->read([B)I
 
     move-result v8
 
-    if-eq v8, v12, :cond_94
+    if-eq v8, v12, :cond_bb
 
-    .line 105
+    .line 107
     new-instance v7, Lcom/android/supl/commprocessor/FromServer;
 
     invoke-direct {v7}, Lcom/android/supl/commprocessor/FromServer;-><init>()V
 
-    .line 106
+    .line 108
     .local v7, "fs":Lcom/android/supl/commprocessor/FromServer;
     iget v9, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
 
-    if-ne v9, v12, :cond_77
+    if-ne v9, v12, :cond_9e
 
-    .line 107
+    .line 109
     new-array v9, v8, [B
 
     iput-object v9, v7, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
-    .line 108
+    .line 110
     iget-object v9, v7, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
     const/4 v10, 0x0
 
     invoke-static {v9, v10}, Ljava/util/Arrays;->fill([BB)V
 
-    .line 109
+    .line 111
     iget-object v9, v7, Lcom/android/supl/commprocessor/FromServer;->m_bPacket:[B
 
     const/4 v10, 0x0
 
     const/4 v11, 0x0
 
-    invoke-static {v0, v10, v9, v11, v8}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v10, v9, v11, v8}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
-    .line 116
-    :goto_6b
+    .line 118
+    :goto_90
     iget-object v9, p0, Lcom/android/supl/nc/ReaderThread;->cp:Lcom/android/supl/commprocessor/CommandProcessor;
 
     invoke-interface {v9, v7}, Lcom/android/supl/commprocessor/CommandProcessor;->writePacket(Lcom/android/supl/commprocessor/FromServer;)V
 
-    .line 117
+    .line 119
     const/4 v9, 0x0
 
     invoke-static {v0, v9}, Ljava/util/Arrays;->fill([BB)V
 
-    goto :goto_1a
+    goto/16 :goto_16
 
-    .line 127
+    .line 129
     .end local v7    # "fs":Lcom/android/supl/commprocessor/FromServer;
-    :catch_75
+    :catch_9b
     move-exception v2
 
     .local v2, "e":Ljava/net/SocketTimeoutException;
-    goto :goto_1a
+    goto/16 :goto_16
 
-    .line 111
+    .line 113
     .end local v2    # "e":Ljava/net/SocketTimeoutException;
     .restart local v7    # "fs":Lcom/android/supl/commprocessor/FromServer;
-    :cond_77
+    :cond_9e
     invoke-direct {p0, v8, v0, v7}, Lcom/android/supl/nc/ReaderThread;->sendOnReceiveData(I[BLcom/android/supl/commprocessor/FromServer;)V
-    :try_end_7a
-    .catch Ljava/net/SocketTimeoutException; {:try_start_49 .. :try_end_7a} :catch_75
-    .catch Ljava/io/IOException; {:try_start_49 .. :try_end_7a} :catch_7b
-    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_49 .. :try_end_7a} :catch_b8
-    .catch Ljava/net/SocketException; {:try_start_49 .. :try_end_7a} :catch_10f
-    .catchall {:try_start_49 .. :try_end_7a} :catchall_10a
+    :try_end_a1
+    .catch Ljava/net/SocketTimeoutException; {:try_start_6e .. :try_end_a1} :catch_9b
+    .catch Ljava/io/IOException; {:try_start_6e .. :try_end_a1} :catch_a2
+    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_6e .. :try_end_a1} :catch_52
+    .catch Ljava/net/SocketException; {:try_start_6e .. :try_end_a1} :catch_e0
+    .catchall {:try_start_6e .. :try_end_a1} :catchall_13e
 
-    goto :goto_6b
+    goto :goto_90
 
-    .line 132
+    .line 134
     .end local v7    # "fs":Lcom/android/supl/commprocessor/FromServer;
-    :catch_7b
+    :catch_a2
     move-exception v1
 
-    .line 133
+    .line 135
     .local v1, "e":Ljava/io/IOException;
-    :try_start_7c
-    invoke-virtual {v1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    :try_start_a3
+    invoke-virtual {v1}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
     move-result-object v9
 
@@ -755,31 +807,31 @@
 
     move-result v9
 
-    if-nez v9, :cond_1a
+    if-nez v9, :cond_16
 
     iget v9, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
 
-    if-eq v9, v12, :cond_1a
+    if-eq v9, v12, :cond_16
 
-    .line 135
-    invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
-    :try_end_90
-    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_7c .. :try_end_90} :catch_b8
-    .catch Ljava/net/SocketTimeoutException; {:try_start_7c .. :try_end_90} :catch_158
-    .catch Ljava/net/SocketException; {:try_start_7c .. :try_end_90} :catch_10f
-    .catch Ljava/io/IOException; {:try_start_7c .. :try_end_90} :catch_d4
-    .catchall {:try_start_7c .. :try_end_90} :catchall_10a
+    .line 137
+    invoke-virtual {v1}, Ljava/io/IOException;->printStackTrace()V
+    :try_end_b7
+    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_a3 .. :try_end_b7} :catch_52
+    .catch Ljava/net/SocketTimeoutException; {:try_start_a3 .. :try_end_b7} :catch_164
+    .catch Ljava/net/SocketException; {:try_start_a3 .. :try_end_b7} :catch_e0
+    .catch Ljava/io/IOException; {:try_start_a3 .. :try_end_b7} :catch_108
+    .catchall {:try_start_a3 .. :try_end_b7} :catchall_13e
 
-    .line 177
+    .line 179
     invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
 
-    .line 136
+    .line 138
     return-void
 
-    .line 122
+    .line 124
     .end local v1    # "e":Ljava/io/IOException;
-    :cond_94
-    :try_start_94
+    :cond_bb
+    :try_start_bb
     const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
 
     new-instance v10, Ljava/lang/StringBuilder;
@@ -802,94 +854,107 @@
 
     invoke-static {v9, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 123
+    .line 125
     const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
 
     const-string/jumbo v10, "Socket closed on other side so closing the read thread"
 
     invoke-static {v9, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_b7
-    .catch Ljava/net/SocketTimeoutException; {:try_start_94 .. :try_end_b7} :catch_75
-    .catch Ljava/io/IOException; {:try_start_94 .. :try_end_b7} :catch_7b
-    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_94 .. :try_end_b7} :catch_b8
-    .catch Ljava/net/SocketException; {:try_start_94 .. :try_end_b7} :catch_10f
-    .catchall {:try_start_94 .. :try_end_b7} :catchall_10a
+    :try_end_de
+    .catch Ljava/net/SocketTimeoutException; {:try_start_bb .. :try_end_de} :catch_9b
+    .catch Ljava/io/IOException; {:try_start_bb .. :try_end_de} :catch_a2
+    .catch Ljavax/net/ssl/SSLProtocolException; {:try_start_bb .. :try_end_de} :catch_52
+    .catch Ljava/net/SocketException; {:try_start_bb .. :try_end_de} :catch_e0
+    .catchall {:try_start_bb .. :try_end_de} :catchall_13e
 
-    goto :goto_44
+    goto/16 :goto_40
 
-    .line 143
+    .line 158
     .end local v0    # "bdata":[B
     .end local v8    # "iReadData":I
-    :catch_b8
-    move-exception v3
+    :catch_e0
+    move-exception v5
 
-    .line 144
-    .local v3, "e":Ljavax/net/ssl/SSLProtocolException;
-    :try_start_b9
+    .line 160
+    .local v5, "ex":Ljava/net/SocketException;
+    :try_start_e1
     const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
 
-    invoke-virtual {v3}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    const-string/jumbo v10, "Calling nc.stop with reconnect as true"
+
+    invoke-static {v9, v10}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 161
+    iget-object v9, p0, Lcom/android/supl/nc/ReaderThread;->nc:Lcom/android/supl/nc/NetworkController;
+
+    const/4 v10, 0x1
+
+    const/4 v11, 0x0
+
+    const/4 v12, 0x1
+
+    invoke-virtual {v9, v10, v11, v12}, Lcom/android/supl/nc/NetworkController;->stop(ZLjava/lang/Object;Z)Z
+
+    .line 163
+    iget-boolean v9, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
+
+    if-eqz v9, :cond_143
+
+    .line 164
+    invoke-direct {p0}, Lcom/android/supl/nc/ReaderThread;->sendError()V
+
+    .line 165
+    const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
+
+    invoke-virtual {v5}, Ljava/net/SocketException;->getMessage()Ljava/lang/String;
 
     move-result-object v10
 
-    invoke-static {v9, v10, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v9, v10, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    :try_end_103
+    .catchall {:try_start_e1 .. :try_end_103} :catchall_13e
 
-    .line 145
-    invoke-direct {p0}, Lcom/android/supl/nc/ReaderThread;->sendError()V
-
-    .line 146
-    iget-object v9, p0, Lcom/android/supl/nc/ReaderThread;->nc:Lcom/android/supl/nc/NetworkController;
-
-    if-eqz v9, :cond_cf
-
-    .line 147
-    iget-object v9, p0, Lcom/android/supl/nc/ReaderThread;->nc:Lcom/android/supl/nc/NetworkController;
-
-    invoke-virtual {v9}, Lcom/android/supl/nc/NetworkController;->removeSLPSession()V
-    :try_end_cf
-    .catchall {:try_start_b9 .. :try_end_cf} :catchall_10a
-
-    .line 177
-    :cond_cf
+    .line 179
+    :goto_103
     invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
 
-    goto/16 :goto_47
-
-    .line 168
-    .end local v3    # "e":Ljavax/net/ssl/SSLProtocolException;
-    :catch_d4
-    move-exception v4
+    goto/16 :goto_43
 
     .line 170
-    .local v4, "ex":Ljava/io/IOException;
-    :try_start_d5
-    iget-boolean v9, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
-
-    if-eqz v9, :cond_eb
-
-    .line 171
-    invoke-direct {p0}, Lcom/android/supl/nc/ReaderThread;->sendError()V
+    .end local v5    # "ex":Ljava/net/SocketException;
+    :catch_108
+    move-exception v4
 
     .line 172
+    .local v4, "ex":Ljava/io/IOException;
+    :try_start_109
+    iget-boolean v9, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
+
+    if-eqz v9, :cond_11f
+
+    .line 173
+    invoke-direct {p0}, Lcom/android/supl/nc/ReaderThread;->sendError()V
+
+    .line 174
     const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
 
-    invoke-virtual {v4}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v4}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
     move-result-object v10
 
     invoke-static {v9, v10, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :try_end_e6
-    .catchall {:try_start_d5 .. :try_end_e6} :catchall_10a
+    :try_end_11a
+    .catchall {:try_start_109 .. :try_end_11a} :catchall_13e
 
-    .line 177
-    :goto_e6
+    .line 179
+    :goto_11a
     invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
 
-    goto/16 :goto_47
+    goto/16 :goto_43
 
-    .line 174
-    :cond_eb
-    :try_start_eb
+    .line 176
+    :cond_11f
+    :try_start_11f
     const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
 
     new-instance v10, Ljava/lang/StringBuilder;
@@ -902,7 +967,7 @@
 
     move-result-object v10
 
-    invoke-virtual {v4}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v4}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
     move-result-object v11
 
@@ -915,74 +980,26 @@
     move-result-object v10
 
     invoke-static {v9, v10, v4}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :try_end_109
-    .catchall {:try_start_eb .. :try_end_109} :catchall_10a
+    :try_end_13d
+    .catchall {:try_start_11f .. :try_end_13d} :catchall_13e
 
-    goto :goto_e6
+    goto :goto_11a
 
-    .line 176
+    .line 178
     .end local v4    # "ex":Ljava/io/IOException;
-    :catchall_10a
+    :catchall_13e
     move-exception v9
 
-    .line 177
+    .line 179
     invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
 
-    .line 176
+    .line 178
     throw v9
 
-    .line 156
-    :catch_10f
-    move-exception v5
-
-    .line 158
-    .local v5, "ex":Ljava/net/SocketException;
-    :try_start_110
-    const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
-
-    const-string/jumbo v10, "Calling nc.stop with reconnect as true"
-
-    invoke-static {v9, v10}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 159
-    iget-object v9, p0, Lcom/android/supl/nc/ReaderThread;->nc:Lcom/android/supl/nc/NetworkController;
-
-    const/4 v10, 0x1
-
-    const/4 v11, 0x0
-
-    const/4 v12, 0x1
-
-    invoke-virtual {v9, v10, v11, v12}, Lcom/android/supl/nc/NetworkController;->stop(ZLjava/lang/Object;Z)Z
-
-    .line 161
-    iget-boolean v9, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
-
-    if-eqz v9, :cond_137
-
-    .line 162
-    invoke-direct {p0}, Lcom/android/supl/nc/ReaderThread;->sendError()V
-
-    .line 163
-    const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
-
-    invoke-virtual {v5}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    move-result-object v10
-
-    invoke-static {v9, v10, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :try_end_132
-    .catchall {:try_start_110 .. :try_end_132} :catchall_10a
-
-    .line 177
-    :goto_132
-    invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
-
-    goto/16 :goto_47
-
-    .line 165
-    :cond_137
-    :try_start_137
+    .line 167
+    .restart local v5    # "ex":Ljava/net/SocketException;
+    :cond_143
+    :try_start_143
     const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
 
     new-instance v10, Ljava/lang/StringBuilder;
@@ -1011,39 +1028,39 @@
 
     invoke-static {v9, v10}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_132
+    goto :goto_103
 
-    .line 149
+    .line 151
     .end local v5    # "ex":Ljava/net/SocketException;
-    :catch_158
+    :catch_164
     move-exception v6
 
-    .line 150
+    .line 152
     .local v6, "ex":Ljava/net/SocketTimeoutException;
     iget-boolean v9, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
 
-    if-eqz v9, :cond_16c
+    if-eqz v9, :cond_178
 
-    .line 151
+    .line 153
     const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
 
-    invoke-virtual {v6}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/net/SocketTimeoutException;->getMessage()Ljava/lang/String;
 
     move-result-object v10
 
     invoke-static {v9, v10, v6}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :try_end_167
-    .catchall {:try_start_137 .. :try_end_167} :catchall_10a
+    :try_end_173
+    .catchall {:try_start_143 .. :try_end_173} :catchall_13e
 
-    .line 177
-    :goto_167
+    .line 179
+    :goto_173
     invoke-virtual {p0}, Lcom/android/supl/nc/ReaderThread;->closeConnection()V
 
-    goto/16 :goto_47
+    goto/16 :goto_43
 
-    .line 153
-    :cond_16c
-    :try_start_16c
+    .line 155
+    :cond_178
+    :try_start_178
     const-string/jumbo v9, "SUPL20_SLP-RECEIVING"
 
     new-instance v10, Ljava/lang/StringBuilder;
@@ -1056,7 +1073,7 @@
 
     move-result-object v10
 
-    invoke-virtual {v6}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/net/SocketTimeoutException;->getMessage()Ljava/lang/String;
 
     move-result-object v11
 
@@ -1069,10 +1086,10 @@
     move-result-object v10
 
     invoke-static {v9, v10, v6}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :try_end_18a
-    .catchall {:try_start_16c .. :try_end_18a} :catchall_10a
+    :try_end_196
+    .catchall {:try_start_178 .. :try_end_196} :catchall_13e
 
-    goto :goto_167
+    goto :goto_173
 .end method
 
 .method public setClientSocket(Ljava/net/Socket;Ljava/lang/String;)V
@@ -1087,10 +1104,10 @@
     .end annotation
 
     .prologue
-    .line 293
+    .line 295
     if-nez p1, :cond_b
 
-    .line 294
+    .line 296
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v2, "socket object must not be null"
@@ -1099,7 +1116,7 @@
 
     throw v1
 
-    .line 296
+    .line 298
     :cond_b
     invoke-virtual {p1}, Ljava/net/Socket;->isConnected()Z
 
@@ -1107,7 +1124,7 @@
 
     if-nez v1, :cond_1a
 
-    .line 297
+    .line 299
     new-instance v1, Ljava/lang/IllegalStateException;
 
     const-string/jumbo v2, "socket is not connected"
@@ -1116,7 +1133,7 @@
 
     throw v1
 
-    .line 298
+    .line 300
     :cond_1a
     invoke-virtual {p1}, Ljava/net/Socket;->isClosed()Z
 
@@ -1124,15 +1141,15 @@
 
     if-nez v1, :cond_26
 
-    .line 299
+    .line 301
     invoke-virtual {p1}, Ljava/net/Socket;->isInputShutdown()Z
 
     move-result v1
 
-    .line 298
+    .line 300
     if-eqz v1, :cond_2f
 
-    .line 300
+    .line 302
     :cond_26
     new-instance v1, Ljava/lang/IllegalStateException;
 
@@ -1142,14 +1159,14 @@
 
     throw v1
 
-    .line 302
+    .line 304
     :cond_2f
     if-nez p2, :cond_34
 
-    .line 303
+    .line 305
     const-string/jumbo p2, "ReadThread"
 
-    .line 305
+    .line 307
     :cond_34
     iget v1, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
 
@@ -1157,14 +1174,14 @@
 
     if-eq v1, v2, :cond_6e
 
-    .line 306
+    .line 308
     const-string/jumbo v1, "SUPL20_SLP-RECEIVING"
 
     const-string/jumbo v2, "readerThread initialized"
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 307
+    .line 309
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -1189,31 +1206,31 @@
 
     move-result-object p2
 
-    .line 316
+    .line 324
     :goto_5c
     iput-object p1, p0, Lcom/android/supl/nc/ReaderThread;->m_CilentSocket:Ljava/net/Socket;
 
-    .line 317
+    .line 325
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
 
-    .line 318
+    .line 326
     new-instance v1, Ljava/lang/Thread;
 
     invoke-direct {v1, p0, p2}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
 
     iput-object v1, p0, Lcom/android/supl/nc/ReaderThread;->workerThread:Ljava/lang/Thread;
 
-    .line 319
+    .line 327
     iget-object v1, p0, Lcom/android/supl/nc/ReaderThread;->workerThread:Ljava/lang/Thread;
 
     invoke-virtual {v1}, Ljava/lang/Thread;->start()V
 
-    .line 321
+    .line 294
     return-void
 
-    .line 310
+    .line 318
     :cond_6e
     const/16 v1, 0xc8
 
@@ -1224,15 +1241,154 @@
 
     goto :goto_5c
 
-    .line 311
+    .line 319
     :catch_74
     move-exception v0
 
-    .line 313
+    .line 321
     .local v0, "e":Ljava/net/SocketException;
-    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
+    invoke-virtual {v0}, Ljava/net/SocketException;->printStackTrace()V
 
     goto :goto_5c
+.end method
+
+.method public setLocalClientSocket(Landroid/net/LocalSocket;Ljava/lang/String;)V
+    .registers 7
+    .param p1, "m_LocalCilentSocket"    # Landroid/net/LocalSocket;
+    .param p2, "stThreadName"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/IllegalArgumentException;,
+            Ljava/lang/IllegalStateException;
+        }
+    .end annotation
+
+    .prologue
+    .line 333
+    if-nez p1, :cond_b
+
+    .line 334
+    new-instance v2, Ljava/lang/IllegalArgumentException;
+
+    const-string/jumbo v3, "socket object must not be null"
+
+    invoke-direct {v2, v3}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v2
+
+    .line 337
+    :cond_b
+    invoke-virtual {p1}, Landroid/net/LocalSocket;->isConnected()Z
+
+    move-result v2
+
+    if-nez v2, :cond_1a
+
+    .line 338
+    new-instance v2, Ljava/lang/IllegalStateException;
+
+    const-string/jumbo v3, "socket is not connected"
+
+    invoke-direct {v2, v3}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v2
+
+    .line 344
+    :cond_1a
+    if-nez p2, :cond_1f
+
+    .line 345
+    const-string/jumbo p2, "ReadThread"
+
+    .line 347
+    :cond_1f
+    iget v2, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
+
+    const/4 v3, -0x1
+
+    if-eq v2, v3, :cond_50
+
+    .line 348
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string/jumbo v3, " NW:"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    iget v3, p0, Lcom/android/supl/nc/ReaderThread;->iNetworkID:I
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p2
+
+    .line 367
+    :goto_3e
+    iput-object p1, p0, Lcom/android/supl/nc/ReaderThread;->m_LocalSocket:Landroid/net/LocalSocket;
+
+    .line 368
+    const/4 v2, 0x1
+
+    iput-boolean v2, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
+
+    .line 369
+    new-instance v2, Ljava/lang/Thread;
+
+    invoke-direct {v2, p0, p2}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
+
+    iput-object v2, p0, Lcom/android/supl/nc/ReaderThread;->workerThread:Ljava/lang/Thread;
+
+    .line 370
+    iget-object v2, p0, Lcom/android/supl/nc/ReaderThread;->workerThread:Ljava/lang/Thread;
+
+    invoke-virtual {v2}, Ljava/lang/Thread;->start()V
+
+    .line 332
+    return-void
+
+    .line 357
+    :cond_50
+    const/16 v2, 0xc8
+
+    :try_start_52
+    invoke-virtual {p1, v2}, Landroid/net/LocalSocket;->setSoTimeout(I)V
+    :try_end_55
+    .catch Ljava/net/SocketException; {:try_start_52 .. :try_end_55} :catch_56
+    .catch Ljava/io/IOException; {:try_start_52 .. :try_end_55} :catch_5b
+
+    goto :goto_3e
+
+    .line 358
+    :catch_56
+    move-exception v1
+
+    .line 360
+    .local v1, "e":Ljava/net/SocketException;
+    invoke-virtual {v1}, Ljava/net/SocketException;->printStackTrace()V
+
+    goto :goto_3e
+
+    .line 362
+    .end local v1    # "e":Ljava/net/SocketException;
+    :catch_5b
+    move-exception v0
+
+    .line 363
+    .local v0, "e":Ljava/io/IOException;
+    invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
+
+    goto :goto_3e
 .end method
 
 .method public setNetworkController(Lcom/android/supl/nc/NetworkController;)V
@@ -1240,10 +1396,10 @@
     .param p1, "networkController"    # Lcom/android/supl/nc/NetworkController;
 
     .prologue
-    .line 327
+    .line 377
     iput-object p1, p0, Lcom/android/supl/nc/ReaderThread;->nc:Lcom/android/supl/nc/NetworkController;
 
-    .line 328
+    .line 376
     return-void
 .end method
 
@@ -1252,7 +1408,7 @@
     .param p1, "objLock"    # Ljava/lang/Object;
 
     .prologue
-    .line 258
+    .line 260
     iput-object p1, p0, Lcom/android/supl/nc/ReaderThread;->objMyReadLock:Ljava/lang/Object;
 
     .line 259
@@ -1263,7 +1419,7 @@
     .registers 5
 
     .prologue
-    .line 268
+    .line 270
     :try_start_0
     const-string/jumbo v1, "SUPL20_SLP-RECEIVING"
 
@@ -1293,43 +1449,43 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 269
+    .line 271
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Lcom/android/supl/nc/ReaderThread;->isRead:Z
 
-    .line 270
+    .line 272
     const-string/jumbo v1, "SUPL20_SLP-RECEIVING"
 
     const-string/jumbo v2, " stopRead by invoke closeInputStream()"
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 271
+    .line 273
     invoke-direct {p0}, Lcom/android/supl/nc/ReaderThread;->closeInputStream()V
 
-    .line 272
+    .line 274
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/supl/nc/ReaderThread;->isReadyForClose:Z
 
-    .line 273
+    .line 275
     iget-object v1, p0, Lcom/android/supl/nc/ReaderThread;->m_CilentSocket:Ljava/net/Socket;
 
     if-eqz v1, :cond_3b
 
-    .line 274
+    .line 276
     iget-object v1, p0, Lcom/android/supl/nc/ReaderThread;->m_CilentSocket:Ljava/net/Socket;
 
     invoke-virtual {v1}, Ljava/net/Socket;->close()V
 
-    .line 276
+    .line 278
     :cond_3b
     iget-object v1, p0, Lcom/android/supl/nc/ReaderThread;->workerThread:Ljava/lang/Thread;
 
     invoke-virtual {v1}, Ljava/lang/Thread;->interrupt()V
 
-    .line 277
+    .line 279
     const-string/jumbo v1, "SUPL20_SLP-RECEIVING"
 
     const-string/jumbo v2, " stopRead by isReadyForClose is true"
@@ -1338,19 +1494,19 @@
     :try_end_49
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_49} :catch_4a
 
-    .line 281
+    .line 266
     :goto_49
     return-void
 
-    .line 278
+    .line 280
     :catch_4a
     move-exception v0
 
-    .line 279
+    .line 281
     .local v0, "ex":Ljava/lang/Exception;
     const-string/jumbo v1, "SUPL20_SLP-RECEIVING"
 
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
     move-result-object v2
 

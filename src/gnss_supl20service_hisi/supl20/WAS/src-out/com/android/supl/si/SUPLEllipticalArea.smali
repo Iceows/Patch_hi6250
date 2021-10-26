@@ -93,7 +93,7 @@
     .line 122
     iput p5, p0, Lcom/android/supl/si/SUPLEllipticalArea;->nAngle:I
 
-    .line 123
+    .line 116
     return-void
 .end method
 
@@ -113,7 +113,7 @@
     .line 199
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLEllipticalArea;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 200
+    .line 198
     return-void
 .end method
 
@@ -174,7 +174,7 @@
     .line 107
     iput p8, p0, Lcom/android/supl/si/SUPLEllipticalArea;->nAngle:I
 
-    .line 109
+    .line 95
     return-void
 .end method
 
@@ -196,11 +196,7 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 151
-    const/16 v3, 0x1c
-
     .line 152
-    .local v3, "iSize":I
     const/4 v2, 0x0
 
     .line 153
@@ -218,13 +214,14 @@
     add-int/lit8 v3, v4, 0x1c
 
     .line 155
+    .local v3, "iSize":I
     new-array v0, v3, [B
 
     .line 156
     .local v0, "bData":[B
     array-length v4, v1
 
-    invoke-static {v1, v5, v0, v2, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v5, v0, v2, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 157
     array-length v4, v1
@@ -281,7 +278,7 @@
     move-result v2
 
     .line 166
-    if-eq v2, v3, :cond_4a
+    if-eq v2, v3, :cond_48
 
     .line 167
     sget-object v4, Ljava/lang/System;->err:Ljava/io/PrintStream;
@@ -291,7 +288,7 @@
     invoke-virtual {v4, v5}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 169
-    :cond_4a
+    :cond_48
     return-object v0
 .end method
 
@@ -364,7 +361,7 @@
 
     iput v0, p0, Lcom/android/supl/si/SUPLEllipticalArea;->nAngle:I
 
-    .line 215
+    .line 205
     return-void
 .end method
 
@@ -376,7 +373,7 @@
     .line 130
     iput-object p1, p0, Lcom/android/supl/si/SUPLEllipticalArea;->stCenterCoord:Lcom/android/supl/si/SUPLCoordinate;
 
-    .line 131
+    .line 129
     return-void
 .end method
 
@@ -388,7 +385,7 @@
     .line 137
     iput p1, p0, Lcom/android/supl/si/SUPLEllipticalArea;->nSemiMajor:I
 
-    .line 138
+    .line 136
     return-void
 .end method
 
@@ -400,7 +397,7 @@
     .line 144
     iput p1, p0, Lcom/android/supl/si/SUPLEllipticalArea;->nSemiMinor:I
 
-    .line 145
+    .line 143
     return-void
 .end method
 
@@ -560,6 +557,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 230
+    .line 221
     return-void
 .end method

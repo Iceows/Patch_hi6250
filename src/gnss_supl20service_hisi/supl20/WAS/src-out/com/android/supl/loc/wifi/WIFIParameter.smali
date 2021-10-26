@@ -6,9 +6,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/supl/loc/wifi/WIFIParameter$LocationData;,
         Lcom/android/supl/loc/wifi/WIFIParameter$RTD;,
-        Lcom/android/supl/loc/wifi/WIFIParameter$ReportedLocation;
+        Lcom/android/supl/loc/wifi/WIFIParameter$ReportedLocation;,
+        Lcom/android/supl/loc/wifi/WIFIParameter$LocationData;
     }
 .end annotation
 
@@ -127,14 +127,14 @@
 
     iput-object v0, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->stAPMACadd:Lcom/android/supl/loc/BitString;
 
-    .line 102
+    .line 100
     return-void
 .end method
 
 
 # virtual methods
 .method public getScanWIFIParameterInfo(Z)[B
-    .registers 12
+    .registers 15
     .param p1, "isServer"    # Z
 
     .prologue
@@ -145,12 +145,8 @@
     .line 233
     const/4 v5, 0x0
 
-    .line 234
-    .local v5, "iOffset":I
-    const/4 v6, 0x0
-
     .line 235
-    .local v6, "iSize":I
+    .local v5, "iOffset":I
     const/16 v7, 0x7d5
 
     new-array v1, v7, [B
@@ -165,11 +161,11 @@
 
     .line 238
     .local v0, "bAPMACadd":[B
-    if-eqz p1, :cond_102
+    if-eqz p1, :cond_123
 
     move v7, v8
 
-    :goto_11
+    :goto_10
     invoke-static {v1, v5, v7}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -177,10 +173,42 @@
     .line 239
     const/4 v6, 0x4
 
+    .line 240
+    .local v6, "iSize":I
+    sget-object v7, Ljava/lang/System;->out:Ljava/io/PrintStream;
+
+    new-instance v10, Ljava/lang/StringBuilder;
+
+    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v11, "MAC Address"
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    new-instance v11, Ljava/lang/String;
+
+    iget-object v12, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->stAPMACadd:Lcom/android/supl/loc/BitString;
+
+    iget-object v12, v12, Lcom/android/supl/loc/BitString;->ucBuffer:[B
+
+    invoke-direct {v11, v12}, Ljava/lang/String;-><init>([B)V
+
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-virtual {v7, v10}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+
     .line 241
     array-length v7, v0
 
-    invoke-static {v0, v9, v1, v5, v7}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v9, v1, v5, v7}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 242
     array-length v7, v0
@@ -195,7 +223,7 @@
     .line 244
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPTPInfoPresent:Z
 
-    if-eqz v7, :cond_105
+    if-eqz v7, :cond_126
 
     .line 245
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -213,10 +241,10 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 252
-    :goto_2f
+    :goto_50
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPAGInfoPresent:Z
 
-    if-eqz v7, :cond_10d
+    if-eqz v7, :cond_12e
 
     .line 253
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -234,10 +262,10 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 260
-    :goto_3f
+    :goto_60
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPStoNInfoPresent:Z
 
-    if-eqz v7, :cond_115
+    if-eqz v7, :cond_136
 
     .line 261
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -255,10 +283,10 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 268
-    :goto_4f
+    :goto_70
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPDeviceTypeInfoPresent:Z
 
-    if-eqz v7, :cond_11d
+    if-eqz v7, :cond_13e
 
     .line 269
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -276,10 +304,10 @@
     add-int/lit8 v6, v6, 0x8
 
     .line 276
-    :goto_5f
+    :goto_80
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPSSInfoPresent:Z
 
-    if-eqz v7, :cond_125
+    if-eqz v7, :cond_146
 
     .line 277
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -297,10 +325,10 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 284
-    :goto_6f
+    :goto_90
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPCFreqInfpPresent:Z
 
-    if-eqz v7, :cond_12d
+    if-eqz v7, :cond_14e
 
     .line 285
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -318,14 +346,14 @@
     add-int/lit8 v6, v6, 0x5
 
     .line 292
-    :goto_7f
+    :goto_a0
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPRTDInfoPresent:Z
 
-    if-eqz v7, :cond_135
+    if-eqz v7, :cond_156
 
     iget-object v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->stAPRTD:Lcom/android/supl/loc/wifi/WIFIParameter$RTD;
 
-    if-eqz v7, :cond_135
+    if-eqz v7, :cond_156
 
     .line 293
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -343,7 +371,7 @@
     .local v3, "bstAPRTD":[B
     array-length v7, v3
 
-    invoke-static {v3, v9, v1, v5, v7}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v9, v1, v5, v7}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 296
     array-length v7, v3
@@ -359,10 +387,10 @@
 
     .line 302
     .end local v3    # "bstAPRTD":[B
-    :goto_9b
+    :goto_bc
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsSetTranPowerInfoPresent:Z
 
-    if-eqz v7, :cond_13d
+    if-eqz v7, :cond_15e
 
     .line 303
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -380,10 +408,10 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 310
-    :goto_ab
+    :goto_cc
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsSetAGInfoPresent:Z
 
-    if-eqz v7, :cond_145
+    if-eqz v7, :cond_166
 
     .line 311
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -401,10 +429,10 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 318
-    :goto_bb
+    :goto_dc
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsSetStoNInfoPresent:Z
 
-    if-eqz v7, :cond_14d
+    if-eqz v7, :cond_16e
 
     .line 319
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -422,10 +450,10 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 326
-    :goto_cb
+    :goto_ec
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsSetSigStrengthInfoPresent:Z
 
-    if-eqz v7, :cond_155
+    if-eqz v7, :cond_176
 
     .line 327
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -443,14 +471,14 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 335
-    :goto_db
+    :goto_fc
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPReportedLocationPresent:Z
 
-    if-eqz v7, :cond_15c
+    if-eqz v7, :cond_17d
 
     iget-object v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->stReportedLocation:Lcom/android/supl/loc/wifi/WIFIParameter$ReportedLocation;
 
-    if-eqz v7, :cond_15c
+    if-eqz v7, :cond_17d
 
     .line 336
     invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
@@ -468,7 +496,7 @@
     .local v4, "bstReportedLoc":[B
     array-length v7, v4
 
-    invoke-static {v4, v9, v1, v5, v7}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v4, v9, v1, v5, v7}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 339
     array-length v7, v4
@@ -484,8 +512,8 @@
 
     .line 346
     .end local v4    # "bstReportedLoc":[B
-    :goto_f7
-    if-eq v5, v6, :cond_163
+    :goto_118
+    if-eq v5, v6, :cond_184
 
     .line 347
     sget-object v7, Ljava/lang/System;->out:Ljava/io/PrintStream;
@@ -495,17 +523,19 @@
     invoke-virtual {v7, v8}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 353
-    :goto_101
+    :goto_122
     return-object v1
 
-    :cond_102
+    .end local v6    # "iSize":I
+    :cond_123
     move v7, v9
 
     .line 238
-    goto/16 :goto_11
+    goto/16 :goto_10
 
     .line 249
-    :cond_105
+    .restart local v6    # "iSize":I
+    :cond_126
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -513,10 +543,10 @@
     .line 250
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_2f
+    goto/16 :goto_50
 
     .line 257
-    :cond_10d
+    :cond_12e
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -524,10 +554,10 @@
     .line 258
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_3f
+    goto/16 :goto_60
 
     .line 265
-    :cond_115
+    :cond_136
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -535,10 +565,10 @@
     .line 266
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_4f
+    goto/16 :goto_70
 
     .line 273
-    :cond_11d
+    :cond_13e
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -546,10 +576,10 @@
     .line 274
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_5f
+    goto/16 :goto_80
 
     .line 281
-    :cond_125
+    :cond_146
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -557,10 +587,10 @@
     .line 282
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_6f
+    goto/16 :goto_90
 
     .line 289
-    :cond_12d
+    :cond_14e
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -568,10 +598,10 @@
     .line 290
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_7f
+    goto/16 :goto_a0
 
     .line 299
-    :cond_135
+    :cond_156
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -579,10 +609,10 @@
     .line 300
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_9b
+    goto/16 :goto_bc
 
     .line 307
-    :cond_13d
+    :cond_15e
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -590,10 +620,10 @@
     .line 308
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_ab
+    goto/16 :goto_cc
 
     .line 315
-    :cond_145
+    :cond_166
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -601,10 +631,10 @@
     .line 316
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_bb
+    goto/16 :goto_dc
 
     .line 323
-    :cond_14d
+    :cond_16e
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -612,10 +642,10 @@
     .line 324
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_cb
+    goto/16 :goto_ec
 
     .line 331
-    :cond_155
+    :cond_176
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -623,10 +653,10 @@
     .line 332
     add-int/lit8 v6, v6, 0x4
 
-    goto :goto_db
+    goto :goto_fc
 
     .line 342
-    :cond_15c
+    :cond_17d
     invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
@@ -634,39 +664,35 @@
     .line 343
     add-int/lit8 v6, v6, 0x4
 
-    goto :goto_f7
+    goto :goto_118
 
     .line 349
-    :cond_163
+    :cond_184
     new-array v2, v6, [B
 
     .line 350
     .local v2, "bTemp":[B
-    invoke-static {v1, v9, v2, v9, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v9, v2, v9, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 351
     move-object v1, v2
 
-    goto :goto_101
+    goto :goto_122
 .end method
 
 .method public getWIFIParameterInfo()[B
-    .registers 11
+    .registers 14
 
     .prologue
-    const/4 v9, 0x1
+    const/4 v12, 0x1
 
-    const/4 v8, 0x0
+    const/4 v11, 0x0
 
     .line 105
     const/4 v5, 0x0
 
-    .line 106
-    .local v5, "iOffset":I
-    const/4 v6, 0x0
-
     .line 107
-    .local v6, "iSize":I
+    .local v5, "iOffset":I
     const/16 v7, 0x7d5
 
     new-array v1, v7, [B
@@ -681,7 +707,7 @@
 
     .line 111
     .local v0, "bAPMACadd":[B
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put1([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put1([BII)I
 
     move-result v5
 
@@ -689,17 +715,49 @@
     const/4 v6, 0x1
 
     .line 113
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    .local v6, "iSize":I
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 114
     add-int/lit8 v6, v6, 0x4
 
+    .line 115
+    sget-object v7, Ljava/lang/System;->out:Ljava/io/PrintStream;
+
+    new-instance v8, Ljava/lang/StringBuilder;
+
+    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v9, "MAC Address"
+
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    new-instance v9, Ljava/lang/String;
+
+    iget-object v10, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->stAPMACadd:Lcom/android/supl/loc/BitString;
+
+    iget-object v10, v10, Lcom/android/supl/loc/BitString;->ucBuffer:[B
+
+    invoke-direct {v9, v10}, Ljava/lang/String;-><init>([B)V
+
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v8
+
+    invoke-virtual {v7, v8}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
+
     .line 116
     array-length v7, v0
 
-    invoke-static {v0, v8, v1, v5, v7}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v0, v11, v1, v5, v7}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 117
     array-length v7, v0
@@ -714,10 +772,10 @@
     .line 119
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPTPInfoPresent:Z
 
-    if-eqz v7, :cond_105
+    if-eqz v7, :cond_126
 
     .line 120
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -732,13 +790,13 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 127
-    :goto_32
+    :goto_53
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPAGInfoPresent:Z
 
-    if-eqz v7, :cond_10d
+    if-eqz v7, :cond_12e
 
     .line 128
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -753,13 +811,13 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 135
-    :goto_42
+    :goto_63
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPStoNInfoPresent:Z
 
-    if-eqz v7, :cond_115
+    if-eqz v7, :cond_136
 
     .line 136
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -774,13 +832,13 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 143
-    :goto_52
+    :goto_73
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPDeviceTypeInfoPresent:Z
 
-    if-eqz v7, :cond_11d
+    if-eqz v7, :cond_13e
 
     .line 144
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -795,13 +853,13 @@
     add-int/lit8 v6, v6, 0x8
 
     .line 151
-    :goto_62
+    :goto_83
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPSSInfoPresent:Z
 
-    if-eqz v7, :cond_125
+    if-eqz v7, :cond_146
 
     .line 152
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -816,13 +874,13 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 159
-    :goto_72
+    :goto_93
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPCFreqInfpPresent:Z
 
-    if-eqz v7, :cond_12d
+    if-eqz v7, :cond_14e
 
     .line 160
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -837,17 +895,17 @@
     add-int/lit8 v6, v6, 0x5
 
     .line 167
-    :goto_82
+    :goto_a3
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPRTDInfoPresent:Z
 
-    if-eqz v7, :cond_135
+    if-eqz v7, :cond_156
 
     iget-object v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->stAPRTD:Lcom/android/supl/loc/wifi/WIFIParameter$RTD;
 
-    if-eqz v7, :cond_135
+    if-eqz v7, :cond_156
 
     .line 168
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -862,7 +920,7 @@
     .local v3, "bstAPRTD":[B
     array-length v7, v3
 
-    invoke-static {v3, v8, v1, v5, v7}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v11, v1, v5, v7}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 171
     array-length v7, v3
@@ -878,13 +936,13 @@
 
     .line 177
     .end local v3    # "bstAPRTD":[B
-    :goto_9e
+    :goto_bf
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsSetTranPowerInfoPresent:Z
 
-    if-eqz v7, :cond_13d
+    if-eqz v7, :cond_15e
 
     .line 178
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -899,13 +957,13 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 186
-    :goto_ae
+    :goto_cf
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsSetAGInfoPresent:Z
 
-    if-eqz v7, :cond_145
+    if-eqz v7, :cond_166
 
     .line 187
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -920,13 +978,13 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 194
-    :goto_be
+    :goto_df
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsSetStoNInfoPresent:Z
 
-    if-eqz v7, :cond_14d
+    if-eqz v7, :cond_16e
 
     .line 195
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -941,13 +999,13 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 202
-    :goto_ce
+    :goto_ef
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsSetSigStrengthInfoPresent:Z
 
-    if-eqz v7, :cond_155
+    if-eqz v7, :cond_176
 
     .line 203
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -962,17 +1020,17 @@
     add-int/lit8 v6, v6, 0x6
 
     .line 211
-    :goto_de
+    :goto_ff
     iget-boolean v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->bIsAPReportedLocationPresent:Z
 
-    if-eqz v7, :cond_15c
+    if-eqz v7, :cond_17d
 
     iget-object v7, p0, Lcom/android/supl/loc/wifi/WIFIParameter;->stReportedLocation:Lcom/android/supl/loc/wifi/WIFIParameter$ReportedLocation;
 
-    if-eqz v7, :cond_15c
+    if-eqz v7, :cond_17d
 
     .line 212
-    invoke-static {v1, v5, v9}, Lcom/android/bytewriter/IO;->put4([BII)I
+    invoke-static {v1, v5, v12}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
@@ -987,7 +1045,7 @@
     .local v4, "bstReportedLoc":[B
     array-length v7, v4
 
-    invoke-static {v4, v8, v1, v5, v7}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v4, v11, v1, v5, v7}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 215
     array-length v7, v4
@@ -1003,8 +1061,8 @@
 
     .line 222
     .end local v4    # "bstReportedLoc":[B
-    :goto_fa
-    if-eq v5, v6, :cond_163
+    :goto_11b
+    if-eq v5, v6, :cond_184
 
     .line 223
     sget-object v7, Ljava/lang/System;->out:Ljava/io/PrintStream;
@@ -1014,151 +1072,151 @@
     invoke-virtual {v7, v8}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
     .line 229
-    :goto_104
+    :goto_125
     return-object v1
 
     .line 124
-    :cond_105
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_126
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 125
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_32
+    goto/16 :goto_53
 
     .line 132
-    :cond_10d
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_12e
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 133
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_42
+    goto/16 :goto_63
 
     .line 140
-    :cond_115
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_136
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 141
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_52
+    goto/16 :goto_73
 
     .line 148
-    :cond_11d
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_13e
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 149
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_62
+    goto/16 :goto_83
 
     .line 156
-    :cond_125
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_146
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 157
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_72
+    goto/16 :goto_93
 
     .line 164
-    :cond_12d
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_14e
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 165
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_82
+    goto/16 :goto_a3
 
     .line 174
-    :cond_135
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_156
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 175
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_9e
+    goto/16 :goto_bf
 
     .line 183
-    :cond_13d
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_15e
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 184
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_ae
+    goto/16 :goto_cf
 
     .line 191
-    :cond_145
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_166
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 192
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_be
+    goto/16 :goto_df
 
     .line 199
-    :cond_14d
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_16e
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 200
     add-int/lit8 v6, v6, 0x4
 
-    goto/16 :goto_ce
+    goto/16 :goto_ef
 
     .line 207
-    :cond_155
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_176
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 208
     add-int/lit8 v6, v6, 0x4
 
-    goto :goto_de
+    goto :goto_ff
 
     .line 218
-    :cond_15c
-    invoke-static {v1, v5, v8}, Lcom/android/bytewriter/IO;->put4([BII)I
+    :cond_17d
+    invoke-static {v1, v5, v11}, Lcom/android/bytewriter/IO;->put4([BII)I
 
     move-result v5
 
     .line 219
     add-int/lit8 v6, v6, 0x4
 
-    goto :goto_fa
+    goto :goto_11b
 
     .line 225
-    :cond_163
+    :cond_184
     new-array v2, v6, [B
 
     .line 226
     .local v2, "bTemp":[B
-    invoke-static {v1, v8, v2, v8, v6}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v11, v2, v11, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 227
     move-object v1, v2
 
-    goto :goto_104
+    goto :goto_125
 .end method

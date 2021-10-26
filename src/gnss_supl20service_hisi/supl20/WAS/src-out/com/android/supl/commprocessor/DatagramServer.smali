@@ -32,9 +32,7 @@
 # direct methods
 .method static synthetic -get0(Lcom/android/supl/commprocessor/DatagramServer;)I
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/DatagramServer;
 
-    .prologue
     iget v0, p0, Lcom/android/supl/commprocessor/DatagramServer;->iPortNo:I
 
     return v0
@@ -42,9 +40,7 @@
 
 .method static synthetic -get1(Lcom/android/supl/commprocessor/DatagramServer;)Lcom/android/supl/commprocessor/ServerCommProcessor;
     .registers 2
-    .param p0, "-this"    # Lcom/android/supl/commprocessor/DatagramServer;
 
-    .prologue
     iget-object v0, p0, Lcom/android/supl/commprocessor/DatagramServer;->scm:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
     return-object v0
@@ -85,7 +81,7 @@
     .line 78
     iput-object p3, p0, Lcom/android/supl/commprocessor/DatagramServer;->scm:Lcom/android/supl/commprocessor/ServerCommProcessor;
 
-    .line 79
+    .line 75
     return-void
 .end method
 
@@ -114,9 +110,9 @@
     .line 85
     iget-object v0, p0, Lcom/android/supl/commprocessor/DatagramServer;->serverThread:Lcom/android/supl/commprocessor/DatagramServer$ServerThread;
 
-    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
+    invoke-virtual {v0}, Lcom/android/supl/commprocessor/DatagramServer$ServerThread;->start()V
 
-    .line 86
+    .line 81
     return-void
 .end method
 
@@ -141,7 +137,7 @@
 
     invoke-static {v0}, Lcom/android/supl/commprocessor/DatagramServer$ServerThread;->-wrap0(Lcom/android/supl/commprocessor/DatagramServer$ServerThread;)V
 
-    .line 97
+    .line 91
     :cond_12
     return-void
 .end method

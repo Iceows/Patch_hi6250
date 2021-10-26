@@ -38,9 +38,17 @@
 .method constructor <init>(Lcom/android/supl/commprocessor/NetworkCommandProcessor;Lcom/android/supl/nc/NetworkController;IILjava/lang/String;IIII)V
     .registers 10
     .param p1, "this$0"    # Lcom/android/supl/commprocessor/NetworkCommandProcessor;
+    .param p2, "val$networkController"    # Lcom/android/supl/nc/NetworkController;
+    .param p3, "val$iSessionID"    # I
+    .param p4, "val$iReqID"    # I
+    .param p5, "val$stIP"    # Ljava/lang/String;
+    .param p6, "val$port"    # I
+    .param p7, "val$iSecure"    # I
+    .param p8, "val$iHandShakeTimeOut"    # I
+    .param p9, "val$iConnTimeOut"    # I
 
     .prologue
-    .line 1
+    .line 251
     iput-object p1, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->this$0:Lcom/android/supl/commprocessor/NetworkCommandProcessor;
 
     iput-object p2, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->val$networkController:Lcom/android/supl/nc/NetworkController;
@@ -59,10 +67,8 @@
 
     iput p9, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->val$iConnTimeOut:I
 
-    .line 251
     invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
 
-    .line 1
     return-void
 .end method
 
@@ -94,7 +100,7 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v5, "id :"
+    const-string/jumbo v5, "Session id :"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -170,7 +176,7 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v5, "id :"
+    const-string/jumbo v5, "Session id :"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -252,7 +258,7 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v5, "id :"
+    const-string/jumbo v5, "Session id :"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -313,7 +319,7 @@
 
     invoke-virtual {v3, v4, v5, v6}, Lcom/android/supl/commprocessor/NetworkCommandProcessor;->sendOnConnectionStatus(III)V
 
-    .line 281
+    .line 253
     :goto_f0
     return-void
 
@@ -325,7 +331,7 @@
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v5, "id :"
+    const-string/jumbo v5, "Session id :"
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -391,13 +397,21 @@
     invoke-virtual {v3, v4}, Ljava/util/HashSet;->remove(Ljava/lang/Object;)Z
 
     .line 278
-    iget-object v3, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->this$0:Lcom/android/supl/commprocessor/NetworkCommandProcessor;
+    iget-object v3, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->val$networkController:Lcom/android/supl/nc/NetworkController;
 
-    iget-object v4, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->val$networkController:Lcom/android/supl/nc/NetworkController;
+    invoke-virtual {v3}, Lcom/android/supl/nc/NetworkController;->getConnectionCount()I
 
-    invoke-static {v3, v4, v2}, Lcom/android/supl/commprocessor/NetworkCommandProcessor;->-wrap0(Lcom/android/supl/commprocessor/NetworkCommandProcessor;Lcom/android/supl/nc/NetworkController;Ljava/lang/String;)V
+    move-result v3
+
+    if-ne v3, v8, :cond_155
 
     .line 279
+    iget-object v3, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->this$0:Lcom/android/supl/commprocessor/NetworkCommandProcessor;
+
+    invoke-virtual {v3, v2}, Lcom/android/supl/commprocessor/NetworkCommandProcessor;->removeFailerSession(Ljava/lang/String;)V
+
+    .line 283
+    :goto_14b
     iget-object v3, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->this$0:Lcom/android/supl/commprocessor/NetworkCommandProcessor;
 
     iget v4, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->val$iSessionID:I
@@ -407,4 +421,12 @@
     invoke-virtual {v3, v4, v5, v0}, Lcom/android/supl/commprocessor/NetworkCommandProcessor;->sendNotConnectionStatus(II[I)V
 
     goto :goto_f0
+
+    .line 281
+    :cond_155
+    iget-object v3, p0, Lcom/android/supl/commprocessor/NetworkCommandProcessor$1;->val$networkController:Lcom/android/supl/nc/NetworkController;
+
+    invoke-virtual {v3}, Lcom/android/supl/nc/NetworkController;->decrementConnectionCount()V
+
+    goto :goto_14b
 .end method

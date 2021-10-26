@@ -58,7 +58,6 @@
     .line 66
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 68
     return-void
 .end method
 
@@ -73,7 +72,7 @@
     .line 98
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SILocationReport;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 99
+    .line 97
     return-void
 .end method
 
@@ -115,7 +114,7 @@
 
     iput v0, p0, Lcom/android/supl/si/SILocationReport;->m_iLon:I
 
-    .line 107
+    .line 102
     return-void
 .end method
 
@@ -234,6 +233,6 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 122
+    .line 117
     return-void
 .end method

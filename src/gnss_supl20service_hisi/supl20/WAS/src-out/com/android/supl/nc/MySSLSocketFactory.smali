@@ -24,7 +24,7 @@
     .line 54
     iput-object p1, p0, Lcom/android/supl/nc/MySSLSocketFactory;->delegate:Ljavax/net/ssl/SSLSocketFactory;
 
-    .line 55
+    .line 53
     return-void
 .end method
 
@@ -42,7 +42,7 @@
     .line 110
     iget-object v0, p0, Lcom/android/supl/nc/MySSLSocketFactory;->delegate:Ljavax/net/ssl/SSLSocketFactory;
 
-    invoke-virtual {v0}, Ljavax/net/SocketFactory;->createSocket()Ljava/net/Socket;
+    invoke-virtual {v0}, Ljavax/net/ssl/SSLSocketFactory;->createSocket()Ljava/net/Socket;
 
     move-result-object v0
 
@@ -64,7 +64,7 @@
     .line 81
     iget-object v0, p0, Lcom/android/supl/nc/MySSLSocketFactory;->delegate:Ljavax/net/ssl/SSLSocketFactory;
 
-    invoke-virtual {v0, p1, p2}, Ljavax/net/SocketFactory;->createSocket(Ljava/lang/String;I)Ljava/net/Socket;
+    invoke-virtual {v0, p1, p2}, Ljavax/net/ssl/SSLSocketFactory;->createSocket(Ljava/lang/String;I)Ljava/net/Socket;
 
     move-result-object v0
 
@@ -88,7 +88,7 @@
     .line 96
     iget-object v0, p0, Lcom/android/supl/nc/MySSLSocketFactory;->delegate:Ljavax/net/ssl/SSLSocketFactory;
 
-    invoke-virtual {v0, p1, p2, p3, p4}, Ljavax/net/SocketFactory;->createSocket(Ljava/lang/String;ILjava/net/InetAddress;I)Ljava/net/Socket;
+    invoke-virtual {v0, p1, p2, p3, p4}, Ljavax/net/ssl/SSLSocketFactory;->createSocket(Ljava/lang/String;ILjava/net/InetAddress;I)Ljava/net/Socket;
 
     move-result-object v0
 
@@ -109,7 +109,7 @@
     .line 88
     iget-object v0, p0, Lcom/android/supl/nc/MySSLSocketFactory;->delegate:Ljavax/net/ssl/SSLSocketFactory;
 
-    invoke-virtual {v0, p1, p2}, Ljavax/net/SocketFactory;->createSocket(Ljava/net/InetAddress;I)Ljava/net/Socket;
+    invoke-virtual {v0, p1, p2}, Ljavax/net/ssl/SSLSocketFactory;->createSocket(Ljava/net/InetAddress;I)Ljava/net/Socket;
 
     move-result-object v0
 
@@ -132,7 +132,7 @@
     .line 104
     iget-object v0, p0, Lcom/android/supl/nc/MySSLSocketFactory;->delegate:Ljavax/net/ssl/SSLSocketFactory;
 
-    invoke-virtual {v0, p1, p2, p3, p4}, Ljavax/net/SocketFactory;->createSocket(Ljava/net/InetAddress;ILjava/net/InetAddress;I)Ljava/net/Socket;
+    invoke-virtual {v0, p1, p2, p3, p4}, Ljavax/net/ssl/SSLSocketFactory;->createSocket(Ljava/net/InetAddress;ILjava/net/InetAddress;I)Ljava/net/Socket;
 
     move-result-object v0
 

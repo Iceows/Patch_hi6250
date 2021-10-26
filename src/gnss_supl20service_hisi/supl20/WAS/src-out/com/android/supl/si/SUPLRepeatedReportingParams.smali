@@ -70,7 +70,7 @@
     .line 114
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLRepeatedReportingParams;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 115
+    .line 113
     return-void
 .end method
 
@@ -101,7 +101,7 @@
     .line 69
     iput-wide p4, p0, Lcom/android/supl/si/SUPLRepeatedReportingParams;->dwMaximumNumberOfReports:J
 
-    .line 71
+    .line 66
     return-void
 .end method
 
@@ -212,7 +212,7 @@
 
     iput-wide v2, p0, Lcom/android/supl/si/SUPLRepeatedReportingParams;->dwMaximumNumberOfReports:J
 
-    .line 129
+    .line 120
     return-void
 .end method
 
@@ -263,48 +263,40 @@
 .end method
 
 .method public writeToParcel(Landroid/os/Parcel;I)V
-    .registers 7
+    .registers 5
     .param p1, "dest"    # Landroid/os/Parcel;
     .param p2, "flags"    # I
 
     .prologue
-    .line 136
-    const/4 v1, 0x1
-
-    .line 137
-    .local v1, "bTrue":B
-    const/4 v0, 0x0
-
     .line 138
-    .local v0, "bFalse":B
-    iget-boolean v2, p0, Lcom/android/supl/si/SUPLRepeatedReportingParams;->bEnableRepeatedReporting:Z
+    iget-boolean v0, p0, Lcom/android/supl/si/SUPLRepeatedReportingParams;->bEnableRepeatedReporting:Z
 
-    if-eqz v2, :cond_15
+    if-eqz v0, :cond_13
 
     .line 136
-    const/4 v2, 0x1
+    const/4 v0, 0x1
 
     .line 138
-    :goto_7
-    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeByte(B)V
+    :goto_5
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
     .line 139
-    iget-wide v2, p0, Lcom/android/supl/si/SUPLRepeatedReportingParams;->dwMinimumIntervalTime:J
+    iget-wide v0, p0, Lcom/android/supl/si/SUPLRepeatedReportingParams;->dwMinimumIntervalTime:J
 
-    invoke-virtual {p1, v2, v3}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
     .line 140
-    iget-wide v2, p0, Lcom/android/supl/si/SUPLRepeatedReportingParams;->dwMaximumNumberOfReports:J
+    iget-wide v0, p0, Lcom/android/supl/si/SUPLRepeatedReportingParams;->dwMaximumNumberOfReports:J
 
-    invoke-virtual {p1, v2, v3}, Landroid/os/Parcel;->writeLong(J)V
+    invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 141
+    .line 135
     return-void
 
     .line 137
-    :cond_15
-    const/4 v2, 0x0
+    :cond_13
+    const/4 v0, 0x0
 
     .line 138
-    goto :goto_7
+    goto :goto_5
 .end method

@@ -65,7 +65,7 @@
     .line 129
     invoke-virtual {p0, p1}, Lcom/android/supl/si/SUPLThirdPartyIDs;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 130
+    .line 128
     return-void
 .end method
 
@@ -104,7 +104,7 @@
     :cond_15
     iput-object p2, p0, Lcom/android/supl/si/SUPLThirdPartyIDs;->mSuplThirdPartyID:[Lcom/android/supl/si/SUPLThirdPartyID;
 
-    .line 65
+    .line 59
     return-void
 .end method
 
@@ -209,7 +209,7 @@
     .restart local v1    # "bThridPartyID":[B
     array-length v9, v1
 
-    invoke-static {v1, v6, v0, v2, v9}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v1, v6, v0, v2, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 91
     array-length v9, v1
@@ -327,7 +327,7 @@
     .restart local v1    # "i":I
     goto :goto_1e
 
-    .line 149
+    .line 136
     .end local v1    # "i":I
     .end local v3    # "parcels":[Landroid/os/Parcelable;
     :cond_2e
@@ -414,7 +414,7 @@
 
     invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelableArray([Landroid/os/Parcelable;I)V
 
-    .line 162
+    .line 156
     :cond_e
     return-void
 .end method

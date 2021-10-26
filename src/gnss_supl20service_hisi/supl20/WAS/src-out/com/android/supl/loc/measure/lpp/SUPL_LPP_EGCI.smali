@@ -55,7 +55,7 @@
 
     iput-object v0, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->nMNC:[B
 
-    .line 75
+    .line 70
     return-void
 .end method
 
@@ -67,11 +67,7 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 79
-    const/4 v2, 0x6
-
     .line 80
-    .local v2, "iSize":I
     const/4 v1, 0x0
 
     .line 82
@@ -83,6 +79,7 @@
     add-int/lit8 v2, v3, 0x6
 
     .line 84
+    .local v2, "iSize":I
     iget-byte v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->byValidMNCValues:B
 
     mul-int/lit8 v3, v3, 0x1
@@ -103,18 +100,18 @@
     .line 88
     iget-byte v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->byValidMCCValues:B
 
-    if-lez v3, :cond_28
+    if-lez v3, :cond_27
 
     iget-object v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->nMCC:[B
 
-    if-eqz v3, :cond_28
+    if-eqz v3, :cond_27
 
     .line 89
     iget-object v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->nMCC:[B
 
     iget-byte v4, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->byValidMCCValues:B
 
-    invoke-static {v3, v5, v0, v1, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v5, v0, v1, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 90
     iget-byte v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->byValidMCCValues:B
@@ -122,7 +119,7 @@
     add-int/2addr v1, v3
 
     .line 92
-    :cond_28
+    :cond_27
     iget-byte v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->byValidMNCValues:B
 
     invoke-static {v0, v1, v3}, Lcom/android/bytewriter/IO;->put1([BII)I
@@ -132,18 +129,18 @@
     .line 93
     iget-byte v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->byValidMNCValues:B
 
-    if-lez v3, :cond_40
+    if-lez v3, :cond_3f
 
     iget-object v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->nMNC:[B
 
-    if-eqz v3, :cond_40
+    if-eqz v3, :cond_3f
 
     .line 94
     iget-object v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->nMNC:[B
 
     iget-byte v4, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->byValidMNCValues:B
 
-    invoke-static {v3, v5, v0, v1, v4}, Ljava/lang/System;->arraycopy([BI[BII)V
+    invoke-static {v3, v5, v0, v1, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 95
     iget-byte v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->byValidMNCValues:B
@@ -151,7 +148,7 @@
     add-int/2addr v1, v3
 
     .line 97
-    :cond_40
+    :cond_3f
     iget v3, p0, Lcom/android/supl/loc/measure/lpp/SUPL_LPP_EGCI;->ulCellID:I
 
     invoke-static {v0, v1, v3}, Lcom/android/bytewriter/IO;->put4([BII)I
