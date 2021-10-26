@@ -209,7 +209,7 @@
     .restart local v1    # "bThridPartyID":[B
     array-length v9, v1
 
-    invoke-static {v1, v6, v0, v2, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v1, v6, v0, v2, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 91
     array-length v9, v1

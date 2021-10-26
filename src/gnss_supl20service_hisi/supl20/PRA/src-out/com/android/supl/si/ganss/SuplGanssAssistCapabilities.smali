@@ -205,7 +205,7 @@
     .local v0, "bAsstCapElem":[B
     array-length v9, v0
 
-    invoke-static {v0, v6, v1, v4, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v0, v6, v1, v4, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 91
     array-length v9, v0

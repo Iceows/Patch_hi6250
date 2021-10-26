@@ -95,7 +95,7 @@
     .local v0, "bData":[B
     array-length v3, v1
 
-    invoke-static {v1, v4, v0, v2, v3}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v1, v4, v0, v2, v3}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 201
     array-length v3, v1

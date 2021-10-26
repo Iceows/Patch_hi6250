@@ -85,7 +85,7 @@
 
     const/4 v6, 0x0
 
-    invoke-static {v1, v5, v3, v6, v4}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v1, v5, v3, v6, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 145
     iget-object v1, p0, Lcom/android/supl/SUPLHIDLInterface$HiSuplCallback;->this$0:Lcom/android/supl/SUPLHIDLInterface;
@@ -187,7 +187,7 @@
 
     const/4 v6, 0x0
 
-    invoke-static {v1, v5, v3, v6, v4}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v1, v5, v3, v6, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 160
     iget-object v1, p0, Lcom/android/supl/SUPLHIDLInterface$HiSuplCallback;->this$0:Lcom/android/supl/SUPLHIDLInterface;

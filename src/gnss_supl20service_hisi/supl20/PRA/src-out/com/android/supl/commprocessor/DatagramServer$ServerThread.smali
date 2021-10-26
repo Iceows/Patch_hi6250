@@ -330,7 +330,7 @@
     move-result v9
 
     .line 153
-    invoke-static {v13, v7, v2, v9, v6}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v13, v7, v2, v9, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 155
     iput-object v2, v12, Lcom/android/supl/nc/SendToServer;->m_bPacket:[B

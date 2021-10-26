@@ -1461,7 +1461,7 @@
 
     move/from16 v1, v24
 
-    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 855
     add-int v24, v24, v9
@@ -1502,7 +1502,7 @@
 
     move/from16 v1, v24
 
-    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 865
     add-int v24, v24, v9
@@ -1543,7 +1543,7 @@
 
     move/from16 v1, v24
 
-    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 874
     add-int v24, v24, v9
@@ -1584,7 +1584,7 @@
 
     move/from16 v1, v24
 
-    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 884
     add-int v24, v24, v9
@@ -1625,7 +1625,7 @@
 
     move/from16 v1, v24
 
-    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 893
     add-int v24, v24, v9
@@ -1666,7 +1666,7 @@
 
     move/from16 v1, v24
 
-    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 902
     add-int v24, v24, v9
@@ -1707,7 +1707,7 @@
 
     move/from16 v1, v24
 
-    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 911
     add-int v24, v24, v9
@@ -1748,7 +1748,7 @@
 
     move/from16 v1, v24
 
-    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v5, v0, v4, v1, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 920
     add-int v24, v24, v9
@@ -3309,7 +3309,7 @@
 
     const/4 v2, 0x0
 
-    invoke-static {v7, v2, v5, v11, v1}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v7, v2, v5, v11, v1}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 1156
     array-length v1, v7

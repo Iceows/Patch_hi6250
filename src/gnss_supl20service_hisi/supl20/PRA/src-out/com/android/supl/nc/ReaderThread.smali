@@ -374,7 +374,7 @@
 
     const/4 v3, 0x0
 
-    invoke-static {p2, v3, v2, v1, p1}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {p2, v3, v2, v1, p1}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 197
     add-int/2addr v1, p1
@@ -700,7 +700,7 @@
 
     const/4 v11, 0x0
 
-    invoke-static {v0, v10, v9, v11, v8}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v0, v10, v9, v11, v8}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 116
     :goto_6b

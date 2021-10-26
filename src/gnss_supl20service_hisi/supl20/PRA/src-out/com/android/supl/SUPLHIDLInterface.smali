@@ -429,7 +429,7 @@
 
     const/4 v6, 0x0
 
-    invoke-static {v2, v5, v3, v6, v4}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v2, v5, v3, v6, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
     :try_end_22
     .catchall {:try_start_3 .. :try_end_22} :catchall_3b
 
@@ -546,7 +546,7 @@
 
     const/4 v6, 0x0
 
-    invoke-static {v2, v5, v3, v6, v4}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v2, v5, v3, v6, v4}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
     :try_end_23
     .catchall {:try_start_3 .. :try_end_23} :catchall_3c
 

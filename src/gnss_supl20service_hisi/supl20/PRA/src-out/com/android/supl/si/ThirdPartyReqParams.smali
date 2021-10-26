@@ -310,7 +310,7 @@
     .line 132
     array-length v6, v2
 
-    invoke-static {v2, v7, v1, v4, v6}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v2, v7, v1, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 133
     array-length v6, v2
@@ -331,7 +331,7 @@
     .line 139
     array-length v6, v0
 
-    invoke-static {v0, v7, v1, v4, v6}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v0, v7, v1, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 140
     array-length v6, v0
@@ -342,7 +342,7 @@
     :goto_55
     array-length v6, v3
 
-    invoke-static {v3, v7, v1, v4, v6}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v3, v7, v1, v4, v6}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 145
     array-length v6, v3

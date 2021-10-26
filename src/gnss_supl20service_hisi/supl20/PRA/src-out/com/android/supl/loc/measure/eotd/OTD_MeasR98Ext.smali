@@ -158,7 +158,7 @@
 
     const/4 v10, 0x0
 
-    invoke-static {v0, v10, v2, v4, v9}, Lcom/android/bytewriter/IO;->CopyArray([BI[BII)V
+    invoke-static {v0, v10, v2, v4, v9}, Lcom/android/altair/CopyArrayMod;->CopyArray([BI[BII)V
 
     .line 77
     array-length v9, v0

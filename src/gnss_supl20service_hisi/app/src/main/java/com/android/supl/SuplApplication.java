@@ -2,12 +2,8 @@ package com.android.supl;
 
 import android.app.Application;
 import android.content.Context;
+import com.android.altair.CopyArrayMod;
 
-
-
-/*
- * Illegal identifiers - consider using --renameillegalidents true
- */
 public class SuplApplication
 extends Application {
     private static final String TAG = "SUPL20_Main";
@@ -18,18 +14,17 @@ extends Application {
     }
 
     private void startSuplServices() {
-        new Thread(){
-
-            @Override
-            public void run() {
-                Log.d(SuplApplication.TAG, "Starting scm service");
-            }
-        }.start();
+        byte[] byArrayIn={1,2,3,4,5};
+        int nStartIn=0;
+        byte[] byArrayOut={0,0,0,0,0};
+        int nStartOut=0;
+        int len=5;
+        Log.d(SuplApplication.TAG, "Starting startSuplServices");
+        //CopyArrayMod(byArrayIn,nStartIn,byArrayOut,nStartOut,len);
     }
 
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG, "Starting supl application");
         context = this.getApplicationContext();
         this.startSuplServices();
     }

@@ -3,722 +3,959 @@
 .source "IO.java"
 
 
-# static fields
-.field private static final TAG:Ljava/lang/String; = "SUPL20_IO"
-
-
 # direct methods
 .method public constructor <init>()V
-    .locals 0
+    .registers 1
 
-    .line 9
+    .prologue
+    .line 45
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method public static CopyArray([BI[BII)V
-    .locals 3
-
-    const/4 v0, 0x0
-
-    :goto_0
-    if-ge v0, p4, :cond_0
-
-    add-int v1, v0, p3
-
-    add-int v2, v0, p1
-
-    .line 18
-    aget-byte v2, p0, v2
-
-    aput-byte v2, p2, v1
-
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    return-void
-.end method
-
 .method public static get1([BI)I
-    .locals 3
+    .registers 7
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
+    .prologue
+    .line 206
+    const/4 v3, 0x0
+
+    .line 209
+    .local v3, "r":I
     const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    .local v0, "i":I
+    move v1, p1
 
-    :goto_0
-    const/4 v2, 0x1
+    .end local p1    # "index":I
+    .local v1, "index":I
+    :goto_3
+    const/4 v4, 0x1
 
-    if-ge v0, v2, :cond_1
+    if-ge v0, v4, :cond_16
 
-    .line 29
-    aget-byte v2, p0, p1
+    .line 211
+    add-int/lit8 p1, v1, 0x1
 
-    if-gez v2, :cond_0
+    .end local v1    # "index":I
+    .restart local p1    # "index":I
+    aget-byte v2, p0, v1
 
+    .line 212
+    .local v2, "n":I
+    if-gez v2, :cond_e
+
+    .line 213
     add-int/lit16 v2, v2, 0x100
 
-    :cond_0
-    shl-int/lit8 v1, v1, 0x8
+    .line 214
+    :cond_e
+    shl-int/lit8 v4, v3, 0x8
 
-    add-int/2addr v1, v2
+    add-int v3, v4, v2
 
+    .line 209
     add-int/lit8 v0, v0, 0x1
 
-    add-int/lit8 p1, p1, 0x1
+    move v1, p1
 
-    goto :goto_0
+    .end local p1    # "index":I
+    .restart local v1    # "index":I
+    goto :goto_3
 
-    :cond_1
-    return v1
+    .line 217
+    .end local v2    # "n":I
+    :cond_16
+    return v3
 .end method
 
 .method public static get2([BI)I
-    .locals 3
+    .registers 7
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
+    .prologue
+    .line 172
+    const/4 v3, 0x0
+
+    .line 175
+    .local v3, "r":I
     const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    .local v0, "i":I
+    move v1, p1
 
-    :goto_0
-    const/4 v2, 0x2
+    .end local p1    # "index":I
+    .local v1, "index":I
+    :goto_3
+    const/4 v4, 0x2
 
-    if-ge v0, v2, :cond_1
+    if-ge v0, v4, :cond_16
 
-    .line 45
-    aget-byte v2, p0, p1
+    .line 177
+    add-int/lit8 p1, v1, 0x1
 
-    if-gez v2, :cond_0
+    .end local v1    # "index":I
+    .restart local p1    # "index":I
+    aget-byte v2, p0, v1
 
+    .line 178
+    .local v2, "n":I
+    if-gez v2, :cond_e
+
+    .line 179
     add-int/lit16 v2, v2, 0x100
 
-    :cond_0
-    shl-int/lit8 v1, v1, 0x8
+    .line 180
+    :cond_e
+    shl-int/lit8 v4, v3, 0x8
 
-    add-int/2addr v1, v2
+    add-int v3, v4, v2
 
+    .line 175
     add-int/lit8 v0, v0, 0x1
 
-    add-int/lit8 p1, p1, 0x1
+    move v1, p1
 
-    goto :goto_0
+    .end local p1    # "index":I
+    .restart local v1    # "index":I
+    goto :goto_3
 
-    :cond_1
-    return v1
+    .line 183
+    .end local v2    # "n":I
+    :cond_16
+    return v3
 .end method
 
 .method public static get2r([BI)I
-    .locals 3
+    .registers 6
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
-    const/4 v0, 0x0
+    .prologue
+    .line 190
+    const/4 v2, 0x0
 
-    const/4 v1, 0x1
+    .line 193
+    .local v2, "r":I
+    const/4 v0, 0x1
 
-    :goto_0
-    if-ltz v1, :cond_1
+    .local v0, "i":I
+    :goto_2
+    if-ltz v0, :cond_13
 
-    add-int v2, p1, v1
+    .line 195
+    add-int v3, p1, v0
 
-    .line 61
-    aget-byte v2, p0, v2
+    aget-byte v1, p0, v3
 
-    if-gez v2, :cond_0
+    .line 196
+    .local v1, "n":I
+    if-gez v1, :cond_c
 
-    add-int/lit16 v2, v2, 0x100
+    .line 197
+    add-int/lit16 v1, v1, 0x100
 
-    :cond_0
-    shl-int/lit8 v0, v0, 0x8
+    .line 198
+    :cond_c
+    shl-int/lit8 v3, v2, 0x8
 
-    add-int/2addr v0, v2
+    add-int v2, v3, v1
 
-    add-int/lit8 v1, v1, -0x1
+    .line 193
+    add-int/lit8 v0, v0, -0x1
 
-    goto :goto_0
+    goto :goto_2
 
-    :cond_1
-    return v0
+    .line 201
+    .end local v1    # "n":I
+    :cond_13
+    return v2
 .end method
 
 .method public static get3([BI)I
-    .locals 3
+    .registers 7
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
+    .prologue
+    .line 157
+    const/4 v3, 0x0
+
+    .line 160
+    .local v3, "r":I
     const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    .local v0, "i":I
+    move v1, p1
 
-    :goto_0
-    const/4 v2, 0x3
+    .end local p1    # "index":I
+    .local v1, "index":I
+    :goto_3
+    const/4 v4, 0x3
 
-    if-ge v0, v2, :cond_1
+    if-ge v0, v4, :cond_16
 
-    .line 76
-    aget-byte v2, p0, p1
+    .line 161
+    add-int/lit8 p1, v1, 0x1
 
-    if-gez v2, :cond_0
+    .end local v1    # "index":I
+    .restart local p1    # "index":I
+    aget-byte v2, p0, v1
+
+    .line 162
+    .local v2, "n":I
+    if-gez v2, :cond_e
 
     add-int/lit16 v2, v2, 0x100
 
-    :cond_0
-    shl-int/lit8 v1, v1, 0x8
+    .line 163
+    :cond_e
+    shl-int/lit8 v4, v3, 0x8
 
-    add-int/2addr v1, v2
+    add-int v3, v4, v2
 
+    .line 160
     add-int/lit8 v0, v0, 0x1
 
-    add-int/lit8 p1, p1, 0x1
+    move v1, p1
 
-    goto :goto_0
+    .end local p1    # "index":I
+    .restart local v1    # "index":I
+    goto :goto_3
 
-    :cond_1
-    return v1
+    .line 166
+    .end local v2    # "n":I
+    :cond_16
+    return v3
 .end method
 
 .method public static get4([BI)I
-    .locals 3
+    .registers 7
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
+    .prologue
+    .line 122
+    const/4 v3, 0x0
+
+    .line 125
+    .local v3, "r":I
     const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    .local v0, "i":I
+    move v1, p1
 
-    :goto_0
-    const/4 v2, 0x4
+    .end local p1    # "index":I
+    .local v1, "index":I
+    :goto_3
+    const/4 v4, 0x4
 
-    if-ge v0, v2, :cond_1
+    if-ge v0, v4, :cond_16
 
-    .line 92
-    aget-byte v2, p0, p1
+    .line 127
+    add-int/lit8 p1, v1, 0x1
 
-    if-gez v2, :cond_0
+    .end local v1    # "index":I
+    .restart local p1    # "index":I
+    aget-byte v2, p0, v1
 
+    .line 128
+    .local v2, "n":I
+    if-gez v2, :cond_e
+
+    .line 129
     add-int/lit16 v2, v2, 0x100
 
-    :cond_0
-    shl-int/lit8 v1, v1, 0x8
+    .line 130
+    :cond_e
+    shl-int/lit8 v4, v3, 0x8
 
-    add-int/2addr v1, v2
+    add-int v3, v4, v2
 
+    .line 125
     add-int/lit8 v0, v0, 0x1
 
-    add-int/lit8 p1, p1, 0x1
+    move v1, p1
 
-    goto :goto_0
+    .end local p1    # "index":I
+    .restart local v1    # "index":I
+    goto :goto_3
 
-    :cond_1
-    return v1
+    .line 133
+    .end local v2    # "n":I
+    :cond_16
+    return v3
 .end method
 
 .method public static get4l([BI)I
-    .locals 3
+    .registers 6
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
-    const/4 v0, 0x0
+    .prologue
+    .line 50
+    const/4 v2, 0x0
 
-    const/4 v1, 0x3
+    .line 53
+    .local v2, "r":I
+    const/4 v0, 0x3
 
-    :goto_0
-    if-ltz v1, :cond_1
+    .local v0, "i":I
+    :goto_2
+    if-ltz v0, :cond_13
 
-    add-int v2, p1, v1
+    .line 54
+    add-int v3, p1, v0
 
-    .line 108
-    aget-byte v2, p0, v2
+    aget-byte v1, p0, v3
 
-    if-gez v2, :cond_0
+    .line 55
+    .local v1, "n":I
+    if-gez v1, :cond_c
 
-    add-int/lit16 v2, v2, 0x100
+    .line 56
+    add-int/lit16 v1, v1, 0x100
 
-    :cond_0
-    shl-int/lit8 v0, v0, 0x8
+    .line 58
+    :cond_c
+    shl-int/lit8 v3, v2, 0x8
 
-    add-int/2addr v0, v2
+    add-int v2, v3, v1
 
-    add-int/lit8 v1, v1, -0x1
+    .line 53
+    add-int/lit8 v0, v0, -0x1
 
-    goto :goto_0
+    goto :goto_2
 
-    :cond_1
-    return v0
+    .line 61
+    .end local v1    # "n":I
+    :cond_13
+    return v2
 .end method
 
 .method public static get4r([BI)I
-    .locals 3
+    .registers 6
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
-    const/4 v0, 0x0
+    .prologue
+    .line 140
+    const/4 v2, 0x0
 
-    const/4 v1, 0x3
+    .line 143
+    .local v2, "r":I
+    const/4 v0, 0x3
 
-    :goto_0
-    if-ltz v1, :cond_1
+    .local v0, "i":I
+    :goto_2
+    if-ltz v0, :cond_13
 
-    add-int v2, p1, v1
+    .line 145
+    add-int v3, p1, v0
 
-    .line 123
-    aget-byte v2, p0, v2
+    aget-byte v1, p0, v3
 
-    if-gez v2, :cond_0
+    .line 146
+    .local v1, "n":I
+    if-gez v1, :cond_c
 
-    add-int/lit16 v2, v2, 0x100
+    .line 147
+    add-int/lit16 v1, v1, 0x100
 
-    :cond_0
-    shl-int/lit8 v0, v0, 0x8
+    .line 148
+    :cond_c
+    shl-int/lit8 v3, v2, 0x8
 
-    add-int/2addr v0, v2
+    add-int v2, v3, v1
 
-    add-int/lit8 v1, v1, -0x1
+    .line 143
+    add-int/lit8 v0, v0, -0x1
 
-    goto :goto_0
+    goto :goto_2
 
-    :cond_1
-    return v0
+    .line 151
+    .end local v1    # "n":I
+    :cond_13
+    return v2
 .end method
 
 .method public static get8([BI)J
-    .locals 10
+    .registers 11
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
-    const-wide/16 v0, 0x0
+    .prologue
+    const/16 v8, 0x8
 
-    const/4 v2, 0x0
+    .line 86
+    const-wide/16 v4, 0x0
 
-    move-wide v3, v0
+    .line 89
+    .local v4, "r":J
+    const/4 v0, 0x0
 
-    :goto_0
-    const/16 v5, 0x8
+    .local v0, "i":I
+    move v1, p1
 
-    if-ge v2, v5, :cond_1
+    .end local p1    # "index":I
+    .local v1, "index":I
+    :goto_6
+    if-ge v0, v8, :cond_1e
 
-    .line 138
-    aget-byte v6, p0, p1
+    .line 91
+    add-int/lit8 p1, v1, 0x1
 
-    int-to-long v6, v6
+    .end local v1    # "index":I
+    .restart local p1    # "index":I
+    aget-byte v6, p0, v1
 
-    cmp-long v8, v6, v0
+    int-to-long v2, v6
 
-    if-gez v8, :cond_0
+    .line 92
+    .local v2, "n":J
+    const-wide/16 v6, 0x0
 
-    const-wide/16 v8, 0x100
+    cmp-long v6, v2, v6
 
-    add-long/2addr v6, v8
+    if-gez v6, :cond_16
 
-    :cond_0
-    shl-long/2addr v3, v5
+    .line 93
+    const-wide/16 v6, 0x100
 
-    add-long/2addr v3, v6
+    add-long/2addr v2, v6
 
-    add-int/lit8 v2, v2, 0x1
+    .line 94
+    :cond_16
+    shl-long v6, v4, v8
 
-    add-int/lit8 p1, p1, 0x1
+    add-long v4, v6, v2
 
-    goto :goto_0
+    .line 89
+    add-int/lit8 v0, v0, 0x1
 
-    :cond_1
-    return-wide v3
+    move v1, p1
+
+    .end local p1    # "index":I
+    .restart local v1    # "index":I
+    goto :goto_6
+
+    .line 97
+    .end local v2    # "n":J
+    :cond_1e
+    return-wide v4
 .end method
 
 .method public static get8l([BI)J
-    .locals 9
+    .registers 10
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
-    const-wide/16 v0, 0x0
+    .prologue
+    .line 65
+    const-wide/16 v4, 0x0
 
-    const/4 v2, 0x7
+    .line 68
+    .local v4, "r":J
+    const/4 v0, 0x7
 
-    move-wide v3, v0
+    .local v0, "i":I
+    :goto_3
+    if-ltz v0, :cond_1c
 
-    :goto_0
-    if-ltz v2, :cond_1
+    .line 69
+    add-int v1, p1, v0
 
-    add-int v5, p1, v2
+    aget-byte v1, p0, v1
 
-    .line 154
-    aget-byte v5, p0, v5
+    int-to-long v2, v1
 
-    int-to-long v5, v5
+    .line 73
+    .local v2, "n":J
+    const-wide/16 v6, 0x0
 
-    cmp-long v7, v5, v0
+    cmp-long v1, v2, v6
 
-    if-gez v7, :cond_0
+    if-gez v1, :cond_13
 
-    const-wide/16 v7, 0x100
+    .line 74
+    const-wide/16 v6, 0x100
 
-    add-long/2addr v5, v7
+    add-long/2addr v2, v6
 
-    :cond_0
-    const/16 v7, 0x8
+    .line 76
+    :cond_13
+    const/16 v1, 0x8
 
-    shl-long/2addr v3, v7
+    shl-long v6, v4, v1
 
-    add-long/2addr v3, v5
+    add-long v4, v6, v2
 
-    add-int/lit8 v2, v2, -0x1
+    .line 68
+    add-int/lit8 v0, v0, -0x1
 
-    goto :goto_0
+    goto :goto_3
 
-    :cond_1
-    return-wide v3
+    .line 81
+    .end local v2    # "n":J
+    :cond_1c
+    return-wide v4
 .end method
 
 .method public static get8r([BI)J
-    .locals 9
+    .registers 10
+    .param p0, "array"    # [B
+    .param p1, "index"    # I
 
-    const-wide/16 v0, 0x0
+    .prologue
+    .line 104
+    const-wide/16 v4, 0x0
 
-    const/4 v2, 0x7
+    .line 107
+    .local v4, "r":J
+    const/4 v0, 0x7
 
-    move-wide v3, v0
+    .local v0, "i":I
+    :goto_3
+    if-ltz v0, :cond_1c
 
-    :goto_0
-    if-ltz v2, :cond_1
+    .line 109
+    add-int v1, p1, v0
 
-    add-int v5, p1, v2
+    aget-byte v1, p0, v1
 
-    .line 169
-    aget-byte v5, p0, v5
+    int-to-long v2, v1
 
-    int-to-long v5, v5
+    .line 110
+    .local v2, "n":J
+    const-wide/16 v6, 0x0
 
-    cmp-long v7, v5, v0
+    cmp-long v1, v2, v6
 
-    if-gez v7, :cond_0
+    if-gez v1, :cond_13
 
-    const-wide/16 v7, 0x100
+    .line 111
+    const-wide/16 v6, 0x100
 
-    add-long/2addr v5, v7
+    add-long/2addr v2, v6
 
-    :cond_0
-    const/16 v7, 0x8
+    .line 112
+    :cond_13
+    const/16 v1, 0x8
 
-    shl-long/2addr v3, v7
+    shl-long v6, v4, v1
 
-    add-long/2addr v3, v5
+    add-long v4, v6, v2
 
-    add-int/lit8 v2, v2, -0x1
+    .line 107
+    add-int/lit8 v0, v0, -0x1
 
-    goto :goto_0
+    goto :goto_3
 
-    :cond_1
-    return-wide v3
+    .line 115
+    .end local v2    # "n":J
+    :cond_1c
+    return-wide v4
 .end method
 
 .method public static put1([BII)I
-    .locals 0
+    .registers 5
+    .param p0, "bytes"    # [B
+    .param p1, "offset"    # I
+    .param p2, "data"    # I
 
-    int-to-byte p2, p2
+    .prologue
+    .line 223
+    add-int/lit8 v0, p1, 0x1
 
-    .line 180
-    aput-byte p2, p0, p1
+    .end local p1    # "offset":I
+    .local v0, "offset":I
+    int-to-byte v1, p2
 
-    add-int/lit8 p1, p1, 0x1
+    aput-byte v1, p0, p1
 
-    return p1
+    .line 224
+    return v0
 .end method
 
 .method public static put2([BII)I
-    .locals 2
+    .registers 5
+    .param p0, "bytes"    # [B
+    .param p1, "offset"    # I
+    .param p2, "data"    # I
 
+    .prologue
+    .line 231
     add-int/lit8 v0, p1, 0x1
 
+    .end local p1    # "offset":I
+    .local v0, "offset":I
     shr-int/lit8 v1, p2, 0x8
 
     int-to-byte v1, v1
 
-    .line 186
     aput-byte v1, p0, p1
 
-    and-int/lit16 p1, p2, 0xff
+    .line 232
+    add-int/lit8 p1, v0, 0x1
 
-    int-to-byte p1, p1
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
+    and-int/lit16 v1, p2, 0xff
 
-    .line 187
-    aput-byte p1, p0, v0
+    int-to-byte v1, v1
 
-    add-int/lit8 v0, v0, 0x1
+    aput-byte v1, p0, v0
 
-    return v0
+    .line 233
+    return p1
 .end method
 
 .method public static put3([BII)I
-    .locals 2
+    .registers 5
+    .param p0, "bytes"    # [B
+    .param p1, "offset"    # I
+    .param p2, "data"    # I
 
+    .prologue
+    .line 239
     add-int/lit8 v0, p1, 0x1
 
+    .end local p1    # "offset":I
+    .local v0, "offset":I
     shr-int/lit8 v1, p2, 0x10
 
     and-int/lit16 v1, v1, 0xff
 
     int-to-byte v1, v1
 
-    .line 193
     aput-byte v1, p0, p1
 
+    .line 240
     add-int/lit8 p1, v0, 0x1
 
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
     shr-int/lit8 v1, p2, 0x8
 
     and-int/lit16 v1, v1, 0xff
 
     int-to-byte v1, v1
 
-    .line 195
     aput-byte v1, p0, v0
 
-    and-int/lit16 p2, p2, 0xff
+    .line 241
+    add-int/lit8 v0, p1, 0x1
 
-    int-to-byte p2, p2
+    .end local p1    # "offset":I
+    .restart local v0    # "offset":I
+    and-int/lit16 v1, p2, 0xff
 
-    .line 196
-    aput-byte p2, p0, p1
+    int-to-byte v1, v1
 
-    add-int/lit8 p1, p1, 0x1
+    aput-byte v1, p0, p1
 
-    return p1
+    .line 242
+    return v0
 .end method
 
 .method public static put4([BII)I
-    .locals 2
+    .registers 5
+    .param p0, "bytes"    # [B
+    .param p1, "offset"    # I
+    .param p2, "data"    # I
 
+    .prologue
+    .line 248
     add-int/lit8 v0, p1, 0x1
 
+    .end local p1    # "offset":I
+    .local v0, "offset":I
     shr-int/lit8 v1, p2, 0x18
 
     int-to-byte v1, v1
 
-    .line 202
     aput-byte v1, p0, p1
 
+    .line 249
     add-int/lit8 p1, v0, 0x1
 
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
     shr-int/lit8 v1, p2, 0x10
 
     and-int/lit16 v1, v1, 0xff
 
     int-to-byte v1, v1
 
-    .line 204
     aput-byte v1, p0, v0
 
+    .line 250
     add-int/lit8 v0, p1, 0x1
 
+    .end local p1    # "offset":I
+    .restart local v0    # "offset":I
     shr-int/lit8 v1, p2, 0x8
 
     and-int/lit16 v1, v1, 0xff
 
     int-to-byte v1, v1
 
-    .line 206
     aput-byte v1, p0, p1
 
-    and-int/lit16 p1, p2, 0xff
-
-    int-to-byte p1, p1
-
-    .line 207
-    aput-byte p1, p0, v0
-
-    add-int/lit8 v0, v0, 0x1
-
-    return v0
-.end method
-
-.method public static put5([BIJ)I
-    .locals 5
-
-    add-int/lit8 v0, p1, 0x1
-
-    const/16 v1, 0x20
-
-    shr-long v1, p2, v1
-
-    const-wide/16 v3, 0xff
-
-    and-long/2addr v1, v3
-
-    long-to-int v2, v1
-
-    int-to-byte v1, v2
-
-    .line 213
-    aput-byte v1, p0, p1
-
+    .line 251
     add-int/lit8 p1, v0, 0x1
 
-    const/16 v1, 0x18
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
+    and-int/lit16 v1, p2, 0xff
 
-    shr-long v1, p2, v1
+    int-to-byte v1, v1
 
-    and-long/2addr v1, v3
-
-    long-to-int v2, v1
-
-    int-to-byte v1, v2
-
-    .line 215
     aput-byte v1, p0, v0
 
-    add-int/lit8 v0, p1, 0x1
-
-    const/16 v1, 0x10
-
-    shr-long v1, p2, v1
-
-    and-long/2addr v1, v3
-
-    long-to-int v2, v1
-
-    int-to-byte v1, v2
-
-    .line 217
-    aput-byte v1, p0, p1
-
-    add-int/lit8 p1, v0, 0x1
-
-    const/16 v1, 0x8
-
-    shr-long v1, p2, v1
-
-    and-long/2addr v1, v3
-
-    long-to-int v2, v1
-
-    int-to-byte v1, v2
-
-    .line 219
-    aput-byte v1, p0, v0
-
-    and-long/2addr p2, v3
-
-    long-to-int p3, p2
-
-    int-to-byte p2, p3
-
-    .line 220
-    aput-byte p2, p0, p1
-
-    add-int/lit8 p1, p1, 0x1
-
+    .line 252
     return p1
 .end method
 
-.method public static put8([BIJ)I
-    .locals 5
+.method public static put5([BIJ)I
+    .registers 10
+    .param p0, "bytes"    # [B
+    .param p1, "offset"    # I
+    .param p2, "data"    # J
 
+    .prologue
+    const-wide/16 v4, 0xff
+
+    .line 257
     add-int/lit8 v0, p1, 0x1
 
-    const/16 v1, 0x38
-
-    shr-long v1, p2, v1
-
-    const-wide/16 v3, 0xff
-
-    and-long/2addr v1, v3
-
-    long-to-int v2, v1
-
-    int-to-byte v1, v2
-
-    .line 226
-    aput-byte v1, p0, p1
-
-    add-int/lit8 p1, v0, 0x1
-
-    const/16 v1, 0x30
-
-    shr-long v1, p2, v1
-
-    and-long/2addr v1, v3
-
-    long-to-int v2, v1
-
-    int-to-byte v1, v2
-
-    .line 228
-    aput-byte v1, p0, v0
-
-    add-int/lit8 v0, p1, 0x1
-
-    const/16 v1, 0x28
-
-    shr-long v1, p2, v1
-
-    and-long/2addr v1, v3
-
-    long-to-int v2, v1
-
-    int-to-byte v1, v2
-
-    .line 230
-    aput-byte v1, p0, p1
-
-    add-int/lit8 p1, v0, 0x1
-
+    .end local p1    # "offset":I
+    .local v0, "offset":I
     const/16 v1, 0x20
 
-    shr-long v1, p2, v1
+    shr-long v2, p2, v1
 
-    and-long/2addr v1, v3
+    and-long/2addr v2, v4
 
-    long-to-int v2, v1
+    long-to-int v1, v2
 
-    int-to-byte v1, v2
+    int-to-byte v1, v1
 
-    .line 232
-    aput-byte v1, p0, v0
-
-    add-int/lit8 v0, p1, 0x1
-
-    const/16 v1, 0x18
-
-    shr-long v1, p2, v1
-
-    and-long/2addr v1, v3
-
-    long-to-int v2, v1
-
-    int-to-byte v1, v2
-
-    .line 234
     aput-byte v1, p0, p1
 
+    .line 258
     add-int/lit8 p1, v0, 0x1
 
-    const/16 v1, 0x10
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
+    const/16 v1, 0x18
 
-    shr-long v1, p2, v1
+    shr-long v2, p2, v1
 
-    and-long/2addr v1, v3
+    and-long/2addr v2, v4
 
-    long-to-int v2, v1
+    long-to-int v1, v2
 
-    int-to-byte v1, v2
+    int-to-byte v1, v1
 
-    .line 236
     aput-byte v1, p0, v0
 
+    .line 259
     add-int/lit8 v0, p1, 0x1
 
-    const/16 v1, 0x8
+    .end local p1    # "offset":I
+    .restart local v0    # "offset":I
+    const/16 v1, 0x10
 
-    shr-long v1, p2, v1
+    shr-long v2, p2, v1
 
-    and-long/2addr v1, v3
+    and-long/2addr v2, v4
 
-    long-to-int v2, v1
+    long-to-int v1, v2
 
-    int-to-byte v1, v2
+    int-to-byte v1, v1
 
-    .line 238
     aput-byte v1, p0, p1
 
-    and-long/2addr p2, v3
+    .line 260
+    add-int/lit8 p1, v0, 0x1
 
-    long-to-int p1, p2
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
+    const/16 v1, 0x8
 
-    int-to-byte p1, p1
+    shr-long v2, p2, v1
 
-    .line 239
-    aput-byte p1, p0, v0
+    and-long/2addr v2, v4
 
-    add-int/lit8 v0, v0, 0x1
+    long-to-int v1, v2
 
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, v0
+
+    .line 261
+    add-int/lit8 v0, p1, 0x1
+
+    .end local p1    # "offset":I
+    .restart local v0    # "offset":I
+    and-long v2, p2, v4
+
+    long-to-int v1, v2
+
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, p1
+
+    .line 262
     return v0
+.end method
+
+.method public static put8([BIJ)I
+    .registers 10
+    .param p0, "bytes"    # [B
+    .param p1, "offset"    # I
+    .param p2, "data"    # J
+
+    .prologue
+    const-wide/16 v4, 0xff
+
+    .line 267
+    add-int/lit8 v0, p1, 0x1
+
+    .end local p1    # "offset":I
+    .local v0, "offset":I
+    const/16 v1, 0x38
+
+    shr-long v2, p2, v1
+
+    and-long/2addr v2, v4
+
+    long-to-int v1, v2
+
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, p1
+
+    .line 268
+    add-int/lit8 p1, v0, 0x1
+
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
+    const/16 v1, 0x30
+
+    shr-long v2, p2, v1
+
+    and-long/2addr v2, v4
+
+    long-to-int v1, v2
+
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, v0
+
+    .line 269
+    add-int/lit8 v0, p1, 0x1
+
+    .end local p1    # "offset":I
+    .restart local v0    # "offset":I
+    const/16 v1, 0x28
+
+    shr-long v2, p2, v1
+
+    and-long/2addr v2, v4
+
+    long-to-int v1, v2
+
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, p1
+
+    .line 270
+    add-int/lit8 p1, v0, 0x1
+
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
+    const/16 v1, 0x20
+
+    shr-long v2, p2, v1
+
+    and-long/2addr v2, v4
+
+    long-to-int v1, v2
+
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, v0
+
+    .line 271
+    add-int/lit8 v0, p1, 0x1
+
+    .end local p1    # "offset":I
+    .restart local v0    # "offset":I
+    const/16 v1, 0x18
+
+    shr-long v2, p2, v1
+
+    and-long/2addr v2, v4
+
+    long-to-int v1, v2
+
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, p1
+
+    .line 272
+    add-int/lit8 p1, v0, 0x1
+
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
+    const/16 v1, 0x10
+
+    shr-long v2, p2, v1
+
+    and-long/2addr v2, v4
+
+    long-to-int v1, v2
+
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, v0
+
+    .line 273
+    add-int/lit8 v0, p1, 0x1
+
+    .end local p1    # "offset":I
+    .restart local v0    # "offset":I
+    const/16 v1, 0x8
+
+    shr-long v2, p2, v1
+
+    and-long/2addr v2, v4
+
+    long-to-int v1, v2
+
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, p1
+
+    .line 274
+    add-int/lit8 p1, v0, 0x1
+
+    .end local v0    # "offset":I
+    .restart local p1    # "offset":I
+    and-long v2, p2, v4
+
+    long-to-int v1, v2
+
+    int-to-byte v1, v1
+
+    aput-byte v1, p0, v0
+
+    .line 275
+    return p1
 .end method
