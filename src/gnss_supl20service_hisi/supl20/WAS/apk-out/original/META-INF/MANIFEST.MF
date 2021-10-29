@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Created-By: 1.7.0_85 (Oracle Corporation)
-
-Name: AndroidManifest.xml
-SHA1-Digest: WgtCWOZrhuU4ijnpunFxwOg4iTE=
-
-Name: classes.dex
-SHA1-Digest: 2y6CO6cSkuYez9vw2qFDVmOh0TU=
-
