@@ -1,9 +1,16 @@
 #!/sbin/sh
 
+# Fix wrong permission on /data/media/0 folder
+# dead storage
+	chmod 755 /system/bin/rw-system.sh
+	chown root:shell /system/bin/rw-system.sh
+	chcon -v u:object_r:phhsu_exec:s0 /system/bin/rw-system.sh
+
 # Fix app crashes
     echo "(allow appdomain vendor_file (file (read getattr execute open)))" >> /system/etc/selinux/plat_sepolicy.cil;
 
 # Dirty hack to show build properties
+# To get productid : sed -nE 's/.*productid=([0-9xa-f]*).*/\1/p' /proc/cmdline
     MODEL=$( cat /sys/firmware/devicetree/base/boardinfo/normal_product_name | tr -d '\n')
     PROP="ro.product.model"
 
@@ -34,17 +41,4 @@
     echo "persist.sys.sf.color_mode=1.0" >> /system/etc/prop.default;
     echo "persist.sys.sf.color_saturation=1.1" >> /system/etc/prop.default;
 
-	
-# To SUPL20 apk
-#	set by init.connectivity.hisi.rc
-#	echo "is_hisi_connectivity_chip=1" >> /system/etc/prop.default;
-#	echo "ro.connectivity.sub_chiptype=hi1102" >> /system/etc/prop.default;
-	
-# Uncomment to Debug GPS
-#	echo "log.tag.GnssConfiguration=DEBUG" >> /system/etc/prop.default;
-#	echo "log.tag.GnssLocationProvider=DEBUG" >> /system/etc/prop.default;
-#	echo "log.tag.GnssManagerService=DEBUG" >> /system/etc/prop.default;
-#	echo "log.tag.NtpTimeHelper=DEBUG" >> /system/etc/prop.default;
-
-	
     exit 0;
