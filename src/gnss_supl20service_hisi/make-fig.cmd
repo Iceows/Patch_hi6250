@@ -6,7 +6,7 @@ REM Genere les fichier smali
 java -jar baksmali-2.5.2.jar deodex -a 27 -o .\supl20\FIG\src-out -c boot.oat -d ..\..\sdk27\framework\arm64 .\supl20\FIG\gnss_supl20service_hisi.odex
 
 REM Decompile APK, extrait le manifest dans le repertoire cible
-java -jar apktool_2.6.0.jar decode -f -o .\supl20\FIG\apk-out .\supl20\FIG\gnss_supl20service_hisi.apk
+java -jar apktool_2.6.0.jar decode -f -t "27"  -o .\supl20\FIG\apk-out .\supl20\FIG\gnss_supl20service_hisi.apk
 
 
 REM ---------------------------------------------------------------------------------------

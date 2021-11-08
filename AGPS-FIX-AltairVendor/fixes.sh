@@ -27,8 +27,7 @@ echo "(allow hi110x_daemon hi110x_daemon (fifo_file (ioctl read write create get
 # For lss 
 sed -i '/(type alarm_device)/d' /system/etc/selinux/plat_sepolicy.cil
 sed -i '/(roletype object_r alarm_device)/d'  /system/etc/selinux/plat_sepolicy.cil
-sed -i '/(typeattributeset dev_type (device ashmem_device ashmem_libcutils_device audio_device binder_device hwbinder_device vndbinder_device block_device camera_device dm_device keychord_device loop_control_device loop_device pmsg_device radio_device ram_device rtc_device vold_device console_device fscklogs gpu_device graphics_device hw_random_device input_device port_device lowpan_device mtp_device nfc_device ptmx_device kmsg_device kmsg_debug_device null_device random_device secure_element_device sensors_device serial_device socket_device owntty_device tty_device video_device zero_device fuse_device iio_device ion_device qtaguid_device watchdog_device uhid_device uio_device tun_device usbaccessory_device usb_device usb_serial_device properties_device properties_serial property_info hci_attach_dev rpmsg_device root_block_device frp_block_device system_block_device recovery_block_device boot_block_device userdata_block_device cache_block_device swap_block_device metadata_block_device misc_block_device super_block_device sdcard_block_device ppp_device tee_device ))/d' /system/etc/selinux/plat_sepolicy.cil
-sed -i '/(typeattributeset dev_type (device ashmem_device ashmem_libcutils_device audio_device binder_device hwbinder_device vndbinder_device block_device camera_device dm_device keychord_device loop_control_device loop_device pmsg_device radio_device ram_device rtc_device vold_device console_device fscklogs gpu_device graphics_device hw_random_device input_device port_device lowpan_device mtp_device nfc_device ptmx_device kmsg_device kmsg_debug_device null_device random_device secure_element_device sensors_device serial_device socket_device alarm_device owntty_device tty_device video_device zero_device fuse_device iio_device ion_device qtaguid_device watchdog_device uhid_device uio_device tun_device usbaccessory_device usb_device usb_serial_device properties_device properties_serial property_info hci_attach_dev rpmsg_device root_block_device frp_block_device system_block_device recovery_block_device boot_block_device userdata_block_device cache_block_device swap_block_device metadata_block_device misc_block_device super_block_device sdcard_block_device ppp_device tee_device ))/d' /system/etc/selinux/plat_sepolicy.cil
+sed -i '/(typeattributeset dev_type (device ashmem_device ashmem_libcutils_device audio_device binder_device uhid_device uio_device tun_device/d' /system/etc/selinux/plat_sepolicy.cil
 echo "(type alarm_device)" >> /system/etc/selinux/plat_sepolicy.cil
 echo "(roletype object_r alarm_device)" >> /system/etc/selinux/plat_sepolicy.cil
 echo "(typeattributeset dev_type (device ashmem_device ashmem_libcutils_device audio_device binder_device hwbinder_device vndbinder_device block_device camera_device dm_device keychord_device loop_control_device loop_device pmsg_device radio_device ram_device rtc_device vold_device console_device fscklogs gpu_device graphics_device hw_random_device input_device port_device lowpan_device mtp_device nfc_device ptmx_device kmsg_device kmsg_debug_device null_device random_device secure_element_device sensors_device serial_device socket_device alarm_device owntty_device tty_device video_device zero_device fuse_device iio_device ion_device qtaguid_device watchdog_device uhid_device uio_device tun_device usbaccessory_device usb_device usb_serial_device properties_device properties_serial property_info hci_attach_dev rpmsg_device root_block_device frp_block_device system_block_device recovery_block_device boot_block_device userdata_block_device cache_block_device swap_block_device metadata_block_device misc_block_device super_block_device sdcard_block_device ppp_device tee_device ))" >> /system/etc/selinux/plat_sepolicy.cil
@@ -43,15 +42,18 @@ echo "(allow hi110x_daemon socket_device (dir (write)))" >> /system/etc/selinux/
 # To allow shim lib
 echo "(allow init domain (process (signal noatsecure)))" >> /system/etc/selinux/plat_sepolicy.cil
 
+#Sous lineage 15
+echo "(allow init hi110x_daemon_exec (file (read getattr execute open)))" >> /system/etc/selinux/plat_sepolicy.cil
+echo "(allow init hi110x_daemon (process (transition)))" >> /system/etc/selinux/plat_sepolicy.cil
+
 
 # fix system ntp_server (europe pool)
-set global ntp_server europe.pool.ntp.org
+settings put global ntp_server europe.pool.ntp.org
 
-# allow agps an set config
-echo "persist.sys.pgps.config=1"   >> /system/etc/prop.default;
-echo "assisted_gps_enabled=1"   >> /system/etc/prop.default;
-
-echo "ro.hardware.hisupl=hi1102"  >> /system/etc/prop.default;
+# Not Allow sending cellid over network
+echo "persist.sys.pgps.config=2"   >> /system/etc/prop.default;
+#echo "assisted_gps_enabled=1"   >> /system/etc/prop.default;
+#echo "ro.hardware.hisupl=hi1102"  >> /system/etc/prop.default;
 
 # Uncomment to Debug GPS
 #	echo "log.tag.GnssConfiguration=DEBUG" >> /system/etc/prop.default;
