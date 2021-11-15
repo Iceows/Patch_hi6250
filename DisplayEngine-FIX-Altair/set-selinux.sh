@@ -1,5 +1,16 @@
 #!/sbin/sh
 
+# Fix record screen
+# -rw-r--r--
+chmod 644 /system/lib/libhidlbase.so
+chmod 644 /system/lib64/libhidlbase.so
+chmod 644 /system/lib/libhwbinder.so
+chmod 644 /system/lib64/libhwbinder.so
+
+chcon -v u:object_r:system_lib_file:s0 /system/lib/libhidlbase.so
+chcon -v u:object_r:system_lib_file:s0 /system/lib64/libhidlbase.so
+chcon -v u:object_r:system_lib_file:s0 /system/lib/libhwbinder.so
+chcon -v u:object_r:system_lib_file:s0 /system/lib64/libhwbinder.so
 
 # Enable wireless display (Cast/Miracast)
 echo "persist.debug.wfd.enable=1" >> /system/etc/prop.default;
