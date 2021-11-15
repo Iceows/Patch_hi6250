@@ -1,0 +1,7 @@
+    if (bufferInParent != childBuffer) {
+          ALOGD("Buffer in parent %p differs from embedded buffer %p",
+                bufferInParent, childBuffer);
+          //android_errorWriteLog(0x534e4554, "179289794");
+          //return false;
+          return true;
+    }
