@@ -233,23 +233,27 @@ public class RadioIndication extends IRadioIndication.Stub {
 
     public void currentSignalStrength(int indicationType,
                                       android.hardware.radio.V1_0.SignalStrength signalStrength) {
-
-	mRil.riljLog("Iceows : currentSignalStrength 1.0");
         mRil.processIndication(indicationType);
-        
-        if (RIL.RILJ_LOGV) mRil.unsljLogvRet(RIL_UNSOL_SIGNAL_STRENGTH, signalStrength);
 
-        SignalStrength ssInitial = new SignalStrength(signalStrength);
-
-	// Fix signal by Iceows of Huawei
-        //SignalStrength ss = mRil.fixupSignalStrength10(ssInitial);
-        SignalStrength ss = mRil.fixupSignalStrength11(signalStrength);
-        
+		// Note this is set to "verbose" because it happens frequently
+		if (RIL.RILJ_LOGV) mRil.unsljLogvRet(RIL_UNSOL_SIGNAL_STRENGTH, signalStrength);
+		 
+		// Fix signalStrength for Huawei
+		String hardware = android.os.SystemProperties.get("ro.hardware", "");
+        if(hardware.contains("hi3660") || hardware.contains("hi6250") || hardware.contains("hi3670") || hardware.contains("kirin"))
+		{
+			SignalStrength ss = mRil.fixupSignalStrengthHuawei(signalStrength);
+		}
+		else
+		{
+			SignalStrength ssInitial = new SignalStrength(signalStrength);
+			SignalStrength ss = mRil.fixupSignalStrength10(ssInitial);
+		}
+		
         // Note this is set to "verbose" because it happens frequently
         if (RIL.RILJ_LOGV) mRil.unsljLogvRet(RIL_UNSOL_SIGNAL_STRENGTH, ss);
 
         if (mRil.mSignalStrengthRegistrant != null) {
-            mRil.riljLog("Iceows : currentSignalStrength - mSignalStrengthRegistrant");
             mRil.mSignalStrengthRegistrant.notifyRegistrant(new AsyncResult (null, ss, null));
         }
     }

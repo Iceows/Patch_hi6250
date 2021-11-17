@@ -6683,7 +6683,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
             return signalStrength;
         }
 
-	if (RILJ_LOGD) riljLog("Iceows : fixupSignalStrength10 after"); 
+		if (RILJ_LOGD) riljLog("Iceows : fixupSignalStrength10 after"); 
         CellSignalStrengthGsm gsmStrength = gsmList.get(0);
 
         // Use the voice RAT which is a guarantee in GSM and UMTS
@@ -6724,76 +6724,57 @@ public class RIL extends BaseCommands implements CommandsInterface {
     
     
     /**
-     * Fixup for SignalStrength 1.0 (Huawei)
+     * Fixup for SignalStrength for Huawei device
      * @param signalStrength the initial signal strength
-     * @return a new SignalStrength or existing SignalStrength
+     * @return a new SignalStrength
      */
-    public SignalStrength fixupSignalStrength11(Object signalStrength) {
+    public SignalStrength fixupSignalStrengthHuawei(android.hardware.radio.V1_0.SignalStrength signalStrength) {
+	    int gsmSignalStrength = signalStrength.gw.signalStrength;
+        int gsmBitErrorRate = signalStrength.gw.bitErrorRate;
+        int mWcdmaRscp = 0;
+        int mWcdmaEcio = 0;
+        int cdmaDbm = signalStrength.cdma.dbm;
+        int cdmaEcio = signalStrength.cdma.ecio;
+        int evdoDbm = signalStrength.evdo.dbm;
+        int evdoEcio = signalStrength.evdo.ecio;
+        int evdoSnr = signalStrength.evdo.signalNoiseRatio;
+        int lteSignalStrength = signalStrength.lte.signalStrength;
+        int lteRsrp = signalStrength.lte.rsrp;
+        int lteRsrq = signalStrength.lte.rsrq;
+        int lteRssnr = signalStrength.lte.rssnr;
+        int lteCqi = signalStrength.lte.cqi;
+        int mGsm = 0;
+        int mRat = 0;
+		
 
-	/*
-        mCdma = in.readParcelable(CellSignalStrengthCdma.class.getClassLoader());
-        mGsm = in.readParcelable(CellSignalStrengthGsm.class.getClassLoader());
-        mWcdma = in.readParcelable(CellSignalStrengthWcdma.class.getClassLoader());
-        mTdscdma = in.readParcelable(CellSignalStrengthTdscdma.class.getClassLoader());
-        mLte = in.readParcelable(CellSignalStrengthLte.class.getClassLoader());
-        mNr = in.readParcelable(CellSignalStrengthLte.class.getClassLoader());
-        mTimestampMillis = in.readLong();*/
-        
-        
-        unsljLogvRetEx(RIL_UNSOL_SIGNAL_STRENGTH, signalStrength);
-        riljLogv("[UNSL-ICEOWS]< " + responseToString(RIL_UNSOL_SIGNAL_STRENGTH) + " " + retToString(RIL_UNSOL_SIGNAL_STRENGTH, signalStrength));
-
-
-/*
-        List<CellSignalStrengthGsm> gsmList = signalStrength.getCellSignalStrengths(
-                CellSignalStrengthGsm.class);
-        List<CellSignalStrengthLte> lteList = signalStrength.getCellSignalStrengths(
-                CellSignalStrengthLte.class);                
-                
-        if (RILJ_LOGD) riljLog("Iceows : fixupSignalStrength11"); 
-        
-        // If GSM is not the primary type, then bail out; no fixup needed.
-        if (gsmList.isEmpty() || !gsmList.get(0).isValid()) {
-            if (RILJ_LOGD) riljLog("Iceows : gsmList is empty"); 
-            return signalStrength;
-        }
-        
-        // If LTE is not the primary type, then bail out; no fixup needed.
-        if (lteList.isEmpty() || !lteList.get(0).isValid()) {
-            if (RILJ_LOGD) riljLog("Iceows : lteList is empty"); 
-            return signalStrength;
-        }
-              
-        CellSignalStrengthGsm gsmStrength = gsmList.get(0);  
-        CellSignalStrengthLte lteStrength = lteList.get(0);
-*/
-
-        CellSignalStrengthLte lteStrength = new CellSignalStrengthLte(SignalStrength.INVALID,
-							-94,  
-							-14,
-							5,
-							2147483647,
+		//public CellSignalStrengthLte(int rssi, int rsrp, int rsrq, int rssnr, int cqi, int timingAdvance) {
+		// signalStrength = rssi
+		// .lte = {.signalStrength = 99, .rsrp = -104, .rsrq = -16, .rssnr = -4, .cqi = 2147483647, .timingAdvance = -1},
+		CellSignalStrengthLte lteStrength = new CellSignalStrengthLte(SignalStrength.INVALID,
+							lteRsrp,  
+							lteRsrq,
+							lteRssnr,
+							lteCqi,
 							-1);
         
-        // signalStrength = rssi
-        // .lte = {.signalStrength = 99, .rsrp = -104, .rsrq = -16, .rssnr = -4, .cqi = 2147483647, .timingAdvance = -1}, 
-        riljLog("Iceows : LTE dbm : " + String.valueOf(lteStrength.getDbm()));
-	riljLog("Iceows : LTE level : " + String.valueOf(lteStrength.getLevel()));
-	riljLog("Iceows : LTE Rsrp : " + String.valueOf(lteStrength.getRsrp()));
-	riljLog("Iceows : LTE Rsrq : " + String.valueOf(lteStrength.getRsrq()));
-	riljLog("Iceows : LTE Rssi : " + String.valueOf(lteStrength.getRssi()));
-	riljLog("Iceows : LTE Rssnr : " + String.valueOf(lteStrength.getRssnr()));
-	
+ 
+		riljLog("Iceows : LTE dbm : " + String.valueOf(lteStrength.getDbm()));
+		riljLog("Iceows : LTE level : " + String.valueOf(lteStrength.getLevel()));
+		riljLog("Iceows : LTE Rsrp : " + String.valueOf(lteStrength.getRsrp()));
+		riljLog("Iceows : LTE Rsrq : " + String.valueOf(lteStrength.getRsrq()));
+		riljLog("Iceows : LTE Rssi : " + String.valueOf(lteStrength.getRssi()));
+		riljLog("Iceows : LTE Rssnr : " + String.valueOf(lteStrength.getRssnr()));
 
-        return new SignalStrength(
-                new CellSignalStrengthCdma(), 
-                new CellSignalStrengthGsm(),
-                new CellSignalStrengthWcdma(),
-                new CellSignalStrengthTdscdma(), 
-                lteStrength,
-                new CellSignalStrengthNr());
-    
-    }
+
+		return new SignalStrength(
+				new CellSignalStrengthCdma(), 
+				new CellSignalStrengthGsm(),
+				new CellSignalStrengthWcdma(),
+				new CellSignalStrengthTdscdma(), 
+				lteStrength,
+				new CellSignalStrengthNr());	
+		
+	}
     
     
     // Special function iceows
