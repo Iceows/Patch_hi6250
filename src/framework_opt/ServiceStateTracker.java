@@ -5105,7 +5105,7 @@ public class ServiceStateTracker extends Handler {
                 
         if (DBG) log("Iceows : SST.shouldRefreshSignalStrength().");
                 
-        //if (!isStale) return false;
+        if (!isStale) return false;
 
         List<SubscriptionInfo> subInfoList = SubscriptionController.getInstance()
                 .getActiveSubscriptionInfoList(mPhone.getContext().getOpPackageName(),

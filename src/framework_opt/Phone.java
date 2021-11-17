@@ -2154,7 +2154,6 @@ public abstract class Phone extends Handler implements PhoneInternalInterface {
      * @return Current signal strength as SignalStrength
      */
     public SignalStrength getSignalStrength() {
-    	// Iceows
     	Rlog.i(LOG_TAG, "Iceows : SignalStrength(phone) getSignalStrength ");
         ServiceStateTracker sst = getServiceStateTracker();
         if (sst == null) {

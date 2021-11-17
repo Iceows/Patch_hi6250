@@ -6676,14 +6676,12 @@ public class RIL extends BaseCommands implements CommandsInterface {
         List<CellSignalStrengthGsm> gsmList = signalStrength.getCellSignalStrengths(
                 CellSignalStrengthGsm.class);
                 
-        if (RILJ_LOGD) riljLog("Iceows : fixupSignalStrength10"); 
-                
+              
         // If GSM is not the primary type, then bail out; no fixup needed.
         if (gsmList.isEmpty() || !gsmList.get(0).isValid()) {
             return signalStrength;
         }
 
-		if (RILJ_LOGD) riljLog("Iceows : fixupSignalStrength10 after"); 
         CellSignalStrengthGsm gsmStrength = gsmList.get(0);
 
         // Use the voice RAT which is a guarantee in GSM and UMTS
@@ -6776,65 +6774,6 @@ public class RIL extends BaseCommands implements CommandsInterface {
 		
 	}
     
-    
-    // Special function iceows
-   void unsljLogvRetEx(int response, Object ret) {
-         riljLog("[UNSL-EX]" + retToStringEx(response, ret));
-    }
-
-    static String retToStringEx(int req, Object ret) {
-        if (ret == null) return "";
-
-        StringBuilder sb;
-        String s;
-        String sNameObj;
-        String sGenericNameObj;
-        String sFieldObj;
-        int length;
-
-
-
-        sNameObj = "Class Name : " + ret.getClass().getName();
-        sGenericNameObj = "Class GenericString : " + ret.getClass().toGenericString();
-        
-        Class c=ret.getClass();
-        
-        //Field[] fields = c.getDeclaredFields();
-        //for(Field field : fields) {
-            //riljLog("Iceows Fields : " + field.toGenericString());
-        //}
-
-        if (ret instanceof int[]) {
-            int[] intArray = (int[]) ret;
-            length = intArray.length;
-            sb = new StringBuilder("{");
-            if (length > 0) {
-                int i = 0;
-                sb.append(intArray[i++]);
-                while (i < length) {
-                    sb.append(", ").append(intArray[i++]);
-                }
-            }
-            sb.append("}");
-            s = sb.toString();
-        } else if (ret instanceof String[]) {
-            String[] strings = (String[]) ret;
-            length = strings.length;
-            sb = new StringBuilder("{");
-            if (length > 0) {
-                int i = 0;
-                sb.append(strings[i++]);
-                while (i < length) {
-                    sb.append(", ").append(strings[i++]);
-                }
-            }
-            sb.append("}");
-            s = sb.toString();
-        } else {
-            s = ret.toString();
-        }
-        return sNameObj + " - " + sGenericNameObj + " - " + s;
-    }    
     
 
     /**

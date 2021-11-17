@@ -283,7 +283,7 @@ public class RadioIndication extends IRadioIndication.Stub {
     public void currentSignalStrength_1_2(int indicationType,
                                       android.hardware.radio.V1_2.SignalStrength signalStrength) {
                                       
-        mRil.riljLog("Iceows : currentSignalStrength 1.2");
+        if (RIL.RILJ_LOGV) mRil.riljLog("currentSignalStrength 1.2");
         mRil.processIndication(indicationType);
 
         SignalStrength ss = new SignalStrength(signalStrength);
@@ -301,7 +301,7 @@ public class RadioIndication extends IRadioIndication.Stub {
     public void currentSignalStrength_1_4(int indicationType,
             android.hardware.radio.V1_4.SignalStrength signalStrength) {
 
-        mRil.riljLog("Iceows : currentSignalStrength 1.4");
+        if (RIL.RILJ_LOGV) mRil.riljLog("currentSignalStrength 1.4");
         mRil.processIndication(indicationType);
 
         SignalStrength ss = new SignalStrength(signalStrength);
