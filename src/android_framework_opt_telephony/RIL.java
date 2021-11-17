@@ -6727,8 +6727,9 @@ public class RIL extends BaseCommands implements CommandsInterface {
      * @return a new SignalStrength
      */
     public SignalStrength fixupSignalStrengthHuawei(android.hardware.radio.V1_0.SignalStrength signalStrength) {
-	    int gsmSignalStrength = signalStrength.gw.signalStrength;
+        int gsmSignalStrength = signalStrength.gw.signalStrength;
         int gsmBitErrorRate = signalStrength.gw.bitErrorRate;
+        int gsmTimingAdvance = signalStrength.gw.timingAdvance;
         int mWcdmaRscp = 0;
         int mWcdmaEcio = 0;
         int cdmaDbm = signalStrength.cdma.dbm;
@@ -6741,36 +6742,48 @@ public class RIL extends BaseCommands implements CommandsInterface {
         int lteRsrq = signalStrength.lte.rsrq;
         int lteRssnr = signalStrength.lte.rssnr;
         int lteCqi = signalStrength.lte.cqi;
+        int lteTimingAdvance = signalStrength.lte.timingAdvance;
         int mGsm = 0;
         int mRat = 0;
 		
 
-		//public CellSignalStrengthLte(int rssi, int rsrp, int rsrq, int rssnr, int cqi, int timingAdvance) {
-		// signalStrength = rssi
-		// .lte = {.signalStrength = 99, .rsrp = -104, .rsrq = -16, .rssnr = -4, .cqi = 2147483647, .timingAdvance = -1},
-		CellSignalStrengthLte lteStrength = new CellSignalStrengthLte(SignalStrength.INVALID,
-							lteRsrp,  
-							lteRsrq,
-							lteRssnr,
-							lteCqi,
-							-1);
-        
- 
-		riljLog("Iceows : LTE dbm : " + String.valueOf(lteStrength.getDbm()));
-		riljLog("Iceows : LTE level : " + String.valueOf(lteStrength.getLevel()));
-		riljLog("Iceows : LTE Rsrp : " + String.valueOf(lteStrength.getRsrp()));
-		riljLog("Iceows : LTE Rsrq : " + String.valueOf(lteStrength.getRsrq()));
-		riljLog("Iceows : LTE Rssi : " + String.valueOf(lteStrength.getRssi()));
-		riljLog("Iceows : LTE Rssnr : " + String.valueOf(lteStrength.getRssnr()));
+	// 4G - LTE
+	// public CellSignalStrengthLte(int rssi, int rsrp, int rsrq, int rssnr, int cqi, int timingAdvance) {
+	// .lte = {.signalStrength = 99, .rsrp = -104, .rsrq = -16, .rssnr = -4, .cqi = 2147483647, .timingAdvance = -1},
+	CellSignalStrengthLte lteStrength = new CellSignalStrengthLte(SignalStrength.INVALID,
+						lteRsrp,  
+						lteRsrq,
+						lteRssnr,
+						lteCqi,
+						lteTimingAdvance);
 
+	riljLog("Iceows : LTE dbm : " + String.valueOf(lteStrength.getDbm()) + 
+			"level : " + String.valueOf(lteStrength.getLevel()) + 
+			"Rsrp  : " + String.valueOf(lteStrength.getRsrp()) +
+			"Rsrq  : " + String.valueOf(lteStrength.getRsrq()) +
+			"Rssi  : " + String.valueOf(lteStrength.getRssi()) +
+			"Rssnr  : " + String.valueOf(lteStrength.getRssnr()));
+			
+	// GSM
+	// .gw = {.signalStrength = -91, .bitErrorRate = -1, .timingAdvance = 0}
+	//if (mWcdmaRscp == 0 && lteRsrp == 0)
+	//public CellSignalStrengthGsm(int rssi, int ber, int ta) {
+	CellSignalStrengthGsm gsmStrength = new CellSignalStrengthGsm(gsmSignalStrength,
+						gsmBitErrorRate,
+						gsmTimingAdvance);
 
-		return new SignalStrength(
-				new CellSignalStrengthCdma(), 
-				new CellSignalStrengthGsm(),
-				new CellSignalStrengthWcdma(),
-				new CellSignalStrengthTdscdma(), 
-				lteStrength,
-				new CellSignalStrengthNr());	
+	riljLog("Iceows : GSM dbm : " + String.valueOf(gsmStrength.getDbm()) + 
+			"errorrate : " + String.valueOf(gsmStrength.getBitErrorRate()) + 
+			"timingadvance  : " + String.valueOf(gsmStrength.getTimingAdvance()));
+
+	// Perhaps add also gsm signalStrength
+	return new SignalStrength(
+			new CellSignalStrengthCdma(), 
+			gsmStrength,
+			new CellSignalStrengthWcdma(),
+			new CellSignalStrengthTdscdma(), 
+			lteStrength,
+			new CellSignalStrengthNr());	
 		
 	}
     
