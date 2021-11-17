@@ -6748,8 +6748,8 @@ public class RIL extends BaseCommands implements CommandsInterface {
 		
 
 	// 4G - LTE
-	// public CellSignalStrengthLte(int rssi, int rsrp, int rsrq, int rssnr, int cqi, int timingAdvance) {
 	// .lte = {.signalStrength = 99, .rsrp = -104, .rsrq = -16, .rssnr = -4, .cqi = 2147483647, .timingAdvance = -1},
+	// public CellSignalStrengthLte(int rssi, int rsrp, int rsrq, int rssnr, int cqi, int timingAdvance) {
 	CellSignalStrengthLte lteStrength = new CellSignalStrengthLte(SignalStrength.INVALID,
 						lteRsrp,  
 						lteRsrq,
@@ -6758,23 +6758,24 @@ public class RIL extends BaseCommands implements CommandsInterface {
 						lteTimingAdvance);
 
 	riljLog("Iceows : LTE dbm : " + String.valueOf(lteStrength.getDbm()) + 
-			"level : " + String.valueOf(lteStrength.getLevel()) + 
-			"Rsrp  : " + String.valueOf(lteStrength.getRsrp()) +
-			"Rsrq  : " + String.valueOf(lteStrength.getRsrq()) +
-			"Rssi  : " + String.valueOf(lteStrength.getRssi()) +
-			"Rssnr  : " + String.valueOf(lteStrength.getRssnr()));
+			", level : " + String.valueOf(lteStrength.getLevel()) + 
+			", Rsrp  : " + String.valueOf(lteStrength.getRsrp()) +
+			", Rsrq  : " + String.valueOf(lteStrength.getRsrq()) +
+			", Rssi  : " + String.valueOf(lteStrength.getRssi()) +
+			", Rssnr  : " + String.valueOf(lteStrength.getRssnr()));
 			
 	// GSM
 	// .gw = {.signalStrength = -91, .bitErrorRate = -1, .timingAdvance = 0}
-	//if (mWcdmaRscp == 0 && lteRsrp == 0)
-	//public CellSignalStrengthGsm(int rssi, int ber, int ta) {
+	// public CellSignalStrengthGsm(int rssi, int ber, int ta) {
+	// rssi in dBm [-113, -51] or UNAVAILABLE
+	// bit error rate (0-7, 99) TS 27.007 8.5 or UNAVAILABLE
 	CellSignalStrengthGsm gsmStrength = new CellSignalStrengthGsm(gsmSignalStrength,
 						gsmBitErrorRate,
 						gsmTimingAdvance);
 
 	riljLog("Iceows : GSM dbm : " + String.valueOf(gsmStrength.getDbm()) + 
-			"errorrate : " + String.valueOf(gsmStrength.getBitErrorRate()) + 
-			"timingadvance  : " + String.valueOf(gsmStrength.getTimingAdvance()));
+			", errorrate : " + String.valueOf(gsmStrength.getBitErrorRate()) + 
+			", timingadvance  : " + String.valueOf(gsmStrength.getTimingAdvance()));
 
 	// Perhaps add also gsm signalStrength
 	return new SignalStrength(
