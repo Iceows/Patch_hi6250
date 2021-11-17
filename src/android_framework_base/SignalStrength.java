@@ -143,6 +143,7 @@ public class SignalStrength implements Parcelable {
         mNr = nr;
         mTimestampMillis = SystemClock.elapsedRealtime();
         
+        Rlog.d(LOG_TAG, "SignalStrength constructeur simple");
     }
 
     /**
@@ -319,6 +320,8 @@ public class SignalStrength implements Parcelable {
      */
     @UnsupportedAppUsage
     public SignalStrength(Parcel in) {
+        if (DBG) log("Size of signalstrength parcel:" + in.dataSize());
+
         mCdma = in.readParcelable(CellSignalStrengthCdma.class.getClassLoader());
         mGsm = in.readParcelable(CellSignalStrengthGsm.class.getClassLoader());
         mWcdma = in.readParcelable(CellSignalStrengthWcdma.class.getClassLoader());
