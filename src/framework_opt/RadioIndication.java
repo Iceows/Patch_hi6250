@@ -235,23 +235,27 @@ public class RadioIndication extends IRadioIndication.Stub {
                                       android.hardware.radio.V1_0.SignalStrength signalStrength) {
         mRil.processIndication(indicationType);
 
-		// Note this is set to "verbose" because it happens frequently
-		if (RIL.RILJ_LOGV) mRil.unsljLogvRet(RIL_UNSOL_SIGNAL_STRENGTH, signalStrength);
-		 
-		// Fix signalStrength for Huawei
-		String hardware = android.os.SystemProperties.get("ro.hardware", "");
+	// Note this is set to "verbose" because it happens frequently
+	if (RIL.RILJ_LOGV) mRil.unsljLogvRet(RIL_UNSOL_SIGNAL_STRENGTH, signalStrength);
+	 
+	// Fix signalStrength for Huawei
+	String hardware = android.os.SystemProperties.get("ro.hardware", "");
         if(hardware.contains("hi3660") || hardware.contains("hi6250") || hardware.contains("hi3670") || hardware.contains("kirin"))
-		{
-			SignalStrength ss = mRil.fixupSignalStrengthHuawei(signalStrength);
-		}
-		else
-		{
-			SignalStrength ssInitial = new SignalStrength(signalStrength);
-			SignalStrength ss = mRil.fixupSignalStrength10(ssInitial);
-		}
+	{
+		if (RIL.RILJ_LOGV) mRil.riljLog("currentSignalStrength Found Huawei device");
+		SignalStrength ss = mRil.fixupSignalStrengthHuawei(signalStrength);
+		if (RIL.RILJ_LOGV) mRil.unsljLogvRet(RIL_UNSOL_SIGNAL_STRENGTH, ss);
+	}
+	else
+	{
+		SignalStrength ssInitial = new SignalStrength(signalStrength);
+		SignalStrength ss = mRil.fixupSignalStrength10(ssInitial);
 		
-        // Note this is set to "verbose" because it happens frequently
-        if (RIL.RILJ_LOGV) mRil.unsljLogvRet(RIL_UNSOL_SIGNAL_STRENGTH, ss);
+		// Note this is set to "verbose" because it happens frequently
+        	if (RIL.RILJ_LOGV) mRil.unsljLogvRet(RIL_UNSOL_SIGNAL_STRENGTH, ss);
+	}
+		
+
 
         if (mRil.mSignalStrengthRegistrant != null) {
             mRil.mSignalStrengthRegistrant.notifyRegistrant(new AsyncResult (null, ss, null));
