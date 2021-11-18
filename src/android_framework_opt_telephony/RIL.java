@@ -6745,6 +6745,65 @@ public class RIL extends BaseCommands implements CommandsInterface {
         int lteTimingAdvance = signalStrength.lte.timingAdvance;
         int mGsm = 0;
         int mRat = 0;
+        
+        
+        if (lteRsrp != 0) { // LTE
+            if (lteRsrp > -20) lteSignalStrength = 64; // None or Unknown
+            else if (lteRsrp >= -97) lteSignalStrength = 63; // Great
+            else if (lteRsrp >= -105) lteSignalStrength = 11; // Good
+            else if (lteRsrp >= -113) lteSignalStrength = 7; // Moderate
+            else if (lteRsrp >= -120) lteSignalStrength = 4; // Poor
+            else if (lteRsrp >= -140) lteSignalStrength = 64; // None or Unknown
+        } else if (gsmSignalStrength == 0 && lteRsrp == 0) { // 3G
+            lteRsrp = (mWcdmaRscp & 0xFF) - 256;
+            lteRsrq = (mWcdmaEcio & 0xFF) - 256;
+            if (lteRsrp > -20) { // None or Unknown
+                lteSignalStrength = 64;
+                lteRssnr = -200;
+            } else if (lteRsrp >= -85) { // Great
+                lteSignalStrength = 63;
+                lteRssnr = 300;
+            } else if (lteRsrp >= -95) { // Good
+                lteSignalStrength = 11;
+                lteRssnr = 129;
+            } else if (lteRsrp >= -105) { // Moderate
+                lteSignalStrength = 7;
+                lteRssnr = 44;
+            } else if (lteRsrp >= -115) { // Poor
+                lteSignalStrength = 4;
+                lteRssnr = 9;
+            } else if (lteRsrp >= -140) { // None or Unknown
+                lteSignalStrength = 64;
+                lteRssnr = -200;
+            }
+        } else if (mWcdmaRscp == 0 && lteRsrp == 0) { // 2G
+            lteRsrp = (gsmSignalStrength & 0xFF) - 256;
+            if (lteRsrp > -20) { // None or Unknown
+                lteSignalStrength = 64;
+                lteRsrq = -21;
+                lteRssnr = -200;
+            } else if (lteRsrp >= -85) { // Great
+                lteSignalStrength = 63;
+                lteRsrq = -3;
+                lteRssnr = 300;
+            } else if (lteRsrp >= -95) { // Good
+                lteSignalStrength = 11;
+                lteRsrq = -7;
+                lteRssnr = 129;
+            } else if (lteRsrp >= -105) { // Moderate
+                lteSignalStrength = 7;
+                lteRsrq = -12;
+                lteRssnr = 44;
+            } else if (lteRsrp >= -115) { // Poor
+                lteSignalStrength = 4;
+                lteRsrq = -17;
+                lteRssnr = 9;
+            } else if (lteRsrp >= -140) { // None or Unknown
+                lteSignalStrength = 64;
+                lteRsrq = -21;
+                lteRssnr = -200;
+            }      
+        }  
 		
 
 	// 4G - LTE
