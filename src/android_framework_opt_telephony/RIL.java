@@ -723,7 +723,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
 
     private RILRequest obtainRequest(int request, Message result, WorkSource workSource) {
     
-        if (RILJ_LOGV) riljLogv("Iceows obtainRequest : " + request);
+        if (RILJ_LOGV) riljLogv("obtainRequest : " + request);
         RILRequest rr = RILRequest.obtain(request, result, workSource);
         addRequest(rr);
         return rr;
@@ -732,7 +732,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
     private RILRequest obtainRequest(int request, Message result, WorkSource workSource,
             Object... args) {
             
-        if (RILJ_LOGV) riljLogv("Iceows obtainRequest (obj) : " + request);
+        if (RILJ_LOGV) riljLogv("obtainRequest (obj) : " + request);
         RILRequest rr = RILRequest.obtain(request, result, workSource, args);
         addRequest(rr);
         return rr;
@@ -1468,15 +1468,15 @@ public class RIL extends BaseCommands implements CommandsInterface {
     @Override
     public void getSignalStrength(Message result) {
 
-        if (RILJ_LOGV) riljLogv("Iceows : getSignalStrength");
+        if (RILJ_LOGV) riljLogv("getSignalStrength");
 
         IRadio radioProxy = getRadioProxy(result);
         if (radioProxy != null) {
-            riljLog("Iceows : getSignalStrength radioproxy not null");		
+             if (RILJ_LOGV) riljLog("getSignalStrength radioproxy not null");		
             RILRequest rr = obtainRequest(RIL_REQUEST_SIGNAL_STRENGTH, result,
                     mRILDefaultWorkSource);
 
-            if (RILJ_LOGD) riljLog("Iceows " + rr.serialString() + "> " + requestToString(rr.mRequest));
+            if (RILJ_LOGV) riljLog("RILRequest " + rr.serialString() + "> " + requestToString(rr.mRequest));
 
             if (mRadioVersion.greaterOrEqual(RADIO_HAL_VERSION_1_4)) {
                 android.hardware.radio.V1_4.IRadio radioProxy14 =
@@ -1488,7 +1488,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
                 }
             } else {
             
-            	if (RILJ_LOGD) riljLog("Iceows radioproxy < 1.4");
+            	if (RILJ_LOGV) riljLog("radioproxy < 1.4");
                 try {
                     radioProxy.getSignalStrength(rr.mSerial);
                 } catch (RemoteException | RuntimeException e) {
@@ -4911,8 +4911,6 @@ public class RIL extends BaseCommands implements CommandsInterface {
         IRadio radioProxy = getRadioProxy(result);
         if (radioProxy != null) {
             if (mRadioVersion.less(RADIO_HAL_VERSION_1_2)) {
-		// Iceows implement special Huawei
-		riljLoge("Iceows radioless 1.2");
 	        riljLoge("setSignalStrengthReportingCriteria ignored on IRadio version less "
                         + "than 1.2");
                 return;
@@ -6805,7 +6803,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
 						lteCqi,
 						lteTimingAdvance);
 
-	riljLog("Iceows : LTE dbm : " + String.valueOf(lteStrength.getDbm()) + 
+	riljLog("Huawei signal : LTE dbm : " + String.valueOf(lteStrength.getDbm()) + 
 			", level : " + String.valueOf(lteStrength.getLevel()) + 
 			", Rsrp  : " + String.valueOf(lteStrength.getRsrp()) +
 			", Rsrq  : " + String.valueOf(lteStrength.getRsrq()) +
@@ -6821,7 +6819,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
 						gsmBitErrorRate,
 						gsmTimingAdvance);
 
-	riljLog("Iceows : GSM dbm : " + String.valueOf(gsmStrength.getDbm()) + 
+	riljLog("Huawei signal : GSM dbm : " + String.valueOf(gsmStrength.getDbm()) + 
 			", errorrate : " + String.valueOf(gsmStrength.getBitErrorRate()) + 
 			", timingadvance  : " + String.valueOf(gsmStrength.getTimingAdvance()));
 
