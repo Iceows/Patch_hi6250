@@ -150,7 +150,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
     // Have a separate wakelock instance for Ack
     static final String RILJ_ACK_WAKELOCK_NAME = "RILJ_ACK_WL";
     static final boolean RILJ_LOGD = true;
-    static final boolean RILJ_LOGV = true; // STOPSHIP if true
+    static final boolean RILJ_LOGV = false; // STOPSHIP if true
     static final int RIL_HISTOGRAM_BUCKET_COUNT = 5;
 
     /**
@@ -722,8 +722,6 @@ public class RIL extends BaseCommands implements CommandsInterface {
     }
 
     private RILRequest obtainRequest(int request, Message result, WorkSource workSource) {
-    
-        if (RILJ_LOGV) riljLogv("obtainRequest : " + request);
         RILRequest rr = RILRequest.obtain(request, result, workSource);
         addRequest(rr);
         return rr;
@@ -731,8 +729,6 @@ public class RIL extends BaseCommands implements CommandsInterface {
 
     private RILRequest obtainRequest(int request, Message result, WorkSource workSource,
             Object... args) {
-            
-        if (RILJ_LOGV) riljLogv("obtainRequest (obj) : " + request);
         RILRequest rr = RILRequest.obtain(request, result, workSource, args);
         addRequest(rr);
         return rr;
@@ -1487,7 +1483,6 @@ public class RIL extends BaseCommands implements CommandsInterface {
                     handleRadioProxyExceptionForRR(rr, "getSignalStrength_1_4", e);
                 }
             } else {
-            
             	if (RILJ_LOGV) riljLog("radioproxy < 1.4");
                 try {
                     radioProxy.getSignalStrength(rr.mSerial);
@@ -4911,7 +4906,7 @@ public class RIL extends BaseCommands implements CommandsInterface {
         IRadio radioProxy = getRadioProxy(result);
         if (radioProxy != null) {
             if (mRadioVersion.less(RADIO_HAL_VERSION_1_2)) {
-	        riljLoge("setSignalStrengthReportingCriteria ignored on IRadio version less "
+		riljLoge("setSignalStrengthReportingCriteria ignored on IRadio version less "
                         + "than 1.2");
                 return;
             }
@@ -6673,8 +6668,6 @@ public class RIL extends BaseCommands implements CommandsInterface {
     public SignalStrength fixupSignalStrength10(SignalStrength signalStrength) {
         List<CellSignalStrengthGsm> gsmList = signalStrength.getCellSignalStrengths(
                 CellSignalStrengthGsm.class);
-                
-              
         // If GSM is not the primary type, then bail out; no fixup needed.
         if (gsmList.isEmpty() || !gsmList.get(0).isValid()) {
             return signalStrength;
