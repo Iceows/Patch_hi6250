@@ -975,6 +975,7 @@ int VolumeManager::unmountAll() {
     while ((mentry = getmntent(fp)) != NULL) {
         auto test = std::string(mentry->mnt_dir);
         if ((StartsWith(test, "/mnt/") &&
+        !StartsWith(test, "/mnt/phh") &&
 #ifdef __ANDROID_DEBUGGABLE__
              !StartsWith(test, "/mnt/scratch") &&
 #endif
