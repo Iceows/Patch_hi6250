@@ -6733,17 +6733,6 @@ public class RIL extends BaseCommands implements CommandsInterface {
         int mRat = 0;
 
 
-	if (RILJ_LOGD) {
-		riljLog("Huawei signal : LTE dbm : " + String.valueOf(lteStrength.getDbm()) +
-				", level : " + String.valueOf(lteStrength.getLevel()) +
-				", Rsrp  : " + String.valueOf(lteStrength.getRsrp()) +
-				", Rsrq  : " + String.valueOf(lteStrength.getRsrq()) +
-				", Rssi  : " + String.valueOf(lteStrength.getRssi()) +
-				", Rssnr  : " + String.valueOf(lteStrength.getRssnr()));
-		riljLog("Huawei signal : GSM dbm : " + String.valueOf(gsmStrength.getDbm()) +
-			", errorrate : " + String.valueOf(gsmStrength.getBitErrorRate()) +
-			", timingadvance  : " + String.valueOf(gsmStrength.getTimingAdvance()));
-	}
 
 	//Calcul level with Rssnr, Rsrq, Rsrp value - so specify KEY_PARAMETERS_USED_FOR_LTE_SIGNAL_BAR_INT (parameters_used_for_lte_signal_bar_int) to use this 3 values
 	//RSRP = 1 << 0
@@ -6811,6 +6800,19 @@ public class RIL extends BaseCommands implements CommandsInterface {
 	CellSignalStrengthGsm gsmStrength = new CellSignalStrengthGsm(gsmSignalStrength,
 						gsmBitErrorRate,
 						gsmTimingAdvance);
+
+	if (RILJ_LOGD) {
+		riljLog("Huawei signal : LTE dbm : " + String.valueOf(lteStrength.getDbm()) +
+				", level : " + String.valueOf(lteStrength.getLevel()) +
+				", Rsrp  : " + String.valueOf(lteStrength.getRsrp()) +
+				", Rsrq  : " + String.valueOf(lteStrength.getRsrq()) +
+				", Rssi  : " + String.valueOf(lteStrength.getRssi()) +
+				", Rssnr  : " + String.valueOf(lteStrength.getRssnr()));
+		riljLog("Huawei signal : GSM dbm : " + String.valueOf(gsmStrength.getDbm()) +
+			", errorrate : " + String.valueOf(gsmStrength.getBitErrorRate()) +
+			", timingadvance  : " + String.valueOf(gsmStrength.getTimingAdvance()));
+	}
+
 
 
 	// Perhaps add also gsm signalStrength
