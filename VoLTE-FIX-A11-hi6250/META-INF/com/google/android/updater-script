@@ -1,0 +1,54 @@
+ui_print("");
+ui_print("#########################################");
+ui_print("#                                       #");
+ui_print("# VoLTE fix Android 11                  #");
+ui_print("#   for Lineage 18.1 (Huawei P8 lite)   #");
+ui_print("#                                       #");
+ui_print("#    by DarkJoker360 and AltairFR       #");
+ui_print("#                                       #");
+ui_print("#    V1.1                              #");
+ui_print("#                                       #");
+ui_print("#########################################");
+ui_print("");
+ui_print("");
+
+
+set_progress(0.100000);
+ui_print(" Extract install script...");
+ifelse(is_mounted("/system"), unmount("/system"));
+
+package_extract_file("mount-system.sh", "/tmp/mount-system.sh");
+package_extract_file("tools.sh", "/tmp/tools.sh");
+set_perm(0, 0, 0755, "/tmp/tools.sh");
+set_perm(0, 0, 0755, "/tmp/mount-system.sh");
+
+
+set_progress(0.200000);
+ui_print(" Mounting filesystems system ...");
+run_program("/tmp/mount-system.sh") == 0 || abort("Could not mount /system");
+ui_print(" system mount ok !! ...");
+
+set_progress(0.300000);
+ui_print(" Installing VoLTE 1/2");
+package_extract_dir("system", "/system");
+
+set_progress(0.500000);
+ui_print(" Installing VoLTE 2/2");
+run_program("/tmp/tools.sh") == 0 || abort("Could not run tools program");
+ui_print(" tools ok !! ...");
+
+ui_print("");
+set_progress(0.600000);
+ui_print("Unmounting...");
+delete("/tmp/tools.sh");
+delete("/tmp/mount-system.sh");
+unmount("/system");
+
+
+
+ui_print("##################################");
+ui_print("#     Installation completed !   #");
+ui_print("#            Join us:            #");
+ui_print("#   * https://t.me/hi6250group   #");
+ui_print("##################################");
+show_progress(0.100000, 0);
