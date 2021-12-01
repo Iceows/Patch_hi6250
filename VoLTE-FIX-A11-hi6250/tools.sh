@@ -1,5 +1,9 @@
 #!/sbin/sh
 
+	chmod 644 /system/overlay/treble-overlay-hw-ims.apk
+	restorecon /system/overlay/treble-overlay-hw-ims.apk
+
+
     echo " " >> /system/build.prop;
     echo "# Ims" >> /system/build.prop;
     echo "persist.sys.phh.ims.hw=true" >> /system/build.prop;
