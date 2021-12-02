@@ -1,8 +1,8 @@
 ui_print("");
 ui_print("#########################################");
 ui_print("#                                       #");
-ui_print("# VoLTE fix Android 11                  #");
-ui_print("#   for Lineage 18.1 (Huawei P8 lite)   #");
+ui_print("# VoLTE fix Android 9                   #");
+ui_print("#   for PHH Trebble ROM (Huawei)        #");
 ui_print("#                                       #");
 ui_print("#    by AltairFR, DarkJoker and Penn5   #");
 ui_print("#                                       #");
