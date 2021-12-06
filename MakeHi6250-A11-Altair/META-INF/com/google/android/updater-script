@@ -1,14 +1,14 @@
 ui_print("");
 ui_print("#########################################");
 ui_print("#                                       #");
-ui_print("# Transform cDroid 11 arm64-avZ         #"); 
+ui_print("# Transform GSI arm64 AOnly ROM to      #"); 
 ui_print("#    ROM to Hi6250 ROM for PRA,WAS      #");
 ui_print("#                                       #");
 ui_print("#                                       #");
 ui_print("#    by AltairFR (Iceows)               #");
 ui_print("#    Thanks to Hamido, DarkJoker360     #");
 ui_print("#                                       #");
-ui_print("#    V0.3                               #");
+ui_print("#    V0.2                               #");
 ui_print("#                                       #");
 ui_print("#########################################");
 ui_print("");

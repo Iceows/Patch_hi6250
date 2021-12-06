@@ -62,15 +62,6 @@ fi
 setprop sys.usb.ffs.aio_compat true
 setprop persist.adb.nonblocking_ffs false
 
-# Redmi Note 9S/Pro/Max props
-if getprop ro.vendor.build.fingerprint |grep -qi -e redmi/curtana -e redmi/joyeuse -e redmi/excalibur; then
-    setprop ro.surface_flinger.has_HDR_display true
-    setprop ro.surface_flinger.has_wide_color_display true
-    setprop persist.device_config.runtime_native.usap_pool_enabled true
-    setprop debug.sf.latch_unsignaled 1
-    setprop debug.sf.enable_gl_backpressure 1
-fi
-
 fixSPL() {
     if [ "$(getprop ro.product.cpu.abi)" = "armeabi-v7a" ]; then
         setprop ro.keymaster.mod 'AOSP on ARM32'
@@ -145,6 +136,20 @@ changeKeylayout() {
         chmod 0644 /mnt/phh/keylayout/gpio_keys.kl /mnt/phh/keylayout/sec_touchscreen.kl
     fi
 
+    if getprop ro.vendor.build.fingerprint | grep -iq \
+        -e poco/ -e redmi/ -e xiaomi/ ; then
+        if [ ! -f /mnt/phh/keylayout/uinput-goodix.kl ]; then
+          cp /system/phh/empty /mnt/phh/keylayout/uinput-goodix.kl
+          chmod 0644 /mnt/phh/keylayout/uinput-goodix.kl
+          changed=true
+        fi
+        if [ ! -f /mnt/phh/keylayout/uinput-fpc.kl ]; then
+          cp /system/phh/empty /mnt/phh/keylayout/uinput-fpc.kl
+          chmod 0644 /mnt/phh/keylayout/uinput-fpc.kl
+          changed=true
+        fi
+    fi
+
     if getprop ro.vendor.build.fingerprint | grep -iq -e xiaomi/daisy; then
         mpk="/mnt/phh/keylayout"
         cp /system/phh/daisy-buttonJack.kl ${mpk}/msm8953-snd-card-mtp_Button_Jack.kl
@@ -158,20 +163,6 @@ changeKeylayout() {
            changed=true
         fi
         chmod 0644 ${mpk}/uinput* ${mpk}/msm8953*
-    fi
-
-    if getprop ro.vendor.build.fingerprint | grep -iq \
-        -e poco/ -e redmi/ -e xiaomi/ ; then
-        if [ ! -f /mnt/phh/keylayout/uinput-goodix.kl ]; then
-          cp /system/phh/empty /mnt/phh/keylayout/uinput-goodix.kl
-          chmod 0644 /mnt/phh/keylayout/uinput-goodix.kl
-          changed=true
-        fi
-        if [ ! -f /mnt/phh/keylayout/uinput-fpc.kl ]; then
-          cp /system/phh/empty /mnt/phh/keylayout/uinput-fpc.kl
-          chmod 0644 /mnt/phh/keylayout/uinput-fpc.kl
-          changed=true
-        fi
     fi
 
     if getprop ro.vendor.build.fingerprint | grep -qi oneplus/oneplus6/oneplus6; then
@@ -201,12 +192,9 @@ changeKeylayout() {
     if getprop ro.vendor.build.fingerprint |grep -iq -E -e '^Lenovo/' && [ -f /sys/devices/virtual/touch/tp_dev/gesture_on ];then
         cp /system/phh/lenovo-synaptics_dsx.kl /mnt/phh/keylayout/synaptics_dsx.kl
         chmod 0644 /mnt/phh/keylayout/synaptics_dsx.kl
+        cp /system/phh/lenovo-synaptics_dsx.kl /mnt/phh/keylayout/fts_ts.kl
+        chmod 0644 /mnt/phh/keylayout/fts_ts.kl
         changed=true
-        if ! getprop ro.vendor.build.fingerprint |grep -iq -E -e '^Lenovo/jd20'; then
-          cp /system/phh/lenovo-synaptics_dsx.kl /mnt/phh/keylayout/fts_ts.kl
-          chmod 0644 /mnt/phh/keylayout/fts_ts.kl
-          changed=true
-        fi
     fi
 
     if ( getprop ro.build.overlay.deviceid |grep -q -e RMX1931 -e RMX1941 -e CPH1859 -e CPH1861 -e RMX2185) ||
@@ -333,6 +321,12 @@ if [ "$foundFingerprint" = false ];then
     mount -o bind system/phh/empty /system/etc/permissions/android.hardware.fingerprint.xml
 fi
 
+if ! getprop ro.vendor.build.fingerprint | grep -qE 'meizu_18'; then
+    mount -o bind system/phh/empty /system/bin/hw/android.hardware.vibrator@1.3-service.meizu
+    mount -o bind system/phh/empty /system/etc/init/android.hardware.vibrator@1.3-service.meizu.rc
+    mount -o bind system/etc/vintf/manifest/manifest_dummy.xml /system/etc/vintf/manifest/android.hardware.vibrator@1.3-service.meizu.xml
+fi
+
 if ! grep android.hardware.bluetooth /vendor/manifest.xml && ! grep android.hardware.bluetooth /vendor/etc/vintf/manifest.xml; then
     mount -o bind system/phh/empty /system/etc/permissions/android.hardware.bluetooth.xml
     mount -o bind system/phh/empty /system/etc/permissions/android.hardware.bluetooth_le.xml
@@ -386,23 +380,8 @@ if getprop ro.vendor.build.fingerprint | grep -q -i \
     -e xiaomi/nitrogen -e xiaomi/whyred -e xiaomi/platina \
     -e xiaomi/ysl -e nubia/nx60 -e nubia/nx61 -e xiaomi/tulip \
     -e xiaomi/lavender -e xiaomi/olive -e xiaomi/olivelite -e xiaomi/pine \
-    -e Redmi/lancelot -e Redmi/galahad -e Redmi/merlin -e Redmi/angelican -e Redmi/dandelion; then
+    -e Redmi/lancelot -e Redmi/galahad; then
     setprop persist.sys.qcom-brightness "$(cat /sys/class/leds/lcd-backlight/max_brightness)"
-fi
-
-#Xiaomi Redmi Note 9, Redmi 9 (Prime)
-if getprop ro.vendor.build.fingerprint |grep -qi -e Redmi/merlin -e Redmi/lancelot -e Redmi/angelican -e Redmi/dandelion; then
-    setprop persist.sys.overlay.devinputjack true
-fi
-
-# UMIDIGI A3X & A9
-if getprop ro.vendor.build.fingerprint |grep -qi -e UMIDIGI/A3X -e UMIDIGI/A9; then
-    setprop persist.sys.overlay.devinputjack true
-fi
-
-# CUBOT KINGKONG MINI2
-if getprop ro.vendor.build.fingerprint |grep -qi -e CUBOT/KINGKONG_MINI2; then
-    setprop persist.sys.overlay.devinputjack true
 fi
 
 #Realme 6
@@ -419,7 +398,7 @@ if getprop ro.build.overlay.deviceid |grep -q -e CPH1859 -e CPH1861 -e RMX1811 -
     setprop persist.sys.qcom-brightness "$(cat /sys/class/leds/lcd-backlight/max_brightness)"
 fi
 
-if getprop ro.build.overlay.deviceid |grep -iq -e RMX2020 -e RMX2027 -e RMX2040 -e RMX2193 -e RMX2191;then	
+if getprop ro.build.overlay.deviceid |grep -iq -e RMX2020 -e RMX2027 -e RMX2040 -e RMX2193 -e RMX2191;then
     setprop persist.sys.qcom-brightness 2047
     setprop persist.sys.overlay.devinputjack true
     setprop persist.sys.phh.fingerprint.nocleanup true
@@ -434,7 +413,7 @@ if getprop ro.vendor.build.fingerprint | grep -iq \
     -e xiaomi/grus -e xiaomi/cereus -e xiaomi/cactus -e xiaomi/raphael -e xiaomi/davinci \
     -e xiaomi/ginkgo -e xiaomi/willow -e xiaomi/laurel_sprout -e xiaomi/andromeda \
     -e iaomi/renoir \
-    -e redmi/curtana -e -e redmi/joyeuse -e redmi/excalibur -e redmi/picasso \
+    -e redmi/curtana -e redmi/picasso \
     -e bq/Aquaris_M10 ; then
     mount -o bind /mnt/phh/empty_dir /vendor/lib64/soundfx
     mount -o bind /mnt/phh/empty_dir /vendor/lib/soundfx
@@ -536,11 +515,6 @@ if busybox_phh unzip -p /vendor/app/ims/ims.apk classes.dex | grep -qF -e Landro
     mount -o bind /system/phh/empty /vendor/app/ims/ims.apk
 fi
 
-#experimental
-if [ ! getprop ro.board.platform |grep -q mt6785 ] && [ ! grep -q 338 /sys/devices/soc0/soc_id ]; then
-    setprop debug.sf.latch_unsignaled 1
-fi
-
 if getprop ro.hardware | grep -qF exynos; then
     setprop debug.sf.latch_unsignaled 1
 fi
@@ -555,17 +529,7 @@ fi
 
 if getprop ro.vendor.build.fingerprint | grep -iq -e xiaomi/daisy; then
     setprop debug.sf.latch_unsignaled 1
-    setprop ro.telephony.default_network 9,9
-    setprop persist.vendor.radio.block_allow_data 0
-    setprop telephony.lteOnGsmDevice 1
-fi
-
-if getprop ro.vendor.build.fingerprint | grep -iq -e xiaomi/lavender; then
-    setprop debug.sf.latch_unsignaled 1
-    setprop ro.netflix.bsp_rev Q660-13149-1
-    setprop ro.telephony.default_network 9,9
-    setprop persist.vendor.radio.block_allow_data 0
-    setprop telephony.lteOnGsmDevice 1
+    setprop debug.sf.enable_hwc_vds 1
 fi
 
 if getprop ro.vendor.build.fingerprint | grep -iq -e Redmi/merlin; then
@@ -631,10 +595,6 @@ if [ $(find /vendor/etc/audio -type f |wc -l) -le 3 ];then
 	mount -o bind /mnt/phh/empty_dir /vendor/etc/audio || true
 fi
 
-if ! grep android.hardware.ir /vendor/manifest.xml;then
-    mount -o bind system/phh/empty /system/etc/permissions/android.hardware.consumerir.xml
-fi
-
 for f in /vendor/lib{,64}/hw/com.qti.chi.override.so /vendor/lib{,64}/libVD*;do
     [ ! -f $f ] && continue
     # shellcheck disable=SC2010
@@ -692,10 +652,6 @@ if getprop ro.vendor.build.fingerprint | grep -qiE '^samsung/' && [ "$vndk" -ge 
     fi
 fi
 
-if getprop ro.vendor.build.fingerprint | grep -q -e Sony/aosp_f5121/suzu; then
-    chown system:system /sys/class/leds/*/breath
-fi
-
 # For Nubia Red Magic 6 audio policy configuration
 if getprop ro.vendor.build.fingerprint | grep -q -e nubia/NX669; then
     umount /vendor/etc/audio
@@ -712,42 +668,39 @@ fi
 
 setprop ctl.stop console
 dmesg -n 1
-
-copyprop() {
-    p="$(getprop "$2")"
-    if [ "$p" ]; then
-        resetprop_phh "$1" "$(getprop "$2")"
-    fi
-}
-
-copyprop ro.build.device ro.vendor.build.device
-copyprop ro.system.build.fingerprint ro.vendor.build.fingerprint
-copyprop ro.bootimage.build.fingerprint ro.vendor.build.fingerprint
-copyprop ro.build.fingerprint ro.vendor.build.fingerprint
-copyprop ro.build.device ro.vendor.product.device
-copyprop ro.product.system.device ro.vendor.product.device
-copyprop ro.product.device ro.vendor.product.device
-copyprop ro.product.system.device ro.product.vendor.device
-copyprop ro.product.device ro.product.vendor.device
-copyprop ro.product.system.name ro.vendor.product.name
-copyprop ro.product.name ro.vendor.product.name
-copyprop ro.product.system.name ro.product.vendor.name
-copyprop ro.product.name ro.product.vendor.name
-copyprop ro.system.product.brand ro.vendor.product.brand
-copyprop ro.product.brand ro.vendor.product.brand
-copyprop ro.product.system.model ro.vendor.product.model
-copyprop ro.product.model ro.vendor.product.model
-copyprop ro.product.system.model ro.product.vendor.model
-copyprop ro.product.model ro.product.vendor.model
-copyprop ro.build.product ro.vendor.product.model
-copyprop ro.build.product ro.product.vendor.model
-copyprop ro.system.product.manufacturer ro.vendor.product.manufacturer
-copyprop ro.product.manufacturer ro.vendor.product.manufacturer
-copyprop ro.system.product.manufacturer ro.product.vendor.manufacturer
-copyprop ro.product.manufacturer ro.product.vendor.manufacturer
-copyprop build.version.security_patch ro.build.version.security_patch
-
 if [ -f /system/phh/secure ];then
+    copyprop() {
+        p="$(getprop "$2")"
+        if [ "$p" ]; then
+            resetprop_phh "$1" "$(getprop "$2")"
+        fi
+    }
+
+    copyprop ro.build.device ro.vendor.build.device
+    copyprop ro.system.build.fingerprint ro.vendor.build.fingerprint
+    copyprop ro.bootimage.build.fingerprint ro.vendor.build.fingerprint
+    copyprop ro.build.fingerprint ro.vendor.build.fingerprint
+    copyprop ro.build.device ro.vendor.product.device
+    copyprop ro.product.system.device ro.vendor.product.device
+    copyprop ro.product.device ro.vendor.product.device
+    copyprop ro.product.system.device ro.product.vendor.device
+    copyprop ro.product.device ro.product.vendor.device
+    copyprop ro.product.system.name ro.vendor.product.name
+    copyprop ro.product.name ro.vendor.product.name
+    copyprop ro.product.system.name ro.product.vendor.name
+    copyprop ro.product.name ro.product.vendor.name
+    copyprop ro.system.product.brand ro.vendor.product.brand
+    copyprop ro.product.brand ro.vendor.product.brand
+    copyprop ro.product.system.model ro.vendor.product.model
+    copyprop ro.product.model ro.vendor.product.model
+    copyprop ro.product.system.model ro.product.vendor.model
+    copyprop ro.product.model ro.product.vendor.model
+    copyprop ro.build.product ro.vendor.product.model
+    copyprop ro.build.product ro.product.vendor.model
+    copyprop ro.system.product.manufacturer ro.vendor.product.manufacturer
+    copyprop ro.product.manufacturer ro.vendor.product.manufacturer
+    copyprop ro.system.product.manufacturer ro.product.vendor.manufacturer
+    copyprop ro.product.manufacturer ro.product.vendor.manufacturer
     (getprop ro.vendor.build.security_patch; getprop ro.keymaster.xxx.security_patch) |sort |tail -n 1 |while read v;do
         [ -n "$v" ] && resetprop_phh ro.build.version.security_patch "$v"
     done
@@ -766,17 +719,6 @@ if [ -f /system/phh/secure ];then
 
     resetprop_phh ro.adb.secure 1
     setprop ctl.restart adbd
-fi
-
-# Fix the google hotword detection for android 11 on redmi note 9s
-if getprop ro.vendor.build.fingerprint |grep -qi -e redmi/curtana; then
-     resetprop_phh ro.product.model "Note 9S"
-fi
-if getprop ro.vendor.build.fingerprint |grep -qi -e redmi/joyeuse; then
-     resetprop_phh ro.product.model "Note 9S Pro"
-fi
-if getprop ro.vendor.build.fingerprint |grep -qi -e redmi/excalibur; then
-     resetprop_phh ro.product.model "Note 9S Pro Max"
 fi
 
 for abi in "" 64;do
@@ -958,7 +900,7 @@ if getprop ro.build.overlay.deviceid |grep -qiE -e '^RMX' -e '^CPH';then
     setprop persist.sys.phh.fod.bbk true
 fi
 
-if getprop ro.build.overlay.deviceid |grep -iq -e RMX1941 -e RMX1945 -e RMX1943 -e RMX1942;then	
+if getprop ro.build.overlay.deviceid |grep -iq -e RMX1941 -e RMX1945 -e RMX1943 -e RMX1942;then
     setprop persist.sys.qcom-brightness "$(cat /sys/class/leds/lcd-backlight/max_brightness)"
     setprop persist.sys.phh.mainkeys 0
 fi
@@ -973,7 +915,7 @@ if getprop ro.vendor.build.fingerprint |grep -iq xiaomi/cepheus;then
     setprop ro.netflix.bsp_rev Q855-16947-1
 fi
 
-if getprop ro.vendor.build.fingerprint |grep -qi redmi/curtana -e redmi/joyeuse -e redmi/excalibur; then
+if getprop ro.vendor.build.fingerprint |grep -qi redmi/curtana;then
     setprop ro.netflix.bsp_rev Q6250-19132-1
 fi
 
