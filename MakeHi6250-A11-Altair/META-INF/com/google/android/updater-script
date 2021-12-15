@@ -2,13 +2,13 @@ ui_print("");
 ui_print("#########################################");
 ui_print("#                                       #");
 ui_print("# Transform GSI arm64 AOnly ROM to      #"); 
-ui_print("#    ROM to Hi6250 ROM for PRA,WAS      #");
+ui_print("#    ROM for Hi6250 (PRA,WAS,...)       #");
 ui_print("#                                       #");
 ui_print("#                                       #");
 ui_print("#    by AltairFR (Iceows)               #");
 ui_print("#    Thanks to Hamido, DarkJoker360     #");
 ui_print("#                                       #");
-ui_print("#    V0.2                               #");
+ui_print("#    V0.4                               #");
 ui_print("#                                       #");
 ui_print("#########################################");
 ui_print("");
@@ -64,11 +64,15 @@ unmount("/vendor");
 
 
 set_progress(1.000000);
-ui_print("**************************************");
-ui_print("*          Install Complete!         *");
-ui_print("* Please now :                       *");
-ui_print("*  NFC Fix by Altair                 *");
-ui_print("*  AGPS Fix by Altair                *");
-ui_print("*  DisplayEngine Fix by Altair       *");
-ui_print("**************************************");
+ui_print("******************************************");
+ui_print("*          Install Complete!             *");
+ui_print("* Please now install :                   *");
+ui_print("*  2 - AGPS Fix by Altair                *");
+ui_print("*  3 - NFC Fix by Altair                 *");
+ui_print("*  4 - DisplayEngine Fix by Altair       *");
+ui_print("*  5 - LibAptx optimized Fix by Altair   *");
+ui_print("*  6 - Media Fix by Altair               *");
+ui_print("******************************************");
+
+
 
