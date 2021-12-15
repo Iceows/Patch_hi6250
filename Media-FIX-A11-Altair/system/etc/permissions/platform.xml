@@ -132,12 +132,11 @@
          the fragility as one can remove a built-in permission which
          no longer needs to be mapped to gids and break grant propagation. -->
     <permission name="android.permission.READ_EXTERNAL_STORAGE" >
-        <group gid="sdcard_r" />
     </permission>
     <permission name="android.permission.WRITE_EXTERNAL_STORAGE" >
-        <group gid="sdcard_r" />
-		<group gid="sdcard_rw" />
-        <group gid="media_rw" /> 
+		<group gid="sdcard_r"/>
+		<group gid="sdcard_rw"/>
+		<group gid="media_rw"/>
     </permission>
 	
     <!-- ================================================================== -->
