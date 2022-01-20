@@ -1,39 +1,49 @@
 #!/sbin/sh
 
-	chmod 644 /system/overlay/treble-overlay-hw-ims.apk
-	restorecon /system/overlay/treble-overlay-hw-ims.apk
+#	chmod 644 /system/overlay/treble-overlay-hw-ims.apk
+#	restorecon /system/overlay/treble-overlay-hw-ims.apk
+	
+	chmod 644 /system/app/HuaweiIMS/HuaweiIMS.apk
+	restorecon /system/app/HuaweiIMS/HuaweiIMS.apk
 
+	chmod 644 /system/app/treble-overlay-telephony-hw-ims/treble-overlay-telephony-hw-ims.apk
+	restorecon /system/app/treble-overlay-telephony-hw-ims/treble-overlay-telephony-hw-ims.apk
+
+	chmod 644 /system/priv-app/TrebleApp/TrebleApp.apk 
+	restorecon /system/priv-app/TrebleApp/TrebleApp.apk 
 
     echo " " >> /system/build.prop;
     echo "# Ims" >> /system/build.prop;
     echo "persist.sys.phh.ims.hw=true" >> /system/build.prop;
+	echo "persist.radio.calls.on.ims=1" >> /system/build.prop;
     echo "persist.dbg.ims_volte_enable=1" >> /system/build.prop;
     echo "persist.dbg.volte_avail_ovr=1" >> /system/build.prop;
-    echo "persist.dbg.vt_avail_ovr=1" >> /system/build.prop;
-    echo "persist.dbg.wfc_avail_ovr=1" >> /system/build.prop;
-    echo "persist.data.iwlan.enable=true" >> /system/build.prop;
-    echo "persist.radio.rat_on=combine" >> /system/build.prop;
-    echo "persist.radio.data_ltd_sys_ind=1" >> /system/build.prop;
-    echo "persist.radio.data_con_rprt=1" >> /system/build.prop;
-    echo "persist.radio.calls.on.ims=1" >> /system/build.prop;
-    echo "persist.dbg.allow_ims_off=1 " >> /system/build.prop;
-    echo "persist.sys.phh.ims.caf=true" >> /system/build.prop;
-
-
-    echo " " >> /system/product/etc/prop/local.prop;
-    echo "# Ims" >> /system/product/etc/prop/local.prop;
-    echo "persist.sys.phh.ims.hw=true" >> /system/product/etc/prop/local.prop;
-    echo "persist.dbg.ims_volte_enable=1" >> /system/product/etc/prop/local.prop;
-    echo "persist.dbg.volte_avail_ovr=1" >> /system/product/etc/prop/local.prop;
-    echo "persist.dbg.vt_avail_ovr=1" >> /system/product/etc/prop/local.prop;
-    echo "persist.dbg.wfc_avail_ovr=1" >> /system/product/etc/prop/local.prop;
-    echo "persist.data.iwlan.enable=true" >> /system/product/etc/prop/local.prop;
-    echo "persist.radio.rat_on=combine" >> /system/product/etc/prop/local.prop;
-    echo "persist.radio.data_ltd_sys_ind=1" >> /system/product/etc/prop/local.prop;
-    echo "persist.radio.data_con_rprt=1" >> /system/product/etc/prop/local.prop;
-    echo "persist.radio.calls.on.ims=1" >> /system/product/etc/prop/local.prop;
+    echo "persist.dbg.vt_avail_ovr=0" >> /system/build.prop;
+    echo "persist.dbg.wfc_avail_ovr=0" >> /system/build.prop;
 	
-	echo "persist.dbg.allow_ims_off=1 "  >> /system/product/etc/prop/local.prop;
-    echo "persist.sys.phh.ims.caf=true" >> /system/product/etc/prop/local.prop;
+	# Huawei config specific on EMUI 8 (Android 8)
+	echo "ro.config.hw_volte_dyn=true" >> /system/build.prop;
+    echo "ro.config.hw_volte_on=true" >> /system/build.prop;
+    echo "ro.config.hw_volte_icon_rule=0" >> /system/build.prop;	
+	
+	# Iceows enable volte for my IMS Huawei
+	echo "ro.hw.volte.enable=1" >> /system/build.prop;
+
+    echo " " >> /system/etc/prop.default;
+    echo "# Ims" >> /system/etc/prop.default;
+    echo "persist.sys.phh.ims.hw=true" >> /system/etc/prop.default;
+	echo "persist.radio.calls.on.ims=1" >> /system/etc/prop.default;
+    echo "persist.dbg.ims_volte_enable=1" >> /system/etc/prop.default;
+    echo "persist.dbg.volte_avail_ovr=1" >> /system/etc/prop.default;
+    echo "persist.dbg.vt_avail_ovr=0" >> /system/etc/prop.default;
+    echo "persist.dbg.wfc_avail_ovr=0" >> /system/etc/prop.default;
+	
+	# Huawei config specific on EMUI 8 (Android 8)
+	echo "ro.config.hw_volte_dyn=true" >> /system/etc/prop.default;
+    echo "ro.config.hw_volte_on=true" >> /system/etc/prop.default;
+    echo "ro.config.hw_volte_icon_rule=0" >> /system/etc/prop.default;	
+	
+	# Iceows enable volte for my IMS Huawei
+	echo "ro.hw.volte.enable=1" >> /system/etc/prop.default;	
 
     exit 0;
