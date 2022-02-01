@@ -130,17 +130,7 @@
             android:defaultValue="false"
             android:key="key_misc_superuser"
             android:title="SuperUser"
-            android:summary="Enable su and superuser root\n(no SafetyNet if enabled)" />
-		<CheckBoxPreference
-            android:defaultValue="false"
-            android:key="key_misc_safetynet"
-            android:title="SafetyNet"
-            android:summary="Can help to pass SafetyNet\n(not for all devices)" />
-		<CheckBoxPreference
-            android:defaultValue="false"
-            android:key="key_misc_pixelprops"
-            android:title="Spoof Pixel 5"
-            android:summary="Enable SafetyNet option first!\nRequires a reboot" />			
+            android:summary="Enable su and superuser root" />
 		<CheckBoxPreference
 				android:defaultValue="false"
 				android:key="key_misc_restart_ril"

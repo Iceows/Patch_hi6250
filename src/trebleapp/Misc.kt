@@ -182,14 +182,6 @@ object Misc: EntryStartup {
                 val value = sp.getBoolean(key, false)
                 SystemProperties.set("persist.sys.phh.root", if (value) "true" else "false")
             }
-            MiscSettings.safetyNet -> {
-                val value = sp.getBoolean(key, false)
-                SystemProperties.set("persist.sys.phh.safetynet", if (value) "true" else "false")
-            }
-            MiscSettings.pixelProps -> {
-                val value = sp.getBoolean(key, false)
-                SystemProperties.set("persist.sys.phh.pixelprops", if (value) "true" else "false")
-            }			
             MiscSettings.remotectl -> {
                 val value = sp.getBoolean(key, false)
                 SystemProperties.set("persist.sys.phh.remote", if (value) "true" else "false")
