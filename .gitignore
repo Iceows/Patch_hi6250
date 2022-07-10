@@ -8,3 +8,9 @@ src/gnss_supl20service_hisi/supl20/WAS/apk-out/*
 src/gnss_supl20service_hisi/supl20/WAS/src-out/*
 src/gnss_supl20service_hisi/supl20/FIG/apk-out/*
 src/gnss_supl20service_hisi/supl20/FIG/src-out/*
+src/hwims/gnss_supl20service_hisi_iceows.jar
+src/hwims/gnss_supl20service_hisi.apk_classes-dex2jar.jar
+src/hwims/gnss_supl20service_hisi.apk_classes.dex
+src/hwims/supl20/gnss_supl20service_hisi.apk
+src/hwims/supl20/oat/arm64/gnss_supl20service_hisi.odex
+src/hwims/supl20/oat/arm64/gnss_supl20service_hisi.vdex
