@@ -1,5 +1,0 @@
-service hisupl_service /vendor/bin/hw/vendor.huawei.hardware.hisupl@1.0-service
-    class hal
-    user system
-    group system
-    setenv LD_PRELOAD libshims_hisupl.so
